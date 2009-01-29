@@ -45,7 +45,7 @@ session_start();
 
 <body class="main">
 <div style="border:2px solid white; background-color:#FFFFFF">
-<iframe src ="homeframe.php" width="740px" height="300px">
+<iframe src ="homeframe.php" width="740px" height="175px" scrolling= "no" FRAMEBORDER="0">
   <p>Your browser does not support iframes.</p>
 </iframe>
 
