@@ -5,6 +5,8 @@ session_start();
 	header( 'Location: ./index.php' );
  }
 
+
+
 include ("config/dbconfig.php");
 include ("config/opendb.php");
 include("config/functions.php");
