@@ -1,0 +1,177 @@
+<?php
+session_start();
+// Validate the users's session
+ if(($_SESSION['valid']) != "valid") {
+	header( 'Location: ./index.php' );
+ }
+
+include ("config/dbconfig.php");
+include ("config/opendb.php");
+include("config/functions.php");
+
+//****************************
+//  Developed by ND Epics for St. Joe County RedCross 
+//  
+// Authors: Mike Ellerhorst, Mark Pasquier, Bryan Winther, Matt Mooney
+//  Spring 2009
+//
+// updateorganization.php - file to update an existing organization in the disaster database;
+//****************************
+?>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Disaster Database - Update Organization</title>
+</head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="resource-type" content="document">
+<meta name="description" content="disaster.stjoe-redcross.org">
+<meta name="keywords" content="">
+<meta name="copyright" content="stjoe-redcross.org 2009.  All rights reserved.">
+<link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
+
+ <STYLE type="text/css">
+  SPAN { padding-left:3px; padding-right:3px }
+  DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
+  BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
+ </STYLE>
+
+
+<body class="main">
+<div style="border:2px solid white; background-color:#FFFFFF">
+<div align="center" class="header">
+<c>
+<img src="masthead.jpg" style="width:740px; height:100px">
+  			<p style="padding-bottom:1px; margin:0">
+				American Red Cross, St. Joseph County Chapter
+			</p>
+			<p style="font-weight:normal; padding:0; margin: 0">
+				<span>3220 East Jefferson Boulevard</span>
+				<span>&nbsp;</span>
+				<span>South Bend</span>
+				<span>Indiana</span>
+				<span>46615</span>
+				<span>Phone (574) 234-0191</span>
+
+			</p>
+</c>
+</div>
+<div align="center">
+  <h1 align="center">Update Organization</h1>
+</div>
+
+<?php
+
+// Retrieve the requested organization's information
+$organization_id = $_POST["organization_id"];
+$query = "SELECT	*
+		  FROM		organization
+		  WHERE		organization_id = ".$organization_id;
+		  
+$result = mysql_query($query) or die ("Organization Query failed");
+
+$row = mysql_fetch_assoc($result);
+
+$organization_name = $row['organization_name'];
+$street_address = $row['street_address'];
+$city = $row['city'];
+$state = $row['state'];
+$zip = $row['zip'];
+$county = $row['county'];
+$business_phone = $row['business_phone'];
+$business_fax = $row['business_fax'];
+$email = $row['email'];
+$website = $row['website'];
+
+
+print "<p align=center><b>Change the desired fields and press 'Update Organization'.</b></p>\n";
+
+print "<center><form name='updateorganization' method='post' action='updateorganization2.php'>\n";
+
+	print "<input name='organization_id' type='hidden' value='".$organization_id."'>\n";
+
+	/*******/
+	//  Provide input fields pre-populated with the existing values in the database
+	print "<table>\n";
+		print "<tr>\n";
+		print "<td><b>Organization Name: </b></td>\n";
+		print "<td><input name='organization_name' type='text' maxlength='50' align= 'left' value='".$organization_name."'></td>\n";
+		print "</tr>\n";
+
+		print "<tr>\n";
+		print "<td><b>Street Address: </b></td>\n";
+		print "<td><input name='street_address' type='text' maxlength='50' align= 'left' value='".$street_address."'></td>\n";
+		print "</tr>\n";
+
+		print "<tr>\n";
+		print "<td><b>City: </b></td>\n";
+		print "<td><input name='city' type='text' maxlength='30' align= 'left' value='".$city."'></td>\n";
+		print "</tr>\n";
+		
+		print "<tr>\n";
+		print "<td><b>State: </b></td>\n";
+		print "<td><input name='state' type='text' size='2' maxlength='2' align= 'left' value='".$state."'></td>\n";
+		print "</tr>\n";
+		
+		print "<tr>\n";
+		print "<td><b>Zip:</b></td>\n";
+		print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value='".$zip."'></td>\n";
+		print "</tr>\n";
+		
+		print "<tr>\n";
+		print "<td><b>County: </b></td>\n";
+		print "<td><input name='county' type='text' maxlength='20' align= 'left' value='".$county."'></td>\n";
+		print "</tr>\n";
+		
+		print "<tr>\n";
+		print "<td><b>Business Phone: </b></td>\n";
+		print "<td>(<input name='bus_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($business_phone,0,3)."'>)&nbsp\n";
+		print "		<input name='bus_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($business_phone,3,3)."'>&nbsp - &nbsp\n";
+		print "		<input name='bus_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($business_phone,6,4)."'>\n";
+		print "</td>\n";
+		print "</tr>\n";
+		
+		print "<tr>\n";
+		print "<td><b>Business Fax: </b></td>\n";
+		print "<td>(<input name='bus_fax_1' type='number' size='3' maxlength='3' align='left' value='".substr($business_fax,0,3)."'>)&nbsp\n";
+		print "		<input name='bus_fax_2' type='number' size='3' maxlength='3' align='left' value='".substr($business_fax,3,3)."'>&nbsp - &nbsp\n";
+		print "		<input name='bus_fax_3' type='number' size='4' maxlength='4' align='left' value='".substr($business_fax,6,4)."'>\n";
+		print "</td>\n";
+		print "</tr>\n";
+		
+		print "<tr>\n";
+		print "<td><b>Email: </b></td>\n";
+		print "<td><input name='email' type='text' maxlength='50' align= 'left' value='".$email."'></td>\n";
+		print "</tr>\n";
+		
+		print "<tr>\n";
+		print "<td><b>Website</b></td>\n";
+		print "<td><input name='website' type='text' maxlength='100' align= 'left' value='".$website."'></td>\n";
+		print "</tr>\n";
+		
+	print "</table>\n";
+
+	print "<br>\n";
+	
+	print "<input type='submit' value='Update Organiztion'>\n";
+print "</form></center>\n";
+
+
+print "<br><div align = 'center'>\n";
+print "<form>\n";
+print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">\n";
+print "</form>\n";
+print "<br></div>\n";
+print "</div>\n";
+
+print "</div>\n";
+print "</body>\n";
+print "</html>\n";
+
+
+include ("config/closedb.php");
+?>
