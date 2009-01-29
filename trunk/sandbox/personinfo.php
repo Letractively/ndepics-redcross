@@ -80,13 +80,14 @@ print "<div align=\"center\" name=\"navigation_buttons\">";
 print "<table>";
 print	"<tr>";
 
-/*
+
 // Update BUTTON
-print		"<td><form action=\"./updateperson.php?id=".$person_id."\" >";
+print		"<td><form action=\"./updateperson.php\" method=\"POST\" >";
+print			"<input type=hidden name=person_id value=".$person_id.">";
 print			"<input type=submit value='Update Record'>";
 print			"</form>";
 print		"</td>";
-*/
+
 
 // Delete BUTTON
 print		"<td><form action=\"./deleteperson.php\" method=\"POST\" >";

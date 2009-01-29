@@ -23,7 +23,7 @@ include ("./config/functions.php");
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Disaster Database - Personal Information</title>
+<title>Disaster Database - Resource Information</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="resource-type" content="document">
@@ -63,7 +63,7 @@ include ("./config/functions.php");
 
 <?php
 
-print "<h1 align=\"center\">Personal Information</h1><hr>";
+print "<h1 align=\"center\">Resource Information</h1><hr>";
 
 $resource_id = $_GET['id'];
 
@@ -81,16 +81,17 @@ print "<div align=\"center\" name=\"navigation_buttons\">";
 print "<table>";
 print	"<tr>";
 
-/*
+
 // Update BUTTON
-print		"<td><form action=\"./updateresource.php?id=".$resource_id."\" >";
+print		"<td><form action=\"./updateresource.php\" method=\"POST\" >";
+print			"<input type=hidden name=resource_id value=".$resource_id.">";
 print			"<input type=submit value='Update Record'>";
 print			"</form>";
 print		"</td>";
-*/
+
 
 // Delete BUTTON
-print		"<td><form action=\"./deleteresource.php?\" method=\"POST\" >";
+print		"<td><form action=\"./deleteresource.php\" method=\"POST\" >";
 print			"<input type=hidden name=resource_id value=".$resource_id.">";
 print			"<input type=submit value='Delete Record'>";
 print			"</form>";
