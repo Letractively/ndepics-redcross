@@ -18,7 +18,7 @@
 <c>
 
 <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent">
-<img src="masthead.jpg" style="width:723px; height:100px" border="0"></a>
+<img src="masthead.jpg" style="width:729px; height:100px" border="0"></a>
   			<p style="padding-bottom:1px; margin:0">
 				American Red Cross, St. Joseph County Chapter
 			</p>
