@@ -4,6 +4,9 @@ session_start();
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
+  if( ($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) ){
+ 	header( 'Location: ./index.php' );
+ } 
 
 include ("config/dbconfig.php");
 include ("config/opendb.php");

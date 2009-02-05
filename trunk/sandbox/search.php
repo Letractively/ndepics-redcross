@@ -4,6 +4,10 @@ session_start();
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
+ 
+ if( ($_SESSION['access_level_id'] != 4) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) ){
+ 	header( 'Location: ./index.php' );
+ } 
 
 // ****************************
 //  Developed by ND Epics for St. Joe County RedCross 

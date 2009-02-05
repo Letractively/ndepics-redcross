@@ -1,6 +1,13 @@
 <?php
 session_start();
-
+// Validate the users's session
+ if(($_SESSION['valid']) != "valid") {
+	header( 'Location: ./index.php' );
+ }
+  if( ($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) ){
+ 	header( 'Location: ./index.php' );
+ }
+ 
 // ***** TO BE ADDED LATER TO VALIDATE USERS ****
 // if(!isset($_SESSION['valid']))
 // 	header( 'Location: ./baduser.php' );
