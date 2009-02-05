@@ -44,4 +44,62 @@ function print_phone($phone_number) {
 	return $printed_form;
 }
 
+function validator($field_descr, $field_data, $field_type, $min_length="", $max_length="", $field_required=1) 
+{
+  //array for storing error messages
+  global $messages;
+  
+  //first, if no data and field is not required, return
+  if(!$field_data && !$field_required)
+    return;
+
+  //initialize a flag variable - used to flag whether data is valid or not
+  $field_ok = false;
+
+
+  //a hash array of "types of data" pointing to regular expressions  used to validate the data
+  $data_types=array(
+		    "email"=>"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$",
+		    "digit"=>"^[0-9]$",
+		    "number"=>"^[0-9]+$",
+		    "alpha"=>"^[a-zA-Z]+$",
+		    "alpha_space"=>"^[a-zA-Z ]+$",
+		    "alphanumeric"=>"^[a-zA-Z0-9]+$",
+		    "alphanumeric_space"=>"^[a-zA-Z0-9 ]+$",
+		    "string"=>""
+		    );
+  
+  //check for required fields
+  if ($field_required && empty($field_data)) {
+    $messages[] = "$field_descr is a required field.";
+    return;
+  }
+  
+  //if field type is a string, no need to check regular expression
+  if ($field_type == "string") {
+    $field_ok = true;
+  } else {
+    //Check the field data against the regexp pattern
+    if ($field_type == "email")
+      $field_ok = eregi($data_types[$field_type], $field_data);
+    else
+      $field_ok = ereg($data_types[$field_type], $field_data);
+  }
+  
+  //if field data is bad, add message
+  if (!$field_ok) {
+    $messages[] = "Please enter a valid $field_descr.";
+    return;
+  }
+  
+  //field data max length checking
+  if ($field_ok && ($min_length || $max_length)) {
+    if (strlen($field_data) > $max_length)
+      $messages[] = "$field_descr is invalid, it should be less than $max_length characters.";
+    if (strlen($field_data) < $min_length)
+      $messages[] = "$field_descr is invalid, it should be more than $min_length characters.";
+  }
+  return;
+}
+
 ?>
