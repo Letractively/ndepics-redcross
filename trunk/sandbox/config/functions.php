@@ -44,6 +44,7 @@ function print_phone($phone_number) {
 	return $printed_form;
 }
 
+//Data validation function.  Only the first three fields are required.
 function validator($field_descr, $field_data, $field_type, $min_length="", $max_length="", $field_required=1) 
 {
   //array for storing error messages
