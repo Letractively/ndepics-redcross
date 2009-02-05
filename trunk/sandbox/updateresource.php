@@ -58,7 +58,7 @@ include("config/functions.php");
 
 
 <div align="center">
-  <h1 align="center">Update Resource</h1>
+  <h1>Update Resource</h1>
 </div>
 
 <?php

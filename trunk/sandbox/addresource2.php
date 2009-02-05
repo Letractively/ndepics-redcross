@@ -52,12 +52,10 @@ include ("config/functions.php");
 </iframe>
 
 <div align="center">
-<c>
-  <h1 align="center">Add Resource</h1>
+  <h1>Add Resource</h1>
 <form>
 <INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
 </form>
-</c>
 </div>
 
 

@@ -103,7 +103,6 @@ $redirect_url = "./organizationinfo.php?id=".$organization_id;
 <body class="main" onLoad="setTimeout('redirect()', 300)">
 <div style="border:2px solid white; background-color:#FFFFFF">
 <div align="center" class="header">
-<c>
 <img src="masthead.jpg" style="width:740px; height:100px">
   			<p style="padding-bottom:1px; margin:0">
 				American Red Cross, St. Joseph County Chapter
@@ -117,12 +116,9 @@ $redirect_url = "./organizationinfo.php?id=".$organization_id;
 				<span>Phone (574) 234-0191</span>
 
 			</p>
-</c>
 </div>
 <div align="center">
-<c>
-  <h3 align="center">Updating Organization... Please be patient, you will be redirected shortly.</h3>
-</c>
+  <h3>Updating Organization... Please be patient, you will be redirected shortly.</h3>
 </div>
 
 <?

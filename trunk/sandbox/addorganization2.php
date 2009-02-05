@@ -54,23 +54,25 @@ include("config/functions.php");
 
 
 <body class="main">
-<div style="border:2px solid white; background-color:#FFFFFF">
 
+<div style="border:2px solid white; background-color:#FFFFFF" align="center">
 <iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
-  <h2 align="center">St. Joseph's County American Red Cross</h2>
-  <p align="center">Your browser does not support iframes.</p>
-  <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
-  </div>
+	<center>
+  	<h2>St. Joseph's County American Red Cross</h2>
+	<p>Your browser does not support iframes.</p>
+	</center>
+	<div class="menu">
+	<a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
+	<a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+	</div>
 </iframe>
 
 
 <div align="center">
-  <h1 align="center">Add Organization</h1>
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
+  	<h1>Add Organization</h1>
+	<form>
+	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
+	</form>
 </div>
 
 <?php

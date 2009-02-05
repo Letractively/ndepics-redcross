@@ -57,7 +57,7 @@ include("config/functions.php");
 </iframe>
 
 <div align="center">
-  <h1 align="center">Update Organization</h1>
+  <h1>Update Organization</h1>
 </div>
 
 <?php

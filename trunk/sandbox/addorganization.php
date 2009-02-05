@@ -51,8 +51,9 @@ session_start();
   </div>
 </iframe>
 
+
 <div align="center">
-  <h1 align="center">Add Organization</h1>
+  <h1>Add Organization</h1>
 <form>
 <INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
 </form>
@@ -63,59 +64,59 @@ session_start();
 	<input type=hidden name=addtype value=organization>
 	<table>
 		<tr>
-		<td>Organization Name</td>
-		<td><input name='organization_name' type='text' maxlength='50' align= 'left'> </td>
+			<td>Organization Name</td>
+			<td><input name='organization_name' type='text' maxlength='50' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>Street Address</td>
-		<td><input name='street_address' type='text' maxlength='50' align= 'left'> </td>
+			<td>Street Address</td>
+			<td><input name='street_address' type='text' maxlength='50' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>City</td>
-		<td><input name='city' type='text' maxlength='30' align= 'left'> </td>
+			<td>City</td>
+			<td><input name='city' type='text' maxlength='30' align= 'left'> </td>
 		</tr>
 
 		<tr>
-		<td>State</td>
-		<td><input name='state' type='text' size='2' maxlength='2' align= 'left'> </td>
+			<td>State</td>
+			<td><input name='state' type='text' size='2' maxlength='2' align= 'left'> </td>
 		</tr>
 
 		<tr>
-		<td>Zip</td>
-		<td><input name='zip' type='text' size='10' maxlength='10' align= 'left'> </td>
+			<td>Zip</td>
+			<td><input name='zip' type='text' size='10' maxlength='10' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>County</td>
-		<td><input name='county' type='text' maxlength='20' align= 'left'> </td>
+			<td>County</td>
+			<td><input name='county' type='text' maxlength='20' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>Business Phone</td>
-		<td>(<input name='bus_phone_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
-			<input name='bus_phone_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
-			<input name='bus_phone_3' type='number' size='4' maxlength='4' align= 'left'>
-		</td>
+			<td>Business Phone</td>
+			<td>(<input name='bus_phone_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
+				<input name='bus_phone_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
+				<input name='bus_phone_3' type='number' size='4' maxlength='4' align= 'left'>
+			</td>
 		</tr>
 		
 		<tr>
-		<td>Business Fax</td>
-		<td>(<input name='bus_fax_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
-			<input name='bus_fax_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
-			<input name='bus_fax_3' type='number' size='4' maxlength='4' align= 'left'>
-		</td>
+			<td>Business Fax</td>
+			<td>(<input name='bus_fax_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
+				<input name='bus_fax_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
+				<input name='bus_fax_3' type='number' size='4' maxlength='4' align= 'left'>
+			</td>
 		</tr>
 		
 		<tr>
-		<td>Email</td>
-		<td> <input name='email' type='text' maxlength='50' align= 'left'> </td>
+			<td>Email</td>
+			<td> <input name='email' type='text' maxlength='50' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>Website</td>
-		<td> <input name='website' type='text' maxlength='100' align= 'left'> </td>
+			<td>Website</td>
+			<td> <input name='website' type='text' maxlength='100' align= 'left'> </td>
 		</tr>
 		
 	</table>
@@ -129,7 +130,7 @@ session_start();
 <br>
 <div align='center'>
 <form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
+	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
 </form>
 <br>
 </div>

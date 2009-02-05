@@ -59,12 +59,10 @@ include("./config/functions.php");
 </iframe>
 
 <div align="center">
-<c>
-  <h1 align="center">Add Person</h1>
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
-</c>
+	<h1>Add Person</h1>
+	<form>
+	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
+	</form>
 </div>
 
 <?php

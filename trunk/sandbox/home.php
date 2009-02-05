@@ -35,11 +35,6 @@ session_start();
   SPAN { padding-left:3px; padding-right:3px }
   DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
   BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
-  DIV.menu{ text-align: center; border-top:1px solid white; border-bottom:1px solid white; background-color:#000000; color:white; font-weight: bold}
-  DIV.menu A:link { text-decoration: none; color:#FFFFFF; font-weight: bold }
-  DIV.menu A:visited { text-decoration: none; color:#999999 }
-  DIV.menu A:active { text-decoration: none; color:#666666 }
-  DIV.menu A:hover { text-decoration: none; color:#FF0000 }
  </STYLE>
 
 
@@ -55,21 +50,19 @@ session_start();
   </div>
 </iframe>
 
-<div class="menu">
+<!--<div class="menu">
 <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php"> HOME</a> | 
 <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php"> SEARCH </a>
-</div>
+</div>-->
+
 <div align="center">
-<c>
-  <h1 align="center">Welcome to the Disaster Database for the St. Joseph County Red Cross</h1>
-</c>
+  <h1>Welcome to the Disaster Database for the St. Joseph County Red Cross</h1>
 </div>
 
 
-<hr align="center">
 <p align="center">Please select what you would like to do</p>
 
-<center><h2 align="center">Input Information</h2>
+<h2 align="center">Input Information</h2>
 
 <div align="center">
   <table>
@@ -104,8 +97,8 @@ session_start();
   </div>
 </form>
 <br>
+
+
 </div>
-
-
 </body>
 </html>

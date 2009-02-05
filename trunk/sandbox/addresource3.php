@@ -59,9 +59,7 @@ include_once ("config/functions.php");
 </iframe>
 
 <div align="center">
-<c>
-  <h1 align="center">Add Resource</h1>
-</c>
+  <h1>Add Resource</h1>
 </div>
 
 <?

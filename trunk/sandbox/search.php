@@ -58,9 +58,7 @@ include ("./config/functions.php");
 
 
 <div align="center">
-<c>
 <h1>Search the Database</h1>
-</c>
 </div>
 
 <hr>

@@ -52,10 +52,10 @@ session_start();
 </iframe>
 
 <div align="center">
-  <h1 align="center">Add Person</h1>
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
+  <h1>Add Person</h1>
+  <form>
+  <INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
+  </form>
 </div>
 
 <br><br>			 
@@ -63,80 +63,80 @@ session_start();
 	<input type=hidden name=addtype value=person>
 	<table>
 		<tr>
-		<td>Salutation (Mr., Mrs., etc.)</td>
-		<td><input name='salutation' type='text' size='10' maxlength='10' align= 'left'> </td>
+			<td>Salutation (Mr., Mrs., etc.)</td>
+			<td><input name='salutation' type='text' size='10' maxlength='10' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>First Name</td>
-		<td><input name='first_name' type='text' maxlength='30' align= 'left'> </td>
+			<td>First Name</td>
+			<td><input name='first_name' type='text' maxlength='30' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>Last Name</td>
-		<td><input name='last_name' type='text' maxlength='30' align= 'left'> </td>
+			<td>Last Name</td>
+			<td><input name='last_name' type='text' maxlength='30' align= 'left'> </td>
 		</tr>
 
 		<tr>
-		<td>Street Address</td>
-		<td><input name='street_address' type='text' size='30' maxlength='50' align= 'left'> </td>
+			<td>Street Address</td>
+			<td><input name='street_address' type='text' size='30' maxlength='50' align= 'left'> </td>
 		</tr>
 
 		<tr>
-		<td>City</td>
-		<td><input name='city' type='text' size='30' maxlength='30' align= 'left'> </td>
+			<td>City</td>
+			<td><input name='city' type='text' size='30' maxlength='30' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>State</td>
-		<td><input name='state' type='text' size='2' maxlength='2' align= 'left'> </td>
+			<td>State</td>
+			<td><input name='state' type='text' size='2' maxlength='2' align= 'left'> </td>
 		</tr>
 
 		<tr>
-		<td>Zip</td>
-		<td><input name='zip' type='text' size='10' maxlength='10' align= 'left'> </td>
+			<td>Zip</td>
+			<td><input name='zip' type='text' size='10' maxlength='10' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>Home Phone</td>
-		<td>(<input name='home_phone_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
+			<td>Home Phone</td>
+			<td>(<input name='home_phone_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
 			<input name='home_phone_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
 			<input name='home_phone_3' type='number' size='4' maxlength='4' align= 'left'>
-		</td>
+			</td>
 		</tr>
 		
 		<tr>
-		<td>Work Phone</td>
-		<td>(<input name='work_phone_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
-			<input name='work_phone_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
-			<input name='work_phone_3' type='number' size='4' maxlength='4' align= 'left'>
-		</td>
+			<td>Work Phone</td>
+			<td>(<input name='work_phone_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
+				<input name='work_phone_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
+				<input name='work_phone_3' type='number' size='4' maxlength='4' align= 'left'>
+			</td>
 		</tr>
 		
 		<tr>
-		<td>Mobile Phone</td>
-		<td>(<input name='mobile_phone_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
-			<input name='mobile_phone_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
-			<input name='mobile_phone_3' type='number' size='4' maxlength='4' align= 'left'>
-		</td>
+			<td>Mobile Phone</td>
+			<td>(<input name='mobile_phone_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
+				<input name='mobile_phone_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
+				<input name='mobile_phone_3' type='number' size='4' maxlength='4' align= 'left'>
+			</td>
 		</tr>
 		
 		<tr>
-		<td>Fax</td>
-		<td>(<input name='fax_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
-			<input name='fax_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
-			<input name='fax_3' type='number' size='4' maxlength='4' align= 'left'>
-		</td>
+			<td>Fax</td>
+			<td>(<input name='fax_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
+				<input name='fax_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
+				<input name='fax_3' type='number' size='4' maxlength='4' align= 'left'>
+			</td>
 		</tr>
 		
 		<tr>
-		<td>Email</td>
-		<td> <input name='email' type='text' maxlength='50' align= 'left'> </td>
+			<td>Email</td>
+			<td> <input name='email' type='text' maxlength='50' align= 'left'> </td>
 		</tr>
 		
 		<tr>
-		<td>IM</td>
-		<td> <input name='im' type='text' size='30' maxlength='30' align= 'left'> </td>
+			<td>IM</td>
+			<td> <input name='im' type='text' size='30' maxlength='30' align= 'left'> </td>
 		</tr>
 		
 	</table>

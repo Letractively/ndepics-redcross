@@ -49,12 +49,12 @@ session_start();
   </div>
 </iframe>
 
-<div align="center">
-  <h1 align="center">Add Resource</h1>
 
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
+<div align="center">
+	<h1>Add Resource</h1>
+	<form>
+	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
+	</form>
 </div>
 
 <br><br>			 
@@ -86,9 +86,9 @@ session_start();
 
 <br>
 <div align='center'>
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
+	<form>
+	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
+	</form>
 </div>
 
 </div>

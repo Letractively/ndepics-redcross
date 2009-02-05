@@ -54,10 +54,6 @@ include ("./config/functions.php");
   </div>
 </iframe>
 
-
-<div align="center">
-</div>
-
 <?php
 
 print "<h1 align=\"center\">Personal Information</h1><hr>";
