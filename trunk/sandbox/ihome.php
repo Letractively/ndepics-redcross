@@ -44,7 +44,7 @@ session_start();
 
 
 <body class="main">
-<div style="border:0px solid white; background-color:#FFFFFF">
+<div style="border:2px solid white; background-color:#FFFFFF">
 
 <iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
   <h2 align="center">St. Joseph's County American Red Cross</h2>

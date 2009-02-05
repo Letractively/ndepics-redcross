@@ -9,14 +9,14 @@ include ("config/dbconfig.php");
 include ("config/opendb.php");
 include("config/functions.php");
 
-//****************************
+// ****************************
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
 // Authors: Mike Ellerhorst, Mark Pasquier, Bryan Winther, Matt Mooney
 //  Spring 2009
 //
 // updateresource.php - file to update an existing resource in the disaster database;
-//****************************
+// ****************************
 ?>
 
 
@@ -43,23 +43,17 @@ include("config/functions.php");
 
 <body class="main">
 <div style="border:2px solid white; background-color:#FFFFFF">
-<div align="center" class="header">
-<c>
-<img src="masthead.jpg" style="width:740px; height:100px">
-  			<p style="padding-bottom:1px; margin:0">
-				American Red Cross, St. Joseph County Chapter
-			</p>
-			<p style="font-weight:normal; padding:0; margin: 0">
-				<span>3220 East Jefferson Boulevard</span>
-				<span>&nbsp;</span>
-				<span>South Bend</span>
-				<span>Indiana</span>
-				<span>46615</span>
-				<span>Phone (574) 234-0191</span>
 
-			</p>
-</c>
-</div>
+<iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
+  <h2 align="center">St. Joseph's County American Red Cross</h2>
+  <p align="center">Your browser does not support iframes.</p>
+  <div class="menu">
+  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
+  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  </div>
+</iframe>
+
+
 <div align="center">
   <h1 align="center">Update Resource</h1>
 </div>

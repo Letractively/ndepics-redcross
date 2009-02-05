@@ -45,25 +45,16 @@ session_start();
 
 <body class="main">
 <div style="border:2px solid white; background-color:#FFFFFF">
-<div align="center" class="header">
-<c>
 
-<a href = "http://disaster.stjoe-redcross.org/sandbox/home.php">
-<img src="masthead.jpg" style="width:740px; height:100px" border="0"></a>
-  			<p style="padding-bottom:1px; margin:0">
-				American Red Cross, St. Joseph County Chapter
-			</p>
-			<p style="font-weight:normal; padding:0; margin: 0">
-				<span>3220 East Jefferson Boulevard</span>
-				<span>&nbsp;</span>
-				<span>South Bend</span>
-				<span>Indiana</span>
-				<span>46615</span>
-				<span>Phone (574) 234-0191</span>
+<iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
+  <h2 align="center">St. Joseph's County American Red Cross</h2>
+  <p align="center">Your browser does not support iframes.</p>
+  <div class="menu">
+  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
+  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  </div>
+</iframe>
 
-			</p>
-</c>
-</div>
 <div class="menu">
 <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php"> HOME</a> | 
 <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php"> SEARCH </a>
