@@ -1,9 +1,4 @@
-#summary One-sentence summary of this page.
-
-= Introduction =
-
-Add your content here.
-
+#summary Minutes from February 2, 2009.
 
 = Details =
 
