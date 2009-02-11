@@ -4,9 +4,10 @@ session_start();
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
-  if( ($_SESSION['access_level_id'] != 4) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) ){
+ 
+ if( ($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0)){
  	header( 'Location: ./index.php' );
- } 
+ }
 
 //****************************
 //  Developed by ND Epics for St. Joe County RedCross 
@@ -76,19 +77,25 @@ print	"<tr>";
 
 
 // Update BUTTON
+if( !(($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+{
 print		"<td><form action=\"./updateresource.php\" method=\"POST\" >";
 print			"<input type=hidden name=resource_id value=".$resource_id.">";
 print			"<input type=submit value='Update Record'>";
 print			"</form>";
 print		"</td>";
+}
 
 
 // Delete BUTTON
+if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+{
 print		"<td><form action=\"./deleteresource.php\" method=\"POST\" >";
 print			"<input type=hidden name=resource_id value=".$resource_id.">";
 print			"<input type=submit value='Delete Record'>";
 print			"</form>";
 print		"</td>";
+}
 
 // Home BUTTON
 print		"<td><form action=\"./home.php\">";
@@ -124,6 +131,8 @@ mysql_free_result($result);
 include ("./config/closedb.php");
 ?>
 
+<p>
+<p>
 </div>
 
 </body>

@@ -5,7 +5,7 @@ session_start();
 	header( 'Location: ./index.php' );
  }
  
- if( ($_SESSION['access_level_id'] != 4) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) ){
+ if( ($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0)){
  	header( 'Location: ./index.php' );
  } 
 

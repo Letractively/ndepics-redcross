@@ -78,44 +78,49 @@ if (($_SESSION['access_level_id']) == "9") {
 	print "</div>\n";
 }
 
+//if the user can add information 
+if( ($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
+{
+print "<h2 align=\"center\">Input Information</h2>";
+
+print "<div align=\"center\">";
+print "<table>";
+print "    <tr>";
+print "    <td>";
+print "	    <form action=\"addorganization.php\" >";
+print "	    <input type=\"submit\" value=\"Add an organization\">";
+print "	    </form>";
+print "    </td>";
+    
+print "<td>";
+print "	    <form action=\"addresource1.php\" >";
+print "	    <input type=\"submit\" value=\"Add a Resource\">";
+print "	    </form>";
+print "    </td>";
+   
+print "<td>";
+print "	    <form action=\"addperson.php\" >";
+print "	    <input type=\"submit\" value=\"Add a Person\">";
+print "	    </form>";
+print "    </td>";
+print "    </tr>";
+print "  </table>";
+print "  <center>";
+print "</div>";
+}
+
+//if the user can search information
+if( !($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))
+{
+print "<h2 align=\"center\">Search Records</h2>";
+print "<form action=\"search.php\" >";
+print "  <div align=\"center\">";
+print "    <input type=\"submit\" value=\"Search\">";
+print "  </div>";
+print "</form>";
+print "<br>";
+}
 ?>
-
-<h2 align="center">Input Information</h2>
-
-<div align="center">
-  <table>
-    <tr>
-    <td>
-	    <form action="addorganization.php" >
-	    <input type="submit" value="Add an organization">
-	    </form>
-    </td>
-    
-<td>
-	    <form action="addresource1.php" >
-	    <input type="submit" value="Add a Resource">
-	    </form>
-    </td>
-    
-<td>
-	    <form action="addperson.php" >
-	    <input type="submit" value="Add a Person">
-	    </form>
-    </td>
-    </tr>
-  </table>
-  <center>
-</div>
-
-
-<h2 align="center">Search Records</h2>
-<form action="search.php" >
-  <div align="center">
-    <input type="submit" value="Search">
-  </div>
-</form>
-<br>
-
 
 </div>
 </body>
