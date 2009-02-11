@@ -13,6 +13,9 @@ session_start();
 //
 // home.php - the main entry page for the Disaster Database;
 //
+// Revision History: 2/10/09	Mike Ellerhorst - Added "Create New User" button limited to admin users.
+//												- Removed full url links for the iframe and menu bar
+//
 //****************************
 ?>
 
@@ -45,14 +48,14 @@ session_start();
   <h2 align="center">St. Joseph's County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
   </div>
 </iframe>
 
 <!--<div class="menu">
-<a href = "http://disaster.stjoe-redcross.org/sandbox/home.php"> HOME</a> | 
-<a href = "http://disaster.stjoe-redcross.org/sandbox/search.php"> SEARCH </a>
+<a href = "./home.php"> HOME</a> | 
+<a href = "./search.php"> SEARCH </a>
 </div>-->
 
 <div align="center">
@@ -61,6 +64,21 @@ session_start();
 
 
 <p align="center">Please select what you would like to do</p>
+
+<?
+if (($_SESSION['access_level_id']) == "9") { 
+
+	print "<h2 align=\"center\">User Accounts</h2>\n";
+	print "<div align=\"center\">\n";
+	
+	print	"<form action=\"./newuser.php\">\n";
+	print	"<input type=\"submit\" value=\"Create User\">\n";
+	print	"</form>\n";
+
+	print "</div>\n";
+}
+
+?>
 
 <h2 align="center">Input Information</h2>
 
