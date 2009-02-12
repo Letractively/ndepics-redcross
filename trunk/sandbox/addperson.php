@@ -152,11 +152,11 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 <div align='center'>
 <form>
 <INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
-</div>
 
+</form>
+
+</div>
 </div>
 </body>
-
 </html>
 
