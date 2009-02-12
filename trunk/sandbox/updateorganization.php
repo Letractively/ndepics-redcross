@@ -153,7 +153,32 @@ print "<center><form name='updateorganization' method='post' action='updateorgan
 
 	print "<br>\n";
 	
-	print "<input type='submit' value='Update Organiztion'>\n";
+	print "Select a Resource to Add to Organization: ";
+  
+$query = "Select * from detailed_resource";
+
+$result = mysql_query($query) or die("Could not access resources");
+
+if( mysql_num_rows($result) < 1 )
+{
+	print "There are no resources to be added, please go back and add a resource first!<br>";
+}
+else 
+{
+	print "<select name=\"resource_id\" onchange=\"showResource(this.value)\">";
+	print "<option value=\"NULL\"> </option>";
+	
+	while( $row = mysql_fetch_assoc($result) )
+	{
+		print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
+	}
+	
+	print "</select>";
+}
+print "&nbsp&nbsp or &nbsp&nbsp";
+print "<INPUT TYPE=\"BUTTON\" VALUE=\"Add New Resource\" ONCLICK=\"window.location.href='http://disaster.stjoe-redcross.org/sandbox/addresource1.php'\">";
+	
+print "<br><br><input type='submit' value='Update Organiztion'>\n";
 print "</form></center>\n";
 
 

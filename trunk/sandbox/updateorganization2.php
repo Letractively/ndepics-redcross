@@ -34,6 +34,7 @@ $business_phone		= $_POST["bus_phone_1"].$_POST["bus_phone_2"].$_POST["bus_phone
 $business_fax		= $_POST["bus_fax_1"].$_POST["bus_fax_2"].$_POST["bus_fax_3"];
 $email				= $_POST["email"];
 $website			= $_POST["website"];
+$resource_id 		= $_POST["resource_id"];
 
 
 //print $organization_name."<br>";
@@ -64,6 +65,11 @@ $query = "UPDATE	organization
 		  LIMIT 1";
 
 $result = mysql_query($query) or die ("Error sending organization update query");
+
+$query = "INSERT INTO resource_listing (resource_id, organization_id) 
+		  VALUES (".$resource_id.",".$organization_id.")";
+		  
+$result = mysql_query($query) or die ("Error adding resource_listing");
 
 // Redirect back to the organization's information page
 $redirect_url = "./organizationinfo.php?id=".$organization_id;

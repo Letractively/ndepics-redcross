@@ -38,6 +38,9 @@ $fax			= $_POST['fax'];
 $email			= $_POST['email'];
 $im				= $_POST['im'];
 
+$organization_id = $_POST["organization_id"];
+$title_in_organization = $_POST["title_in_organization"];
+$role_in_organization = $_POST["role_in_organization"];
 
 //
 //Query to update organization
@@ -59,6 +62,12 @@ $query = "UPDATE	person
 		  LIMIT 1";
 
 $result = mysql_query($query) or die ("Error sending person update query");
+
+// Query to link resource to the added organization
+$query = "INSERT INTO works_for (person_id, organization_id, title, role) 
+		  VALUES (".$person_id.",".$organization_id.",\"".$title_in_organization."\",\"".$role_in_organization."\")";
+		  
+$result = mysql_query($query) or die ("Error adding works_for");
 
 // Redirect back to the organization's information page
 $redirect_url = "./personinfo.php?id=".$person_id;

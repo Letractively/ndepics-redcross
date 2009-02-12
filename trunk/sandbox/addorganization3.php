@@ -212,64 +212,72 @@ print "</table><br>";
 	exit (-1);
 }
 else {
-	//Display what values are being added to the database
-print "<h2>Successfully Added Values: </h2>";
-print "<table>";
-	print "<tr>";
-	print "<td><b>Organization Name: </b></td>";
-	print "<td>".$organization_name."</td>";
-	print "</tr>";
+	
+	
+	$message .= "Successful Add...redirecting<br>";
+//	$_SESSION['valid'] = "valid";
+//	$_SESSION['user_id'] = $row['user_id'];
+//	$_SESSION['access_level_id'] = $row['access_level_id'];
+	$redirect_url = "./organizationinfo.php";
+//	//Display what values are being added to the database
+//print "<h2>Successfully Added Values: </h2>";
+//print "<table>";
+//	print "<tr>";
+//	print "<td><b>Organization Name: </b></td>";
+//	print "<td>".$organization_name."</td>";
+//	print "</tr>";
+//
+//	print "<tr>";
+//	print "<td><b>Street Address: </b></td>";
+//	print "<td>".$street_address."</td>";
+//	print "</tr>";
+//
+//	print "<tr>";
+//	print "<td><b>City: </b></td>";
+//	print "<td>".$city."</td>";
+//	print "</tr>";
+//	
+//	print "<tr>";
+//	print "<td><b>State: </b></td>";
+//	print "<td>".$state."</td>";
+//	print "</tr>";
+//	
+//	print "<tr>";
+//	print "<td><b>Zip:</b></td>";
+//	print "<td>".$zip."</td>";
+//	print "</tr>";
+//	
+//	print "<tr>";
+//	print "<td><b>County: </b></td>";
+//	print "<td>".$county."</td>";
+//	print "</tr>";
+//	
+//	print "<tr>";
+//	print "<td><b>Business Phone: </b></td>";
+//	print "<td>";
+//	echo print_phone($business_phone);
+//	print "</td>";
+//	print "</tr>";
+//	
+//	print "<tr>";
+//	print "<td><b>Business Fax: </b></td>";
+//	print "<td>";
+//	echo print_phone($business_fax);
+//	print "</td>";
+//	print "</tr>";
+//	
+//	print "<tr>";
+//	print "<td><b>Email: </b></td>";
+//	print "<td>".$email."</td>";
+//	print "</tr>";
+//	
+//	print "<tr>";
+//	print "<td><b>Website</b></td>";
+//	print "<td>".$website."</td>";
+//	print "</tr>";
+//	
+//print "</table><br>";
 
-	print "<tr>";
-	print "<td><b>Street Address: </b></td>";
-	print "<td>".$street_address."</td>";
-	print "</tr>";
-
-	print "<tr>";
-	print "<td><b>City: </b></td>";
-	print "<td>".$city."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>State: </b></td>";
-	print "<td>".$state."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Zip:</b></td>";
-	print "<td>".$zip."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>County: </b></td>";
-	print "<td>".$county."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Business Phone: </b></td>";
-	print "<td>";
-	echo print_phone($business_phone);
-	print "</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Business Fax: </b></td>";
-	print "<td>";
-	echo print_phone($business_fax);
-	print "</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Email: </b></td>";
-	print "<td>".$email."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Website</b></td>";
-	print "<td>".$website."</td>";
-	print "</tr>";
-	
-print "</table><br>";
 }
 
 //

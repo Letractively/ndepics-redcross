@@ -177,7 +177,46 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 
 	print "<br>\n";
 	
-	print "<input type='submit' value='Update Person'>\n";
+	print "<b>Add this person to an organization:</b><br><br>";
+
+print "<table>";
+print "<tr>";
+print "<td>Title in Organization: </td>";
+print "<td><input type='text' name='title_in_organization' maxsize='30'> (e.g. 'Pastor')</td>";
+print "</table>";
+
+print "<p>";
+print "Select the role of this person ";
+print "<select name=\"role_in_organization\">";
+print	"<option value=\"volunteer\">Volunteer with organization</option>";
+print	"<option value=\"open\">Open the facility</option>";
+print	"<option value=\"authorize\">Authorize the opening of the facility</option>";
+print "</select>";
+print "<p>";
+
+print "Select an Organization to link this person to: ";
+print "<select name=\"organization_id\" onchange=\"showOrganization(this.value)\">";
+  
+$query = "SELECT * FROM organization";
+
+$result = mysql_query($query) or die("Could not access resources");
+
+if( mysql_num_rows($result) < 1 )
+{
+	print "There are no resources to be added, please go back and add an organization first!<br>";
+}
+else 
+{
+	print "<option value=\"NULL\"> </option>";
+	
+	while( $row = mysql_fetch_assoc($result) )
+	{
+		print "<option value=\"".$row['organization_id']."\">".$row['organization_name']."</option>";
+	}
+}
+print "</select>";
+	
+print "<br><br><input type='submit' value='Update Person'>\n";
 print "</form></center>\n";
 
 
