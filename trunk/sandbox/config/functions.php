@@ -96,9 +96,9 @@ function validator($field_descr, $field_data, $field_type, $min_length="", $max_
   //field data max length checking
   if ($field_ok && ($min_length || $max_length)) {
     if (strlen($field_data) > $max_length)
-      $messages[] = "$field_descr is invalid, it should be less than $max_length characters.";
+      $messages[] = "$field_descr is invalid, it should be at most $max_length characters.";
     if (strlen($field_data) < $min_length)
-      $messages[] = "$field_descr is invalid, it should be more than $min_length characters.";
+      $messages[] = "$field_descr is invalid, it should be at least $min_length characters.";
   }
   return;
 }
