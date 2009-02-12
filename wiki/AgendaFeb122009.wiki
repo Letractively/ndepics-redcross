@@ -1,0 +1,27 @@
+#labels Featured
+= Agenda =
+
+== Housekeeping: ==
+  * Minutes Taker
+
+== Report on This Week's Work: ==
+  * User Management
+  * Access Levels
+  * Input Validation
+  * Info page after add
+  * The Blob
+
+== Any Issues: ==
+  * Test Folders
+  * Development directory
+
+==Moving Forward: ==
+  * Red Cross Meeting - Thursday 19th 3:45 at the Red Cross Office
+    ** Ms. Jackie Lincoln
+  * 'Issues' on GoogleCode
+    ** Discussion through wiki as well?
+  * Make SVN look like webspace
+    ** do we want separate 'production' 'preproduction' 'sandbox' directories in svn?
+  * Testing
+    ** Inputting Data
+    ** More users
