@@ -1,0 +1,91 @@
+#summary One-Minutes from the weekly meeting on February 12, 2009
+
+= Status Update from last week =
+
+=== User Management - Mike ===
+  * New section for Admin only on the homepage
+     * Add user.  Input boxes for username, password, email, access level.
+     * Emails sent, 1 with username, 1 with password to the email address on the new account.
+  * Forgotten Info pages
+     * Forgotten username --> sends the username associated with the provided email address (if valid)
+     * Forgotten password --> sends a new (temporary) password to the email associated with the account of the entered username.
+  * Update User Information page
+     * Can change the password or the email address associated with the current account.
+
+=== Access Levels - Mark ===
+  * All pages check the session variable "access_level_id" and the options on the homepage are wrapped so that they will not be displayed 
+  * Do we want to change the iframe navigation bar so that it only 
+  *  Add an "Access Denied" page?
+
+=== Input Validation - Matt ===
+  * Now works - had wrong "config" directory
+  *  PHP print errors - see wiki post for exact syntax
+  * Now only working on addperson2.php
+    * once generalized, will apply to the other pages.
+
+=== Directed to Info Page - Bryan ===
+  * Works only on addorganization page right now, but ugly implementation.
+  * Will port to other pages soon.
+
+=== Connecting Existing Pieces - Bryan ===
+  * The organization info and person info can link to existing resources or organizations
+
+=== The BLOB - Chris and Alyssa ===
+  * Auto_increment questions
+  * How do we link the organizations?  Give a dropdown, scrollbar, link from the organization info page?
+       * Link from organizationinfo.php page.
+       * Downloadable only by Admin users.
+
+= Meeting Notes =
+
+=== State of SVN ===
+  * Make the SVN structure similar to OneEach?  (i.e. dev, pre-prod, prod)
+  * Decision:  Keep SVN as is, but run a script to change the Development directory any time you do a "commit"
+  * Now only working in Development folder on OneEach.  Deleted "sandbox"
+
+=== Issues Section of Google Code ===
+  * Maintain status of what everyone is working on.
+      * Can comment on other's work between meetings.
+      * Keeps professor Madey informed.
+      * Allows individuals to post "site-wide" issues.
+
+=== Passwords ===
+  * 6-15 characters, alpha numeric and symbols
+  *  What level of security to we want to achieve?  Question to ask Red Cross.
+
+=== AutoRedirection ===
+  * Use meta headers instead of javascript.
+
+=== Discussion topics with Ms. Lincoln Next week? ===
+*Next week!  Thursday February 19 @ 3:45 pm.  Meet outside Legends @ 3:20 pm*
+  * Introduce new members
+  * Show where we are right now.
+  * Tell exactly what we will be giving them after spring break
+       * More Secure, robust, database pretty much as it was before
+  * Pressing improvements for this distribution?
+
+= Assignments this week =
+
+=== Validation - Matt ===
+  * Work on redirection (getting post variables to work correctly)
+  * More datatype checking with regular expression
+  * Port to other checking pages
+
+=== BLOB - Alyssa & Chris ===
+  * Continue working on the facility survey and statement of understanding pages
+
+=== Info pages - Mark ===
+  * On the info pages, display different screens based on insert vs. search permissions.
+
+=== Search Pages ===
+  * Add general search and search by person - *Bryan & Mark*
+  * Search results - *Mike*
+       * index results (display 1-20, 20-40, etc).
+
+=== User Management - Mike ===
+  * Clean up and finish any loose ends
+  * Add a page to change the access level by administrators
+  * Delete users page
+
+
+
