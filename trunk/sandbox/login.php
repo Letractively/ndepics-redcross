@@ -53,20 +53,12 @@ include ("./config/closedb.php");
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Disaster Database - Loggin in</title>
-
-<? print	"<script type=\"text/javascript\">
-				<!-- 
-				function redirect(url) {
-					window.location = \"".$redirect_url."\" 
-				}
-				//-->
-			</script>";
-?>
+<title>Disaster Database - Logging in</title>
 </head>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<? print "<meta http-equiv=\"Refresh\" content=\"0.01; url=".$redirect_url."\">"; ?>
 <meta name="resource-type" content="document">
 <meta name="description" content="disaster.stjoe-redcross.org">
 <meta name="keywords" content="">
@@ -86,15 +78,16 @@ include ("./config/closedb.php");
   <h2 align="center">St. Joseph's County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a> |
+  <a href = "./logout.php" target= "_parent"> LOGOUT </a>
   </div>
 </iframe>
 
 
 
 <div align="center">
-<h3> Logging in...please wait.</h3>
+<h3> Logging in...you will be redirected shortly.</h3>
 
 	
 </div>

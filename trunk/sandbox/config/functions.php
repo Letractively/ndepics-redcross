@@ -103,4 +103,33 @@ function validator($field_descr, $field_data, $field_type, $min_length="", $max_
   return;
 }
 
+
+//
+// The following function has been taken from http://www.totallyphp.co.uk/code/create_a_random_password.htm
+//
+
+function createRandomPassword() { 
+
+	/** 
+	 * The letter l (lowercase L) and the number 1 
+	 * have been removed, as they can be mistaken 
+	 * for each other. 
+	 */ 
+
+    $chars = "abcdefghijkmnopqrstuvwxyz023456789"; 
+    srand((double)microtime()*1000000); 
+    $i = 0; 
+    $pass = '' ; 
+
+    while ($i <= 7) { 
+        $num = rand() % 33; 
+        $tmp = substr($chars, $num, 1); 
+        $pass = $pass . $tmp; 
+        $i++; 
+    } 
+
+    return $pass; 
+
+} 
+
 ?>

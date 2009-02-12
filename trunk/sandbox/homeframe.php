@@ -35,6 +35,7 @@
 </div>
 <div class="menu">
 <a href = "./home.php" target= "_parent"> HOME</a> | 
+<a href = "./updateuser.php" target= "_parent"> UPDATE USER PROFILE</a> |
 <a href = "./search.php" target= "_parent"> SEARCH </a> |
 <a href = "./logout.php" target= "_partent"> LOGOUT </a>
 </div>

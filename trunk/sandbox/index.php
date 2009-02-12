@@ -100,6 +100,22 @@ session_start();
 			</td> 
 		</tr>
 	</table>
+</form>
+
+<table border='0' cellspacing='0' cellpadding='1' align=center>
+	<tr>
+		<td><form action="retrieveuserinfo.php" method="post">
+			<input type="hidden" name="forgot" value="username">
+			<input type="submit" value="Forget your username?">
+			</form>
+		</td>
+		<td><form action="retrieveuserinfo.php" method="post">
+			<input type="hidden" name="forgot" value="password">
+			<input type="submit" value="Forget your password?">
+			</form>
+		</td>
+	</tr>
+</table>
 
 </div>
 

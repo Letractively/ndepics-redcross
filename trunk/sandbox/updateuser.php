@@ -13,17 +13,22 @@ session_start();
 //
 //  Spring 2009
 //
-// blank.php - enter a title here for the page
+// updateuser.php - File to allow the user to change the password or 
+//					email address that is associated with the account.
 //
-// Revision History:  Created - 01/01/01
+// Revision History:  Created - 02/10/09
 //
 //****************************
+
+include ("./config/dbconfig.php");
+include ("./config/opendb.php");
+include_once ("./config/functions.php");
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Welcome to the Disaster Database for the St. Joseph County Red Cross</title>
+<title>Update User Profile</title>
 
 
 
@@ -60,11 +65,53 @@ session_start();
 </div>-->
 
 <?
-//*******************
-//*******************
-//	Add Code Here
-//*******************
+ // 
+ //Form to collect new user info
+ 
+	 $query = "	SELECT	*
+				FROM	users
+				WHERE	user_id = ".$_SESSION['user_id']."
+				LIMIT	1";
+
+	$result = mysql_query($query) or die("Error: Query retrieving user info");
+	$row = mysql_fetch_assoc($result);
+	
+	$username	= $row['username'];
+	$email		= $row['email'];
 ?>
+
+<center><h3><? echo $username; ?>'s User Profile</h3>
+
+<form name="updateuser" method="post" action="updateuser2.php" align ="left">
+
+	<table align="center">
+		<tr>
+		<td>Old Password</td>
+		<td><input name="oldpassword" type="password" maxlength="15" align="left"> </td>
+		</tr>
+		
+		<tr>
+		<td>New Password</td>
+		<td><input name="newpassword" type="password" maxlength="15" align="left"> </td>
+		</tr>
+		
+		<tr>
+		<td>Verify New Password</td>
+		<td><input name="verify_pass" type="password" maxlength="15" align="left"> </td>
+		</tr>
+
+		<tr>
+		<td>Email</td>
+		<td><input name="email" type="text" maxlength="50" align="left" value="<? echo $email; ?>" > </td>
+		</tr>
+	</table>
+
+	<br>
+	<center>
+	<input type=submit value="Update User">
+	<input type=reset value="Clear Form">
+
+</form>
 
 
 </body>
