@@ -9,15 +9,16 @@ The code below will help you avoid blank PHP pages if there is an error on your 
 = Details =
 
 Insert the following code at the start of the PHP section.
+{{{
+<?php
 
-*<?php*
+error_reporting(E_ALL);
 
-*error_reporting(E_ALL);*
+ini_set ('display_errors', '1');
 
-*ini_set ('display_errors', '1');*
+{... code ...}
 
-... _code_ ...
-
-*?>*
+?>
+}}}
 
 We will probably want to remove these lines in the release version, but they can be very helpful during testing.
