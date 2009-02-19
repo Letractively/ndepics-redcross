@@ -67,9 +67,10 @@ include("./config/functions.php");
 </div>
 
 <?php
- print"<center><b>WARNING: PHP ERROR REPORTING IS ACTIVE!</b></center>";
-error_reporting(E_ALL);
-ini_set ('display_errors', '1');
+
+//print"<center><b>WARNING: PHP ERROR REPORTING IS ACTIVE FOR DEVELOPMENT!</b></center>";
+//error_reporting(E_ALL);
+//ini_set ('display_errors', '1');
 
 
 $salutation = $_POST["salutation"];
@@ -101,10 +102,19 @@ $im = scrub_input($im);
 // Display them for the user to verify
 //Change to pre-populated tables... notify user of errors. Re-direct back to this page if errors exist?
 
-print "<p align='center'><b>Please verify this information.  If anything is incorrect, press the back button to return to the input form.</b></p>";
-
 $errCount=0;
-  print "<table>\n";
+if($form_valid == 1)
+{ 
+  print "<form name='verifyperson' method='post' action='./addperson3.php' align='left'>";
+  print "<p align='center'><b>Please verify this information.  If anything is incorrect, please press back to make changes</b></p>";
+}
+else 
+{
+  print "<form name='verifyperson' method='post' action='./addperson2.php' align='left'>";
+  print "<p align='center'><b>Please verify this information and make necessary corrections</b></p>";
+}
+
+print "<table>";
 //Salutation
 validator("Salutation",$salutation,"string");
 if($messages[$errCount])
@@ -381,12 +391,15 @@ print "<br><br>";
 //CHECK
 if($errCount > 0)
 {
-  print "<form name='verifyperson' method='post' action='addperson2.php' align='left'>";
+  print "<input type=hidden name='form_valid' value='0'>";
+  print "&nbsp&nbsp<input type=submit value='Add Person'>";
+  print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+  print "</form>";
 }
 else
 {
-  print "<form name='verifyperson' method='post' action='addperson3.php' align='left'>";
-}
+  print "<input type=hidden name='form_valid' value='0'>";
+
 
 
 print "<b>Add this person to an organization:</b><br><br>";
@@ -440,6 +453,7 @@ print "<br><div align = 'center'>";
 print "<form>";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
 print "</form>";
+}
 print "<br></div>";
 
 
