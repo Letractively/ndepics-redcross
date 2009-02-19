@@ -214,7 +214,7 @@ print "</table><br>";
 }
 else {
 	$redirect_url = "./organizationinfo.php?id=".$row['organization_id']."\"";
-//	$message .= "Successful Add...redirecting<br>";
+    $message .= "Successful Add...redirecting<br>";
 
 //	//Display what values are being added to the database
 //print "<h2>Successfully Added Values: </h2>";
@@ -277,7 +277,6 @@ else {
 
 }
 
-//
 // Query to link resource to the added organization
 $query = "INSERT INTO resource_listing (resource_id, organization_id) 
 		  VALUES (".$resource_id.",".$organization_id.")";
@@ -285,54 +284,10 @@ $query = "INSERT INTO resource_listing (resource_id, organization_id)
 $result = mysql_query($query) or die ("Error adding resource_listing");
 
 
-	
-//<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-//<html>
-//<head>
-//<title>Disaster Database - Adding Organization</title>
-//</head>
-//
-//
-//<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-//<? print "<meta http-equiv=\"Refresh\" content=\"0.01; url=".$redirect_url."\">"; ?>
-//<meta name="resource-type" content="document">
-//<meta name="description" content="disaster.stjoe-redcross.org">
-//<meta name="keywords" content="">
-//<meta name="copyright" content="stjoe-redcross.org 2008.  All rights reserved.">
-//<link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
-// <STYLE type="text/css">
-//  SPAN { padding-left:3px; padding-right:3px }
-//  DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
-//  BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
-// </STYLE>
-//
-//
-//<body class="main" onLoad="setTimeout('redirect()', 100)">
-//<div style="border:2px solid white; background-color:#FFFFFF">
-//
-//<iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
-//  <h2 align="center">St. Joseph's County American Red Cross</h2>
-//  <p align="center">Your browser does not support iframes.</p>
-//  <div class="menu">
-//  <a href = "./home.php" target= "_parent"> HOME</a> | 
-//  <a href = "./search.php" target= "_parent"> SEARCH </a> |
-//  <a href = "./logout.php" target= "_parent"> LOGOUT </a>
-//  </div>
-//</iframe>
-//
-//
-//
-//<div align="center">
-//<h3> Adding organization...please wait one moment</h3>
-//
-//	
-//</div>
-
-//print "<br> Got to the end of the script <br>";
-
 
 
 print "<div align='center'>";
+print "Organization Successfully Added...Redirecting<br>";
 print "<form action=\"./home.php\" >\n";
 print "<button type=\"submit\">Return Home</button>";
 print "</form>\n";
@@ -341,24 +296,15 @@ print "</div>";
 include ("config/closedb.php");
 ?>
 
-<? print "<meta http-equiv=\"Refresh\" content=\"0.01; url=".$redirect_url."\">"; ?>
+<? print "<meta http-equiv=\"Refresh\" content=\"1.5; url=".$redirect_url."\">"; ?>
 <meta name="resource-type" content="document">
 <meta name="description" content="disaster.stjoe-redcross.org">
 <meta name="keywords" content="">
 <meta name="copyright" content="stjoe-redcross.org 2008.  All rights reserved.">
 <link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
- <STYLE type="text/css">
-  SPAN { padding-left:3px; padding-right:3px }
-  DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
-  BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
- </STYLE>
 
-
-<body class="main" onLoad="setTimeout('redirect()', 10000)">
+<body class="main" onLoad="setTimeout('redirect()', 1000000)">
 <div style="border:2px solid white; background-color:#FFFFFF">
-
-
-<h3> Logging in...you will be redirected shortly.</h3>
 
 	
 </div>
