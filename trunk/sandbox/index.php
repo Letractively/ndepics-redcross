@@ -31,11 +31,13 @@ session_start();
 <link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
 
 <!-- <link rel="stylesheet" type="text/css" href="/custom.css"/> -->
- <STYLE type="text/css">
-  SPAN { padding-left:3px; padding-right:3px }
-  DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
-  BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
- </STYLE>
+<STYLE type="text/css">
+ SPAN { padding-left:3px; padding-right:3px }
+ DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
+ BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
+</STYLE>
+
+</head>
 
 
 <body class="main">

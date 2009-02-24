@@ -5,7 +5,7 @@ session_start();
 	header( 'Location: ./index.php' );
  }
  
- if( ($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0)){
+ if( ($_SESSION['access_level_id'] < 1) || ($_SESSION['access_level_id'] > 10)){
  	header( 'Location: ./index.php' );
  }
 
@@ -36,12 +36,13 @@ include ("./config/functions.php");
 <meta name="copyright" content="stjoe-redcross.org 2008.  All rights reserved.">
 <link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
 
- <STYLE type="text/css">
-  SPAN { padding-left:3px; padding-right:3px }
-  DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
-  BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
- </STYLE>
+<STYLE type="text/css">
+ SPAN { padding-left:3px; padding-right:3px }
+ DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
+ BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
+</STYLE>
 
+</head>
 
 <body class="main">
 <div style="border:2px solid white; background-color:#FFFFFF">
@@ -56,79 +57,92 @@ include ("./config/functions.php");
 </iframe>
 
 <?php
+ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
 
-print "<h1 align=\"center\">Resource Information</h1><hr>";
-
-$resource_id = $_GET['id'];
-
-//print "Resource_id: ".$resource_id."<br>";
-
-$query = "SELECT * FROM detailed_resource WHERE resource_id = ".$resource_id;
-
-$result = mysql_query($query) or die ("Query Failed...could not retrieve resource information");
-
-$row = mysql_fetch_assoc($result);
-
-//
-// Navigation Buttons
-print "<div align=\"center\" name=\"navigation_buttons\">";
-print "<table>";
-print	"<tr>";
-
-
-// Update BUTTON
-if( !(($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
-{
-print		"<td><form action=\"./updateresource.php\" method=\"POST\" >";
-print			"<input type=hidden name=resource_id value=".$resource_id.">";
-print			"<input type=submit value='Update Record'>";
-print			"</form>";
-print		"</td>";
+		print "<h1 align=\"center\">Resource Information</h1><hr>";
+		
+		$resource_id = $_GET['id'];
+		
+		//print "Resource_id: ".$resource_id."<br>";
+		
+		$query = "SELECT * FROM detailed_resource WHERE resource_id = ".$resource_id;
+		
+		$result = mysql_query($query) or die ("Query Failed...could not retrieve resource information");
+		
+		$row = mysql_fetch_assoc($result);
+		
+		//
+		// Navigation Buttons
+		print "<div align=\"center\" name=\"navigation_buttons\">";
+		print "<table>";
+		print	"<tr>";
+		
+		
+		// Update BUTTON
+		if( !(($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+		print		"<td><form action=\"./updateresource.php\" method=\"POST\" >";
+		print			"<input type=hidden name=resource_id value=".$resource_id.">";
+		print			"<input type=submit value='Update Record'>";
+		print			"</form>";
+		print		"</td>";
+		}
+		
+		
+		// Delete BUTTON
+		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+		print		"<td><form action=\"./deleteresource.php\" method=\"POST\" >";
+		print			"<input type=hidden name=resource_id value=".$resource_id.">";
+		print			"<input type=submit value='Delete Record'>";
+		print			"</form>";
+		print		"</td>";
+		}
+		
+		// Home BUTTON
+		print		"<td><form action=\"./home.php\">";
+		print			"<input type=submit value='Home'>";
+		print			"</form>";
+		print		"</td>";
+		
+		print	"</tr>";
+		print "</table>";
+		
+		print "</div>";
+		
+		//
+		// Display the Resource Information
+		print "<h3>".$row['resource_type']."</h3>";
+		print "<table>";
+		
+		print	"<tr>";
+		print		"<td>Description: </td>";
+		print		"<td>".$row['description']."</td>";
+		print	"</tr>";
+		
+		print	"<tr>";
+		print		"<td>Keyword(s): </td>";
+		print		"<td>".$row['keyword']."</td>";
+		print	"</tr>";
+		
+		print "</table>";
+		
+		mysql_free_result($result);
+		
+		
+		include ("./config/closedb.php");
 }
+else{
 
-
-// Delete BUTTON
-if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
-{
-print		"<td><form action=\"./deleteresource.php\" method=\"POST\" >";
-print			"<input type=hidden name=resource_id value=".$resource_id.">";
-print			"<input type=submit value='Delete Record'>";
-print			"</form>";
-print		"</td>";
+	print 	"<div align=\"center\">";
+	print 	"<h2>Resource Successfully Added.";
+	print 	"<p>Thank You. </h2>";
+	print		"<td><form action=\"./home.php\">";
+	print			"<input type=submit value='Home'>";
+	print			"</form>";
+	print		"</td>";
+	print	"</div";
 }
-
-// Home BUTTON
-print		"<td><form action=\"./home.php\">";
-print			"<input type=submit value='Home'>";
-print			"</form>";
-print		"</td>";
-
-print	"</tr>";
-print "</table>";
-
-print "</div>";
-
-//
-// Display the Resource Information
-print "<h3>".$row['resource_type']."</h3>";
-print "<table>";
-
-print	"<tr>";
-print		"<td>Description: </td>";
-print		"<td>".$row['description']."</td>";
-print	"</tr>";
-
-print	"<tr>";
-print		"<td>Keyword(s): </td>";
-print		"<td>".$row['keyword']."</td>";
-print	"</tr>";
-
-print "</table>";
-
-mysql_free_result($result);
-
-
-include ("./config/closedb.php");
 ?>
 
 <p>

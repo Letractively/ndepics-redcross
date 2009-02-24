@@ -87,9 +87,6 @@ $redirect_url = "./organizationinfo.php?id=".$organization_id;
 			}
 			//-->
 			</script>"; ?>
-</head>
-
-
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="resource-type" content="document">
@@ -98,13 +95,13 @@ $redirect_url = "./organizationinfo.php?id=".$organization_id;
 <meta name="copyright" content="stjoe-redcross.org 2009.  All rights reserved.">
 <link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
 
+<STYLE type="text/css">
+ SPAN { padding-left:3px; padding-right:3px }
+ DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
+ BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
+</STYLE>
 
- <STYLE type="text/css">
-  SPAN { padding-left:3px; padding-right:3px }
-  DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
-  BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
- </STYLE>
-
+</head>
 
 <body class="main" onLoad="setTimeout('redirect()', 300)">
 <div style="border:2px solid white; background-color:#FFFFFF">

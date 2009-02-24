@@ -31,8 +31,6 @@ include ("./config/functions.php");
 <head>
 <title>Update User Profile</title>
 
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="resource-type" content="document">
 <meta name="description" content="disaster.stjoe-redcross.org">
@@ -41,12 +39,13 @@ include ("./config/functions.php");
 <link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
 
 <!-- <link rel="stylesheet" type="text/css" href="/custom.css"/> -->
- <STYLE type="text/css">
-  SPAN { padding-left:3px; padding-right:3px }
-  DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
-  BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
- </STYLE>
+<STYLE type="text/css">
+ SPAN { padding-left:3px; padding-right:3px }
+ DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
+ BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
+</STYLE>
 
+</head>
 
 <body class="main">
 <div style="border:2px solid white; background-color:#FFFFFF">
