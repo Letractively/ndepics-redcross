@@ -4,11 +4,10 @@ session_start();
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
- // Make sure the user is an admin
+// Make sure the user is an admin
  if($_SESSION['access_level_id'] != 9) {
         header( 'Location: ./index.php' );
  } 
-
 
 //****************************
 //  Developed by ND Epics for St. Joe County RedCross 
@@ -18,18 +17,24 @@ session_start();
 //
 //  Spring 2009
 //
-// newuser.php - File to show the input boxes to create a new user.
+// modifyuser.php - Page to allow administrators to search for a user to update access_levels or to delete the user.
 //
-// Revision History:  02/04/09 - Created 
-//					  02/24/09 - Updated menus and made password generation random.
+// Revision History:  02/18/09 - Created
 //
 //****************************
+
+include ("./config/dbconfig.php");
+include ("./config/opendb.php");
+include("./config/functions.php");
+
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Create a New User</title>
+<title>(Admin Only) Update User</title>
+<script src="./javascript/selectuser.js"></script>
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="resource-type" content="document">
@@ -67,63 +72,56 @@ session_start();
 </div>-->
 
 <?
- //' 
- //Form to collect user information
+
+// '
+// Get the names of all users other than the current one and populate a dropdown
+//	The user's info will be displayed and the option to update access levels
+//	or delete the user will be displayed.
+//
+
+print "<center><h2>Select User to Change: </h2>";
+print "<form name=\"select_user\" action=\"updateuseraccess.php\" method=\"post\">\n";
+print "<select name=\"user_id\" onchange=\"showUser(this.value)\">";
+  
+$query = "SELECT * FROM users WHERE user_id != ".$_SESSION['user_id'];
+
+$result = mysql_query($query) or die("Could not get other users");
+
+if( mysql_num_rows($result) < 1 )
+{
+	print "There are no other users in the database except you!<br>";
+}
+else 
+{
+	print "<option value=\"NULL\"> </option>";
+	
+	while( $row = mysql_fetch_assoc($result) )
+	{
+		$uid = $row['user_id'];
+		$uname = $row['username'];
+		print "<option value=\"".$uid."\">".$uname."</option>";
+	}
+}
+
+print "</select>";
+
+print "<br>\n";
+
+print "<p>";
+print "<div align=\"center\" id=\"txtHint\"><b>User info will be listed here.</b></div>";
+print "</p>";
+
+print "	<input type=\"submit\" value=\"Change User Capabilities\">";
+
+print "</form>";
+
+
 ?>
 
-<form name="newuser" method="post" action="newuser2.php" align ="left">
-
-	<table>
-		<tr>
-		<td>Username</td>
-		<td><input name="username" type="text" maxlength="50" align="left"> </td>
-		</tr>
-
-		<tr>
-		<td>Email</td>
-		<td><input name="email" type="text" maxlength="50" align="left"> </td>
-		</tr>
-	</table>
-	
-	<table>
-		<tr>
-		<td><b>User Capabilities</b></td>
-		</tr>
-		
-		<tr>
-		<td>Admin</td>
-		<td><input name="admin" type="checkbox" value="1"></td>
-		<td>An administrative level grants all user abilities listed below.</td>
-		</tr>
-		
-		<tr>
-		<td>Search</td>
-		<td><input name="search" type="checkbox" value="1"></td>
-		</tr>
-		
-		<tr>
-		<td>Insert</td>
-		<td><input name="insert" type="checkbox" value="1"></td>
-		</tr>
-		
-		<tr>
-		<td>Delete</td>
-		<td><input name="delete" type="checkbox" value="1"></td>
-		</tr>
-		
-		<tr>
-		<td>Update</td>
-		<td><input name="update" type="checkbox" value="1"></td>
-		</tr>
-		
-	</table>
-
-	<br>
-	<input type="submit" value="Create New User">
-	<input type="reset" value="Clear Form">
-
-</form>
-
+</div>
 
 </body>
 </html>
+
+<? include ("./config/closedb.php");
+?>

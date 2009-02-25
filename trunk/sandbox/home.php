@@ -71,10 +71,29 @@ if (($_SESSION['access_level_id']) == "9") {
 
 	print "<h2 align=\"center\">User Accounts</h2>\n";
 	print "<div align=\"center\">\n";
+	print "<table>\n";
 	
-	print	"<form action=\"./newuser.php\">\n";
-	print	"<input type=\"submit\" value=\"Create User\">\n";
-	print	"</form>\n";
+	print   "<tr>\n";
+	print	"<td>\n";
+	print	"  <form action=\"./newuser.php\">\n";
+	print	"  <input type=\"submit\" value=\"Create User\">\n";
+	print	"  </form>\n";
+	print	"</td>\n";
+	
+	print	"<td>\n";
+	print	"  <form action=\"./modifyuser.php\">\n";
+	print	"  <input type=\"submit\" value=\"Change User Access Level\">\n";
+	print	"  </form>\n";
+	print	"</td>\n";
+	
+	print	"<td>\n";
+	print	"  <form action=\"./deleteuser.php\">\n";
+	print	"  <input type=\"submit\" value=\"Delete User\">\n";
+	print	"  </form>\n";
+	print	"</td>\n";
+	print	"</tr>\n";
+	
+	print "</table>\n";
 
 	print "</div>\n";
 }

@@ -13,7 +13,15 @@ if (xmlHttp==null)
   return;
   } 
   
-var url = "http://disaster.stjoe-redcross.org/sandbox/";
+  
+var pathArray = window.location.pathname.split('/');
+var urlpath = "";
+for (i=0; i<(pathArray.length-1) ; i++) {
+	urlpath += pathArray[i];
+	urlpath += "/";
+}
+  
+var url = window.location.protocol + "//" + window.location.host + urlpath; 
 url=url+"ajax/getorganization.php";
 url=url+"?q="+str;
 url=url+"&sid="+Math.random();

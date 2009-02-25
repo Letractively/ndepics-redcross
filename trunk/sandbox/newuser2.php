@@ -20,7 +20,8 @@ session_start();
 //
 // newuser2.php - File to add the new user to the database and send email verifications to the new user.
 //
-// Revision History:  Created - 02/04/09
+// Revision History:  02/04/09 - Created 
+//					  02/24/09 - Updated menus and made password generation random.
 //
 //****************************
 
@@ -47,50 +48,37 @@ include ("./config/functions.php");
  SPAN { padding-left:3px; padding-right:3px }
  DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
  BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
- DIV.menu{ text-align: center; border-top:1px solid white; border-bottom:1px solid white; background-color:#000000; color:white; font-weight: bold}
- DIV.menu A:link { text-decoration: none; color:#FFFFFF; font-weight: bold }
- DIV.menu A:visited { text-decoration: none; color:#999999 }
- DIV.menu A:active { text-decoration: none; color:#666666 }
- DIV.menu A:hover { text-decoration: none; color:#FF0000 }
 </STYLE>
 
 </head>
 
 <body class="main">
 <div style="border:2px solid white; background-color:#FFFFFF">
-<div align="center" class="header">
-<c>
 
-<a href = "./home.php">
-<img src="masthead.jpg" style="width:740px; height:100px" border="0"></a>
-  			<p style="padding-bottom:1px; margin:0">
-				American Red Cross, St. Joseph County Chapter
-			</p>
-			<p style="font-weight:normal; padding:0; margin: 0">
-				<span>3220 East Jefferson Boulevard</span>
-				<span>&nbsp;</span>
-				<span>South Bend</span>
-				<span>Indiana</span>
-				<span>46615</span>
-				<span>Phone (574) 234-0191</span>
+<iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
+  <h2 align="center">St. Joseph's County American Red Cross</h2>
+  <p align="center">Your browser does not support iframes.</p>
+  <div class="menu">
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
+  </div>
+</iframe>
 
-			</p>
-</c>
-</div>
-<div class="menu">
-<a href = "./home.php"> HOME</a> | 
-<a href = "./search.php"> SEARCH </a>
-</div>
+<!--<div class="menu">
+<a href = "./home.php" > HOME</a> | 
+<a href = "./updateuser.php" > UPDATE USER PROFILE</a> |
+<a href = "./search.php" > SEARCH </a> |
+<a href = "./logout.php" > LOGOUT </a>
+</div>-->
 
-<? // 
+<? //' 
    //Get the values from the previous page and verify that they are unique
    // Then add a record to the users table with the input values
    //
 
-$username			= $_POST['username'];
-$password			= $_POST['password'];
-$verify_password	= $_POST['verify_pass'];
-$email				= $_POST['email'];
+$username	= $_POST['username'];
+$password	= createRandomPassword();
+$email		= $_POST['email'];
 
 $search		= $_POST['search'];
 $insert		= $_POST['insert'];
@@ -118,13 +106,6 @@ else {
 	}
 }
 
-// Passwords do not match, direct them back to the new user page.
-if ($password != $verify_password) {
-
-print "<form name='invalid_passwords' method='post' action='newuser.php' align='left'>\n";
-print	"<center><h2>I'm sorry, but the passwords you entered did not match.  Please return to the New User page and try again.</h2>\n";
-print	"<input type=submit value='Back to New User'>\n";
-print "</form>\n";
 
 }
 else {

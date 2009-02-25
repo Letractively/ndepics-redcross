@@ -4,7 +4,7 @@
 
 var xmlHttp
 
-function showResource(str)
+function showUser(str)
 { 
 xmlHttp=GetXmlHttpObject();
 if (xmlHttp==null)
@@ -21,14 +21,12 @@ for (i=0; i<(pathArray.length-1) ; i++) {
 }
   
 var url = window.location.protocol + "//" + window.location.host + urlpath; 
-  
-url=url+"ajax/getresource.php";
-url=url+"?rsrc="+str;
+url=url+"ajax/getuser.php";
+url=url+"?user="+str;
 url=url+"&sid="+Math.random();
 xmlHttp.onreadystatechange=stateChanged;
 xmlHttp.open("GET",url,true);
 xmlHttp.send(null);
-
 }
 
 function stateChanged() 
