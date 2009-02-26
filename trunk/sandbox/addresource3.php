@@ -70,6 +70,21 @@ $resource_type = $_POST["resource_type"];
 $resource_description = $_POST["resource_description"];
 $resource_keyword = $_POST["resource_keyword"];
 
+$addresfromorg = $_POST["addresfromorg"];
+
+if($addresfromorg = 2){
+$organization_name = $_POST["organization_name"];
+$street_address = $_POST["street_address"];
+$city = $_POST["city"];
+$state = $_POST["state"];
+$zip = $_POST["zip"];
+$county = $_POST["county"];
+$business_phone = $_POST["business_phone"];
+$business_fax = $_POST["business_fax"];
+$email = $_POST["email"];
+$website = $_POST["website"];
+}
+
 //print $resource_type."<br>";
 //print $resource_description."<br>";
 //print $resource_keyword."<br><br>";
@@ -90,13 +105,35 @@ $result3 = mysql_query($res_query) or die ("Error checking if organization exist
 $num_rows = mysql_num_rows($result3);
 
 if ($num_rows != 0){
-       print "<div align='center'><br>";
+	
+	   print "<div align='center'><br>";
        print "Cannot Add Resource Type: \"<b>".$resource_type."</b>\" already exists <br><br>";
-       print "<form action=\"./home.php\" >\n";
-       print "<button type=\"submit\">Return Home</button>";
-       print "</form>\n";
-       print "</div>";
-       exit(-1);
+       if($addresfromorg = 2){
+       	    print "<form action=\"./addorganization2.php\" method ='post'>\n";
+			print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
+			print "<input type=hidden name='street_address' value=\"".$street_address."\">";
+			print "<input type=hidden name='city' value=\"".$city."\">";
+			print "<input type=hidden name='state' value=\"".$state."\">";
+			print "<input type=hidden name='zip' value=".$zip.">";
+			print "<input type=hidden name='county' value=\"".$county."\">";
+			print "<input type=hidden name='business_phone' value=".$business_phone.">";
+			print "<input type=hidden name='business_fax' value=".$business_fax.">";
+			print "<input type=hidden name='email' value=\"".$email."\">";
+			print "<input type=hidden name='website' value=\"".$website."\">";
+	        print "<button type=\"submit\">Return to Add Organization</button>";
+       		print "</form>\n";
+       		print "</div>";
+       		exit(-1);
+		}
+		else{
+
+        print "<form action=\"./home.php\" >\n";
+        print "<button type=\"submit\">Return Home</button>";
+        print "</form>\n";
+        print "</div>";
+        exit(-1);
+        
+        }
 }
 else{
      // print "Organization " .$organization_name." does not exist";
@@ -141,10 +178,31 @@ print "</table><br>";
 //print $resource_type." was added as a resource successfully.";
 
 print "<div align='center'>";
-print "<form action=\"./home.php\">\n";
-print "<button type=\"submit\">Return Home</button>";
-print "</form>\n";
-print "</div><br>";
+
+       if($addresfromorg = 2){
+       	    print "<form action=\"./addorganization2.php\" method ='post'>\n";
+			print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
+			print "<input type=hidden name='street_address' value=\"".$street_address."\">";
+			print "<input type=hidden name='city' value=\"".$city."\">";
+			print "<input type=hidden name='state' value=\"".$state."\">";
+			print "<input type=hidden name='zip' value=".$zip.">";
+			print "<input type=hidden name='county' value=\"".$county."\">";
+			print "<input type=hidden name='business_phone' value=".$business_phone.">";
+			print "<input type=hidden name='business_fax' value=".$business_fax.">";
+			print "<input type=hidden name='email' value=\"".$email."\">";
+			print "<input type=hidden name='website' value=\"".$website."\">";
+	        print "<button type=\"submit\">Return to Add Organization</button>";
+       		print "</form>\n";
+       		print "</div>";
+		}
+		else{
+
+        print "<form action=\"./home.php\" >\n";
+        print "<button type=\"submit\">Return Home</button>";
+        print "</form>\n";
+        print "</div>";
+   
+        }
 
 
 include ("config/closedb.php");

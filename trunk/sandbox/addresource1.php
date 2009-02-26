@@ -50,12 +50,31 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 </iframe>
 
 
+
 <div align="center">
 	<h1>Add Resource</h1>
 	<form>
 	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
 	</form>
 </div>
+
+<?
+$addresfromorg = $_POST["addresfromorg"];
+
+if($addresfromorg = 2){
+$organization_name = $_POST["organization_name"];
+$street_address = $_POST["street_address"];
+$city = $_POST["city"];
+$state = $_POST["state"];
+$zip = $_POST["zip"];
+$county = $_POST["county"];
+$business_phone = $_POST["business_phone"];
+$business_fax = $_POST["business_fax"];
+$email = $_POST["email"];
+$website = $_POST["website"];
+}
+
+?>
 
 <br><br>			 
 <form name='addresource' method='post' action='addresource2.php' align ='left'>
@@ -77,7 +96,22 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 		</tr>
 		
 	</table>
+<?
+print "<input type=hidden name='addresfromorg' value=\"".$addresfromorg."\">";
 
+if($addresfromorg = 2){
+print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
+print "<input type=hidden name='street_address' value=\"".$street_address."\">";
+print "<input type=hidden name='city' value=\"".$city."\">";
+print "<input type=hidden name='state' value=\"".$state."\">";
+print "<input type=hidden name='zip' value=".$zip.">";
+print "<input type=hidden name='county' value=\"".$county."\">";
+print "<input type=hidden name='business_phone' value=".$business_phone.">";
+print "<input type=hidden name='business_fax' value=".$business_fax.">";
+print "<input type=hidden name='email' value=\"".$email."\">";
+print "<input type=hidden name='website' value=\"".$website."\">";
+}
+?>
 	<br>
 	<input type=submit>
 	<input type=reset>

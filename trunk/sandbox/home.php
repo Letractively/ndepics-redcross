@@ -98,6 +98,8 @@ if (($_SESSION['access_level_id']) == "9") {
 	print "</div>\n";
 }
 
+
+
 //if the user can add information 
 if( ($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 {
@@ -113,7 +115,8 @@ print "	    </form>";
 print "    </td>";
     
 print "<td>";
-print "	    <form action=\"addresource1.php\" >";
+print "	    <form action=\"addresource1.php\" method='post'>";
+print "		<input type=hidden name='addresfromorg' value =0 >";
 print "	    <input type=\"submit\" value=\"Add a Resource\">";
 print "	    </form>";
 print "    </td>";
