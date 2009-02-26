@@ -210,7 +210,7 @@ print "<input type=hidden name='business_phone' value=".$business_phone.">";
 print "<input type=hidden name='business_fax' value=".$business_fax.">";
 print "<input type=hidden name='email' value=\"".$email."\">";
 print "<input type=hidden name='website' value=\"".$website."\">";
-print "<input type=hidden name='addresfromorg' value=\"".$addresfromorg."\">";
+print "<input type=hidden name='addresfromorg' value='2'>";
 print "<br><input type=submit value='Add New Resource'>";
 print "</form>";
 print "</div>";

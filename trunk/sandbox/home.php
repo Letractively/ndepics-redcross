@@ -67,7 +67,6 @@ session_start();
 <p align="center">Please select what you would like to do</p>
 
 <?
-$addresfromorg = 0;
 
 if (($_SESSION['access_level_id']) == "9") { 
 
@@ -117,8 +116,7 @@ print "	    </form>";
 print "    </td>";
     
 print "<td>";
-print "	    <form action=\"addresource1.php\" method='post'>";
-print "<input type=hidden name='addresfromorg' value=\"".$addresfromorg."\">";
+print "	    <form action=\"addresource1.php\">";
 print "	    <input type=\"submit\" value=\"Add a Resource\">";
 print "	    </form>";
 print "    </td>";

@@ -72,7 +72,7 @@ $resource_keyword = $_POST["resource_keyword"];
 
 $addresfromorg = $_POST["addresfromorg"];
 
-if($addresfromorg = 2){
+if($addresfromorg){
 $organization_name = $_POST["organization_name"];
 $street_address = $_POST["street_address"];
 $city = $_POST["city"];
@@ -108,7 +108,7 @@ if ($num_rows != 0){
 	
 	   print "<div align='center'><br>";
        print "Cannot Add Resource Type: \"<b>".$resource_type."</b>\" already exists <br><br>";
-       if($addresfromorg = 2){
+       if($addresfromorg){
        	    print "<form action=\"./addorganization2.php\" method ='post'>\n";
 			print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 			print "<input type=hidden name='street_address' value=\"".$street_address."\">";
@@ -123,17 +123,16 @@ if ($num_rows != 0){
 	        print "<button type=\"submit\">Return to Add Organization</button>";
        		print "</form>\n";
        		print "</div>";
-       		exit(-1);
 		}
-		else{
+		else {
 
         print "<form action=\"./home.php\" >\n";
         print "<button type=\"submit\">Return Home</button>";
         print "</form>\n";
         print "</div>";
-        exit(-1);
         
         }
+        exit(-1);
 }
 else{
      // print "Organization " .$organization_name." does not exist";
@@ -179,7 +178,7 @@ print "</table><br>";
 
 print "<div align='center'>";
 
-       if($addresfromorg = 2){
+       if($addresfromorg){
        	    print "<form action=\"./addorganization2.php\" method ='post'>\n";
 			print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 			print "<input type=hidden name='street_address' value=\"".$street_address."\">";
@@ -195,7 +194,7 @@ print "<div align='center'>";
        		print "</form>\n";
        		print "</div>";
 		}
-		else{
+		else {
 
         print "<form action=\"./home.php\" >\n";
         print "<button type=\"submit\">Return Home</button>";

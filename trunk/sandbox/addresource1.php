@@ -61,7 +61,7 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 <?
 $addresfromorg = $_POST["addresfromorg"];
 
-if($addresfromorg = 2){
+if($addresfromorg){
 $organization_name = $_POST["organization_name"];
 $street_address = $_POST["street_address"];
 $city = $_POST["city"];
@@ -99,7 +99,7 @@ $website = $_POST["website"];
 <?
 print "<input type=hidden name='addresfromorg' value=\"".$addresfromorg."\">";
 
-if($addresfromorg = 2){
+if($addresfromorg = '2'){
 print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 print "<input type=hidden name='street_address' value=\"".$street_address."\">";
 print "<input type=hidden name='city' value=\"".$city."\">";

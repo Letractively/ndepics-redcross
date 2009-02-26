@@ -66,7 +66,7 @@ include ("config/functions.php");
 
 $addresfromorg = $_POST["addresfromorg"];
 
-if($addresfromorg = 2){
+if($addresfromorg){
 $organization_name = $_POST["organization_name"];
 $street_address = $_POST["street_address"];
 $city = $_POST["city"];
@@ -119,7 +119,7 @@ print "</table><br>";
 print "<div align='center'>";
 print "<input type=hidden name='addresfromorg' value=\"".$addresfromorg."\">";
 
-if($addresfromorg = 2){
+if($addresfromorg){
 print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 print "<input type=hidden name='street_address' value=\"".$street_address."\">";
 print "<input type=hidden name='city' value=\"".$city."\">";
