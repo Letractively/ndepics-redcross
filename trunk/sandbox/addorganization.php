@@ -122,6 +122,7 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 	</table>
 
 	<br>
+        <input type=hidden name='form_valid' value='0'>
 	<input type=submit value="Continue">
 	<input type=reset value="Clear Form">
 
