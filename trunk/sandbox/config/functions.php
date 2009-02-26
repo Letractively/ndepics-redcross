@@ -1,6 +1,4 @@
 <?php
-
-
 function scrub_input($input_text) {
 	$output_text = stripslashes($input_text);
        // $replace_chars = array("'", """);
@@ -42,6 +40,36 @@ function print_phone($phone_number) {
 					   . substr($phone_number,6,4);
 					   
 	return $printed_form;
+}
+
+function check_address($input){
+
+	if($input == "") {
+		return "No Address Entered";
+	}
+	
+	return $input;
+}
+
+function check_address2($city, $state, $zip){
+	if( ($city == "") && ($state == "") && ($zip == "") ){
+		return "No City, State, or Zip";
+	}
+	elseif( ($city == "") ){
+		return $state." ".$zip;
+	}
+	
+	return $city.", ".$state." ".$zip;
+}
+
+
+function check_name($salutation, $first, $last){
+
+	if( ($salutation == "") && ($first == "") && ($last == "") ){
+		return "No Name";
+	}
+
+	return $salutation." ".$first." ".$last;	
 }
 
 //Data validation function.  Only the first three fields are required.

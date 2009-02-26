@@ -74,6 +74,13 @@ include ("./config/functions.php");
 		//
 		// Navigation Buttons
 		print "<div align=\"center\" name=\"navigation_buttons\">";
+		
+		print "<div align = 'center'>";
+		print "<form>";
+		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+		print "</form>";
+		print "<br></div>";
+		
 		print "<table>";
 		print	"<tr>";
 		
@@ -128,6 +135,12 @@ include ("./config/functions.php");
 		print "</table>";
 		
 		mysql_free_result($result);
+		
+		print "<div align = 'center'>";
+		print "<br><form>";
+		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+		print "</form>";
+		print "</div>";
 		
 		
 		include ("./config/closedb.php");

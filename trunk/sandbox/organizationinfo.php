@@ -77,9 +77,15 @@ include ("./config/functions.php");
 		//
 		// Navigation Buttons
 		print "<div align=\"center\" name=\"navigation_buttons\">";
+		
+		print "<div align = 'center'>";
+		print "<form>";
+		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+		print "</form>";
+		print "<br></div>";
+		
 		print "<table>";
 		print	"<tr>";
-		
 		// Update BUTTON
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
@@ -106,7 +112,6 @@ include ("./config/functions.php");
 		print			"<input type=submit value='Home'>";
 		print			"</form>";
 		print		"</td>";
-		
 		print	"</tr>";
 		print "</table>";
 		
@@ -203,6 +208,12 @@ include ("./config/functions.php");
 			print "</table>";
 			
 		mysql_free_result($result);
+		
+		print "<div align = 'center'>";
+		print "<br><form>";
+		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+		print "</form>";
+		print "</div>";
 		
 		include ("./config/closedb.php");
 }

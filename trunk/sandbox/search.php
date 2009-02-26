@@ -76,7 +76,6 @@ include ("./config/functions.php");
 */ 
 ?>
 
-
 <p name="organization_search">
 <h2>Search by Organization</h2>
 <form name="organization_search" action="./search/searchresults.php" method="POST">
@@ -90,6 +89,7 @@ include ("./config/functions.php");
 
 </form>
 
+<br>
 <form name="detailed_organization_search" action="./search/searchresults.php" method="POST">
 
 	<input type="hidden" name="search_type" value="detailed_organization">
@@ -141,6 +141,7 @@ include ("./config/functions.php");
 </form>
 </p>
 
+<br>
 <p name="resource_search">
 <h2>Search by Resource</h2>
 <form name="resource_search" action="./search/searchresults.php" method="POST">
@@ -183,6 +184,21 @@ include ("./config/functions.php");
 	
 	</table>
 	<input type="submit" value="Search Resources">
+</form>
+</p>
+
+<br>
+<p name="person_search">
+<h2>Search by Person</h2>
+<form name="person_search" action="./search/searchresults.php" method="POST">
+	
+	<input type="hidden" name="search_type" value="person">
+	
+	<b>General Person Search: </b>
+	<input type="text" name="general_pers_search" size="30" maxsize="50">
+	<input type="submit" value="Search Persons">
+	<br>Note: This scans the name, address, city, zip, phone numbers, and email of the records.
+
 </form>
 </p>
 
