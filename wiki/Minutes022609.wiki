@@ -1,0 +1,53 @@
+#summary Minutes from the Feb 26 Meeting
+#labels Phase-Requirements
+
+Minutes: Matt
+
+=This Week=
+===Mike ===
+  * Posted notes from RC meeting on wiki
+    * Suggestions could be implemented after break
+    * For now focus on bullet-proofing site
+  * Finished User management
+===Mark===
+  * Answered RC questions about database
+  * Searching by people added, display person with info, associated organizations
+===Matt====
+  * Detour: Fixing functions
+  * Validation and Redirection logic is correct
+===Alyssa & Chris – The Blob===
+  * Can upload files
+===Brian===
+  * Fixed problem with adding resources from organization creation
+
+=For Next Week=
+===Mark===
+  * General Search
+===Mike===
+  * Finish User management
+  * Deleting/Updating resources
+  * Paging searches
+===Brian===
+  * Add unlink resource from an organization page
+  * Add remove a resource page
+  * Add update reource page
+===Matt===
+  * Continue Validation
+  * Add edit button
+===Alyssa & Chris===
+  * Chalk-talk on American Red Cross
+  * Make page for uploading/downloading
+  * Add button on edit page to access upload page
+  * Add button on Org. Info page to access download page
+
+=Goals for Release:=
+  * User management – done but needs validation
+  * Search – Work on general searches
+  * Inputs – unlink resources, delete resources, 
+  * Blob – integrated into insert and update pages
+==Issues page:==
+  * Post any hard links found on pages you are working with
+  * Post any incorrect i-frames
+==Batch Adding:==
+  * Start after break
+  * Get web interface working first
