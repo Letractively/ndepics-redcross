@@ -62,9 +62,9 @@ include ("./config/functions.php");
 
 <hr>
 
-<?php /*
+
 <p name="general_search">
-<h2> General Search (not yet, but soon)</h2>
+<h2>General Search</h2>
 <form name="general_search" action="./search/searchresults.php" method="POST">
 
 	<input type="hidden" name="search_type" value="general">
@@ -73,8 +73,6 @@ include ("./config/functions.php");
 </form>
 </p>
 
-*/ 
-?>
 
 <p name="organization_search">
 <h2>Search by Organization</h2>
