@@ -17,9 +17,9 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 // addperson3.php - file that inserts a person into the disaster database;
 //****************************
 
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include_once ("config/functions.php");
+include ("./config/dbconfig.php");
+include ("./config/opendb.php");
+include_once ("./config/functions.php");
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,11 +45,11 @@ include_once ("config/functions.php");
 <div style="border:2px solid white; background-color:#FFFFFF">
 
 <iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
-  <h2 align="center">St. Joseph's County American Red Cross</h2>
+  <h2 align="center">St. Joseph\'s County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
   </div>
 </iframe>
 
