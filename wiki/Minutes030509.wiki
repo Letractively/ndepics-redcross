@@ -3,12 +3,17 @@
 = Introduction =
 
 March 26th Meeting
+
 Fixed search issues for shorter words
+
 General Search running
+
 Better displaying of search results
+
 Split General Search into Person Search, General Search, Resource Search, Organization Search
 
 User Management taken care of
+
 Update/Delete records working
 
 Validation:
