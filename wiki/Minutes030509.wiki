@@ -1,0 +1,21 @@
+#summary Minutes from 03/05/09.
+
+= Introduction =
+
+March 26th Meeting
+Fixed search issues for shorter words
+General Search running
+Better displaying of search results
+Split General Search into Person Search, General Search, Resource Search, Organization Search
+
+User Management taken care of
+Update/Delete records working
+
+Validation:
+Pre-populated fields after data entry
+
+Future:
+Write up documentation (manual) initially sparse but eventually more complex
+	Front end manual
+	Back end manual
+Break the site and see if it is intuitive
