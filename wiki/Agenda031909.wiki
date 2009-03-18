@@ -1,0 +1,52 @@
+= Agenda =
+
+== Housekeeping ==
+  * Minutes Taker
+
+== Report on This Week's Work ==
+ * Any major updates?
+ * Make sure SVN and "Development" folder is what we want to hand over to Red Cross
+
+= Goals for Release =
+== Data Validation ==
+Needs to be applied to all appropriate fields!
+
+Components:
+    * *External facing pages* (login, forgotten username/password) - most important
+    * User management
+    * New records
+    * Updating records
+
+== Search ==
+  * Break search into two pages
+     * Basic search - has the major searches that the Red Cross desired
+     * Advanced search - provides options for all searchable fields
+  * Fix the search to produce fewer results when more search terms are entered
+  * Break search results into multiple pages based on the type of search
+
+== Documentation ==
+  * Manually go through all potential processes that Red Cross will do
+  * Create step-by-step instructions for basic operations
+     * Create new users
+     * Input new records
+     * Update current records
+     * Delete records
+     * Search (and how to navigate among the search results/what they mean)
+  * Attempt to break the website (make notes of what doesn't work as you would expect it to)
+
+== Data Entry ==
+  * Request most current data from Red Cross
+  * Input actual data (either manually or by parsing script and SQL file)
+
+== Issues page ==
+  * Post any hard links found on pages you are working with
+  * Post any incorrect i-frames
+
+= Deadlines =
+
+== Tuesday 3/24 ==
+ * Everything must be DONE and in the svn repository
+
+== Thursday 3/26 ==
+=== Meeting with the Red Cross at the St. Joseph County Chapter at 3:45 p.m. ===
+  * Meet at Legends at 3:15 p.m. to drive over.
