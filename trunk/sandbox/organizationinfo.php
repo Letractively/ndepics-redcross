@@ -73,6 +73,12 @@ include ("./config/functions.php");
 		$result = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
 		
 		$row = mysql_fetch_assoc($result);
+
+  $querys = "SELECT * FROM statement_of_understanding WHERE organization_id = ".$organization_id;
+
+                $results = mysql_query($querys) or die ("Query Failed...could not retrieve organization information");
+ 
+                $rows = mysql_fetch_assoc($results);
 		
 		//
 		// Navigation Buttons
@@ -96,13 +102,33 @@ include ("./config/functions.php");
 		print		"</td>";
 		}
 		
-		
 		// Delete BUTTON
 		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
 		print		"<td><form action=\"./deleteorganization.php\" method=\"POST\">";
 		print			"<input type=hidden name=organization_id value=".$organization_id.">";
 		print			"<input type=submit value=\"Delete Record\">";
+		print			"</form>";
+		print		"</td>";
+                }
+
+
+		// sou BUTTON
+		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+		print		"<td><form action=\"./viewstatementofunderstanding.php\"  method=\"POST\">";
+		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
+		print			"<input type=\"submit\" value=\"View Statement of Understanding\">";
+		print			"</form>";
+		print		"</td>";
+		}
+		
+		// facility survey BUTTON
+		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+		print		"<td><form action=\"./viewfacilitysurvey.php\"  method=\"POST\">";
+		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
+		print			"<input type=\"submit\" value=\"View Facility Survey\">";
 		print			"</form>";
 		print		"</td>";
 		}
@@ -127,6 +153,8 @@ include ("./config/functions.php");
 		print	     "Business Fax: ".print_phone($row['business_fax'])."<br>";
 		print		 "Email: ".$row['email']."<br>";
 		print		 "Website: ".$row['website']."<br>";
+                print "Statement of Understanding: " .$rows['date_of_contract'];
+              print $rows['statement_of_understanding'];
 		
 		mysql_free_result($result);
 		
