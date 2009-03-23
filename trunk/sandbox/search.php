@@ -65,7 +65,7 @@ include ("./config/functions.php");
 
 <p name="general_search">
 <h2>General Search</h2>
-<form name="general_search" action="./search/searchresults.php" method="POST">
+<form name="general_search" action="./search/generalresults.php" method="POST">
 
 	<input type="hidden" name="search_type" value="general">
 	Search: <input type="text" name="general_search" size="30" maxsize="100">
@@ -76,7 +76,7 @@ include ("./config/functions.php");
 
 <p name="organization_search">
 <h2>Search by Organization</h2>
-<form name="organization_search" action="./search/searchresults.php" method="POST">
+<form name="organization_search" action="./search/orgresults.php" method="POST">
 	
 	<input type="hidden" name="search_type" value="organization">
 	
@@ -88,7 +88,7 @@ include ("./config/functions.php");
 </form>
 
 <br>
-<form name="detailed_organization_search" action="./search/searchresults.php" method="POST">
+<form name="detailed_organization_search" action="./search/orgresults.php" method="POST">
 
 	<input type="hidden" name="search_type" value="detailed_organization">
 	
@@ -142,7 +142,7 @@ include ("./config/functions.php");
 <br>
 <p name="resource_search">
 <h2>Search by Resource</h2>
-<form name="resource_search" action="./search/searchresults.php" method="POST">
+<form name="resource_search" action="./search/resourceresults.php" method="POST">
 	
 	<input type="hidden" name="search_type" value="resource">
 	<table>
@@ -188,7 +188,7 @@ include ("./config/functions.php");
 <br>
 <p name="person_search">
 <h2>Search by Person</h2>
-<form name="person_search" action="./search/searchresults.php" method="POST">
+<form name="person_search" action="./search/personresults.php" method="POST">
 	
 	<input type="hidden" name="search_type" value="person">
 	
