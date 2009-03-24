@@ -64,15 +64,20 @@ include ("./config/functions.php");
 
 
 <p name="general_search">
-<h2>General Search</h2>
+<div align="center">
+<h1>General Search</h1>
 <form name="general_search" action="./search/generalresults.php" method="POST">
 
 	<input type="hidden" name="search_type" value="general">
 	Search: <input type="text" name="general_search" size="30" maxsize="100">
 	<input type="submit" value="Search">
 </form>
+<br>
+<br>
+<hr>
+<hr>
 </p>
-
+</div>
 
 <p name="organization_search">
 <h2>Search by Organization</h2>
@@ -138,8 +143,9 @@ include ("./config/functions.php");
 	
 </form>
 </p>
-
 <br>
+
+<hr>
 <p name="resource_search">
 <h2>Search by Resource</h2>
 <form name="resource_search" action="./search/resourceresults.php" method="POST">
@@ -184,8 +190,9 @@ include ("./config/functions.php");
 	<input type="submit" value="Search Resources">
 </form>
 </p>
-
 <br>
+
+<hr>
 <p name="person_search">
 <h2>Search by Person</h2>
 <form name="person_search" action="./search/personresults.php" method="POST">

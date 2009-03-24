@@ -119,7 +119,7 @@ if($search_type == "general") {
 		// Now let us generate the sql
 		while(list($key,$val)= each($keywords)){
 			if($val != " " and strlen($val) > 0){
-				$q .= " first_name like '%".$val.
+				$q .= " (first_name like '%".$val.
 					  "%' OR last_name like '%".$val.
 					  "%' OR street_address like '%".$val.
 					  "%' OR city like '%".$val.
@@ -130,7 +130,7 @@ if($search_type == "general") {
 					  "%' OR mobile_phone like '%".$val.
 					  "%' OR fax like '%".$val.
 					  "%' OR email like '%".$val.
-					  "%' OR im like '%".$val."%' OR";
+					  "%' OR im like '%".$val."%') AND";
 			}
 		}// end of while
 		//remove last OR
@@ -226,14 +226,14 @@ if($search_type == "general") {
 		// Now let us generate the sql
 		while(list($key,$val)= each($keywords)){
 			if($val != " " and strlen($val) > 0){
-				$q .= " organization_name like '%".$val.
+				$q .= " (organization_name like '%".$val.
 					  "%' OR street_address like '%".$val.
 					  "%' OR city like '%".$val.
 					  "%' OR state like '%".$val.
 					  "%' OR zip like '%".$val.
 					  "%' OR county like '%".$val.
 					  "%' OR website like '%".$val.
-					  "%' OR email like '%".$val."%' OR";
+					  "%' OR email like '%".$val."%') AND";
 			}
 		}// end of while
 		//remove last OR

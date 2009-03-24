@@ -109,7 +109,7 @@ if($search_type == "person") {
 	// Now let us generate the sql
 	while(list($key,$val)= each($keywords)){
 		if($val != " " and strlen($val) > 0){
-			$q .= " first_name like '%".$val.
+			$q .= " (first_name like '%".$val.
 				  "%' OR last_name like '%".$val.
 				  "%' OR street_address like '%".$val.
 				  "%' OR city like '%".$val.
@@ -120,7 +120,7 @@ if($search_type == "person") {
 				  "%' OR mobile_phone like '%".$val.
 				  "%' OR fax like '%".$val.
 				  "%' OR email like '%".$val.
-				  "%' OR im like '%".$val."%' OR";
+				  "%' OR im like '%".$val."%') AND";
 		}
 	}// end of while
 	//remove last OR

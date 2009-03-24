@@ -104,14 +104,14 @@ if($search_type == "organization") {
 	// Now let us generate the sql
 	while(list($key,$val)= each($keywords)){
 		if($val != " " and strlen($val) > 0){
-			$q .= " organization_name like '%".$val.
+			$q .= " (organization_name like '%".$val.
 				  "%' OR street_address like '%".$val.
 				  "%' OR city like '%".$val.
 				  "%' OR state like '%".$val.
 				  "%' OR zip like '%".$val.
 				  "%' OR county like '%".$val.
 				  "%' OR website like '%".$val.
-				  "%' OR email like '%".$val."%' OR";
+				  "%' OR email like '%".$val."%') AND";
 		}
 	}// end of while
 	//remove last OR
