@@ -81,16 +81,21 @@ session_start();
 </div>
 
 <?php
+$organization_id = $_POST["organization_id"];
+print $organization_id;
 $query = "SELECT	organization_name
-		  FROM		organization
-                  ORDER BY organization_name";
+	    FROM	organization
+           WHERE        organzation_id = ".$organization_id;
+
 $result = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
+
+//print "<p>"\".$result."\">";
 ?>
 <form enctype="multipart/form-data" action="./sou2.php" method="POST">
 <input type="hidden" name="MAX_FILE_SIZE" value="16777000" />
 Choose a file to upload: <br>
 <input name="uploadedfile" type="file" id = "uploadedfile"/><br />
-Choose the Organization:<br>
+/*Choose the Organization:<br>
 <?php
        print "<select name=\"organization_name\" onchange=\"showResource(this.value)\">";
        print"<option value=\"NULL\"> </option>";
@@ -99,7 +104,7 @@ Choose the Organization:<br>
             print"<option value=\"".$row['organization_name']."\">".$row['organization_name']."</option>";
        }
        print "</select>";
-?>
+?>*/
 <br>
 Choose a File Type: <br>
 <select name="filetype">

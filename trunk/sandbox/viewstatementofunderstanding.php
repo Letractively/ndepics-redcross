@@ -2,7 +2,7 @@
 session_start();
 // Validate the users's session
  if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+    header( 'Location: ./index.php' );
  }
 
 include ("config/dbconfig.php");
@@ -11,14 +11,21 @@ include("config/functions.php");
 
 $organization_id = $_POST["organization_id"];
 $queryid = "SELECT filename,filetype,filesize,uploaded_contract FROM statement_of_understanding WHERE organization_id = ".$organization_id;
-$result = mysql_query($queryid) or die ("Query Failed...could not retrieve organization information1");
-list($name, $type, $size, $uploaded_contract) =                                  mysql_fetch_array($result);
+$result = mysql_query($queryid);
+list($name, $type, $size, $uploaded_contract) = mysql_fetch_array($result);
+if($name != NULL)
+{
+  header("Content-length: $size");
+  header("Content-type: $type");
+  header("Content-Disposition: attachment; filename=$name");
+ echo $uploaded_contract;
+}
+else
+{
+  print "No statement of understanding uploaded.\n";
 
-header("Content-length: $size");
-header("Content-type: $type");
-header("Content-Disposition: attachment; filename=$name");
-echo $uploaded_contract;
-
+  print "<input type=\"BUTTON\" VALUE=\"Home\" ONCLICK=\"window.location.href='./home.php'\">";
+}
 include 'library/closedb.php';
 exit;
 ?>

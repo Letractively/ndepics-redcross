@@ -11,13 +11,22 @@ include("config/functions.php");
 
 $organization_id = $_POST["organization_id"];
 $queryid = "SELECT filename,filetype,filesize,uploaded_report FROM facility_survey WHERE organization_id = ".$organization_id;
-$result = mysql_query($queryid) or die ("Query Failed...could not retrieve organization information1");
+$result = mysql_query($queryid);
 list($name, $type, $size, $uploaded_contract) =                                  mysql_fetch_array($result);
 
-header("Content-length: $size");
-header("Content-type: $type");
-header("Content-Disposition: attachment; filename=$name");
-echo $uploaded_contract;
+if($name != NULL)
+{
+  header("Content-length: $size");
+  header("Content-type: $type");
+  header("Content-Disposition: attachment; filename=$name");
+ echo $uploaded_contract;
+}
+else
+{
+  print "No facility survey uploaded.\n";
+
+  print "<input type=\"BUTTON\" VALUE=\"Home\" ONCLICK=\"window.location.href='./home.php'\">";
+}
 
 include 'library/closedb.php';
 exit;
