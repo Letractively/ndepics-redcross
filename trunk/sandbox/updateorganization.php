@@ -85,7 +85,7 @@ $website = $row['website'];
 
 print "<p align=center><b>Change the desired fields and press 'Update Organization'.</b></p>\n";
 
-print "<center><form name='updateorganization' method='post' action='updateorganization2.php'>\n";
+print "<center><form name='updateorganization' method='post'>\n";
 
 	print "<input name='organization_id' type='hidden' value='".$organization_id."'>\n";
 
