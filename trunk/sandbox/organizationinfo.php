@@ -95,7 +95,7 @@ include ("./config/functions.php");
 		// Update BUTTON
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
-		print		"<td><form action=\"./updateorganization.php\"  method=\"POST\">";
+		print		"<td width=\"50%\" align=\"right\"><form action=\"./updateorganization.php\"  method=\"POST\">";
 		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 		print			"<input type=\"submit\" value=\"Update Record\">";
 		print			"</form>";
@@ -110,12 +110,14 @@ include ("./config/functions.php");
 		print			"<input type=submit value=\"Delete Record\">";
 		print			"</form>";
 		print		"</td>";
+		print		"</tr>";
                 }
 
 
 		// sou BUTTON
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
+		print		"<tr>";
 		print		"<td><form action=\"./viewstatementofunderstanding.php\"  method=\"POST\">";
 		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 		print			"<input type=\"submit\" value=\"View Statement of Understanding\">";
@@ -131,14 +133,15 @@ include ("./config/functions.php");
 		print			"<input type=\"submit\" value=\"View Facility Survey\">";
 		print			"</form>";
 		print		"</td>";
+		print		"</tr>";
 		}
 		
 		// Home BUTTON
-		print		"<td><form action=\"./home.php\">";
-		print			"<input type=submit value='Home'>";
-		print			"</form>";
-		print		"</td>";
-		print	"</tr>";
+		//print		"<td><form action=\"./home.php\">";
+		//print			"<input type=submit value='Home'>";
+		//print			"</form>";
+		//print		"</td>";
+		//print	"</tr>";
 		print "</table>";
 		
 		print "</div>";

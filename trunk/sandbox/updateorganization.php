@@ -176,10 +176,9 @@ else
 }
 print "&nbsp&nbsp or &nbsp&nbsp";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Add New Resource\" ONCLICK=\"window.location.href='http://disaster.stjoe-redcross.org/sandbox/addresource1.php'\">";
-	
-print "<br><br><input type='submit' value='Update Organiztion'>";
-print "<input type=\"BUTTON\" VALUE=\"Upload Statement of Understanding\" ONCLICK=\"window.location.href='./sou.php'\">";
+print "<br><br><input type=\"BUTTON\" VALUE=\"Upload Statement of Understanding\" ONCLICK=\"window.location.href='./sou.php'\">";
 print "<input type=\"BUTTON\" VALUE=\"Upload Facility Survey\" ONCLICK=\"window.location.href='./facilitysurvey.php'\">";
+print "<br><br><input type='submit' value='Update Organiztion'>";
 print "</form></center>\n";
 
 
