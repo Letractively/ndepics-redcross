@@ -21,6 +21,19 @@ session_start();
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
 include ("./config/functions.php");
+
+// Reset the search SESSION variables;
+$_SESSION['search_type'] = '';
+$_SESSION['search_text'] = '';
+
+//Detailed variables
+$_SESSION['detailed_search_name']	= '';
+$_SESSION['detailed_search_city']	= '';
+$_SESSION['detailed_search_state']	= '';
+$_SESSION['detailed_search_zip']	= '';
+$_SESSION['detailed_search_county'] = '';
+
+
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -66,10 +79,10 @@ include ("./config/functions.php");
 <p name="general_search">
 <div align="center">
 <h1>General Search</h1>
-<form name="general_search" action="./search/generalresults.php" method="POST">
+<form name="general_search" action="./search/searching.php" method="POST">
 
 	<input type="hidden" name="search_type" value="general">
-	Search: <input type="text" name="general_search" size="30" maxsize="100">
+	Search: <input type="text" name="search_text" size="30" maxsize="100">
 	<input type="submit" value="Search">
 </form>
 <br>
@@ -81,19 +94,19 @@ include ("./config/functions.php");
 
 <p name="organization_search">
 <h2>Search by Organization</h2>
-<form name="organization_search" action="./search/orgresults.php" method="POST">
+<form name="organization_search" action="./search/searching.php" method="POST">
 	
 	<input type="hidden" name="search_type" value="organization">
 	
 	<b>General Organization Search: </b>
-	<input type="text" name="general_org_search" size="30" maxsize="50">
+	<input type="text" name="search_text" size="30" maxsize="50">
 	<input type="submit" value="Search Organizations">
 	<br>Note: This scans the name, address, city, zip, and county, website, and email of the records.
 
 </form>
 
 <br>
-<form name="detailed_organization_search" action="./search/orgresults.php" method="POST">
+<form name="detailed_organization_search" action="./search/searching.php" method="POST">
 
 	<input type="hidden" name="search_type" value="detailed_organization">
 	
@@ -107,31 +120,31 @@ include ("./config/functions.php");
 		<tr>
 		<td></td>
 		<td>Organization Name: </td>
-		<td><input type="text" name="org_name_search" maxsize="30"></td>
+		<td><input type="text" name="detailed_search_name" maxsize="30"></td>
 		</tr>
 	
 		<tr>
 		<td></td>
 		<td>City: </td>
-		<td><input type="text" name="org_city_search" maxsize="30"></td>
+		<td><input type="text" name="detailed_search_city" maxsize="30"></td>
 		</tr>
 		
 		<tr>
 		<td></td>
 		<td>State: </td>
-		<td><input type="text" name="org_state_search" size="2" maxsize="2"></td>
+		<td><input type="text" name="detailed_search_state" size="2" maxsize="2"></td>
 		</tr>
 		
 		<tr>
 		<td></td>		
 		<td>ZIP: </td>
-		<td><input type="text" name="org_zip_search" size="10" maxsize="10"></td>
+		<td><input type="text" name="detailed_search_zip" size="10" maxsize="10"></td>
 		</tr>
 		
 		<tr>
 		<td></td>
 		<td>County: </td>
-		<td><input type="text" name="org_county_search" maxsize="30"></td>
+		<td><input type="text" name="detailed_search_county" maxsize="30"></td>
 		</tr>
 		
 		<tr>
@@ -148,13 +161,13 @@ include ("./config/functions.php");
 <hr>
 <p name="resource_search">
 <h2>Search by Resource</h2>
-<form name="resource_search" action="./search/resourceresults.php" method="POST">
+<form name="resource_search" action="./search/searching.php" method="POST">
 	
 	<input type="hidden" name="search_type" value="resource">
 	<table>
 		<tr>
 		<td>Resource Keyword Search: </td>
-		<td><input type="text" name="keyword_resource_search" size="30" maxsize="50"></td>
+		<td><input type="text" name="search_text" size="30" maxsize="50"></td>
 		</tr>
 
 <?php
@@ -195,12 +208,12 @@ include ("./config/functions.php");
 <hr>
 <p name="person_search">
 <h2>Search by Person</h2>
-<form name="person_search" action="./search/personresults.php" method="POST">
+<form name="person_search" action="./search/searching.php" method="POST">
 	
 	<input type="hidden" name="search_type" value="person">
 	
 	<b>General Person Search: </b>
-	<input type="text" name="general_pers_search" size="30" maxsize="50">
+	<input type="text" name="search_text" size="30" maxsize="50">
 	<input type="submit" value="Search Persons">
 	<br>Note: This scans the name, address, city, zip, phone numbers, and email of the records.
 
