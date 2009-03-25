@@ -17,6 +17,9 @@ include ("./config/functions.php");
 $username = stripslashes($_POST['username']);
 $password = stripslashes($_POST['password']);
 
+scrub_input($username);
+scrub_input($password);
+
 $message = "Username: ".$username."  Password: ".$password."<br>";
 
 $query = "SELECT	user_id, access_level_id

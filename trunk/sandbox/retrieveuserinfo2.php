@@ -29,8 +29,24 @@ include ("./config/functions.php");
 
 <?
 $username = $_POST['username'];
-//if(validator("Email Address", $_POST['email'], "email")) {
 $email = $_POST['email'];	
+
+$username = scrub_input($username);
+$email = scrub_input($email);
+
+$errCount=0;
+validator("Email",$email,"email");
+if($messages[0])
+{
+  $errCount++;
+  $email = "BLANK";
+}
+validator("Username",$username,"alphanumeric");
+if($messages[0] || ($errCount == 1 && $messages[1]))
+{
+  $errCount++;
+  $username = "BLANK";
+}
 
 if ($username) {
 	$_POST['forgot'] = "password";
