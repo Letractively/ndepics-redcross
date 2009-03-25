@@ -86,26 +86,23 @@ session_start();
 </div>
 
 <?php
-$query = "SELECT	organization_name
-		  FROM		organization
-                  ORDER BY organization_name";
+$organization_id = $_POST["organization_id"];
+$query = "SELECT        organization_name
+                  FROM          organization
+                   WHERE        organization_id = ".$organization_id;
 $result = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
-//$o_name= 'Sample Baptist Church';
-//print $o_name;
+
+$array = mysql_fetch_assoc($result);
+$result = $array['organization_name'];
+print"Upload Facility Survey to " .$result;
+
+print"<form enctype='multipart/form-data' action='./facilitysurvey2.php' method='POST'>";
+print"<input type='hidden' name='MAX_FILE_SIZE' value='100000' >";
+print"<input type=\"hidden\" name=\"id\" value=".$organization_id.">";
 ?>
-<form enctype="multipart/form-data" action="./facilitysurvey2.php" method="POST">
-<input type="hidden" name="MAX_FILE_SIZE" value="100000" />
 Choose a file to upload: <br>
 <input name="uploadedfile" type="file" id = "uploadedfile"/><br />
-<?php
-       print "<select name=\"organization_name\" onchange=\"showResource(this.value)\">";
-       print"<option value=\"NULL\"> </option>";
-       while($row = mysql_fetch_assoc($result))
-       {
-            print"<option value=\"".$row['organization_name']."\">".$row['organization_name']."</option>";
-       }
-       print "</select>";
-?>
+
 <div>
 <select name="filetype">
        <option value="NULL"> </option>
