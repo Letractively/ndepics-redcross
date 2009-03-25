@@ -11,7 +11,8 @@
 // retrieveuserinfo2.php - Query the database and retrieve the requested information (either password or username)
 //							and send it to the email address associated to the account.
 //
-// Revision History:  Created - 02/11/09
+// Revision History:	02/11/09 - Mike Ellerhorst	- Created
+//						03/25/09 - Mike Ellerhorst	- 
 //
 //****************************
 
@@ -25,11 +26,11 @@ include ("./config/functions.php");
 <html>
 <head>
 <title>Forgotten User Information</title>
-</head>
 
 <?
 $username = $_POST['username'];
-$email = $_POST['email'];
+//if(validator("Email Address", $_POST['email'], "email")) {
+$email = $_POST['email'];	
 
 if ($username) {
 	$_POST['forgot'] = "password";
@@ -45,15 +46,23 @@ elseif ($email) {
 				WHERE	email = '".$email."' 
 				LIMIT	1";
 }
+else {
+	$query = '';
+}
 
 $result = mysql_query($query) or die( "Error executing user query");
 
 $row = mysql_fetch_assoc($result);
 
+/*
+ // * Used to DEBUG
+ // *
 print "User_id: ".$row['user_id']."<br>";
 print "Username: ".$row['username']."<br>";
 print "Email: ".$row['email']."<br>";
-
+ // * 
+ // * 
+*/
 
 
 //
@@ -85,7 +94,6 @@ if($row['email'] != '') {
 }
 elseif($row['username'] != '') {
 
-print "Got Here";
 	$mail_to = $email;
 	$mail_headers = "From: Red Cross Disaster Database <no-reply@disaster.stjoe-redcross.org>";
 	$mail_subject = "Username Retrieved";
@@ -98,13 +106,26 @@ print "Got Here";
 
 }
 
+$url_error = '';
+
+if($row['user_id'] == '') {
+	if ($_POST['forgot'] == "password") {
+		$url_error = "?bad=username";
+	}
+	elseif ($_POST['forgot'] == "username") {
+		$url_error = "?bad=email";
+	}
+}
+
+
+
 ?>
 
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <? if($row['user_id'] == '') {
-	print "<meta http-equiv=\"Refresh\" content=\"0.01; url=./retrieveuserinfo.php\">\n";
+	print "<meta http-equiv=\"Refresh\" content=\"1.0; url=./retrieveuserinfo.php".$url_error."\">\n";
   }
 
 ?>
@@ -121,6 +142,7 @@ print "Got Here";
   BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
  </STYLE>
 
+</head>
 
 <body class="main">
 <div style="border:2px solid white; background-color:#FFFFFF">
@@ -134,12 +156,9 @@ print "Got Here";
   </div>
 </iframe>
 
-<!--<div class="menu">
-<a href = "./home.php"> HOME</a> | 
-<a href = "./search.php"> SEARCH </a>
-</div>-->
-
 <?
+//'
+//
 
 if($row['user_id'] == '') {
 	print "<center><h3> Invalid entry, you will be redirected back to the last page shortly...</h3>\n";
@@ -147,10 +166,12 @@ if($row['user_id'] == '') {
 elseif ($_POST['forgot'] == "password") {
 	print "<center><h3> Password has been Reset</h3>\n";
 	print "An email has been sent to ".$row['email']." with a temporary password.  Please change your password on the \"Update User\" page next time you log in.\n";
+	print "<br><br>";
 }
 elseif ($_POST['forgot'] == "username") {
 	print "<center><h3> Username Retrieved</h3>\n";
 	print "An email has been sent to ".$email." with your username.  If you have also forgotten your password, please follow the corresponding link on the entry page to reset your password after retrieving your username.\n";
+	print "<br><br>";
 }
 
 
