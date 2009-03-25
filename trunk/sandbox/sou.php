@@ -5,14 +5,14 @@ include("config/functions.php");
 
 session_start();
  if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+        header( 'Location: ./index.php' );
  }
 
 //****************************
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
 // Authors: ND Epics Group
-//	    Alyssa Krauss and Chris Durr
+//          Alyssa Krauss and Chris Durr
 //
 //  Spring 2009
 //
@@ -57,18 +57,18 @@ session_start();
 
 <a href = "./home.php">
 <img src="masthead.jpg" style="width:740px; height:100px" border="0"></a>
-  			<p style="padding-bottom:1px; margin:0">
-				American Red Cross, St. Joseph County Chapter
-			</p>
-			<p style="font-weight:normal; padding:0; margin: 0">
-				<span>3220 East Jefferson Boulevard</span>
-				<span>&nbsp;</span>
-				<span>South Bend</span>
-				<span>Indiana</span>
-				<span>46615</span>
-				<span>Phone (574) 234-0191</span>
+                        <p style="padding-bottom:1px; margin:0">
+                                American Red Cross, St. Joseph County Chapter
+                        </p>
+                        <p style="font-weight:normal; padding:0; margin: 0">
+                                <span>3220 East Jefferson Boulevard</span>
+                                <span> </span>
+                                <span>South Bend</span>
+                                <span>Indiana</span>
+                                <span>46615</span>
+                                <span>Phone (574) 234-0191</span>
 
-			</p>
+                        </p>
 </c>
 </div>
 <div class="menu">
@@ -82,29 +82,22 @@ session_start();
 
 <?php
 $organization_id = $_POST["organization_id"];
-print $organization_id;
-$query = "SELECT	organization_name
-	    FROM	organization
-           WHERE        organzation_id = ".$organization_id;
-
+$query = "SELECT        organization_name
+                  FROM          organization
+                   WHERE        organization_id = ".$organization_id;
 $result = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
 
-//print "<p>"\".$result."\">";
+$array = mysql_fetch_assoc($result);
+$result = $array['organization_name'];
+print"Upload Statement of Understanding to " .$result;
+
+print"<form enctype='multipart/form-data' action='./sou2.php' method='POST'>";
+print"<input type='hidden' name='MAX_FILE_SIZE' value='16777000' >";
+print"<input type=\"hidden\" name=\"id\" value=".$organization_id.">";
+
 ?>
-<form enctype="multipart/form-data" action="./sou2.php" method="POST">
-<input type="hidden" name="MAX_FILE_SIZE" value="16777000" />
 Choose a file to upload: <br>
 <input name="uploadedfile" type="file" id = "uploadedfile"/><br />
-/*Choose the Organization:<br>
-<?php
-       print "<select name=\"organization_name\" onchange=\"showResource(this.value)\">";
-       print"<option value=\"NULL\"> </option>";
-       while($row = mysql_fetch_assoc($result))
-       {
-            print"<option value=\"".$row['organization_name']."\">".$row['organization_name']."</option>";
-       }
-       print "</select>";
-?>*/
 <br>
 Choose a File Type: <br>
 <select name="filetype">

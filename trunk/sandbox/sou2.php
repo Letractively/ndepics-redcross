@@ -78,7 +78,7 @@ include("config/functions.php");
 <?php
 $b = time ();
 $d = date("Y-m-d", $b);
-$organization_name = $_POST["organization_name"];
+$result= $_POST["id"];
 
 $datafile = $_FILES["uploadedfile"]["tmp_name"];
 $fileName = $_FILES['uploadedfile']['name'];
@@ -89,10 +89,6 @@ $fp  = fopen($datafile, 'r');
 $content = fread($fp, filesize($datafile));
 $content = addslashes($content);
 fclose($fp);
-$queryid = "SELECT organization_id FROM organization WHERE organization_name = '".$organization_name." ' ";
-$result = mysql_query($queryid) or die ("Query Failed...could not retrieve organization information1");
-$array = mysql_fetch_assoc($result);
-$result = $array['organization_id'];
 $query = "INSERT INTO statement_of_understanding (organization_id, date_of_contract, uploaded_contract, filename,filetype,filesize)
                 VALUES (\"".$result."\", \"".$d."\", \"".$content."\", \"".$fileName."\",\"".$fileType."\",\"".$fileSize."\")";
 $result2 = mysql_query($query) or die ("Query Failed...could not retrieve organization information2");
@@ -113,4 +109,3 @@ $result2 = mysql_query($query) or die ("Query Failed...could not retrieve organi
 ?>
 
 </body>
-</html>
