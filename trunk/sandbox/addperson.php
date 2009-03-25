@@ -13,7 +13,6 @@ include ("./config/dbconfig.php");
 include ("./config/opendb.php");
 include("./config/functions.php");
 
-
 //****************************
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
@@ -23,7 +22,6 @@ include("./config/functions.php");
 // addorganization2.php - file to insert an organization into the disaster database;
 //****************************
 ?>
-
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -53,16 +51,13 @@ include("./config/functions.php");
   <h2 align="center">St. Joseph\'s County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
   </div>
 </iframe>
 
 <div align="center">
 	<h1>Add Person</h1>
-	<form>
-	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-	</form>
 </div>
 
 <?php
@@ -186,41 +181,58 @@ if(!$form_filled)
 		
 	</table>
 
-	<br>
-        <input type=hidden name='form_filled' value='1'>
-        <input type=hidden name='form_valid' value='0'>
-	<input type=submit value="Add Person">
-	<input type=reset value="Clear">
+    <br>
+    <input type=hidden name='form_filled' value='1'>
+    <input type=hidden name='form_valid' value='0'>
+    <input type=submit value="Add Person">
+    <input type=reset value="Clear">
 
-</form>
-
-<br>
-<div align='center'>
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-
-</form>
-
-</div>
- <?
+    </form>
+    
+    <br>
+    <div align='center'>
+    <form>
+    <INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
+    
+    </form>
+    
+    </div>
+<?
 }
 else
 {
-$errCount=0;
-if($form_valid == 1)
-{ 
-  print "<form name='verifyperson' method='post' action='./addperson2.php' align='left'>";
-  print "<p align='center'><b>Please verify this information.  If anything is incorrect, make changes in the CHANGES section</b></p>";
-}
-else 
-{
-  print "<form name='verifyperson' method='post' action='./addperson.php' align='left'>";
-  print "<p align='center'><b>Please make necessary corrections</b></p>";
-}
+  $errCount=0;
+  validator("Salutation",$salutation,"string");
+  validator("First Name", $first_name, "alpha");
+  validator("Last Name",$last_name,"alpha");
+  validator("Street Address",$street_address,"string"); //would like to make alphanumeric_string_punc a data type
+  validator("City",$city,"alpha_space");
+  validator("State",$state,"alpha","2","2");
+  validator("Zip",$zip,"number","5","5");
+  validator("Home Phone",$home_phone,"number","10","10","1");
+  validator("Work Phone",$work_phone,"number","10","10","0");
+  validator("Mobile Phone",$mobile_phone,"number","10","10","0");
+  validator("Fax",$fax,"number","10","10","0");
+  validator("Email",$email,"email");
+  validator("IM",$im,"alphanumeric","4","30","0");
+  if($errCount == 0)
+    {
+      $form_valid = 1;
+    }
+  
+  if($form_valid == 1)
+    { 
+      print "<form name='verifyperson' method='post' action='./addperson2.php' align='left'>";
+      print "<p align='center'><b>Please verify this information.  If anything is incorrect, please press BACK</b></p>";
+    }
+  else 
+    {
+      print "<form name='verifyperson' method='post' action='./addperson.php' align='left'>";
+      print "<p align='center'><b>Please make all requested corrections and click SUBMIT</b></p>";
+    }
 
-print "<table>";
+  print "<table>";
 //Salutation
-validator("Salutation",$salutation,"string");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -240,7 +252,6 @@ else
 }
 
 //Fisrt Name
-validator("First Name", $first_name, "alpha");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -260,7 +271,6 @@ else
 }
 
 //Last Name
-validator("Last Name",$last_name,"alpha");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -280,7 +290,6 @@ else
 }
 
 //Street Address
-validator("Street Address",$street_address,"string"); //would like to make alphanumeric_string_punc a data type
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -300,7 +309,6 @@ else
 }
 
 //City
-validator("City",$city,"alpha_space");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -320,7 +328,6 @@ else
 }
 
 //State
-validator("State",$state,"alpha","2","2");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -340,7 +347,6 @@ else
 }
 
 //Zip
-validator("Zip",$zip,"number","5","5");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -360,7 +366,6 @@ else
 }
 
 //Phone Numbers
-validator("Home Phone",$home_phone,"number","10","10","1");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -384,7 +389,6 @@ else
   print "</tr>\n";
 }
 
-validator("Work Phone",$work_phone,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -408,7 +412,6 @@ else
   print"</tr>\n";
 }
 
-validator("Mobile Phone",$mobile_phone,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -432,16 +435,15 @@ else
   print"</tr>\n";
 }
 
-validator("Fax",$fax,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
   $errCount++;
   print "<tr>\n";
   print "<td><b>Fax: </b></td>\n";
-  print "<td>(<input name='home_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($fax,0,3)."'>)&nbsp\n";
-  print "		<input name='home_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($fax,3,3)."'>&nbsp - &nbsp\n";
-  print "		<input name='home_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($fax,6,4)."'>\n";
+  print "<td>(<input name='fax_1' type='number' size='3' maxlength='3' align='left' value='".substr($fax,0,3)."'>)&nbsp\n";
+  print "		<input name='fax_2' type='number' size='3' maxlength='3' align='left' value='".substr($fax,3,3)."'>&nbsp - &nbsp\n";
+  print "		<input name='fax_3' type='number' size='4' maxlength='4' align='left' value='".substr($fax,6,4)."'>\n";
   print "</td>\n";
   print "</tr>\n";
 }
@@ -457,7 +459,6 @@ else
 }
 
 //Email
-validator("Email",$email,"email");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -477,7 +478,6 @@ else
 }
 
 //IM
-validator("IM",$im,"alphanumeric","4","30","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -523,8 +523,6 @@ print "<br><div align = 'center'>";
 print "<br></div>";
 print "</body>";
 print "</html>";
-
-
 
 include ("config/closedb.php");
 
