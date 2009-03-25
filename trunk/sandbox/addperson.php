@@ -184,7 +184,7 @@ if(!$form_filled)
     <br>
     <input type=hidden name='form_filled' value='1'>
     <input type=hidden name='form_valid' value='0'>
-    <input type=submit value="Add Person">
+    <input type=submit value="Continue">
     <input type=reset value="Clear">
 
     </form>
@@ -215,11 +215,11 @@ else
   validator("Fax",$fax,"number","10","10","0");
   validator("Email",$email,"email");
   validator("IM",$im,"alphanumeric","4","30","0");
-  if($errCount == 0)
+  if(!$messages[0])
     {
       $form_valid = 1;
     }
-  
+  $messages=array();
   if($form_valid == 1)
     { 
       print "<form name='verifyperson' method='post' action='./addperson2.php' align='left'>";
@@ -228,11 +228,12 @@ else
   else 
     {
       print "<form name='verifyperson' method='post' action='./addperson.php' align='left'>";
-      print "<p align='center'><b>Please make all requested corrections and click SUBMIT</b></p>";
+      print "<p align='center'><b>Please make all requested corrections and click CONTINUE</b></p>";
     }
 
   print "<table>";
 //Salutation
+  validator("Salutation",$salutation,"string");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -252,6 +253,7 @@ else
 }
 
 //Fisrt Name
+  validator("First Name", $first_name, "alpha");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -271,6 +273,7 @@ else
 }
 
 //Last Name
+  validator("Last Name",$last_name,"alpha");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -290,6 +293,7 @@ else
 }
 
 //Street Address
+validator("Street Address",$street_address,"string");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -309,6 +313,7 @@ else
 }
 
 //City
+  validator("City",$city,"alpha_space");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -328,6 +333,7 @@ else
 }
 
 //State
+  validator("State",$state,"alpha","2","2");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -347,6 +353,7 @@ else
 }
 
 //Zip
+  validator("Zip",$zip,"number","5","5");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -366,6 +373,7 @@ else
 }
 
 //Phone Numbers
+  validator("Home Phone",$home_phone,"number","10","10","1");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -389,6 +397,7 @@ else
   print "</tr>\n";
 }
 
+  validator("Work Phone",$work_phone,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -412,6 +421,7 @@ else
   print"</tr>\n";
 }
 
+  validator("Mobile Phone",$mobile_phone,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -435,6 +445,7 @@ else
   print"</tr>\n";
 }
 
+  validator("Fax",$fax,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -459,6 +470,7 @@ else
 }
 
 //Email
+  validator("Email",$email,"email");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -478,6 +490,7 @@ else
 }
 
 //IM
+  validator("IM",$im,"alphanumeric","4","30","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -505,7 +518,7 @@ if($errCount > 0)
 {
   print "<input type=hidden name='form_valid' value='0'>";
   print "<input type=hidden name='form_filled' value='1'>";
-  print "&nbsp&nbsp<input type=submit value='Add Person'>";
+  print "&nbsp&nbsp<input type=submit value='Continue'>";
   print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
   print "</form>";
 }
@@ -514,7 +527,7 @@ else
   print "<input type=hidden name='form_valid' value='1'>";
   print "<input type=hidden name='form_filled' value='1'>";
 
-  print "&nbsp&nbsp<input type=submit value='Add Person'>";
+  print "&nbsp&nbsp<input type=submit value='Continue'>";
   print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
   print "</form>";
 }
