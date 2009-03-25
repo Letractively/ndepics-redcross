@@ -2,10 +2,10 @@
 session_start();
 // Validate the users's session
  if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+        header( 'Location: ./index.php' );
  }
  if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
- 	header( 'Location: ./index.php' );
+        header( 'Location: ./index.php' );
  }
 
 include ("config/dbconfig.php");
@@ -63,10 +63,10 @@ include("config/functions.php");
 
 // Retrieve the requested organization's information
 $organization_id = $_POST["organization_id"];
-$query = "SELECT	*
-		  FROM		organization
-		  WHERE		organization_id = ".$organization_id;
-		  
+$query = "SELECT        *
+                  FROM          organization
+                  WHERE         organization_id = ".$organization_id;
+                  
 $result = mysql_query($query) or die ("Organization Query failed");
 
 $row = mysql_fetch_assoc($result);
@@ -85,74 +85,74 @@ $website = $row['website'];
 
 print "<p align=center><b>Change the desired fields and press 'Update Organization'.</b></p>\n";
 
-print "<center><form name='updateorganization' method='post'>\n";
+print "<center><form name='updateorganization' method='post' action='updateorganization2.php'>\n";
 
-	print "<input name='organization_id' type='hidden' value='".$organization_id."'>\n";
+        print "<input name='organization_id' type='hidden' value='".$organization_id."'>\n";
 
-	/*******/
-	//  Provide input fields pre-populated with the existing values in the database
-	print "<table>\n";
-		print "<tr>\n";
-		print "<td><b>Organization Name: </b></td>\n";
-		print "<td><input name='organization_name' type='text' maxlength='50' align= 'left' value='".$organization_name."'></td>\n";
-		print "</tr>\n";
+        /*******/
+        //  Provide input fields pre-populated with the existing values in the database
+        print "<table>\n";
+                print "<tr>\n";
+                print "<td><b>Organization Name: </b></td>\n";
+                print "<td><input name='organization_name' type='text' maxlength='50' align= 'left' value='".$organization_name."'></td>\n";
+                print "</tr>\n";
 
-		print "<tr>\n";
-		print "<td><b>Street Address: </b></td>\n";
-		print "<td><input name='street_address' type='text' maxlength='50' align= 'left' value='".$street_address."'></td>\n";
-		print "</tr>\n";
+                print "<tr>\n";
+                print "<td><b>Street Address: </b></td>\n";
+                print "<td><input name='street_address' type='text' maxlength='50' align= 'left' value='".$street_address."'></td>\n";
+                print "</tr>\n";
 
-		print "<tr>\n";
-		print "<td><b>City: </b></td>\n";
-		print "<td><input name='city' type='text' maxlength='30' align= 'left' value='".$city."'></td>\n";
-		print "</tr>\n";
-		
-		print "<tr>\n";
-		print "<td><b>State: </b></td>\n";
-		print "<td><input name='state' type='text' size='2' maxlength='2' align= 'left' value='".$state."'></td>\n";
-		print "</tr>\n";
-		
-		print "<tr>\n";
-		print "<td><b>Zip:</b></td>\n";
-		print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value='".$zip."'></td>\n";
-		print "</tr>\n";
-		
-		print "<tr>\n";
-		print "<td><b>County: </b></td>\n";
-		print "<td><input name='county' type='text' maxlength='20' align= 'left' value='".$county."'></td>\n";
-		print "</tr>\n";
-		
-		print "<tr>\n";
-		print "<td><b>Business Phone: </b></td>\n";
-		print "<td>(<input name='bus_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($business_phone,0,3)."'>)&nbsp\n";
-		print "		<input name='bus_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($business_phone,3,3)."'>&nbsp - &nbsp\n";
-		print "		<input name='bus_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($business_phone,6,4)."'>\n";
-		print "</td>\n";
-		print "</tr>\n";
-		
-		print "<tr>\n";
-		print "<td><b>Business Fax: </b></td>\n";
-		print "<td>(<input name='bus_fax_1' type='number' size='3' maxlength='3' align='left' value='".substr($business_fax,0,3)."'>)&nbsp\n";
-		print "		<input name='bus_fax_2' type='number' size='3' maxlength='3' align='left' value='".substr($business_fax,3,3)."'>&nbsp - &nbsp\n";
-		print "		<input name='bus_fax_3' type='number' size='4' maxlength='4' align='left' value='".substr($business_fax,6,4)."'>\n";
-		print "</td>\n";
-		print "</tr>\n";
-		
-		print "<tr>\n";
-		print "<td><b>Email: </b></td>\n";
-		print "<td><input name='email' type='text' maxlength='50' align= 'left' value='".$email."'></td>\n";
-		print "</tr>\n";
-		
-		print "<tr>\n";
-		print "<td><b>Website</b></td>\n";
-		print "<td><input name='website' type='text' maxlength='100' align= 'left' value='".$website."'></td>\n";
-		print "</tr>\n";
-		
-	print "</table>\n";
+                print "<tr>\n";
+                print "<td><b>City: </b></td>\n";
+                print "<td><input name='city' type='text' maxlength='30' align= 'left' value='".$city."'></td>\n";
+                print "</tr>\n";
+                
+                print "<tr>\n";
+                print "<td><b>State: </b></td>\n";
+                print "<td><input name='state' type='text' size='2' maxlength='2' align= 'left' value='".$state."'></td>\n";
+                print "</tr>\n";
+                
+                print "<tr>\n";
+                print "<td><b>Zip:</b></td>\n";
+                print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value='".$zip."'></td>\n";
+                print "</tr>\n";
+                
+                print "<tr>\n";
+                print "<td><b>County: </b></td>\n";
+                print "<td><input name='county' type='text' maxlength='20' align= 'left' value='".$county."'></td>\n";
+                print "</tr>\n";
+                
+                print "<tr>\n";
+                print "<td><b>Business Phone: </b></td>\n";
+                print "<td>(<input name='bus_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($business_phone,0,3)."'>)&nbsp\n";
+                print "         <input name='bus_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($business_phone,3,3)."'>&nbsp - &nbsp\n";
+                print "         <input name='bus_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($business_phone,6,4)."'>\n";
+                print "</td>\n";
+                print "</tr>\n";
+                
+                print "<tr>\n";
+                print "<td><b>Business Fax: </b></td>\n";
+                print "<td>(<input name='bus_fax_1' type='number' size='3' maxlength='3' align='left' value='".substr($business_fax,0,3)."'>)&nbsp\n";
+                print "         <input name='bus_fax_2' type='number' size='3' maxlength='3' align='left' value='".substr($business_fax,3,3)."'>&nbsp - &nbsp\n";
+                print "         <input name='bus_fax_3' type='number' size='4' maxlength='4' align='left' value='".substr($business_fax,6,4)."'>\n";
+                print "</td>\n";
+                print "</tr>\n";
+                
+                print "<tr>\n";
+                print "<td><b>Email: </b></td>\n";
+                print "<td><input name='email' type='text' maxlength='50' align= 'left' value='".$email."'></td>\n";
+                print "</tr>\n";
+                
+                print "<tr>\n";
+                print "<td><b>Website</b></td>\n";
+                print "<td><input name='website' type='text' maxlength='100' align= 'left' value='".$website."'></td>\n";
+                print "</tr>\n";
+                
+        print "</table>\n";
 
-	print "<br>\n";
-	
-	print "Select a Resource to Add to Organization: ";
+        print "<br>\n";
+        
+        print "Select a Resource to Add to Organization: ";
   
 $query = "Select * from detailed_resource";
 
@@ -160,19 +160,19 @@ $result = mysql_query($query) or die("Could not access resources");
 
 if( mysql_num_rows($result) < 1 )
 {
-	print "There are no resources to be added, please go back and add a resource first!<br>";
+        print "There are no resources to be added, please go back and add a resource first!<br>";
 }
 else 
 {
-	print "<select name=\"resource_id\" onchange=\"showResource(this.value)\">";
-	print "<option value=\"NULL\"> </option>";
-	
-	while( $row = mysql_fetch_assoc($result) )
-	{
-		print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
-	}
-	
-	print "</select>";
+        print "<select name=\"resource_id\" onchange=\"showResource(this.value)\">";
+        print "<option value=\"NULL\"> </option>";
+        
+        while( $row = mysql_fetch_assoc($result) )
+        {
+                print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
+        }
+        
+        print "</select>";
 }
 print "&nbsp&nbsp or &nbsp&nbsp";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Add New Resource\" ONCLICK=\"window.location.href='http://disaster.stjoe-redcross.org/sandbox/addresource1.php'\">";
