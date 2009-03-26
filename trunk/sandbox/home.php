@@ -68,6 +68,17 @@ session_start();
 
 <?
 
+//if the user can search information
+if( !($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))
+{
+print "<h2 align=\"center\">Search Records</h2>";
+print "<form action=\"search.php\" >";
+print "  <div align=\"center\">";
+print "    <input type=\"submit\" value=\"Search\">";
+print "  </div>";
+print "</form>";
+}
+
 if (($_SESSION['access_level_id']) == "9") { 
 
 	print "<h2 align=\"center\">User Accounts</h2>\n";
@@ -130,19 +141,9 @@ print "    </tr>";
 print "  </table>";
 print "  <center>";
 print "</div>";
-}
-
-//if the user can search information
-if( !($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))
-{
-print "<h2 align=\"center\">Search Records</h2>";
-print "<form action=\"search.php\" >";
-print "  <div align=\"center\">";
-print "    <input type=\"submit\" value=\"Search\">";
-print "  </div>";
-print "</form>";
 print "<br>";
 }
+
 ?>
 
 </div>
