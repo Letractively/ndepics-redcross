@@ -275,7 +275,7 @@ else {
 }
 
 // Query to link resource to the added organization
-if($resource_id == ''){
+if($resource_id != "NULL"){
 	$query = "INSERT INTO resource_listing (resource_id, organization_id) 
 			  VALUES (".$resource_id.",".$organization_id.")";
 			  
