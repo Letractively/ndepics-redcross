@@ -50,8 +50,8 @@ include("config/functions.php");
   <h2 align="center">St. Joseph's County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> |
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  <a href = "./home.php" target= "_parent"> HOME</a> |
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
   </div>
 </iframe>
 
@@ -178,7 +178,7 @@ else
 print "&nbsp&nbsp or &nbsp&nbsp";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Add New Resource\" 
 
-ONCLICK=\"window.location.href='http://disaster.stjoe-redcross.org/sandbox/addresource1.php'\">";
+ONCLICK=\"window.location.href='./addresource1.php'\">";
 
 print "<br><br><input type='submit' value='Update Organization'>";
 print"</form>";
