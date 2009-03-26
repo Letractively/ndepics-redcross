@@ -43,20 +43,17 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 <div style="border:2px solid white; background-color:#FFFFFF">
 
 <iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
-  <h2 align="center">St. Joseph's County American Red Cross</h2>
+  <h2 align="center">St. Joseph\'s County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
   </div>
 </iframe>
 
 
 <div align="center">
   <h1>Add Organization</h1>
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
 </div>
 
 <br>		 

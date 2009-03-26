@@ -47,12 +47,12 @@ include_once ("config/functions.php");
 
 <iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
   <center>
-  <h2>St. Joseph's County American Red Cross</h2>
+  <h2>St. Joseph\'s County American Red Cross</h2>
   <p>Your browser does not support iframes.</p>
   </center>
   <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
   </div>
 </iframe>
 
