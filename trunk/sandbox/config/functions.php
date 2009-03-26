@@ -164,4 +164,20 @@ function check_name($salutation, $first, $last){
 	return $salutation." ".$first." ".$last;	
 }
 
+function display_generic_error($error_message) {
+
+	$return_message =  "<center><h2>Error Processing Your Request</h2></center>";
+	$return_message .= "<center><h3>".$error_message."</h3></center>";
+	$return_message .= "<br><br>Please go back and try again or return home.  If the problem persists, please contact a system administrator.<br><br>";
+	
+	$return_message .=  "<br><div align = 'center'>\n";
+	$return_message .=  "<form>\n";
+	$return_message .=  "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">\n";
+	$return_message .=  "</form>\n";
+	$return_message .=  "<br></div>\n";
+	
+	return $return_message;
+
+}
+
 ?>

@@ -66,10 +66,12 @@ $query = "UPDATE	organization
 
 $result = mysql_query($query) or die ("Error sending organization update query");
 
-$query = "INSERT INTO resource_listing (resource_id, organization_id) 
-		  VALUES (".$resource_id.",".$organization_id.")";
-		  
-$result = mysql_query($query) or die ("Error adding resource_listing");
+if($resource_id != "NULL")) {
+	$query = "INSERT INTO resource_listing (resource_id, organization_id) 
+			  VALUES (".$resource_id.",".$organization_id.")";
+			  
+	$result = mysql_query($query) or die ("Error adding resource_listing");
+}
 
 // Redirect back to the organization's information page
 $redirect_url = "./organizationinfo.php?id=".$organization_id;

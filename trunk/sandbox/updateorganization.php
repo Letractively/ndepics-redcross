@@ -19,6 +19,9 @@ include("config/functions.php");
 //  Spring 2009
 //
 // updateorganization.php - file to update an existing organization in the disaster database;
+//
+// Revision History		03/26/09	Mike Ellerhorst - Modified SQL script to only provide drop down with 
+//														resources that aren't already linked to org.
 // ****************************
 ?>
 
@@ -154,7 +157,13 @@ print "<p align=center><b>Change the desired fields and press 'Update Organizati
 
         print "Select a Resource to Add to Organization: ";
 
-$query = "Select * from detailed_resource";
+$query = "SELECT	dr.* 
+			FROM		detailed_resource dr
+			WHERE		NOT EXISTS (
+							SELECT  rl.*
+							FROM    resource_listing rl 
+							WHERE	rl.resource_id = dr.resource_id
+							AND	rl.organization_id = ".$organization_id.")";
 
 $result = mysql_query($query) or die("Could not access resources");
 

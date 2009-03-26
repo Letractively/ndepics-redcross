@@ -31,9 +31,9 @@ $street_address = $_POST['street_address'];
 $city			= $_POST['city'];
 $state			= $_POST['state'];
 $zip			= $_POST['zip'];
-$home_phone		= $_POST['home_phone'];
-$work_phone		= $_POST['work_phone'];
-$mobile_phone	= $_POST['mobile_phone'];
+$home_phone		= $_POST['home_phone_1'].$_POST['home_phone_2'].$_POST['home_phone_3'];
+$work_phone		= $_POST['work_phone_1'].$_POST['work_phone_2'].$_POST['work_phone_3'];
+$mobile_phone	= $_POST['mobile_phone_1'].$_POST['mobile_phone_2'].$_POST['mobile_phone_3'];
 $fax			= $_POST['fax'];
 $email			= $_POST['email'];
 $im				= $_POST['im'];
@@ -63,11 +63,14 @@ $query = "UPDATE	person
 
 $result = mysql_query($query) or die ("Error sending person update query");
 
-// Query to link resource to the added organization
-$query = "INSERT INTO works_for (person_id, organization_id, title, role) 
-		  VALUES (".$person_id.",".$organization_id.",\"".$title_in_organization."\",\"".$role_in_organization."\")";
-		  
-$result = mysql_query($query) or die ("Error adding works_for");
+
+if ($organization_id != "NULL") {
+	// Query to link resource to the added organization
+	$query = "INSERT INTO works_for (person_id, organization_id, title, role) 
+			  VALUES (".$person_id.",".$organization_id.",\"".$title_in_organization."\",\"".$role_in_organization."\")";
+			  
+	$result = mysql_query($query) or die ("Error adding works_for");
+}
 
 // Redirect back to the organization's information page
 $redirect_url = "./personinfo.php?id=".$person_id;

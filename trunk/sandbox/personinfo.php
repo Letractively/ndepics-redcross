@@ -58,6 +58,7 @@ include ("./config/functions.php");
 
 
 <?php
+//'
 //IF YOU HAVE ACCESS CODE.....
  if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
  
@@ -128,7 +129,7 @@ include ("./config/functions.php");
 			print		 $row['city'].", ".$row['state']." ".$row['zip']."<br>";
 		}
 		if($row['county'] != '') { print		 "County:  ".$row['county']."<br>"; }
-		print		 "Home Phone:  ".print_phone($row['business_phone'])."<br>";
+		print		 "Home Phone:  ".print_phone($row['home_phone'])."<br>";
 		print		 "Work Phone:  ".print_phone($row['work_phone'])."<br>";
 		print		 "Mobile Phone:  ".print_phone($row['mobile_phone'])."<br>";
 		print	     "Fax:  ".print_phone($row['fax'])."<br>";

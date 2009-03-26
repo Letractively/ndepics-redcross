@@ -196,7 +196,13 @@ print "<p>";
 print "Select an Organization to link this person to: ";
 print "<select name=\"organization_id\" onchange=\"showOrganization(this.value)\">";
   
-$query = "SELECT * FROM organization";
+$query = "SELECT	o.* 
+			FROM		organization o
+			WHERE		NOT EXISTS (
+							SELECT  wf.*
+							FROM    works_for wf 
+							WHERE	wf.organization_id = o.organization_id
+							AND		wf.person_id = ".$person_id.")";
 
 $result = mysql_query($query) or die("Could not access resources");
 
