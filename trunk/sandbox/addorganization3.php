@@ -121,6 +121,7 @@ $organization_id = $row['Auto_increment'];
 
 //
 //Query to add organization
+
 $query = "INSERT INTO  organization (organization_name ,
 									 street_address ,
 									 city ,
@@ -274,20 +275,28 @@ else {
 }
 
 // Query to link resource to the added organization
-$query = "INSERT INTO resource_listing (resource_id, organization_id) 
-		  VALUES (".$resource_id.",".$organization_id.")";
-		  
-$result = mysql_query($query) or die ("Error adding resource_listing");
+if($resource_id == ''){
+	$query = "INSERT INTO resource_listing (resource_id, organization_id) 
+			  VALUES (".$resource_id.",".$organization_id.")";
+			  
+	$result = mysql_query($query) or die ("Error adding resource_listing");
 
-
-
-
-print "<div align='center'>";
-print "Organization Successfully Added...Redirecting<br>";
-print "<form action=\"./home.php\" >\n";
-print "<button type=\"submit\">Return Home</button>";
-print "</form>\n";
-print "</div>";
+	print "<div align='center'>";
+	print "Organization Successfully Added...Redirecting<br>";
+	print "<form action=\"./home.php\" >\n";
+	print "<button type=\"submit\">Return Home</button>";
+	print "</form>\n";
+	print "</div>";
+}
+else{
+	print "<div align='center'>";
+	print "Organization Successfully Added With NO RESOURCES...Redirecting<br>";
+	print "<form action=\"./home.php\" >\n";
+	print "<button type=\"submit\">Return Home</button>";
+	print "</form>\n";
+	print "</div>";
+}
+	
 
 include ("config/closedb.php");
 ?>
