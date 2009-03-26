@@ -95,7 +95,7 @@ $role_in_organization = scrub_input($role_in_organization);
 //Query to check if person already exists
 $pers_query = "SELECT * FROM person WHERE first_name = '".$first_name." ' AND last_name= '".$last_name."'";
 
-$result3 = mysql_query($pers_query) or die ("Error checking if organization exists query");
+$result3 = mysql_query($pers_query) or die ("Error checking if person exists query");
 
 $num_rows = mysql_num_rows($result3);
 
@@ -297,12 +297,13 @@ print "</table>";
 
 
 //
-// Query to link resource to the added organization
-$query = "INSERT INTO works_for (person_id, organization_id, title, role) 
-		  VALUES (".$person_id.",".$organization_id.",\"".$title_in_organization."\",\"".$role_in_organization."\")";
-		  
-$result = mysql_query($query) or die ("Error adding works_for");
-
+// Query to link added person to the organization
+if($organization_id != "NULL"){
+	$query = "INSERT INTO works_for (person_id, organization_id, title, role) 
+			  VALUES (".$person_id.",".$organization_id.",\"".$title_in_organization."\",\"".$role_in_organization."\")";
+			  
+	$result = mysql_query($query) or die ("Error adding works_for");
+}
 
 //print "<br> Got to the end of the script <br>";
 
