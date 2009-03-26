@@ -41,11 +41,11 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 <div style="border:2px solid white; background-color:#FFFFFF">
 
 <iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
-  <h2 align="center">St. Joseph's County American Red Cross</h2>
+  <h2 align="center">St. Joseph\'s County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
   </div>
 </iframe>
 
@@ -54,8 +54,6 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 <div align="center">
 	<h1>Add Resource</h1>
 	<form>
-	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-	</form>
 </div>
 
 <?
@@ -76,7 +74,7 @@ $website = $_POST["website"];
 
 ?>
 
-<br><br>			 
+<br><br>	       
 <form name='addresource' method='post' action='addresource2.php' align ='left'>
 	<input type=hidden name=addtype value=resource>
 	<table>
@@ -96,9 +94,9 @@ $website = $_POST["website"];
 		</tr>
 		
 	</table>
+<input type=hidden name='form_valid' value='0'>
 <?
 print "<input type=hidden name='addresfromorg' value=\"".$addresfromorg."\">";
-
 if($addresfromorg = '2'){
 print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 print "<input type=hidden name='street_address' value=\"".$street_address."\">";
@@ -129,4 +127,3 @@ print "<input type=hidden name='website' value=\"".$website."\">";
 </body>
 
 </html>
-

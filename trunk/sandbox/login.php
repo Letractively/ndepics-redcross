@@ -17,8 +17,8 @@ include ("./config/functions.php");
 $username = stripslashes($_POST['username']);
 $password = stripslashes($_POST['password']);
 
-scrub_input($username);
-scrub_input($password);
+$username = scrub_input($username);
+$password = scrub_input($password);
 
 $message = "Username: ".$username."  Password: ".$password."<br>";
 
