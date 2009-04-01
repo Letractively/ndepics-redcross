@@ -1,3 +1,5 @@
+#summary Agenda for the meeting on 04/02/09.
+
 = Agenda =
 
 == Housekeeping ==
@@ -45,4 +47,3 @@
 === Questions/Comments? ===
 
 === Assignments for Next Week ===
-
