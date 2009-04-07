@@ -9,6 +9,10 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 	header( 'Location: ./index.php' );
 }  
 
+include ("./config/dbconfig.php");
+include ("./config/opendb.php");
+include("./config/functions.php");
+
 //****************************
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
@@ -46,18 +50,62 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
   <h2 align="center">St. Joseph\'s County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
-  <a href = "./home.php" target= "_parent"> HOME</a> | 
-  <a href = "./search.php" target= "_parent"> SEARCH </a>
+  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
+  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
   </div>
 </iframe>
 
 
 <div align="center">
   <h1>Add Organization</h1>
+<form>
+<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
+</form>
 </div>
 
-<br>		 
-<form name='addorganization' method='post' action='addorganization2.php' align ='left'>
+
+<?php
+
+//print"<center><b>WARNING: PHP ERROR REPORTING IS ACTIVE FOR DEVELOPMENT!</b></center>";
+//error_reporting(E_ALL);
+//ini_set ('display_errors', '1');
+
+$form_filled = $_POST["form_filled"];
+$form_valid = $_POST["form_valid"];
+$organization_name = $_POST["organization_name"];
+$street_address = $_POST["street_address"];
+$city = $_POST["city"];
+$state = $_POST["state"];
+$zip = $_POST["zip"];
+$county = $_POST["county"];
+$bus_phone = $_POST["bus_phone_1"].$_POST["bus_phone_2"].$_POST["bus_phone_3"];
+$fax = $_POST["bus_fax_1"].$_POST["bus_fax_2"].$_POST["bus_fax_3"];
+$email = $_POST["email"];
+$website = $_POST["website"];
+
+
+// Scrub the inputs
+$organization_name = scrub_input($organization_name);
+$street_address = scrub_input($street_address);
+$city = scrub_input($city);
+$state = scrub_input($state);
+$zip = scrub_input($zip);
+$county = scrub_input($county);
+$bus_phone = scrub_input($bus_phone);
+$fax = scrub_input($fax);
+$email = scrub_input($email);
+$website = scrub_input($website);
+
+// Display them for the user to verify
+//Change to pre-populated tables... notify user of errors. Re-direct back to this page if errors exist?
+
+
+if(!$form_filled)
+{
+  ?>
+
+<br><br>	 
+<form name='addorganization' method='post' action='addorganization.php' align ='left'>
 	<input type=hidden name=addtype value=organization>
 	<table>
 		<tr>
@@ -120,6 +168,7 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 
 	<br>
         <input type=hidden name='form_valid' value='0'>
+        <input type=hidden name='form_filled' value='1'>
 	<input type=submit value="Continue">
 	<input type=reset value="Clear Form">
 
@@ -131,7 +180,258 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 	<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
 </form>
 <br>
-</div>
+<?
+   }
+else
+{
+$errCount=0;
+if($form_valid == 1)
+{ 
+  print "<form name='verifyperson' method='post' action='./addorganization2.php' align='left'>";
+  print "<p align='center'><b>Please verify this information.  If anything is incorrect, make changes in the CHANGES section</b></p>";
+}
+else 
+{
+  print "<form name='verifyorganization' method='post' action='./addorganization.php' align='left'>";
+  print "<p align='center'><b>Please make necessary corrections</b></p>";
+}
+
+print "<table>";
+//Salutation
+validator("Organization Name",$organization_name,"string");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Organization Name: </b></td>\n";
+  print "<td><input name='salutation' type='text' size='50' maxlength='50' align= 'left' value='".$organization_name."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
+  print"<tr>\n";
+  print"<td><b>Organization Name: </b></td>\n";
+  print"<td>".$organization_name."</td>\n";
+  print"</tr>\n";
+}
+
+//Fisrt Name
+validator("Street Address", $street_address, "string");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Street Address: </b></td>\n";
+  print "<td><input name='street_address' type='text' maxlength='50' align= 'left' value='".$street_address."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='street_address' value=\"".$street_address."\">";
+  print"<tr>\n";
+  print"<td><b>Street Address: </b></td>\n";
+  print"<td>".$street_address."</td>\n";
+  print"</tr>\n";
+}
+
+
+//City
+validator("City",$city,"alpha_space");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>City: </b></td>\n";
+  print "<td><input name='city' type='text' size='30' maxlength='30' align= 'left' value='".$city."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='city' value=\"".$city."\">";
+  print"<tr>\n";
+  print"<td><b>City: </b></td>\n";
+  print"<td>".$city."</td>\n";
+  print"</tr>\n";
+}
+
+//County
+validator("County",$county,"string");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>County: </b></td>\n";
+  print "<td><input name='county' type='text' size='20' maxlength='20' align= 'left' value='".$county."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='county' value=\"".$county."\">";
+  print"<tr>\n";
+  print"<td><b>County: </b></td>\n";
+  print"<td>".$county."</td>\n";
+  print"</tr>\n";
+}
+
+//State
+validator("State",$state,"alpha","2","2");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>State: </b></td>\n";
+  print "<td><input name='state' type='text' size='2' maxlength='2' align= 'left' value='".$state."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='state' value=\"".$state."\">";
+  print"<tr>\n";
+  print"<td><b>State: </b></td>\n";
+  print"<td>".$state."</td>\n";
+  print"</tr>\n";
+}
+
+//Zip
+validator("Zip",$zip,"number","5","5");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Zip:</b></td>\n";
+  print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value='".$zip."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='zip' value=".$zip.">";
+  print"<tr>\n";
+  print"<td><b>Zip: </b></td>\n";
+  print"<td>".$zip."</td>\n";
+  print"</tr>\n";
+}
+
+//Phone Numbers
+validator("Bus Phone",$bus_phone,"number","10","10","1");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Bus Phone: </b></td>\n";
+  print "<td>(<input name='bus_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($bus_phone,0,3)."'>)&nbsp\n";
+  print "	<input name='bus_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($bus_phone,3,3)."'>&nbsp - &nbsp\n";
+  print "	<input name='bus_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($bus_phone,6,4)."'>\n";
+  print "</td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='bus_phone_1' value='".substr($bus_phone,0,3)."'>";
+  print "<input type=hidden name='bus_phone_2' value='".substr($bus_phone,3,3)."'>";
+  print "<input type=hidden name='bus_phone_3' value='".substr($bus_phone,6,4)."'>";
+  print "<tr>\n";
+  print "<td><b>Bus Phone: </b></td>\n";
+  print "<td>".substr($bus_phone,0,3)."-".substr($bus_phone,3,3)."-".substr($bus_phone,6,4)."</td>\n";
+  print "</tr>\n";
+}
+
+validator("Business Fax",$fax,"number","10","10","0");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Business Fax: </b></td>\n";
+  print "<td>(<input name='bus_fax_1' type='number' size='3' maxlength='3' align='left' value='".substr($fax,0,3)."'>)&nbsp\n";
+  print "		<input name='bus_fax_2' type='number' size='3' maxlength='3' align='left' value='".substr($fax,3,3)."'>&nbsp - &nbsp\n";
+  print "		<input name='bus_fax_3' type='number' size='4' maxlength='4' align='left' value='".substr($fax,6,4)."'>\n";
+  print "</td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='fax_1' value='".substr($fax,0,3)."'>";
+  print "<input type=hidden name='fax_2' value='".substr($fax,3,3)."'>";
+  print "<input type=hidden name='fax_3' value='".substr($fax,6,4)."'>";
+  print"<tr>\n";
+  print"<td><b>Business Fax: </b></td>\n";
+  print"<td>".substr($fax,0,3)."-".substr($fax,3,3)."-".substr($fax,6,4)."</td>\n";
+  print"</tr>\n";
+}
+
+//Email
+validator("Email",$email,"email");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Email: </b></td>\n";
+  print "<td><input name='email' type='text' maxlength='50' align= 'left' value='".$email."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='email' value=\"".$email."\">";
+  print"<tr>\n";
+  print"<td><b>Email: </b></td>\n";
+  print"<td>".$email."</td>\n";
+  print"</tr>\n";
+}
+
+//Website
+validator("Website",$website,"alphanumeric","4","30","0");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Website: </b></td>\n";
+  print "<td><input name='website' type='text' size='30' maxlength='100' align= 'left' value='".$website."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='website' value=\"".$website."\">";
+  print"<tr>\n";
+  print"<td><b>Website: </b></td>\n";
+  print"<td>".$website."</td>\n";
+  print"</tr>\n";
+}
+
+print "</table>\n";
+
+print "<br><br>";
+
+//CHECK
+if($errCount > 0)
+{
+  print "<input type=hidden name='form_valid' value='0'>";
+  print "<input type=hidden name='form_filled' value='1'>";
+  print "&nbsp&nbsp<input type=submit value='Add Organization'>";
+  print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+  print "</form>";
+}
+else
+{
+  print "<input type=hidden name='form_valid' value='1'>";
+  print "<input type=hidden name='form_filled' value='1'>";
+
+  print "&nbsp&nbsp<input type=submit value='Add Organization'>";
+  print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+  print "</form>";
+}
+print "<br><div align = 'center'>";
+}
+?>
 
 </div>
 </body>
