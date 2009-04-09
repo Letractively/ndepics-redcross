@@ -122,7 +122,7 @@ print "<table>";
 print "    <tr>";
 print "    <td>";
 print "	    <form action=\"addorganization.php\" >";
-print "	    <input type=\"submit\" value=\"Add an organization\">";
+print "	    <input type=\"submit\" value=\"Add an Organization\">";
 print "	    </form>";
 print "    </td>";
     
