@@ -82,6 +82,7 @@ $mobile_phone = $_POST["mobile_phone_1"].$_POST["mobile_phone_2"].$_POST["mobile
 $fax = $_POST["fax_1"].$_POST["fax_2"].$_POST["fax_3"];
 $email = $_POST["email"];
 $im = $_POST["im"];
+$info = $_POST["info"];
 $form_filled = $_POST["form_filled"];
 $form_valid = $_POST["form_valid"];
 
@@ -94,6 +95,7 @@ $city = scrub_input($city);
 $state = scrub_input($state);
 $email = scrub_input($email);
 $im = scrub_input($im);
+$info = scrub_input($info);
 
 print "<form name='finishperson' method='post' action='./addperson3.php' align='left'>";
 
@@ -192,6 +194,13 @@ print "<table>";
   print"<tr>\n";
   print"<td><b>IM: </b></td>\n";
   print"<td>".$im."</td>\n";
+  print"</tr>\n";
+
+//Info
+  print "<input type=hidden name='info' value=\"".$info."\">";
+  print"<tr>\n";
+  print"<td><b>Additional Info: </b></td>\n";
+  print"<td>".$info."</td>\n";
   print"</tr>\n";
 
 print "</table>\n";

@@ -81,6 +81,7 @@ $mobile_phone = $_POST["mobile_phone_1"].$_POST["mobile_phone_2"].$_POST["mobile
 $fax = $_POST["fax_1"].$_POST["fax_2"].$_POST["fax_3"];
 $email = $_POST["email"];
 $im = $_POST["im"];
+$info = $_POST["info"];
 
 
 // Scrub the inputs
@@ -92,6 +93,7 @@ $city = scrub_input($city);
 $state = scrub_input($state);
 $email = scrub_input($email);
 $im = scrub_input($im);
+$info = scrub_input($info);
 
 // Display them for the user to verify
 //Change to pre-populated tables... notify user of errors. Re-direct back to this page if errors exist?
@@ -178,6 +180,12 @@ if(!$form_filled)
 			<td>IM</td>
 			<td> <input name='im' type='text' size='30' maxlength='30' align= 'left'> </td>
 		</tr>
+
+                <tr>
+                      	<td>Additional Information (e.g. Red Cross ID, HAM License No., etc.)</td>
+		        <td><textarea name='info' rows=6 cols=40 align= 'left' valign='top'></textarea></td> 
+
+                </tr>
 		
 	</table>
 
@@ -202,19 +210,20 @@ if(!$form_filled)
 else
 {
   $errCount=0;
-  validator("Salutation",$salutation,"string");
-  validator("First Name", $first_name, "alpha");
-  validator("Last Name",$last_name,"alpha");
-  validator("Street Address",$street_address,"string"); //would like to make alphanumeric_string_punc a data type
-  validator("City",$city,"alpha_space");
-  validator("State",$state,"alpha","2","2");
-  validator("Zip",$zip,"number","5","5");
+  validator("Salutation",$salutation,"string","2","10","0");
+  validator("First Name", $first_name, "alpha","","","0");
+  validator("Last Name",$last_name,"alpha","","","0");
+  validator("Street Address",$street_address,"string","","","0"); //would like to make alphanumeric_string_punc a data type
+  validator("City",$city,"alpha_space","","","0");
+  validator("State",$state,"alpha","2","2","0");
+  validator("Zip",$zip,"number","5","5","","","0");
   validator("Home Phone",$home_phone,"number","10","10","1");
   validator("Work Phone",$work_phone,"number","10","10","0");
   validator("Mobile Phone",$mobile_phone,"number","10","10","0");
   validator("Fax",$fax,"number","10","10","0");
-  validator("Email",$email,"email");
+  validator("Email",$email,"email","","","0");
   validator("IM",$im,"alphanumeric","4","30","0");
+  validator("Additional Info",$info,"string","","","0");
   if(!$messages[0])
     {
       $form_valid = 1;
@@ -233,7 +242,7 @@ else
 
   print "<table>";
 //Salutation
-  validator("Salutation",$salutation,"string");
+  validator("Salutation",$salutation,"string","2","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -293,7 +302,7 @@ else
 }
 
 //Street Address
-validator("Street Address",$street_address,"string");
+validator("Street Address",$street_address,"string","","","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -313,7 +322,7 @@ else
 }
 
 //City
-  validator("City",$city,"alpha_space");
+  validator("City",$city,"alpha_space","","","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -333,7 +342,7 @@ else
 }
 
 //State
-  validator("State",$state,"alpha","2","2");
+  validator("State",$state,"alpha","2","2","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -353,7 +362,7 @@ else
 }
 
 //Zip
-  validator("Zip",$zip,"number","5","5");
+  validator("Zip",$zip,"number","5","5","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -470,7 +479,7 @@ else
 }
 
 //Email
-  validator("Email",$email,"email");
+  validator("Email",$email,"email","","","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -506,6 +515,25 @@ else
   print"<tr>\n";
   print"<td><b>IM: </b></td>\n";
   print"<td>".$im."</td>\n";
+  print"</tr>\n";
+}
+
+validator("Info",$info,"string","","","0");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Additional Info: </b></td>\n";
+  print "<td><input name='info' type='text' size='100' maxlength='100' align= 'left' value='".$info."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='info' value=\"".$info."\">";
+  print"<tr>\n";
+  print"<td><b>Additional Info: </b></td>\n";
+  print"<td>".$info."</td>\n";
   print"</tr>\n";
 }
 

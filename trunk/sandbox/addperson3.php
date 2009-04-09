@@ -73,6 +73,7 @@ $mobile_phone = $_POST["mobile_phone_1"].$_POST["mobile_phone_2"].$_POST["mobile
 $fax = $_POST["fax_1"].$_POST["fax_2"].$_POST["fax_3"];
 $email = $_POST["email"];
 $im = $_POST["im"];
+$info = $_POST["info"];
 
 $organization_id = $_POST["organization_id"];
 $title_in_organization = $_POST["title_in_organization"];
@@ -88,6 +89,7 @@ $city = scrub_input($city);
 $state = scrub_input($state);
 $email = scrub_input($email);
 $im = scrub_input($im);
+$info = scrub_input($info);
 $title_in_organization = scrub_input($title_in_organization);
 $role_in_organization = scrub_input($role_in_organization);
 
@@ -133,10 +135,12 @@ $query = "INSERT INTO  person (salutation ,
 							   work_phone ,
 							   fax ,
 							   email ,
-							   im, log )
+							   im, 
+                                                           additional_info,
+                                                           log )
 		 VALUES (\"".$salutation."\",\"".$first_name."\",\"".$last_name."\",\"".$street_address."\",\"".$city."\",\"".
 					 $state."\",\"".$zip."\",\"".$home_phone."\",\"".$work_phone."\",\"".$fax."\",\"".$email."\",\"".
-					 $im."\",\"".$_SESSION['username'].": " .$tempdate. "\n" .$row['log']."\")";
+					 $im."\",\"".$info."\",\"".$_SESSION['username'].": " .$tempdate. "\n" .$row['log']."\")";
 
 
 $result = mysql_query($query) or die ("Error sending query");
@@ -216,6 +220,12 @@ if( ($row['first_name'] != $first_name) && ($row['last_name'] != $last_name) ) {
 	print "<td><b>IM: </b></td>";
 	print "<td>".$im."</td>";
 	print "</tr>";
+
+	print "<tr>";
+	print "<td><b>Additional Info: </b></td>";
+	print "<td>".$info."</td>";
+	print "</tr>";
+
 	
 print "</table>";
 	$org_query = "DELETE FROM person WHERE person_id = ".$person_id;
@@ -291,6 +301,11 @@ print "<h2>Person Successfully Added: </h2>";
 	print "<tr>";
 	print "<td><b>IM: </b></td>";
 	print "<td>".$im."</td>";
+	print "</tr>";
+
+	print "<tr>";
+	print "<td><b>Additional Info: </b></td>";
+	print "<td>".$info."</td>";
 	print "</tr>";
 	
 print "</table>";
