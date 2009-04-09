@@ -138,14 +138,16 @@ else{
      // print "Organization " .$organization_name." does not exist";
 }
 
-$query = "INSERT INTO detailed_resource (resource_type, description, keyword)
-				 VALUES (\"".$resource_type."\",\"".$resource_description."\",\"".$resource_keyword."\")";
+$tempdate = date("m/d/Y H:i:s");
+$query = "INSERT INTO detailed_resource (resource_type, description, keyword, log)
+				 VALUES (\"".$resource_type."\",\"".$resource_description."\",\"".$resource_keyword."\",\"".$_SESSION['username'].": " .$tempdate. "\n"
+		 .$row['log']."\")";
 
 
 
 //$query = "SELECT organization_id, organization_name, street_address, city FROM organization";
 				 
-				 
+
 $result = mysql_query($query) or die ("Error sending query");
 
 while ($row = mysql_fetch_array($result, MYSQL_ASSOC))

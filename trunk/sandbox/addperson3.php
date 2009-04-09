@@ -121,6 +121,7 @@ $person_id = $row['Auto_increment'];
 
 //
 //Query to be executed
+$tempdate = date("m/d/Y H:i:s");
 $query = "INSERT INTO  person (salutation ,
 							   first_name ,
 							   last_name ,
@@ -132,10 +133,10 @@ $query = "INSERT INTO  person (salutation ,
 							   work_phone ,
 							   fax ,
 							   email ,
-							   im )
+							   im, log )
 		 VALUES (\"".$salutation."\",\"".$first_name."\",\"".$last_name."\",\"".$street_address."\",\"".$city."\",\"".
 					 $state."\",\"".$zip."\",\"".$home_phone."\",\"".$work_phone."\",\"".$fax."\",\"".$email."\",\"".
-					 $im."\")";
+					 $im."\",\"".$_SESSION['username'].": " .$tempdate. "\n" .$row['log']."\")";
 
 
 $result = mysql_query($query) or die ("Error sending query");

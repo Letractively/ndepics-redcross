@@ -121,7 +121,7 @@ $organization_id = $row['Auto_increment'];
 
 //
 //Query to add organization
-
+$tempdate = date("m/d/Y H:i:s");
 $query = "INSERT INTO  organization (organization_name ,
 									 street_address ,
 									 city ,
@@ -131,9 +131,10 @@ $query = "INSERT INTO  organization (organization_name ,
 									 business_phone ,
 									 business_fax ,
 									 email ,
-									 website )
+									 website, log )
 		 VALUES (\"".$organization_name."\",\"".$street_address."\",\"".$city."\",\"".$state."\",\"".$zip."\",\"".
-					 $county."\",\"".$business_phone."\",\"".$business_fax."\",\"".$email."\",\"".$website."\")";
+					 $county."\",\"".$business_phone."\",\"".$business_fax."\",\"".$email."\",\"".$website."\",\"".
+					 $_SESSION['username'].": " .$tempdate. "\n".$row['log']."\")";
 
 $result = mysql_query($query) or die ("Error sending organization query");
 
