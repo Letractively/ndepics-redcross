@@ -66,12 +66,22 @@ $query = "UPDATE	organization
 
 $result = mysql_query($query) or die ("Error sending organization update query");
 
-if($resource_id != "NULL")) {
+if($resource_id != "NULL") {
 	$query = "INSERT INTO resource_listing (resource_id, organization_id) 
 			  VALUES (".$resource_id.",".$organization_id.")";
 			  
 	$result = mysql_query($query) or die ("Error adding resource_listing");
 }
+
+//Log Changes
+$query = "SELECT log FROM organization WHERE organization_id = ".$organization_id;
+$result = mysql_query($query) or die ("Organization Query failed");
+$row = mysql_fetch_assoc($result);
+
+$tempdate = date("m/d/Y H:i:s");
+$query = "UPDATE organization SET log = '" .$_SESSION['username']. ": " .$tempdate. "\n"
+		 .$row['log']. "' WHERE organization_id = ".$organization_id;
+$result = mysql_query($query) or die ("Organization Query failed");
 
 // Redirect back to the organization's information page
 $redirect_url = "./organizationinfo.php?id=".$organization_id;

@@ -40,6 +40,7 @@ if($row > 1) {
 	$_SESSION['valid'] = "valid";
 	$_SESSION['user_id'] = $row['user_id'];
 	$_SESSION['access_level_id'] = $row['access_level_id'];
+	$_SESSION['username'] = $username;
 	$redirect_url = "./home.php";
 	
 }

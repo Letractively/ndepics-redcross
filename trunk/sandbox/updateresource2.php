@@ -40,6 +40,18 @@ $query = "UPDATE	detailed_resource
 
 $result = mysql_query($query) or die ("Error sending resource update query");
 
+//Update Log
+$query = "SELECT log FROM detailed_resource WHERE resource_id = ".$resource_id;
+$result = mysql_query($query) or die ("Resource Log Query failed");
+$row = mysql_fetch_assoc($result);
+
+//Get Date and Time
+$tempdate = date("m/d/Y H:i:s");
+
+$query = "UPDATE detailed_resource SET log = '" .$_SESSION['username']. ": " .$tempdate. "\n"
+		 .$row['log']. "' WHERE resource_id = ".$resource_id;
+$result = mysql_query($query) or die ("Resource Log Update failed");
+
 // Redirect back to the organization's information page
 $redirect_url = "./resourceinfo.php?id=".$resource_id;
 

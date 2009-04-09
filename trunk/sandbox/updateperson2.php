@@ -72,6 +72,19 @@ if ($organization_id != "NULL") {
 	$result = mysql_query($query) or die ("Error adding works_for");
 }
 
+//Update Log
+$query = "SELECT log FROM person WHERE person_id = ".$person_id;
+$result = mysql_query($query) or die ("Person Log Query failed");
+$row = mysql_fetch_assoc($result);
+
+//Get Date and Time
+$tempdate = date("m/d/Y H:i:s");
+
+$query = "UPDATE person SET log = '" .$_SESSION['username']. ": " .$tempdate. "\n"
+		 .$row['log']. "' WHERE person_id = ".$person_id;
+$result = mysql_query($query) or die ("Person Log Update failed");
+
+
 // Redirect back to the organization's information page
 $redirect_url = "./personinfo.php?id=".$person_id;
 
