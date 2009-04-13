@@ -187,7 +187,7 @@ include ("./config/functions.php");
 			print "<tr>";
 			print	"<td><a href=\"./resourceinfo.php?id=".$row['resource_id']."\">".$row['resource_type']."</td>";
 			print	"<td>".$row['description']."</td>";
-			print	"<td>".$row['keywords']."</td>";
+			print	"<td>".$row['keyword']."</td>";
 			print "</tr>";
 		}
 		
