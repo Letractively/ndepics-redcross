@@ -1,0 +1,49 @@
+#Minutes for 4/9/2009 meeting
+
+= Last Week Reports =
+
+==Mike== 
+	* got flat file from red cross
+     	* Uploaded 536 organization
+     	* Uploaded people
+     	* Manually added resources
+
+     * Need to find what the links are
+
+==Matt== 
+	* Changed validation
+     	* Updated which fields were required
+     	* With Chris, got organization validation done
+
+==Mark== 
+	* Logging completed for all datatypes
+     	* Still need to provide a way for people to see it
+       	  * download link
+
+==General Updates==
+
+       Data: 
+	* there are 8 martins, 10 mcdonalds, how do we tell them apart?
+        * Address is different, phone is, but thats it
+	
+	* Potentially go to CSS in the future
+       	* *when changing the database make sure you do it to BOTH test and respon*
+
+==To Do==
+	===All===
+	  * Create documentation for database
+	    * Technical documentation for future EPICS teams
+	    * Finalize manual for Red Cross
+	    * Press release type document
+	      * different lengths for different medians
+	  * Pictures for "documentation"
+	===Mark===
+	  * create method for viewing/downloading logs
+	===Mike===
+	  * Talk to Red Cross about how to link things within the flat file
+	  * Continue adding data
+	===Brian===
+	  * Unlinking of organizations to resources and people to orgs
+	===Juniors===
+	  * PowerPoint to present to 'recruits'
+	  * Check for IE6 compatibility
