@@ -160,7 +160,13 @@ include ("./config/functions.php");
               print $rows['statement_of_understanding'];
 		
 		mysql_free_result($result);
-		
+
+		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+			print	"<div align = 'center'>";
+			print	"<a href=\"./viewlog.php?id=".$organization_id."&type=organization\">View Log</a><br>";
+			print	"</div>";
+		}		
 		
 		print "<center><h2>Resources</h2></center>";
 		
@@ -194,7 +200,6 @@ include ("./config/functions.php");
 			print "</table>";
 			
 		mysql_free_result($result);
-		
 		
 		//
 		// Display the people that are connected to an organization

@@ -138,8 +138,12 @@ include ("./config/functions.php");
 		
 		mysql_free_result($result);
 		
-		
-		
+		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+			print	"<div align = 'center'>";
+			print	"<a href=\"./viewlog.php?id=".$person_id."&type=person\">View Log</a><br>";
+			print	"</div>";
+		}
 		//
 		// Display the organizations that are connected to this person
 		print "<center><h2>Associated to these Organizations</h2></center>";
