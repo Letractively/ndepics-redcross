@@ -76,9 +76,9 @@ if($resource_id != "NULL") {
 
 if($resourceremove_id != "NULL") {
 $query = "DELETE	
-		  FROM		detailed_resource
+		  FROM		resource_listing 
 		  WHERE		resource_id = ".$resourceremove_id."
-		  LIMIT		1";
+		  AND		organization_id = ".$organization_id."";
 		  
 $result = mysql_query($query) or die ("Deletion Query failed, please retry.");
 }

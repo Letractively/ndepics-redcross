@@ -53,7 +53,6 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 
 <div align="center">
 	<h1>Add Resource</h1>
-	<form>
 </div>
 
 <?
