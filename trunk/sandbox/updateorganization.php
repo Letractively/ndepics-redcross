@@ -8,6 +8,7 @@ session_start();
         header( 'Location: ./index.php' );
  }
 
+
 include ("config/dbconfig.php");
 include ("config/opendb.php");
 include("config/functions.php");
@@ -188,6 +189,35 @@ print "&nbsp&nbsp or &nbsp&nbsp";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Add New Resource\" 
 
 ONCLICK=\"window.location.href='./addresource1.php'\">";
+
+        print "<br>Select a Resource to Remove From Organization: ";
+
+$query = "SELECT	dr.* 
+			FROM		detailed_resource dr
+			WHERE		 EXISTS (
+							SELECT  rl.*
+							FROM    resource_listing rl 
+							WHERE	rl.resource_id = dr.resource_id
+							AND	rl.organization_id = ".$organization_id.")";
+
+$result = mysql_query($query) or die("Could not access resources");
+
+if( mysql_num_rows($result) < 1 )
+{
+        print "There are no resources to be removed<br>";
+}
+else
+{
+        print "<select name=\"resourceremove_id\" onchange=\"showResource(this.value)\">";
+        print "<option value=\"NULL\"> </option>";
+
+        while( $row = mysql_fetch_assoc($result) )
+        {
+                print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
+        }
+
+        print "</select>";
+}
 
 print "<br><br><input type='submit' value='Update Organization'>";
 print"</form>";

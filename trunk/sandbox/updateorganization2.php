@@ -35,7 +35,7 @@ $business_fax		= $_POST["bus_fax_1"].$_POST["bus_fax_2"].$_POST["bus_fax_3"];
 $email				= $_POST["email"];
 $website			= $_POST["website"];
 $resource_id 		= $_POST["resource_id"];
-
+$resourceremove_id 	= $_POST["resourceremove_id"];
 
 //print $organization_name."<br>";
 //print $street_address."<br>";
@@ -72,6 +72,17 @@ if($resource_id != "NULL") {
 			  
 	$result = mysql_query($query) or die ("Error adding resource_listing");
 }
+
+
+if($resourceremove_id != "NULL") {
+$query = "DELETE	
+		  FROM		detailed_resource
+		  WHERE		resource_id = ".$resourceremove_id."
+		  LIMIT		1";
+		  
+$result = mysql_query($query) or die ("Deletion Query failed, please retry.");
+}
+
 
 //Log Changes
 $query = "SELECT log FROM organization WHERE organization_id = ".$organization_id;
