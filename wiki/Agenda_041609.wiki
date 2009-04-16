@@ -1,0 +1,52 @@
+#summary Agenda for weekly meeting on April 16, 2009
+
+= Agenda =
+
+== Housekeeping ==
+  * Minutes Taker
+
+== Follow Up from Last Week's Meeting ==
+  * Progress on last week's assignments
+     * *_All_*
+       * Create documentation for database
+         * Technical documentation for future EPICS teams
+         * Finalize manual for Red Cross
+         * Press release type document
+           * different lengths for different medians
+       * Pictures for "documentation"
+     * *_Mark_*
+       * create method for viewing/downloading logs
+     * *_Mike_*
+       * Talk to Red Cross about how to link things within the flat file
+       * Continue adding data
+     * *_Bryan_*
+       * Unlinking of organizations to resources and people to orgs
+     * *_Juniors_*
+       * PowerPoint to present to 'recruits'
+       * Check for IE6 compatibility
+                                          
+
+== Meeting Notes ==
+=== Areas of Work ===
+  # Testing the website
+     * Find, report, and fix bugs.
+     * Fully functional site to be given to Red Cross - I put what was in the svn 2 days ago up so that Jackie/Rebekah could start playing with it since we will only be here another 2 weeks.
+  # Printer friendly results page
+  # Design of site
+
+=== Documentation ===
+  * Database Design (ER Diagram, Schema, etc.)
+      * Rational behind design
+  * Site Map
+  * PHPAdmin users manual
+  * Useful websites --> logins/passwords
+  * File structure and basic description of how actual .php files are set up
+  * Continue with Bryan's User's Manual for the actual website
+
+=== Future of the Project ===
+  * Recruiting Powerpoint
+  * Initial feasibility study for next semester
+
+=== Questions/Comments? ===
+
+== No meeting next week - We will meet again April 30 ==
