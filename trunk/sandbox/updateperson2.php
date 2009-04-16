@@ -41,6 +41,8 @@ $im				= $_POST['im'];
 $organization_id = $_POST["organization_id"];
 $title_in_organization = $_POST["title_in_organization"];
 $role_in_organization = $_POST["role_in_organization"];
+$organizationremove_id = $_POST["organizationremove_id"];
+
 
 //
 //Query to update organization
@@ -71,6 +73,16 @@ if ($organization_id != "NULL") {
 			  
 	$result = mysql_query($query) or die ("Error adding works_for");
 }
+
+if(organizationremove_id != "NULL") {
+$query = "DELETE	
+		  FROM		works_for 
+		  WHERE		person_id = ".$person_id."
+		  AND		organization_id = ".$organizationremove_id."";
+		  
+$result = mysql_query($query) or die ("Deletion Query failed, please retry.");
+}
+
 
 //Update Log
 $query = "SELECT log FROM person WHERE person_id = ".$person_id;

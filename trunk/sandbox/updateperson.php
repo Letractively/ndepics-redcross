@@ -220,7 +220,29 @@ else
 	}
 }
 print "</select>";
+
+print "<p>";
+
+print "<b>Remove this person from an organization:</b><br><br>";
+print "<select name=\"organizationremove_id\" onchange=\"showOrganization(this.value)\">";
+  
+$query = "SELECT	o.* 
+			FROM		organization o
+			WHERE		EXISTS (
+							SELECT  wf.*
+							FROM    works_for wf 
+							WHERE	wf.organization_id = o.organization_id
+							AND		wf.person_id = ".$person_id.")";
+
+$result = mysql_query($query) or die("Could not access resources");
+	print "<option value=\"NULL\"> </option>";
 	
+	while( $row = mysql_fetch_assoc($result) )
+	{
+		print "<option value=\"".$row['organization_id']."\">".$row['organization_name']."</option>";
+	}
+print "</select>";
+
 print "<br><br><input type='submit' value='Update Person'>\n";
 print "</form></center>\n";
 
