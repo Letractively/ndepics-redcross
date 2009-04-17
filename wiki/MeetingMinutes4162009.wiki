@@ -1,0 +1,59 @@
+= Minutes 4/16/09 =
+
+== What We Worked On This Week ==
+
+=== Mike ===
+  * Put most of the data into the database for the Red Cross.
+  * Talked to Rebecca about the multiple names problem.  She said to leave it as it is right now (they will distinguish the locations based on address/phone number).
+  * Put what was on the SVN onto the main disaster site.  Communicated with Rebecca and Jackie so they can look at it and see if anything is broken.
+  * Found two errors (Mark fixed?):
+  ** Adding a resource (just reloads page)
+  ** General person search doesn't return anything (just a white screen)
+
+=== Mark ===
+  * Logging is done
+  ** Can see log through person, organization, or resource.
+  ** Displays user/time
+  ** Most recent changes listed at top of log
+
+=== Brian ===
+  * Unlinking completed
+  * Website does not have the ability to change a person's role in the organization but there is a work around for right now.
+
+=== Juniors ===
+  * ER Diagram for next semester
+  ** Link from disaster - part of sub domain
+  * Fixed the center-alignment on the search pages
+  * Decided to stick with HTML, CSS does not seem necessary/not fully supported by IE.
+  * PowerPoint created to show underclassmen
+
+== What Needs To Be Done ==
+
+  * Conference call with the Red Cross?
+  ** Only if they need help
+
+=== Everyone ===
+  * Test
+  ** Run through every single possible function, try to break things
+  ** Run tests on Development
+  ** Post to issues - if you know how to fix the problem, fix it.  If you don't, send an email to the group.
+
+  * Contact professors about presentation to underclassmen
+  ** Juniors contact Stan Yoder (Logic Design)
+  ** Seniors present to freshmen class
+
+  * Need to work on writing one paragraph write-up
+
+=== Mike ===
+  * Copy the database over to the testdb
+  * Document database design (make sure everything matches)
+  * Round out site map
+
+=== Mark ===
+  * Document Google Code details
+
+=== Brian ===
+  * Continue to work on the user's manual
+
+=== Juniors ===
+  * Document how to use the oneeach site (all the backend information)
