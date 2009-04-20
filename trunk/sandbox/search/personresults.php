@@ -97,7 +97,7 @@ if(isset($_GET['start'])) {
 	$search_result_start = 0;
 }
  
-print "<h3><center>"Searching for persons matching: \"".$search."\"</center></h3>";
+print "<h3><center>Searching for persons matching: \"".$search."\"</center></h3>";
 
 $table = "person";
 
