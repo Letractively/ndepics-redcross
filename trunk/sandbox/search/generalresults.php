@@ -216,7 +216,7 @@ print "<h3><center>People</center></h3>";
 		
 		print "<br>";
 	}
-	print "</center>";
+print "</center>";
 
 	//
 	// Print the results of the search
@@ -242,7 +242,7 @@ print "<h3><center>People</center></h3>";
 	while ( $row = mysql_fetch_assoc($result) ) {
 	 
 		print "<tr>";
-		print "<td>";
+		print "<td align=left>";
 		print "<b><a href=\"../personinfo.php?id=".$row['person_id']."\">".
 			   //$row['salutation']." ".$row['first_name']." ".$row['last_name']."</a></b><br>".
 			   check_name($row['salutation'], $row['first_name'], $row['last_name'])."</a></b><br>".
@@ -281,7 +281,7 @@ print "<h3><center>People</center></h3>";
 	}
 	
 	if ($num_results == 0) {
-		print "<br> Sorry, your search did not return any matching organizations.<br>";
+		print "<br align=left> Sorry, your search did not return any matching organizations.<br>";
 	}	
 	print "</table>";
 	
@@ -459,7 +459,7 @@ print "<h3><center>People</center></h3>";
 	while ( $row = mysql_fetch_assoc($result) ) {
 	 
 		print "<tr>";
-		print "<td>";
+		print "<td align=left>";
 		print "<b><a href=\"../organizationinfo.php?id=".$row['organization_id']."\">".
 			   $row['organization_name']."</a></b><br>".
 			   $row['street_address']."<br>".
@@ -660,7 +660,7 @@ print "<h3><center>People</center></h3>";
 	while ( $row = mysql_fetch_assoc($result) ) {
 	 
 		print "<tr>";
-		print "<td>";
+		print "<td align=left>";
 		print "<b><a href=\"../organizationinfo.php?id=".$row['organization_id']."\">".
 			   $row['organization_name']."</a></b><br>".
 			   $row['street_address']."<br>".
@@ -698,7 +698,7 @@ print "<h3><center>People</center></h3>";
 	}
 	
 	if ($num_results == 0) {
-		print "<br> Sorry, your search did not return any matching organizations.<br>";
+		print "<br> Sorry, your search did not return any matching organizations.</br>";
 	}
 	print "</table>";
 	
