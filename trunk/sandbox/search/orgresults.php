@@ -320,12 +320,12 @@ print "</tr>";
 
 }
 
+print "</table>";
+
 if ($num_results == 0) {
 	print "<br> Sorry, your search did not return any matching organizations.<br>";
 }
 
-print "</table>";
-	
 //
 // Print the links to different results pages
 print "<center>";

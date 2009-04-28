@@ -107,7 +107,7 @@ else {	$p_search_result_start = 0; }
 
 
 
-print "<h3><center>General Search for matches to: \"".$search."\"</h3>";
+print "<h3><center>General Search for matches to: \"".$search."\"</center></h3>";
 //print "Search is: ".$search."<br>";
 	
 /*
@@ -280,10 +280,10 @@ print "</center>";
 	
 	}
 	
+	print "</table>";
 	if ($num_results == 0) {
 		print "<br align=left> Sorry, your search did not return any matching organizations.<br>";
 	}	
-	print "</table>";
 	
 	//
 	// Print the links to different results pages
@@ -494,11 +494,11 @@ print "</center>";
 	print "</tr>";
 	
 	}
-	
+	print "</table>";
 	if ($num_results == 0) {
 		print "<br> Sorry, your search did not return any matching organizations.<br>";
 	} 
-	print "</table>";
+	
 	
 	//
 	// Print the links to different results pages
@@ -697,10 +697,10 @@ print "</center>";
 	
 	}
 	
+	print "</table>";
 	if ($num_results == 0) {
 		print "<br> Sorry, your search did not return any matching organizations.</br>";
 	}
-	print "</table>";
 	
 	//
 	// Print the links to different results pages
