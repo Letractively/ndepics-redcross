@@ -98,32 +98,32 @@ print "<p align=center><b>Change the desired fields and press 'Update Organizati
         print "<table>\n";
                 print "<tr>\n";
                 print "<td><b>Organization Name: </b></td>\n";
-                print "<td><input name='organization_name' type='text' maxlength='50' align= 'left' value='".$organization_name."'></td>\n";
+                print "<td><input name='organization_name' type='text' maxlength='50' align= 'left' value=\"".$organization_name."\"></td>\n";
                 print "</tr>\n";
 
                 print "<tr>\n";
                 print "<td><b>Street Address: </b></td>\n";
-                print "<td><input name='street_address' type='text' maxlength='50' align= 'left' value='".$street_address."'></td>\n";
+                print "<td><input name='street_address' type='text' maxlength='50' align= 'left' value=\"".$street_address."\"></td>\n";
                 print "</tr>\n";
 
                 print "<tr>\n";
                 print "<td><b>City: </b></td>\n";
-                print "<td><input name='city' type='text' maxlength='30' align= 'left' value='".$city."'></td>\n";
+                print "<td><input name='city' type='text' maxlength='30' align= 'left' value=\"".$city."\"></td>\n";
                 print "</tr>\n";
 
                 print "<tr>\n";
                 print "<td><b>State: </b></td>\n";
-                print "<td><input name='state' type='text' size='2' maxlength='2' align= 'left' value='".$state."'></td>\n";
+                print "<td><input name='state' type='text' size='2' maxlength='2' align= 'left' value=\"".$state."\"></td>\n";
                 print "</tr>\n";
 
                 print "<tr>\n";
                 print "<td><b>Zip:</b></td>\n";
-                print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value='".$zip."'></td>\n";
+                print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value=\"".$zip."\"></td>\n";
                 print "</tr>\n";
 
                 print "<tr>\n";
                 print "<td><b>County: </b></td>\n";
-                print "<td><input name='county' type='text' maxlength='20' align= 'left' value='".$county."'></td>\n";
+                print "<td><input name='county' type='text' maxlength='20' align= 'left' value=\"".$county."\"></td>\n";
                 print "</tr>\n";
 
                 print "<tr>\n";
@@ -144,12 +144,12 @@ print "<p align=center><b>Change the desired fields and press 'Update Organizati
 
                 print "<tr>\n";
                 print "<td><b>Email: </b></td>\n";
-                print "<td><input name='email' type='text' maxlength='50' align= 'left' value='".$email."'></td>\n";
+                print "<td><input name='email' type='text' maxlength='50' align= 'left' value=\"".$email."\"></td>\n";
                 print "</tr>\n";
 
                 print "<tr>\n";
                 print "<td><b>Website</b></td>\n";
-                print "<td><input name='website' type='text' maxlength='100' align= 'left' value='".$website."'></td>\n";
+                print "<td><input name='website' type='text' maxlength='100' align= 'left' value=\"".$website."\"></td>\n";
                 print "</tr>\n";
 
         print "</table>\n";

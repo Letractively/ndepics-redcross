@@ -23,19 +23,19 @@ include_once ("config/functions.php");
 
 //
 // Get the variables from the previous page to be updated in database
-$organization_id	= $_POST["organization_id"];
-$organization_name	= $_POST["organization_name"];
-$street_address		= $_POST["street_address"];
-$city				= $_POST["city"];
-$state				= $_POST["state"];
-$zip				= $_POST["zip"];
-$county				= $_POST["county"];
-$business_phone		= $_POST["bus_phone_1"].$_POST["bus_phone_2"].$_POST["bus_phone_3"];
-$business_fax		= $_POST["bus_fax_1"].$_POST["bus_fax_2"].$_POST["bus_fax_3"];
-$email				= $_POST["email"];
-$website			= $_POST["website"];
-$resource_id 		= $_POST["resource_id"];
-$resourceremove_id 	= $_POST["resourceremove_id"];
+$organization_id	= mysql_real_escape_string($_POST["organization_id"]);
+$organization_name	= mysql_real_escape_string($_POST["organization_name"]);
+$street_address		= mysql_real_escape_string($_POST["street_address"]);
+$city				= mysql_real_escape_string($_POST["city"]);
+$state				= mysql_real_escape_string($_POST["state"]);
+$zip				= mysql_real_escape_string($_POST["zip"]);
+$county				= mysql_real_escape_string($_POST["county"]);
+$business_phone		= mysql_real_escape_string($_POST["bus_phone_1"]).mysql_real_escape_string($_POST["bus_phone_2"]).mysql_real_escape_string($_POST["bus_phone_3"]);
+$business_fax		= mysql_real_escape_string($_POST["bus_fax_1"]).mysql_real_escape_string($_POST["bus_fax_2"]).mysql_real_escape_string($_POST["bus_fax_3"]);
+$email				= mysql_real_escape_string($_POST["email"]);
+$website			= mysql_real_escape_string($_POST["website"]);
+$resource_id 		= mysql_real_escape_string($_POST["resource_id"]);
+$resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);
 
 //print $organization_name."<br>";
 //print $street_address."<br>";

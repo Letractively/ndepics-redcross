@@ -97,37 +97,37 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 	print "<table>\n";
 		print "<tr>\n";
 		print "<td><b>Salutation (Mr., Mrs., etc.): </b></td>\n";
-		print "<td><input name='salutation' type='text' size='10' maxlength='10' align= 'left' value='".$salutation."'></td>\n";
+		print "<td><input name='salutation' type='text' size='10' maxlength='10' align= 'left' value=\"".$salutation."\"></td>\n";
 		print "</tr>\n";
 		
 		print "<tr>\n";
 		print "<td><b>First Name: </b></td>\n";
-		print "<td><input name='first_name' type='text' maxlength='30' align= 'left' value='".$first_name."'></td>\n";
+		print "<td><input name='first_name' type='text' maxlength='30' align= 'left' value=\"".$first_name."\"></td>\n";
 		print "</tr>\n";
 		
 		print "<tr>\n";
 		print "<td><b>Last Name: </b></td>\n";
-		print "<td><input name='last_name' type='text' maxlength='30' align= 'left' value='".$last_name."'></td>\n";
+		print "<td><input name='last_name' type='text' maxlength='30' align= 'left' value=\"".$last_name."\"></td>\n";
 		print "</tr>\n";
 
 		print "<tr>\n";
 		print "<td><b>Street Address: </b></td>\n";
-		print "<td><input name='street_address' type='text' size='30' maxlength='50' align= 'left' value='".$street_address."'></td>\n";
+		print "<td><input name='street_address' type='text' size='30' maxlength='50' align= 'left' value=\"".$street_address."\"></td>\n";
 		print "</tr>\n";
 
 		print "<tr>\n";
 		print "<td><b>City: </b></td>\n";
-		print "<td><input name='city' type='text' size='30' maxlength='30' align= 'left' value='".$city."'></td>\n";
+		print "<td><input name='city' type='text' size='30' maxlength='30' align= 'left' value=\"".$city."\"></td>\n";
 		print "</tr>\n";
 		
 		print "<tr>\n";
 		print "<td><b>State: </b></td>\n";
-		print "<td><input name='state' type='text' size='2' maxlength='2' align= 'left' value='".$state."'></td>\n";
+		print "<td><input name='state' type='text' size='2' maxlength='2' align= 'left' value=\"".$state."\"></td>\n";
 		print "</tr>\n";
 		
 		print "<tr>\n";
 		print "<td><b>Zip:</b></td>\n";
-		print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value='".$zip."'></td>\n";
+		print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value=\"".$zip."\"></td>\n";
 		print "</tr>\n";
 		
 		print "<tr>\n";
@@ -164,12 +164,12 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 		
 		print "<tr>\n";
 		print "<td><b>Email: </b></td>\n";
-		print "<td><input name='email' type='text' maxlength='50' align= 'left' value='".$email."'></td>\n";
+		print "<td><input name='email' type='text' maxlength='50' align= 'left' value=\"".$email."\"></td>\n";
 		print "</tr>\n";
 		
 		print "<tr>\n";
 		print "<td><b>IM: </b></td>\n";
-		print "<td><input name='im' type='text' size='30' maxlength='30' align= 'left' value='".$im."'></td>\n";
+		print "<td><input name='im' type='text' size='30' maxlength='30' align= 'left' value=\"".$im."\"></td>\n";
 		print "</tr>\n";
 		
 	print "</table>\n";
@@ -190,6 +190,7 @@ print "<select name=\"role_in_organization\">";
 print	"<option value=\"volunteer\">Volunteer with organization</option>";
 print	"<option value=\"open\">Open the facility</option>";
 print	"<option value=\"authorize\">Authorize the opening of the facility</option>";
+print	"<option value=\"contact\">Main Organization Contact</option>";
 print "</select>";
 print "<p>";
 

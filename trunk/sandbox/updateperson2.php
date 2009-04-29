@@ -24,23 +24,23 @@ include_once ("config/functions.php");
 //
 // Get the variables from the previous page to be updated in database
 $person_id		= $_POST['person_id'];
-$salutation		= $_POST['salutation'];
-$first_name		= $_POST['first_name'];
-$last_name		= $_POST['last_name'];
-$street_address = $_POST['street_address'];
-$city			= $_POST['city'];
-$state			= $_POST['state'];
-$zip			= $_POST['zip'];
+$salutation		= mysql_real_escape_string($_POST['salutation']);
+$first_name		= mysql_real_escape_string($_POST['first_name']);
+$last_name		= mysql_real_escape_string($_POST['last_name']);
+$street_address = mysql_real_escape_string($_POST['street_address']);
+$city			= mysql_real_escape_string($_POST['city']);
+$state			= mysql_real_escape_string($_POST['state']);
+$zip			= mysql_real_escape_string($_POST['zip']);
 $home_phone		= $_POST['home_phone_1'].$_POST['home_phone_2'].$_POST['home_phone_3'];
 $work_phone		= $_POST['work_phone_1'].$_POST['work_phone_2'].$_POST['work_phone_3'];
 $mobile_phone	= $_POST['mobile_phone_1'].$_POST['mobile_phone_2'].$_POST['mobile_phone_3'];
 $fax			= $_POST['fax'];
-$email			= $_POST['email'];
-$im				= $_POST['im'];
+$email			= mysql_real_escape_string($_POST['email']);
+$im				= mysql_real_escape_string($_POST['im']);
 
 $organization_id = $_POST["organization_id"];
-$title_in_organization = $_POST["title_in_organization"];
-$role_in_organization = $_POST["role_in_organization"];
+$title_in_organization = mysql_real_escape_string($_POST["title_in_organization"]);
+$role_in_organization = mysql_real_escape_string($_POST["role_in_organization"]);
 $organizationremove_id = $_POST["organizationremove_id"];
 
 
