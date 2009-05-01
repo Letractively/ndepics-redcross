@@ -134,6 +134,8 @@ $q=substr($q,0,(strLen($q)-3));
 $query = '';
 $query = "SELECT * 
 		  FROM ".$table." where".$q;
+
+$query .= "ORDER BY last_name";
 		  
 //print "QUERY: ".$query."\n";
 

@@ -176,7 +176,8 @@ $_SESSION['detailed_search_county'] = '';
 		print "<td>Select a Resource: </td>";
   
 		$query = "Select * from detailed_resource";
-
+		$query .= "ORDER BY resource_type";
+		
 		$result = mysql_query($query) or die("Could not access resources");
 
 		if( mysql_num_rows($result) < 1 )

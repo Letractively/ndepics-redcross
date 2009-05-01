@@ -164,7 +164,8 @@ $query = "SELECT	dr.*
 							SELECT  rl.*
 							FROM    resource_listing rl 
 							WHERE	rl.resource_id = dr.resource_id
-							AND	rl.organization_id = ".$organization_id.")";
+							AND	rl.organization_id = ".$organization_id.")
+			ORDER BY dr.resource_type";
 
 $result = mysql_query($query) or die("Could not access resources");
 

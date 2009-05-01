@@ -204,6 +204,7 @@ $query = "SELECT	o.*
 							FROM    works_for wf 
 							WHERE	wf.organization_id = o.organization_id
 							AND		wf.person_id = ".$person_id.")";
+$query .= "ORDER BY o.organization_name";
 
 $result = mysql_query($query) or die("Could not access resources");
 
@@ -234,6 +235,7 @@ $query = "SELECT	o.*
 							FROM    works_for wf 
 							WHERE	wf.organization_id = o.organization_id
 							AND		wf.person_id = ".$person_id.")";
+$query .= "ORDER BY o.organization_name";
 
 $result = mysql_query($query) or die("Could not access resources");
 	print "<option value=\"NULL\"> </option>";

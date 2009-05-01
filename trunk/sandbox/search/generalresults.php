@@ -154,6 +154,8 @@ print "<h3><center>People</center></h3>";
 	$query = "SELECT * 
 			  FROM ".$table." where".$q;
 			  
+	$query .= "ORDER BY last_name";
+	
 	//print "QUERY: ".$query."\n";
 	
 /*
@@ -371,6 +373,7 @@ print "</center>";
 	
 	$query = "SELECT * 
 			  FROM ".$table." where".$q;
+	$query .= "ORDER BY organization_name";
 			  
 	//print "QUERY: ".$query."\n";
 
@@ -573,6 +576,8 @@ print "</center>";
 	}
 	
 	if($and) { $query .= ")"; }
+
+	$query .= "ORDER BY O.organization_name";
 
 /*
  *

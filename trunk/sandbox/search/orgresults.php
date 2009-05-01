@@ -143,7 +143,8 @@ if($search_type == "organization") {
 	$query = '';
 	$query = "SELECT * 
 			  FROM ".$table." where".$q;
-			  
+	$query .= "ORDER BY organization_name";
+	  
 	//print $query."\n";
 				  
 }
@@ -199,6 +200,8 @@ elseif($search_type == "detailed_organization") {
 	}
 	
 	$query .= " )";
+
+	$query .= "ORDER BY organization_name";
 
 } // end building query based on organization search
 

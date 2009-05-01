@@ -134,6 +134,7 @@ if($search != '') {
 
 if($and) { $query .= ")"; }
 
+$query .= "ORDER BY O.organization_name";
 				
 //
 // Execute Query
