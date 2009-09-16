@@ -13,7 +13,7 @@ session_start();
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
 // Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
+//  Spring 2009
 //
 // personinfo.php - Page to display information about a given person;
 // ****************************
