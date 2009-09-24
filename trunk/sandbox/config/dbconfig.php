@@ -10,8 +10,8 @@
 //****************************
 
 $dbhost = 'localhost';
-$dbuser = 'disaster_respon';
+$dbuser = 'disaster_testdb';
 $dbpass = 'NDepics';
-$dbname = 'disaster_respon';
+$dbname = 'disaster_testdb';
 
 ?>
