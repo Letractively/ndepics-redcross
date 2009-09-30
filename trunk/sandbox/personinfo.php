@@ -133,7 +133,7 @@ include ("./config/functions.php");
 		print		 "Work Phone:  ".print_phone($row['work_phone'])."<br>";
 		print		 "Mobile Phone:  ".print_phone($row['mobile_phone'])."<br>";
 		print	     "Fax:  ".print_phone($row['fax'])."<br>";
-		print		 "Email: ".$row['email']."<br>";
+		print		 "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
 		print		 "IM: ".$row['im']."<br>";
 		
 		mysql_free_result($result);

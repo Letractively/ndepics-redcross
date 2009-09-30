@@ -154,8 +154,8 @@ include ("./config/functions.php");
 		print		 $row['county']."<br>";
 		print		 "Business Phone:  ".print_phone($row['business_phone'])."<br>";
 		print	     "Business Fax: ".print_phone($row['business_fax'])."<br>";
-		print		 "Email: ".$row['email']."<br>";
-		print		 "Website: ".$row['website']."<br>";
+		print		 "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
+		print		 "Website: <a href=\"".$row['website']."\">".$row['website']."</a><br>";
                 print "Statement of Understanding: " .$rows['date_of_contract'];
               print $rows['statement_of_understanding'];
 		

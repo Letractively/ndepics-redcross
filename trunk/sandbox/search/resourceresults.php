@@ -108,14 +108,17 @@ $query =	  "SELECT	*
 
 if($resource_id != "NULL") {
 
-	$resource_query = "SELECT	resource_type
+	$resource_query = "SELECT	resource_type, description, keyword
 					   FROM		detailed_resource
 					   WHERE	resource_id = ".$resource_id;
 					   
 	$resource_result = mysql_query($resource_query) or die ("Couldn't get resource name");
 	$resource_row = mysql_fetch_assoc($resource_result);
 	
-	print "<h3><center>Searching for organizations with the resource: ".$resource_row['resource_type']."</center></h3>";
+	print "<h3><center>Searching for organizations with the resource: ".$resource_row['resource_type']."</center></h3>\n";
+	print "<center><table border=\"\1\"><tr><th>Type of Resource</th><th>Description</th><th>Keyword(s)</th></tr>\n";
+	print "<td>".$resource_row['resource_type']."</td><td>".$resource_row['description']."</td><td>".$resource_row['keyword']."</td></tr>";
+	print "</table></center><br />\n";	
 	$and = 1;
 	$query .=	" AND (RL.resource_id = ".$resource_id;
 }

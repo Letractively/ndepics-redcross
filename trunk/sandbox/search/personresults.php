@@ -227,7 +227,7 @@ while ( $row = mysql_fetch_assoc($result) ) {
 		   //$row['city'].", ".$row['state']." ".$row['zip']."<br>
 		   check_address2( $row['city'], $row['state'], $row['zip'])."<br>
 		   Home:  ".print_phone($row['home_phone'])."<br>
-		   e-mail:  ".$row['email']."<br>";
+		   e-mail:  <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
 	print "</td>";
 			  
 	//
