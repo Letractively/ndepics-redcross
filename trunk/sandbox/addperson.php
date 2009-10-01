@@ -413,9 +413,9 @@ if($messages[$errCount])
   $errCount++;
   print "<tr>\n";
   print "<td><b>Work Phone: </b></td>\n";
-  print "<td>(<input name='home_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($work_phone,0,3)."'>)&nbsp\n";
-  print "		<input name='home_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($work_phone,3,3)."'>&nbsp - &nbsp\n";
-  print "		<input name='home_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($work_phone,6,4)."'>\n";
+  print "<td>(<input name='work_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($work_phone,0,3)."'>)&nbsp\n";
+  print "		<input name='work_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($work_phone,3,3)."'>&nbsp - &nbsp\n";
+  print "		<input name='work_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($work_phone,6,4)."'>\n";
   print "</td>\n";
   print "</tr>\n";
 }
@@ -437,9 +437,9 @@ if($messages[$errCount])
   $errCount++;
   print "<tr>\n";
   print "<td><b>Mobile Phone: </b></td>\n";
-  print "<td>(<input name='home_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($mobile_phone,0,3)."'>)&nbsp\n";
-  print "		<input name='home_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($mobile_phone,3,3)."'>&nbsp - &nbsp\n";
-  print "		<input name='home_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($mobile_phone,6,4)."'>\n";
+  print "<td>(<input name='mobile_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($mobile_phone,0,3)."'>)&nbsp\n";
+  print "		<input name='mobile_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($mobile_phone,3,3)."'>&nbsp - &nbsp\n";
+  print "		<input name='mobile_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($mobile_phone,6,4)."'>\n";
   print "</td>\n";
   print "</tr>\n";
 }
@@ -547,16 +547,13 @@ if($errCount > 0)
   print "<input type=hidden name='form_valid' value='0'>";
   print "<input type=hidden name='form_filled' value='1'>";
   print "&nbsp&nbsp<input type=submit value='Continue'>";
-  print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
   print "</form>";
 }
 else
 {
   print "<input type=hidden name='form_valid' value='1'>";
   print "<input type=hidden name='form_filled' value='1'>";
-
   print "&nbsp&nbsp<input type=submit value='Continue'>";
-  print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
   print "</form>";
 }
 print "<br><div align = 'center'>";

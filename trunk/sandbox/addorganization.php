@@ -218,7 +218,7 @@ else
 }
 
 //Fisrt Name
-validator("Street Address", $street_address, "string");
+validator("Street Address", $street_address, "string","1","100","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -259,7 +259,7 @@ else
 }
 
 //County
-validator("County",$county,"string");
+validator("County",$county,"string","1","50","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -358,9 +358,9 @@ if($messages[$errCount])
 }
 else
 {
-  print "<input type=hidden name='fax_1' value='".substr($fax,0,3)."'>";
-  print "<input type=hidden name='fax_2' value='".substr($fax,3,3)."'>";
-  print "<input type=hidden name='fax_3' value='".substr($fax,6,4)."'>";
+  print "<input type=hidden name='bus_fax_1' value='".substr($fax,0,3)."'>";
+  print "<input type=hidden name='bus_fax_2' value='".substr($fax,3,3)."'>";
+  print "<input type=hidden name='bus_fax_3' value='".substr($fax,6,4)."'>";
   print"<tr>\n";
   print"<td><b>Business Fax: </b></td>\n";
   print"<td>".substr($fax,0,3)."-".substr($fax,3,3)."-".substr($fax,6,4)."</td>\n";
@@ -368,7 +368,7 @@ else
 }
 
 //Email
-validator("Email",$email,"email");
+validator("Email",$email,"email","1","100","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -417,16 +417,13 @@ if($errCount > 0)
   print "<input type=hidden name='form_valid' value='0'>";
   print "<input type=hidden name='form_filled' value='1'>";
   print "&nbsp&nbsp<input type=submit value='Add Organization'>";
-  print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
   print "</form>";
 }
 else
 {
   print "<input type=hidden name='form_valid' value='1'>";
   print "<input type=hidden name='form_filled' value='1'>";
-
   print "&nbsp&nbsp<input type=submit value='Add Organization'>";
-  print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
   print "</form>";
 }
 print "<br><div align = 'center'>";

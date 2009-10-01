@@ -96,7 +96,7 @@ $county = scrub_input($county);
 $email = scrub_input($email);
 $website = scrub_input($website);
 
-print "<p align=center><b>Please verify this information.  If anything is incorrect, press the back button to return to the input form.</b></p>";
+print "<p align=center><b>Please add a resource for this organization.</b></p>";
 
 print "<table>";
         print "<tr>";
@@ -220,10 +220,6 @@ print "<p>";
 print "<div id=\"txtHint\"><b>Resource info will be listed here.</b></div>";
 print "</p>";
 
-print "<br><div align = 'center'>";
-print "<form>";
-print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
-print "</form>";
 print "<br></div>";
 print "</div>";
 

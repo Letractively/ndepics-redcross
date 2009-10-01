@@ -257,7 +257,6 @@ print "</p>";
 
 print "<br><div align = 'center'>";
 print "<form>";
-print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
 print "</form>";
 print "<br></div>";
 
