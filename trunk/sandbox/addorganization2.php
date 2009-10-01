@@ -64,13 +64,6 @@ include("config/functions.php");
 </iframe>
 
 
-<div align="center">
-        <h1>Add Organization</h1>
-        <form>
-        <INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-        </form>
-</div>
-
 <?php
 
 $organization_name = $_POST["organization_name"];

@@ -53,12 +53,6 @@ include ("config/functions.php");
   </div>
 </iframe>
 
-<div align="center">
-  <h1>Add Resource</h1>
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
-</div>
 
 <?php
 
@@ -135,12 +129,6 @@ print "</form>";
 
 ?>
 
-<div align='center'>
-<br><br>
-<form>
-<INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
-</form>
-</div>
 
 </div>
 </body>
