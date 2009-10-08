@@ -185,20 +185,35 @@ if(!$form_filled)
 else
 {
 $errCount=0;
-if($form_valid == 1)
-{ 
-  print "<form name='verifyperson' method='post' action='./addorganization2.php' align='left'>";
-  print "<p align='center'><b>Please verify this information.  If anything is incorrect, make changes in the CHANGES section</b></p>";
-}
-else 
-{
-  print "<form name='verifyorganization' method='post' action='./addorganization.php' align='left'>";
-  print "<p align='center'><b>Please make necessary corrections</b></p>";
-}
+ validator("Organization Name",$organization_name,"string");
+ validator("Street Address", $street_address, "string","1","100","0");
+ validator("City",$city,"alpha_space");
+ validator("County",$county,"string","1","50","0");
+ validator("State",$state,"alpha","2","2");
+ validator("Zip",$zip,"number","5","5");
+ validator("Bus Phone",$bus_phone,"number","10","10","1");
+ validator("Business Fax",$fax,"number","10","10","0");
+ validator("Email",$email,"email","1","100","0");
+ validator("Website",$website,"alphanumeric","4","30","0");
+ if(!$messages[0])
+   {
+     $form_valid = 1;
+   }
+ $messages=array();
+ if($form_valid == 1)
+   { 
+     print "<form name='verifyperson' method='post' action='./addorganization2.php' align='left'>";
+     print "<p align='center'><b>Please verify this information.</b></p>";
+   }
+ else 
+   {
+     print "<form name='verifyorganization' method='post' action='./addorganization.php' align='left'>";
+     print "<p align='center'><b>Please make necessary corrections</b></p>";
+   }
 
-print "<table>";
-//Salutation
-validator("Organization Name",$organization_name,"string");
+ print "<table>";
+ //Salutation
+ validator("Organization Name",$organization_name,"string");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -388,7 +403,7 @@ else
 }
 
 //Website
-validator("Website",$website,"alphanumeric","4","30","0");
+validator("Website",$website,"string","4","30","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -416,18 +431,20 @@ if($errCount > 0)
 {
   print "<input type=hidden name='form_valid' value='0'>";
   print "<input type=hidden name='form_filled' value='1'>";
-  print "&nbsp&nbsp<input type=submit value='Add Organization'>";
+  print "&nbsp&nbsp<input type=submit value='Continue'>";
   print "</form>";
 }
 else
 {
   print "<input type=hidden name='form_valid' value='1'>";
   print "<input type=hidden name='form_filled' value='1'>";
-  print "&nbsp&nbsp<input type=submit value='Add Organization'>";
+  print "&nbsp&nbsp<input type=submit value='Continue'>";
   print "</form>";
 }
 print "<br><div align = 'center'>";
 }
+
+include("./config/closedb.php");
 ?>
 
 </div>

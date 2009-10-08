@@ -19,7 +19,7 @@ include("./config/functions.php");
 // Authors: Mike Ellerhorst & Mark Pasquier
 //  Fall 2008
 //
-// addorganization2.php - file to insert an organization into the disaster database;
+// addperson.php - file to insert a person into the disaster database;
 //****************************
 ?>
 
@@ -232,7 +232,7 @@ else
   if($form_valid == 1)
     { 
       print "<form name='verifyperson' method='post' action='./addperson2.php' align='left'>";
-      print "<p align='center'><b>Please verify this information.  If anything is incorrect, please press BACK</b></p>";
+      print "<p align='center'><b>Please verify this information.</b></p>";
     }
   else 
     {
