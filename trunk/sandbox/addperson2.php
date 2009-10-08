@@ -228,7 +228,7 @@ print "<br><br>";
   print "Select an Organization to link this person to: ";
   print "<select name=\"organization_id\" onchange=\"showOrganization(this.value)\">";
   
-  $query = "SELECT * FROM organization";
+  $query = "SELECT * FROM organization ";
   $query .= "ORDER BY organization_name";
 
   $result = mysql_query($query) or die("Could not access resources");

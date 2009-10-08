@@ -165,7 +165,7 @@ print "<input type=hidden name='website' value=\"".$website."\">";
 print "<div align = 'center'>";
 print "Select a Resource: ";
   
-$query = "Select * from detailed_resource";
+$query = "Select * from detailed_resource ";
 $query .= "ORDER BY resource_type";
 
 $result = mysql_query($query) or die("Could not access resources");
