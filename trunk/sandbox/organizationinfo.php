@@ -50,7 +50,7 @@ include ("./config/functions.php");
 <div style="border:2px solid white; background-color:#FFFFFF">
 
 <iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
-  <h2 align="center">St. Joseph's County American Red Cross</h2>
+  <h2 align="center">St. Joseph\'s County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
   <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
@@ -80,44 +80,30 @@ include ("./config/functions.php");
  
                 $rows = mysql_fetch_assoc($results);
 		
+	
 		//
-		// Navigation Buttons
-		print "<div align=\"center\" name=\"navigation_buttons\">";
+		// Display the Organization Information
+		print "<h3>".$row['organization_name']."</h3>";
+		print $row['street_address']."<br>";
+		print $row['city'].", ".$row['state']." ".$row['zip']."<br>";
+		print $row['county']."<br>";
+		print "Business Phone:  ".print_phone($row['business_phone'])."<br>";
+		print "Business Fax: ".print_phone($row['business_fax'])."<br>";
+		print "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
+		print "Website: <a href=\"".$row['website']."\">".$row['website']."</a><br>";
+                print "Info: ".$row['addtl_info']."<br>";
+		print "Updated by ".$row['updated_by']." on ".$row['updated_time']."<br>";
+                print "Statement of Understanding: " .$rows['date_of_contract'];
+		print $rows['statement_of_understanding'];
 		
-		print "<div align = 'center'>";
-		print "<form>";
-		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
-		print "</form>";
-		print "<br></div>";
-		
-		print "<table>";
-		print	"<tr>";
-		// Update BUTTON
-		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
-		{
-		print		"<td width=\"50%\" align=\"right\"><form action=\"./updateorganization.php\"  method=\"POST\">";
-		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
-		print			"<input type=\"submit\" value=\"Update Record\">";
-		print			"</form>";
-		print		"</td>";
-		}
-		
-		// Delete BUTTON
-		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
-		{
-		print		"<td><form action=\"./deleteorganization.php\" method=\"POST\">";
-		print			"<input type=hidden name=organization_id value=".$organization_id.">";
-		print			"<input type=submit value=\"Delete Record\">";
-		print			"</form>";
-		print		"</td>";
-		print		"</tr>";
-                }
 
+		// Navigation Buttons
+		print "<table>";
+		print "<tr>";
 
 		// sou BUTTON
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
-		print		"<tr>";
 		print		"<td><form action=\"./viewstatementofunderstanding.php\"  method=\"POST\">";
 		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 		print			"<input type=\"submit\" value=\"View Statement of Understanding\">";
@@ -133,39 +119,39 @@ include ("./config/functions.php");
 		print			"<input type=\"submit\" value=\"View Facility Survey\">";
 		print			"</form>";
 		print		"</td>";
-		print		"</tr>";
+		}
+
+		print      "</tr>";
+		print      "<tr>";
+		
+		// Update BUTTON
+		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+		print		"<td><form action=\"./updateorganization.php\"  method=\"POST\">";
+		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
+		print			"<input type=\"submit\" value=\"Update Record\">";
+		print			"</form>";
+		print		"</td>";
 		}
 		
-		// Home BUTTON
-		//print		"<td><form action=\"./home.php\">";
-		//print			"<input type=submit value='Home'>";
-		//print			"</form>";
-		//print		"</td>";
-		//print	"</tr>";
-		print "</table>";
-		
-		print "</div>";
-		
-		//
-		// Display the Organization Information
-		print "<h3>".$row['organization_name']."</h3>";
-		print		 $row['street_address']."<br>";
-		print		 $row['city'].", ".$row['state']." ".$row['zip']."<br>";
-		print		 $row['county']."<br>";
-		print		 "Business Phone:  ".print_phone($row['business_phone'])."<br>";
-		print	     "Business Fax: ".print_phone($row['business_fax'])."<br>";
-		print		 "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
-		print		 "Website: <a href=\"".$row['website']."\">".$row['website']."</a><br>";
-                print "Statement of Understanding: " .$rows['date_of_contract'];
-              print $rows['statement_of_understanding'];
-		
+		// Delete BUTTON
+		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+		print		"<td><form action=\"./deleteorganization.php\" method=\"POST\">";
+		print			"<input type=hidden name=organization_id value=".$organization_id.">";
+		print			"<input type=submit value=\"Delete Record\">";
+		print			"</form>";
+		print		"</td>";
+                }
+
+		print	 "</tr>";
+		print "</table>";	
+
 		mysql_free_result($result);
 
 		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
-			print	"<div align = 'center'>";
-			print	"<a href=\"./viewlog.php?id=".$organization_id."&type=organization\">View Log</a><br>";
-			print	"</div>";
+		  print	"<a href=\"./viewlog.php?id=".$organization_id."&type=organization\">Admin Log</a><br>";
 		}		
 		
 		print "<center><h2>Resources</h2></center>";
