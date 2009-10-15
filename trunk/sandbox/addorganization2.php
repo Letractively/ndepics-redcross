@@ -7,7 +7,7 @@ if(($_SESSION['valid']) != "valid") {
 
 if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){
         header( 'Location: ./index.php' );
-} 
+}
 
 
 
@@ -76,8 +76,9 @@ $business_phone = $_POST["bus_phone_1"].$_POST["bus_phone_2"].$_POST["bus_phone_
 $business_fax = $_POST["bus_fax_1"].$_POST["bus_fax_2"].$_POST["bus_fax_3"];
 $email = $_POST["email"];
 $website = $_POST["website"];
+$addtl_info = $_POST["addtl_info"];
+$updated_by = $_POST["updated_by"];
 $addresfromorg = 2;
-
 
 
 // Scrub the inputs
@@ -88,6 +89,8 @@ $state = scrub_input($state);
 $county = scrub_input($county);
 $email = scrub_input($email);
 $website = scrub_input($website);
+$addtl_info = scrub_input($addtl_info);
+$updated_by = scrub_input($updated_by);
 
 print "<p align=center><b>Please add a resource for this organization.</b></p>";
 
@@ -145,6 +148,17 @@ print "<table>";
         print "<td><b>Website</b></td>";
         print "<td>".$website."</td>";
         print "</tr>";
+
+        print "<tr>";
+        print "<td><b>Additional Info</b></td>";
+        print "<td>".$addtl_info."</td>";
+        print "</tr>";
+
+        print "<tr>";
+        print "<td><b>Your Initials</b></td>";
+        print "<td>".$updated_by."</td>";
+        print "</tr>";
+
         
 print "</table>";
 
@@ -161,6 +175,8 @@ print "<input type=hidden name='business_phone' value=".$business_phone.">";
 print "<input type=hidden name='business_fax' value=".$business_fax.">";
 print "<input type=hidden name='email' value=\"".$email."\">";
 print "<input type=hidden name='website' value=\"".$website."\">";
+print "<input type=hidden name='addtl_info' value=\"".$addtl_info."\">";
+print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 
 print "<div align = 'center'>";
 print "Select a Resource: ";
@@ -204,6 +220,8 @@ print "<input type=hidden name='business_phone' value=".$business_phone.">";
 print "<input type=hidden name='business_fax' value=".$business_fax.">";
 print "<input type=hidden name='email' value=\"".$email."\">";
 print "<input type=hidden name='website' value=\"".$website."\">";
+print "<input type=hidden name='addtl_info' value=\"".$addtl_info."\">";
+print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 print "<input type=hidden name='addresfromorg' value='2'>";
 print "<br><input type=submit value='Add New Resource'>";
 print "</form>";

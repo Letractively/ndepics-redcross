@@ -82,6 +82,8 @@ $bus_phone = $_POST["bus_phone_1"].$_POST["bus_phone_2"].$_POST["bus_phone_3"];
 $fax = $_POST["bus_fax_1"].$_POST["bus_fax_2"].$_POST["bus_fax_3"];
 $email = $_POST["email"];
 $website = $_POST["website"];
+$addtl_info = $_POST["addtl_info"];
+$updated_by = $_POST["updated_by"];
 
 
 // Scrub the inputs
@@ -95,6 +97,8 @@ $bus_phone = scrub_input($bus_phone);
 $fax = scrub_input($fax);
 $email = scrub_input($email);
 $website = scrub_input($website);
+$addtl_info = scrub_input($addtl_info);
+$updated_by = scrub_input($updated_by);
 
 // Display them for the user to verify
 //Change to pre-populated tables... notify user of errors. Re-direct back to this page if errors exist?
@@ -163,6 +167,14 @@ if(!$form_filled)
 			<td>Website</td>
 			<td> <input name='website' type='text' maxlength='100' align= 'left'> </td>
 		</tr>
+                <tr>
+                       <td>Additional Info</td>
+                       <td> <input name='addtl_info' type='textarea' rows='6' cols='40'align='left' valign='top'> </td>
+               </tr>
+               <tr>
+                       <td>YOUR initials</td>
+                       <td> <input name='updated_by' type='text' maxlength='20' align='left'> </td>
+               </tr>
 		
 	</table>
 
@@ -195,6 +207,8 @@ $errCount=0;
  validator("Business Fax",$fax,"number","10","10","0");
  validator("Email",$email,"email","1","100","0");
  validator("Website",$website,"alphanumeric","4","30","0");
+ validator("Info",$addtl_info,"string","","","0");
+ validator("Your Initials",$updated_by,"alpha","","","1");
  if(!$messages[0])
    {
      $form_valid = 1;
@@ -421,6 +435,47 @@ else
   print"<td>".$website."</td>\n";
   print"</tr>\n";
 }
+
+//Info
+validator("Additional Info",$addtl_info,"string","","","0");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Additional Info: </b></td>\n";
+  print "<td><input name='addtl_info' type='textarea' rows='6' cols='40' align='left' valign='top' value=\'".$addtl_info."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='addtl_info' value=\"".$addtl_info."\">";
+  print"<tr>\n";
+  print"<td><b>Additional Info: </b></td>\n";
+  print"<td>".$addtl_info."</td>\n";
+  print"</tr>\n";
+}
+
+//Initials/Updator
+validator("Your Initials",$updated_by,"string","","","1");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Your Initials: </b></td>\n";
+  print "<td><input name='updated_by' type='text' size='20' maxlength='20' align= 'left' value='".$updated_by."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
+  print"<tr>\n";
+  print"<td><b>Your Initials: </b></td>\n";
+  print"<td>".$updated_by."</td>\n";
+  print"</tr>\n";
+}
+
 
 print "</table>\n";
 

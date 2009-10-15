@@ -69,6 +69,8 @@ $business_phone = $_POST["business_phone"];
 $business_fax = $_POST["business_fax"];
 $email = $_POST["email"];
 $website = $_POST["website"];
+$addtl_info = $_POST["addtl_info"];
+$updated_by = $_POST["updated_by"];
 }
 
 $resource_type = $_POST["resource_type"];

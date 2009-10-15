@@ -74,7 +74,8 @@ $business_phone = $_POST["business_phone"];
 $business_fax = $_POST["business_fax"];
 $email = $_POST["email"];
 $website = $_POST["website"];
-
+$addtl_info = $_POST["addtl_info"];
+$updated_by = $_POST["updated_by"];
 $resource_id = $_POST["resource_id"];
 
 //print $organization_name."<br>";
@@ -131,15 +132,27 @@ $query = "INSERT INTO  organization (organization_name ,
 									 business_phone ,
 									 business_fax ,
 									 email ,
-									 website, log )
-		 VALUES (\"".$organization_name."\",\"".$street_address."\",\"".$city."\",\"".$state."\",\"".$zip."\",\"".
-					 $county."\",\"".$business_phone."\",\"".$business_fax."\",\"".$email."\",\"".$website."\",\"".
-					 $_SESSION['username'].": " .$tempdate. "\n".$row['log']."\")";
+									 website ,
+                                                                         additional_info , 
+                                                                         updated_by ,
+                                                                         log)
+		 VALUES (\"".$organization_name."\",
+                         \"".$street_address."\",
+                         \"".$city."\",
+                         \"".$state."\",
+                         \"".$zip."\",
+                         \"".$county."\",
+                         \"".$business_phone."\",
+                         \"".$business_fax."\",
+                         \"".$email."\",
+                         \"".$website."\",
+                         \"".$addtl_info."\",
+                         \"".$updated_by."\",
+                         \"".$_SESSION['username'].": " .$tempdate. "\n".$row['log']."\")";
 
 $result = mysql_query($query) or die ("Error sending organization query");
 
 
-//
 // Make sure the organization id is correct
 $org_query = "SELECT * FROM organization WHERE organization_id = ".$organization_id;
 $result2 = mysql_query($org_query) or die ("Error checking the Organization ID");
@@ -202,6 +215,16 @@ print "<table>";
 	print "<tr>";
 	print "<td><b>Website</b></td>";
 	print "<td>".$website."</td>";
+	print "</tr>";
+
+	print "<tr>";
+	print "<td><b>Info</b></td>";
+	print "<td>".$addtl_info."</td>";
+	print "</tr>";
+
+	print "<tr>";
+	print "<td><b>Initials</b></td>";
+	print "<td>".$updated_by."</td>";
 	print "</tr>";
 	
 print "</table><br>";
