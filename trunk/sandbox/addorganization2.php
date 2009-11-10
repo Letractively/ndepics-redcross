@@ -203,12 +203,11 @@ else
         print "</select>";
 }
 
-print "&nbsp&nbsp or &nbsp&nbsp Add New Resource Below";
+print "<br> or add a new resource by clicking button below";
 
-
-
-print "<br><br><input type=submit value='Add Organization'>";
+print "<br><br><input type=submit value='Continue'>";
 print "</form>";
+
 print "<form name='addresourcefromorganization' method='post' action='addresource1.php' align='center'>";
 print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 print "<input type=hidden name='street_address' value=\"".$street_address."\">";
@@ -225,6 +224,8 @@ print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 print "<input type=hidden name='addresfromorg' value='2'>";
 print "<br><input type=submit value='Add New Resource'>";
 print "</form>";
+
+
 print "</div>";
 
 print "<p>";

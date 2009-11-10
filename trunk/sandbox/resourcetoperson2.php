@@ -55,39 +55,20 @@ DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #0000
 </iframe>
 
 <?
- $person_id = $_POST['person_id'];
+    $person_id = $_POST['person_id'];
+    $resource_id = $_POST['resource_id'];
+    print "<h3 align='center'>Table Updated</h3>";
 
+    $query = "INSERT into resource_person (person_id,resource_id)
+                VALUES (".$person_id.",".$resource_id.")";
+    $result = mysql_query($query) or die ("Error adding resource to perosn");
 
-print "<h3 align='center'>Choose a resource to associate this person with</h3>";
-
-    //This functionality is NOT here... merely a skeleton
-//print "id is = ".$person_id;
-
- print "Select a Resource: ";
- 
- $query = "Select * from detailed_resource ";
- $query .= "ORDER BY resource_type";
- 
- $result = mysql_query($query) or die("Could not access resources");
- 
- if( mysql_num_rows($result) < 1 )
-   {
-     print "There are no resources to be added, please go back and add a resource first!<br>";
-   }
- else 
-   {
-     print "<form action='./resourcetoperson2.php' method='POST'>";
-     print "<select name='resource_id' onchange='showResource(this.value)'>";
-     print "<option value='NULL'> </option>";
-     while( $row = mysql_fetch_assoc($result) )
-       {
-	 print "<option value='".$row['resource_id']."'>".$row['resource_type']."</option>";
-       }
-     print "</select>";
-     print "<input type='hidden' name='person_id' value='".$person_id."'>";
-     print "<input type='submit' value='Continue'>";
-     print "</form>";
-   }
+    print "<div align='center'>";
+    print "Association Successfully Added<br>";
+    print "<form action=\"./home.php\" >\n";
+    print "<button type=\"submit\">Return Home</button>";
+    print "</form>\n";
+    print "</div>";
 
 include ("config/closedb.php");
 ?>
