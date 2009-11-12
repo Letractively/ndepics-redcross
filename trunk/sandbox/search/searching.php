@@ -56,6 +56,14 @@ elseif ($_SESSION['search_type'] == "resource") {
 	$redirect_url = "./resourceresults.php";
 
 }
+elseif ($_SESSION['search_type'] == "resource_city") {
+	$_SESSION['search_text'] = $_POST['search_text'];
+	$_SESSION['search_city'] = $_POST['search_city'];
+	$_SESSION['search_zip']  = $_POST['search_zip'];
+	$_SESSION['resource_id'] = $_POST['resource_id'];
+	$redirect_url = "./resourcecityresults.php";
+
+}
 elseif ($_SESSION['search_type'] == "person") {
 	$_SESSION['search_text'] = $_POST['search_text'];
 	$redirect_url = "./personresults.php";

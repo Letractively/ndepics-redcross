@@ -144,6 +144,38 @@ print "</div>";
 print "<br>";
 }
 
+//if the user is an admin, allow them to access CSV files
+if( $_SESSION['access_level_id'] == 9)
+{
+print "<h2 align=\"center\">Download Tables to CSV</h2>";
+
+print "<div align=\"center\">";
+print "<table>";
+print "    <tr>";
+print "    <td>";
+print "	    <form action=\"csv/per_csv.php\" >";
+print "	    <input type=\"submit\" value=\"People\">";
+print "	    </form>";
+print "    </td>";
+    
+print "<td>";
+print "	    <form action=\"csv/org_csv.php\">";
+print "	    <input type=\"submit\" value=\"Organizations\">";
+print "	    </form>";
+print "    </td>";
+   
+print "<td>";
+print "	    <form action=\"csv/res_csv.php\" >";
+print "	    <input type=\"submit\" value=\"Resources\">";
+print "	    </form>";
+print "    </td>";
+print "    </tr>";
+print "  </table>";
+print "  <center>";
+print "</div>";
+print "<br>";
+}
+
 ?>
 
 </div>

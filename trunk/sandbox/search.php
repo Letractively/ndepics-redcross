@@ -206,6 +206,60 @@ $_SESSION['detailed_search_county'] = '';
 </p>
 <br>
 
+<!-- Begin added by Rob on 10/8. -->
+<p name="resource_city_search">
+<h2>Search by Resource and City</h2>
+<form name="resource_city_search" action="./search/searching.php" method="POST">
+	
+	<input type="hidden" name="search_type" value="resource_city">
+	<table>
+		<tr>
+		<td>Resource Keyword Search: </td>
+		<td><input type="text" name="search_text" size="30" maxsize="50"></td>
+		</tr>
+		<tr><td>Resource City: </td>
+		<td><input type="text" name="search_city" size="30" maxsize="50"></td>
+		</tr>
+		<tr><td>Resource ZIP: </td>
+		<td><input type="text" name="search_zip" size="30" maxsize="50"></td>
+		</tr>
+<?php
+
+		print "<tr>";
+		print "<td>Select a Resource: </td>";
+  
+		$query = "Select * from detailed_resource";
+		$query .= " ORDER BY resource_type";
+		
+		$result = mysql_query($query) or die("Could not access resources");
+
+		if( mysql_num_rows($result) < 1 )
+		{
+			print "There are no resources in the database, please go back and add a resource first!";
+		}
+		else 
+		{
+			print "<td><select name=\"resource_id\">";
+			print "<option value=\"NULL\"> </option>";
+		
+			while( $row = mysql_fetch_assoc($result) )
+			{
+				print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
+			}
+		
+			print "</select></td>";
+		}
+		
+		print "</tr>";
+?>
+	
+	</table>
+	<input type="submit" value="Search Resources by City">
+</form>
+</p>
+<br>
+<!-- End added by Rob. -->
+
 <hr>
 <p name="person_search">
 <h2>Search by Person</h2>
