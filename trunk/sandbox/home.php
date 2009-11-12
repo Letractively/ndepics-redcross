@@ -77,6 +77,12 @@ print "  <div align=\"center\">";
 print "    <input type=\"submit\" value=\"Search\">";
 print "  </div>";
 print "</form>";
+print "<br />";
+print "<form action=\"search/allresources.php\" >";
+print "  <div align=\"center\">";
+print "    <input type=\"submit\" value=\"All Resources\">";
+print "  </div>";
+print "</form>";
 }
 
 if (($_SESSION['access_level_id']) == "9") { 
