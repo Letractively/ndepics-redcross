@@ -114,7 +114,7 @@ if(!$form_filled)
 	<table>
 		<tr>
 			<td>Organization Name</td>
-			<td><input name='organization_name' type='text' maxlength='50' align= 'left'> </td>
+			<td><input name='organization_name' type='text' maxlength='100' align= 'left'> </td>
 		</tr>
 		
 		<tr>
@@ -197,7 +197,7 @@ if(!$form_filled)
 else
 {
 $errCount=0;
- validator("Organization Name",$organization_name,"string");
+ validator("Organization Name",$organization_name,"string","1","100","1");
  validator("Street Address", $street_address, "string","1","100","0");
  validator("City",$city,"alpha_space");
  validator("County",$county,"string","1","50","0");
