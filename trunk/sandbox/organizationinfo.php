@@ -85,13 +85,16 @@ include ("./config/functions.php");
 		// Display the Organization Information
 		print "<h3>".$row['organization_name']."</h3>";
 		print $row['street_address']."<br>";
+		if($row['mailing_address'])
+		  print $row['mailing_address']."<br>";
 		print $row['city'].", ".$row['state']." ".$row['zip']."<br>";
 		print $row['county']."<br>";
 		print "Business Phone:  ".print_phone($row['business_phone'])."<br>";
+		print "24H/2nd  Phone:  ".print_phone($row['24_hour_phone'])."<br>";
 		print "Business Fax: ".print_phone($row['business_fax'])."<br>";
 		print "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
 		print "Website: <a href=\"".$row['website']."\">".$row['website']."</a><br>";
-                print "Info: ".$row['addtl_info']."<br>";
+                print "Info: ".$row['additional_info']."<br>";
 		print "Updated by ".$row['updated_by']." on ".$row['updated_time']."<br>";
                 print "Statement of Understanding: " .$rows['date_of_contract'];
 		print $rows['statement_of_understanding'];

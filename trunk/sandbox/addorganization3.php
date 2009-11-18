@@ -66,11 +66,13 @@ include_once ("config/functions.php");
 // Get the variables from the previous page
 $organization_name = $_POST["organization_name"];
 $street_address = $_POST["street_address"];
+$mailing_address = $_POST["mailing_address"];
 $city = $_POST["city"];
 $state = $_POST["state"];
 $zip = $_POST["zip"];
 $county = $_POST["county"];
 $business_phone = $_POST["business_phone"];
+$business_phone2 = $_POST["business_phone2"];
 $business_fax = $_POST["business_fax"];
 $email = $_POST["email"];
 $website = $_POST["website"];
@@ -125,11 +127,13 @@ $organization_id = $row['Auto_increment'];
 $tempdate = date("m/d/Y H:i:s");
 $query = "INSERT INTO  organization (organization_name ,
 									 street_address ,
+                                                                         mailing_address ,
 									 city ,
 									 state ,
 								 	 zip ,
 									 county ,
 									 business_phone ,
+                                                                         24_hour_phone ,
 									 business_fax ,
 									 email ,
 									 website ,
@@ -138,11 +142,13 @@ $query = "INSERT INTO  organization (organization_name ,
                                                                          log)
 		 VALUES (\"".$organization_name."\",
                          \"".$street_address."\",
+                         \"".$mailing_address."\",
                          \"".$city."\",
                          \"".$state."\",
                          \"".$zip."\",
                          \"".$county."\",
                          \"".$business_phone."\",
+                         \"".$business_phone2."\",
                          \"".$business_fax."\",
                          \"".$email."\",
                          \"".$website."\",
@@ -174,6 +180,11 @@ print "<table>";
 	print "</tr>";
 
 	print "<tr>";
+	print "<td><b>Mailing Address: </b></td>";
+	print "<td>".$mailing_address."</td>";
+	print "</tr>";
+
+	print "<tr>";
 	print "<td><b>City: </b></td>";
 	print "<td>".$city."</td>";
 	print "</tr>";
@@ -197,6 +208,13 @@ print "<table>";
 	print "<td><b>Business Phone: </b></td>";
 	print "<td>";
 	echo print_phone($business_phone);
+	print "</td>";
+	print "</tr>";
+
+	print "<tr>";
+	print "<td><b>24H or 2nd Phone: </b></td>";
+	print "<td>";
+	echo print_phone($business_phone2);
 	print "</td>";
 	print "</tr>";
 	

@@ -74,11 +74,13 @@ $form_filled = $_POST["form_filled"];
 $form_valid = $_POST["form_valid"];
 $organization_name = $_POST["organization_name"];
 $street_address = $_POST["street_address"];
+$mailing_address = $_POST["mailing_address"];
 $city = $_POST["city"];
 $state = $_POST["state"];
 $zip = $_POST["zip"];
 $county = $_POST["county"];
 $bus_phone = $_POST["bus_phone_1"].$_POST["bus_phone_2"].$_POST["bus_phone_3"];
+$bus_phone2 = $_POST["bus_phone2_1"].$_POST["bus_phone2_2"].$_POST["bus_phone2_3"];
 $fax = $_POST["bus_fax_1"].$_POST["bus_fax_2"].$_POST["bus_fax_3"];
 $email = $_POST["email"];
 $website = $_POST["website"];
@@ -89,11 +91,13 @@ $updated_by = $_POST["updated_by"];
 // Scrub the inputs
 $organization_name = scrub_input($organization_name);
 $street_address = scrub_input($street_address);
+$mailing_address = scrub_input($mailing_address);
 $city = scrub_input($city);
 $state = scrub_input($state);
 $zip = scrub_input($zip);
 $county = scrub_input($county);
 $bus_phone = scrub_input($bus_phone);
+$bus_phone2 = scrub_input($bus_phone2);
 $fax = scrub_input($fax);
 $email = scrub_input($email);
 $website = scrub_input($website);
@@ -123,6 +127,11 @@ if(!$form_filled)
 		</tr>
 		
 		<tr>
+			<td>Mailing Address</td>
+			<td><input name='mailing_address' type='text' maxlength='50' align= 'left'> </td>
+		</tr>
+
+		<tr>
 			<td>City</td>
 			<td><input name='city' type='text' maxlength='30' align= 'left'> </td>
 		</tr>
@@ -149,6 +158,14 @@ if(!$form_filled)
 				<input name='bus_phone_3' type='number' size='4' maxlength='4' align= 'left'>
 			</td>
 		</tr>
+
+		<tr>
+			<td>24Hour Phone or 2nd Phone</td>
+			<td>(<input name='bus_phone2_1' type='number' size='3' maxlength='3' align= 'left'>)&nbsp
+				<input name='bus_phone2_2' type='number' size='3' maxlength='3' align= 'left'>&nbsp - &nbsp
+				<input name='bus_phone2_3' type='number' size='4' maxlength='4' align= 'left'>
+			</td>
+		</tr>
 		
 		<tr>
 			<td>Business Fax</td>
@@ -167,10 +184,13 @@ if(!$form_filled)
 			<td>Website</td>
 			<td> <input name='website' type='text' maxlength='100' align= 'left'> </td>
 		</tr>
+
                 <tr>
-                       <td>Additional Info</td>
-                       <td> <input name='addtl_info' type='textarea' rows='6' cols='40'align='left' valign='top'> </td>
-               </tr>
+                      	<td>Additional Information</td>
+		        <td><textarea name='addtl_info' rows=6 cols=40 align= 'left' valign='top'></textarea></td> 
+
+                </tr>
+
                <tr>
                        <td>YOUR initials</td>
                        <td> <input name='updated_by' type='text' maxlength='20' align='left'> </td>
@@ -199,11 +219,13 @@ else
 $errCount=0;
  validator("Organization Name",$organization_name,"string","1","100","1");
  validator("Street Address", $street_address, "string","1","100","0");
+ validator("Mailing Address", $mailing_address, "string","1","100","0");
  validator("City",$city,"alpha_space");
  validator("County",$county,"string","1","50","0");
  validator("State",$state,"alpha","2","2");
  validator("Zip",$zip,"number","5","5");
  validator("Bus Phone",$bus_phone,"number","10","10","1");
+ validator("24H or 2nd Phone",$bus_phone2,"number","10","10","1");
  validator("Business Fax",$fax,"number","10","10","0");
  validator("Email",$email,"email","1","100","0");
  validator("Website",$website,"alphanumeric","4","30","0");
@@ -226,7 +248,8 @@ $errCount=0;
    }
 
  print "<table>";
- //Salutation
+ 
+ //Org Name
  validator("Organization Name",$organization_name,"string");
 if($messages[$errCount])
 {
@@ -246,7 +269,7 @@ else
   print"</tr>\n";
 }
 
-//Fisrt Name
+//Street Addr
 validator("Street Address", $street_address, "string","1","100","0");
 if($messages[$errCount])
 {
@@ -266,6 +289,25 @@ else
   print"</tr>\n";
 }
 
+//Mailing Addr
+validator("Mailing Address", $street_address, "string","1","100","0");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Mailing Address: </b></td>\n";
+  print "<td><input name='mailing_address' type='text' maxlength='50' align= 'left' value='".$mailing_address."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='mailing_address' value=\"".$mailing_address."\">";
+  print"<tr>\n";
+  print"<td><b>Mailing Address: </b></td>\n";
+  print"<td>".$mailing_address."</td>\n";
+  print"</tr>\n";
+}
 
 //City
 validator("City",$city,"alpha_space");
@@ -369,6 +411,30 @@ else
   print "<tr>\n";
   print "<td><b>Bus Phone: </b></td>\n";
   print "<td>".substr($bus_phone,0,3)."-".substr($bus_phone,3,3)."-".substr($bus_phone,6,4)."</td>\n";
+  print "</tr>\n";
+}
+
+validator("24H or 2nd Phone",$bus_phone2,"number","10","10","1");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>24H or 2nd Phone: </b></td>\n";
+  print "<td>(<input name='bus_phone2_1' type='number' size='3' maxlength='3' align='left' value='".substr($bus_phone2,0,3)."'>)&nbsp\n";
+  print "	<input name='bus_phone2_2' type='number' size='3' maxlength='3' align='left' value='".substr($bus_phone2,3,3)."'>&nbsp - &nbsp\n";
+  print "	<input name='bus_phone2_3' type='number' size='4' maxlength='4' align='left' value='".substr($bus_phone2,6,4)."'>\n";
+  print "</td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='bus_phone2_1' value='".substr($bus_phone2,0,3)."'>";
+  print "<input type=hidden name='bus_phone2_2' value='".substr($bus_phone2,3,3)."'>";
+  print "<input type=hidden name='bus_phone2_3' value='".substr($bus_phone2,6,4)."'>";
+  print "<tr>\n";
+  print "<td><b>24H or 2nd Phone: </b></td>\n";
+  print "<td>".substr($bus_phone2,0,3)."-".substr($bus_phone2,3,3)."-".substr($bus_phone2,6,4)."</td>\n";
   print "</tr>\n";
 }
 
