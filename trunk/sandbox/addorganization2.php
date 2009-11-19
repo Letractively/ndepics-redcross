@@ -65,7 +65,6 @@ include("config/functions.php");
 
 
 <?php
-
 $organization_name = $_POST["organization_name"];
 $street_address = $_POST["street_address"];
 $mailing_address = $_POST["mailing_address"];
@@ -80,7 +79,14 @@ $email = $_POST["email"];
 $website = $_POST["website"];
 $addtl_info = $_POST["addtl_info"];
 $updated_by = $_POST["updated_by"];
+$from_res_seq = $_POST["from_res_seq"];
 $addresfromorg = 2;
+
+ if($from_res_seq){
+  $business_phone = $_POST["business_phone"];
+  $business_phone2 = $_POST["business_phone2"];
+  $business_fax = $_POST["business_fax"];
+ }
 
 
 // Scrub the inputs

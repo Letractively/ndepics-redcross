@@ -59,21 +59,21 @@ include ("config/functions.php");
 $addresfromorg = $_POST["addresfromorg"];
 
 if($addresfromorg){
-$organization_name = $_POST["organization_name"];
-$street_address = $_POST["street_address"];
-$mailing_address = $_POST["mailing_address"];
-$city = $_POST["city"];
-$state = $_POST["state"];
-$zip = $_POST["zip"];
-$county = $_POST["county"];
-$business_phone = $_POST["business_phone"];
-$business_phone2 = $_POST["business_phone2"];
-$business_fax = $_POST["business_fax"];
-$email = $_POST["email"];
-$website = $_POST["website"];
-$addtl_info = $_POST["addtl_info"];
-$updated_by = $_POST["updated_by"];
-}
+  $organization_name = $_POST["organization_name"];
+  $street_address = $_POST["street_address"];
+  $mailing_address = $_POST["mailing_address"];
+  $city = $_POST["city"];
+  $state = $_POST["state"];
+  $zip = $_POST["zip"];
+  $county = $_POST["county"];
+  $business_phone = $_POST["business_phone"];
+  $business_phone2 = $_POST["business_phone2"];
+  $business_fax = $_POST["business_fax"];
+  $email = $_POST["email"];
+  $website = $_POST["website"];
+  $addtl_info = $_POST["addtl_info"];
+  $updated_by = $_POST["updated_by"];
+ }
 
 $resource_type = $_POST["resource_type"];
 $resource_description = $_POST["resource_description"];
@@ -123,9 +123,9 @@ print "<input type=hidden name='city' value=\"".$city."\">";
 print "<input type=hidden name='state' value=\"".$state."\">";
 print "<input type=hidden name='zip' value=".$zip.">";
 print "<input type=hidden name='county' value=\"".$county."\">";
-print "<input type=hidden name='business_phone' value=".$business_phone.">";
-print "<input type=hidden name='business_phone2' value=".$business_phone2.">";
-print "<input type=hidden name='business_fax' value=".$business_fax.">";
+print "<input type=hidden name='business_phone' value='".$business_phone."'>";
+print "<input type=hidden name='business_phone2' value='".$business_phone2."'>";
+print "<input type=hidden name='business_fax' value='".$business_fax."'>";
 print "<input type=hidden name='email' value=\"".$email."\">";
 print "<input type=hidden name='website' value=\"".$website."\">";
 }

@@ -73,60 +73,49 @@ $resource_keyword = $_POST["resource_keyword"];
 $addresfromorg = $_POST["addresfromorg"];
 
 if($addresfromorg){
-$organization_name = $_POST["organization_name"];
-$street_address = $_POST["street_address"];
-$mailing_address = $_POST["mailing_address"];
-$city = $_POST["city"];
-$state = $_POST["state"];
-$zip = $_POST["zip"];
-$county = $_POST["county"];
-$business_phone = $_POST["business_phone"];
-$business_phone2 = $_POST["business_phone2"];
-$business_fax = $_POST["business_fax"];
-$email = $_POST["email"];
-$website = $_POST["website"];
-$addtl_info = $_POST["addtl_info"];
-$updated_by = $_POST["updated_by"];
-}
+  $organization_name = $_POST["organization_name"];
+  $street_address = $_POST["street_address"];
+  $mailing_address = $_POST["mailing_address"];
+  $city = $_POST["city"];
+  $state = $_POST["state"];
+  $zip = $_POST["zip"];
+  $county = $_POST["county"];
+  $business_phone = $_POST["business_phone"];
+  $business_phone2 = $_POST["business_phone2"];
+  $business_fax = $_POST["business_fax"];
+  $email = $_POST["email"];
+  $website = $_POST["website"];
+  $addtl_info = $_POST["addtl_info"];
+  $updated_by = $_POST["updated_by"];
+ }
 
-//print $resource_type."<br>";
-//print $resource_description."<br>";
-//print $resource_keyword."<br><br>";
-
-
-//
-// Scrub the inputs
-//$resource_type = scrub_input($resource_type);
-//$resource_description = scrub_input($resource_description);
-//$resource_keyword = scrub_input($resource_keyword);
-
-//
-//Query to check if person already exists
+//check to see is resource exists
 $res_query = "SELECT * FROM detailed_resource WHERE resource_type = '".$resource_type." ' ";
 
-$result3 = mysql_query($res_query) or die ("Error checking if organization exists query");
+$result3 = mysql_query($res_query) or die ("Error checking if resrouce exists query");
 
 $num_rows = mysql_num_rows($result3);
 
 if ($num_rows != 0){
 	
-	   print "<div align='center'><br>";
-       print "Cannot Add Resource Type: \"<b>".$resource_type."</b>\" already exists <br><br>";
-       if($addresfromorg){
-       	    print "<form action=\"./addorganization2.php\" method ='post'>\n";
-			print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
+  print "<div align='center'><br>";
+  print "Cannot Add Resource Type: \"<b>".$resource_type."</b>\" already exists <br><br>";
+  if($addresfromorg){
+                print "<form action=\"./addorganization2.php\" method ='post'>\n";
+                        print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 			print "<input type=hidden name='street_address' value=\"".$street_address."\">";
 			print "<input type=hidden name='mailing_address' value=\"".$mailing_address."\">";
 			print "<input type=hidden name='city' value=\"".$city."\">";
 			print "<input type=hidden name='state' value=\"".$state."\">";
 			print "<input type=hidden name='zip' value=".$zip.">";
 			print "<input type=hidden name='county' value=\"".$county."\">";
-			print "<input type=hidden name='business_phone' value=".$business_phone.">";
-			print "<input type=hidden name='business_phone2' value=".$business_phone2.">";
-			print "<input type=hidden name='business_fax' value=".$business_fax.">";
+			print "<input type=hidden name='business_phone' value='".$business_phone."'>";
+			print "<input type=hidden name='business_phone2' value='".$business_phone2."'>";
+			print "<input type=hidden name='business_fax' value='".$business_fax."'>";
 			print "<input type=hidden name='email' value=\"".$email."\">";
 			print "<input type=hidden name='website' value=\"".$website."\">";
-	        print "<button type=\"submit\">Return to Add Organization</button>";
+			print "<input type=hidden name='from_res_seq' value='2'>";
+		print "<button type=\"submit\">Return to Add Organization</button>";
        		print "</form>\n";
        		print "</div>";
 		}
@@ -148,11 +137,6 @@ $tempdate = date("m/d/Y H:i:s");
 $query = "INSERT INTO detailed_resource (resource_type, description, keyword, log)
 				 VALUES (\"".$resource_type."\",\"".$resource_description."\",\"".$resource_keyword."\",\"".$_SESSION['username'].": " .$tempdate. "\n"
 		 .$row['log']."\")";
-
-
-
-//$query = "SELECT organization_id, organization_name, street_address, city FROM organization";
-				 
 
 $result = mysql_query($query) or die ("Error sending query");
 
@@ -186,7 +170,7 @@ print "</table><br>";
 
 print "<div align='center'>";
 
-       if($addresfromorg){
+ if($addresfromorg){
        	    print "<form action=\"./addorganization2.php\" method ='post'>\n";
 			print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 			print "<input type=hidden name='street_address' value=\"".$street_address."\">";
@@ -195,11 +179,12 @@ print "<div align='center'>";
 			print "<input type=hidden name='state' value=\"".$state."\">";
 			print "<input type=hidden name='zip' value=".$zip.">";
 			print "<input type=hidden name='county' value=\"".$county."\">";
-			print "<input type=hidden name='business_phone' value=".$business_phone.">";
-			print "<input type=hidden name='business_phone2' value=".$business_phone2.">";
-			print "<input type=hidden name='business_fax' value=".$business_fax.">";
+			print "<input type=hidden name='business_phone' value='".$business_phone."'>";
+			print "<input type=hidden name='business_phone2' value='".$business_phone2."'>";
+			print "<input type=hidden name='business_fax' value='".$business_fax."'>";
 			print "<input type=hidden name='email' value=\"".$email."\">";
 			print "<input type=hidden name='website' value=\"".$website."\">";
+			print "<input type=hidden name='from_res_seq' value='2'>";
 	        print "<button type=\"submit\">Return to Add Organization</button>";
        		print "</form>\n";
        		print "</div>";
