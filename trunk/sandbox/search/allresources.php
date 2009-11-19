@@ -105,6 +105,9 @@ $result = mysql_query($query) or die ("Query did not run correctly. Please try a
 //
 // Print the links to different results pages
 print "<center>";
+if ($num_results > 10 && $num_results < $results_per_page ){
+		print "<a href=\"".$PHP_SELF."?start=0&num=10\">10 per Page</a><br/></a>";
+	}
 if ($num_results > $results_per_page) {
 
 	// Find the number of pages to break the results into
@@ -115,6 +118,7 @@ if ($num_results > $results_per_page) {
 	//
 	// Print the different numbered results pages
 	//print "Results: ";
+	print "<a href=\"".$PHP_SELF."?start=0&num=10000\">All</a><br/>\n";
 
 	if ($curr_page != 0) {
 		print "<a href=\"".$PHP_SELF."?start=".(($curr_page-1)*$results_per_page)."&num=".$results_per_page."\"> &lt;&lt; Previous </a>";
@@ -193,6 +197,9 @@ if ($num_results == 0) {
 //
 // Print the links to different results pages
 print "<center>";
+if ($num_results > 10 && $num_results < $results_per_page ){
+	print "<a href=\"".$PHP_SELF."?start=0&num=10\">10 per Page</a><br/></a>";
+}
 if ($num_results > $results_per_page) {
 
 	// Find the number of pages to break the results into
@@ -203,6 +210,7 @@ if ($num_results > $results_per_page) {
 	//
 	// Print the different numbered results pages
 	//print "Results: ";
+	print "<a href=\"".$PHP_SELF."?start_r=0&num_r=10000\">All</a><br/>\n";
 
 	if ($curr_page != 0) {
 		print "<a href=\"".$PHP_SELF."?start=".(($curr_page-1)*$results_per_page)."&num=".$results_per_page."\"> &lt;&lt; Previous </a>";

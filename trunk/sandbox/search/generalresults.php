@@ -176,6 +176,9 @@ print "<h3><center>People</center></h3>";
 	//
 	// Print the links to different results pages
 	print "<center>";
+	if ($num_results > 10 && $num_results < $p_results_per_page ){
+		print "<a href=\"".$PHP_SELF."?start_p=0&num_p=10\">10 per Page</a><br/></a>";
+	}
 	if ($num_results > $p_results_per_page) {
 
 		// Find the number of pages to break the results into
@@ -186,7 +189,8 @@ print "<h3><center>People</center></h3>";
 		//
 		// Print the different numbered results pages
 		//print "Results: ";
-
+		
+		print "<a href=\"".$PHP_SELF."?start_p=0&num_p=10000\">All</a><br/>\n";
 		if ($curr_page != 0) {
 			print "<a href=\"".$PHP_SELF."?start_p=".(($curr_page-1)*$p_results_per_page)."&num_p=".$p_results_per_page."\"> &lt;&lt; Previous </a>";
 		}
@@ -290,6 +294,9 @@ print "</center>";
 	//
 	// Print the links to different results pages
 	print "<center>";
+	if ($num_results > 10 && $num_results < $p_results_per_page ){
+		print "<a href=\"".$PHP_SELF."?start_p=0&num_p=10\">10 per Page</a><br/></a>";
+	}
 	if ($num_results > $p_results_per_page) {
 
 		// Find the number of pages to break the results into
@@ -300,6 +307,9 @@ print "</center>";
 		//
 		// Print the different numbered results pages
 		//print "Results: ";
+		
+		
+		print "<a href=\"".$PHP_SELF."?start_p=0&num_p=10000\">All</a><br/>\n";
 
 		if ($curr_page != 0) {
 			print "<a href=\"".$PHP_SELF."?start_p=".(($curr_page-1)*$p_results_per_page)."&num_p=".$p_results_per_page."\"> &lt;&lt; Previous </a>";
@@ -394,6 +404,9 @@ print "</center>";
 	//
 	// Print the links to different results pages
 	print "<center>";
+	if ($num_results > 10 && $num_results < $o_results_per_page ){
+		print "<a href=\"".$PHP_SELF."?start_o=0&num_o=10\">10 per Page</a><br/></a>";
+	}
 	if ($num_results > $o_results_per_page) {
 
 		// Find the number of pages to break the results into
@@ -404,6 +417,8 @@ print "</center>";
 		//
 		// Print the different numbered results pages
 		//print "Results: ";
+		
+		print "<a href=\"".$PHP_SELF."?start_o=0&num_o=10000\">All</a><br/>\n";
 
 		if ($curr_page != 0) {
 			print "<a href=\"".$PHP_SELF."?start_o=".(($curr_page-1)*$o_results_per_page)."&num_o=".$o_results_per_page."\"> &lt;&lt; Previous </a>";
@@ -516,6 +531,8 @@ print "</center>";
 		//
 		// Print the different numbered results pages
 		//print "Results: ";
+		print "<a href=\"".$PHP_SELF."?start_o=0&num_o=10000\">All</a><br/>\n";
+
 
 		if ($curr_page != 0) {
 			print "<a href=\"".$PHP_SELF."?start_o=".(($curr_page-1)*$o_results_per_page)."&num_o=".$o_results_per_page."\"> &lt;&lt; Previous </a>";
@@ -596,6 +613,9 @@ print "</center>";
 	//
 	// Print the links to different results pages
 	print "<center>";
+	if ($num_results > 10 && $num_results < $r_results_per_page ){
+		print "<a href=\"".$PHP_SELF."?start_r=0&num_r=10\">10 per Page</a><br/></a>";
+	}
 	if ($num_results > $r_results_per_page) {
 
 		// Find the number of pages to break the results into
@@ -710,6 +730,9 @@ print "</center>";
 	//
 	// Print the links to different results pages
 	print "<center>";
+	if ($num_results > 10 && $num_results < $r_results_per_page ){
+		print "<a href=\"".$PHP_SELF."?start_r=0&num_r=10\">10 per Page</a><br/></a>";
+	}
 	if ($num_results > $r_results_per_page) {
 
 		// Find the number of pages to break the results into
@@ -720,6 +743,8 @@ print "</center>";
 		//
 		// Print the different numbered results pages
 		//print "Results: ";
+		
+		print "<a href=\"".$PHP_SELF."?start_r=0&num_r=10000\">All</a><br/>\n";
 
 		if ($curr_page != 0) {
 			print "<a href=\"".$PHP_SELF."?start_r=".(($curr_page-1)*$r_results_per_page)."&num_r=".$r_results_per_page."\"> &lt;&lt; Previous </a>";
