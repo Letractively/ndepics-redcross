@@ -81,6 +81,7 @@ $mobile_phone = $_POST["mobile_phone_1"].$_POST["mobile_phone_2"].$_POST["mobile
 $fax = $_POST["fax_1"].$_POST["fax_2"].$_POST["fax_3"];
 $email = $_POST["email"];
 $im = $_POST["im"];
+$updated_by = $_POST["updated_by"];
 $info = $_POST["info"];
 
 
@@ -93,6 +94,7 @@ $city = scrub_input($city);
 $state = scrub_input($state);
 $email = scrub_input($email);
 $im = scrub_input($im);
+$updated_by = scrub_input($updated_by);
 $info = scrub_input($info);
 
 // Display them for the user to verify
@@ -186,6 +188,11 @@ if(!$form_filled)
 		        <td><textarea name='info' rows=6 cols=40 align= 'left' valign='top'></textarea></td> 
 
                 </tr>
+
+               <tr>
+                       <td>YOUR initials</td>
+                       <td> <input name='updated_by' type='text' maxlength='11' align='left'> </td>
+               </tr>
 		
 	</table>
 
@@ -193,7 +200,7 @@ if(!$form_filled)
     <input type=hidden name='form_filled' value='1'>
     <input type=hidden name='form_valid' value='0'>
     <input type=submit value="Continue">
-    <input type=reset value="Clear">
+    <input type=reset value="Clear Form">
 
     </form>
     
@@ -213,7 +220,7 @@ else
   validator("Salutation",$salutation,"string","2","10","0");
   validator("First Name", $first_name, "alpha","","","0");
   validator("Last Name",$last_name,"alpha","","","0");
-  validator("Street Address",$street_address,"string","","","0"); //would like to make alphanumeric_string_punc a data type
+  validator("Street Address",$street_address,"string","","","0");
   validator("City",$city,"alpha_space","","","0");
   validator("State",$state,"alpha","2","2","0");
   validator("Zip",$zip,"number","5","5","","","0");
@@ -224,6 +231,7 @@ else
   validator("Email",$email,"email","","","0");
   validator("IM",$im,"alphanumeric","4","30","0");
   validator("Additional Info",$info,"string","","","0");
+  validator("Your Initials",$updated_by,"alpha","2","11","1");
   if(!$messages[0])
     {
       $form_valid = 1;
@@ -518,6 +526,7 @@ else
   print"</tr>\n";
 }
 
+//INFO
 validator("Info",$info,"string","","","0");
 if($messages[$errCount])
 {
@@ -534,6 +543,26 @@ else
   print"<tr>\n";
   print"<td><b>Additional Info: </b></td>\n";
   print"<td>".$info."</td>\n";
+  print"</tr>\n";
+}
+
+//Initials/Updator
+validator("Your Initials",$updated_by,"string","","","1");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+  print "<tr>\n";
+  print "<td><b>Your Initials: </b></td>\n";
+  print "<td><input name='updated_by' type='text' size='12' maxlength='11' align= 'left' value='".$updated_by."'></td>\n";
+  print "</tr>\n";
+}
+else
+{
+  print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
+  print"<tr>\n";
+  print"<td><b>Your Initials: </b></td>\n";
+  print"<td>".$updated_by."</td>\n";
   print"</tr>\n";
 }
 
@@ -565,3 +594,6 @@ print "</html>";
 include ("config/closedb.php");
 
 ?>
+</div>
+</body>
+</html>

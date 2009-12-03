@@ -193,7 +193,7 @@ if(!$form_filled)
 
                <tr>
                        <td>YOUR initials</td>
-                       <td> <input name='updated_by' type='text' maxlength='20' align='left'> </td>
+                       <td> <input name='updated_by' type='text' maxlength='11' align='left'> </td>
                </tr>
 		
 	</table>
@@ -224,13 +224,13 @@ $errCount=0;
  validator("County",$county,"string","1","50","0");
  validator("State",$state,"alpha","2","2");
  validator("Zip",$zip,"number","5","5");
- validator("Bus Phone",$bus_phone,"number","10","10","1");
- validator("24H or 2nd Phone",$bus_phone2,"number","10","10","1");
+ validator("Bus Phone",$bus_phone,"number","10","10","0");
+ validator("24H or 2nd Phone",$bus_phone2,"number","10","10","0");
  validator("Business Fax",$fax,"number","10","10","0");
  validator("Email",$email,"email","1","100","0");
  validator("Website",$website,"alphanumeric","4","30","0");
  validator("Info",$addtl_info,"string","","","0");
- validator("Your Initials",$updated_by,"alpha","","","1");
+ validator("Your Initials",$updated_by,"alpha","2","11","1");
  if(!$messages[0])
    {
      $form_valid = 1;
@@ -390,7 +390,7 @@ else
 }
 
 //Phone Numbers
-validator("Bus Phone",$bus_phone,"number","10","10","1");
+validator("Bus Phone",$bus_phone,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -414,7 +414,7 @@ else
   print "</tr>\n";
 }
 
-validator("24H or 2nd Phone",$bus_phone2,"number","10","10","1");
+validator("24H or 2nd Phone",$bus_phone2,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -530,7 +530,7 @@ if($messages[$errCount])
   $errCount++;
   print "<tr>\n";
   print "<td><b>Your Initials: </b></td>\n";
-  print "<td><input name='updated_by' type='text' size='20' maxlength='20' align= 'left' value='".$updated_by."'></td>\n";
+  print "<td><input name='updated_by' type='text' size='12' maxlength='11' align= 'left' value='".$updated_by."'></td>\n";
   print "</tr>\n";
 }
 else

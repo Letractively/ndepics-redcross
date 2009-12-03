@@ -124,22 +124,22 @@ $organization_id = $row['Auto_increment'];
 
 //
 //Query to add organization
-$tempdate = date("m/d/Y H:i:s");
+$tempdate = date("m/d/Y H:i");
 $query = "INSERT INTO  organization (organization_name ,
-									 street_address ,
-                                                                         mailing_address ,
-									 city ,
-									 state ,
-								 	 zip ,
-									 county ,
-									 business_phone ,
-                                                                         24_hour_phone ,
-									 business_fax ,
-									 email ,
-									 website ,
-                                                                         additional_info , 
-                                                                         updated_by ,
-                                                                         log)
+				     street_address ,
+                                     mailing_address ,
+				     city ,
+				     state ,
+				     zip ,
+				     county ,
+				     business_phone ,
+                                     24_hour_phone ,
+				     business_fax ,
+				     email ,
+				     website ,
+                                     additional_info , 
+                                     updated_by ,
+                                     log)
 		 VALUES (\"".$organization_name."\",
                          \"".$street_address."\",
                          \"".$mailing_address."\",
@@ -154,9 +154,8 @@ $query = "INSERT INTO  organization (organization_name ,
                          \"".$website."\",
                          \"".$addtl_info."\",
                          \"".$updated_by."\",
-                         \"".$_SESSION['username'].": " .$tempdate. "\n".$row['log']."\")";
-
-$result = mysql_query($query) or die ("Error sending organization query");
+                         \"".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']."\")";
+ $result = mysql_query($query) or die("Error adding Orgnaization");
 
 
 // Make sure the organization id is correct

@@ -73,6 +73,7 @@ $mobile_phone = $_POST["mobile_phone_1"].$_POST["mobile_phone_2"].$_POST["mobile
 $fax = $_POST["fax_1"].$_POST["fax_2"].$_POST["fax_3"];
 $email = $_POST["email"];
 $im = $_POST["im"];
+$updated_by = $_POST["updated_by"];
 $info = $_POST["info"];
 
 $organization_id = $_POST["organization_id"];
@@ -123,27 +124,40 @@ $person_id = $row['Auto_increment'];
 
 //
 //Query to be executed
-$tempdate = date("m/d/Y H:i:s");
+$tempdate = date("m/d/Y H:i");
 $query = "INSERT INTO  person (salutation ,
-							   first_name ,
-							   last_name ,
-							   street_address ,
-							   city ,
-							   state ,
-							   zip ,
-							   home_phone ,
-							   work_phone ,
-							   fax ,
-							   email ,
-							   im, 
-                                                           additional_info,
-                                                           log )
-		 VALUES (\"".$salutation."\",\"".$first_name."\",\"".$last_name."\",\"".$street_address."\",\"".$city."\",\"".
-					 $state."\",\"".$zip."\",\"".$home_phone."\",\"".$work_phone."\",\"".$fax."\",\"".$email."\",\"".
-					 $im."\",\"".$info."\",\"".$_SESSION['username'].": " .$tempdate. "\n" .$row['log']."\")";
+			       first_name ,
+			       last_name ,
+			       street_address ,
+			       city ,
+			       state ,
+			       zip ,
+			       home_phone ,
+			       work_phone ,
+			       fax ,
+			       email ,
+			       im, 
+                               additional_info,
+                               updated_by ,
+                               log )
+		 VALUES (\"".$salutation."\",
+                         \"".$first_name."\",
+                         \"".$last_name."\",
+                         \"".$street_address."\",
+                         \"".$city."\",
+                         \"".$state."\",
+                         \"".$zip."\",
+                         \"".$home_phone."\",
+                         \"".$work_phone."\",
+                         \"".$fax."\",
+                         \"".$email."\",
+                         \"".$im."\",
+                         \"".$info."\",
+                         \"".$updated_by."\",
+                         \"".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']."\")";
 
 
-$result = mysql_query($query) or die ("Error sending query");
+$result = mysql_query($query) or die ("Error adding Person");
 
 
 //
