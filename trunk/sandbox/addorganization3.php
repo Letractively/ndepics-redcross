@@ -253,7 +253,8 @@ print "</table><br>";
 else {
 	$redirect_url = "./organizationinfo.php?id=".$row['organization_id']."\"";
     $message .= "Successful Add...redirecting<br>";
-
+    print "Successfull Add...redirecting to information page";
+    print "<meta http-equiv=\"Refresh\" content=\"1.5; url=".$redirect_url."\">";
 //	//Display what values are being added to the database
 //print "<h2>Successfully Added Values: </h2>";
 //print "<table>";
@@ -341,16 +342,6 @@ else{
 
 include ("config/closedb.php");
 ?>
-
-<? print "<meta http-equiv=\"Refresh\" content=\"1.5; url=".$redirect_url."\">"; ?>
-<meta name="resource-type" content="document">
-<meta name="description" content="disaster.stjoe-redcross.org">
-<meta name="keywords" content="">
-<meta name="copyright" content="stjoe-redcross.org 2008.  All rights reserved.">
-<link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
-
-<body class="main" onLoad="setTimeout('redirect()', 1000000)">
-<div style="border:2px solid white; background-color:#FFFFFF">
 
 	
 </div>

@@ -152,33 +152,25 @@ print "<table>";
   print"</tr>\n";
 
 //Phone Numbers
-  print "<input type=hidden name='home_phone_1' value='".substr($home_phone,0,3)."'>";
-  print "<input type=hidden name='home_phone_2' value='".substr($home_phone,3,3)."'>";
-  print "<input type=hidden name='home_phone_3' value='".substr($home_phone,6,4)."'>";
+  print "<input type=hidden name='home_phone' value='".$home_phone."'>";
   print"<tr>\n";
   print"<td><b>Home Phone: </b></td>\n";
   print"<td>".substr($home_phone,0,3)."-".substr($home_phone,3,3)."-".substr($home_phone,6,4)."</td>\n";
   print"</tr>\n";
 
-  print "<input type=hidden name='work_phone_1' value='".substr($work_phone,0,3)."'>";
-  print "<input type=hidden name='work_phone_2' value='".substr($work_phone,3,3)."'>";
-  print "<input type=hidden name='work_phone_3' value='".substr($work_phone,6,4)."'>";
+  print "<input type=hidden name='work_phone' value='".$work_phone."'>";
   print"<tr>\n";
   print"<td><b>Work Phone: </b></td>\n";
   print"<td>".substr($work_phone,0,3)."-".substr($work_phone,3,3)."-".substr($work_phone,6,4)."</td>\n";
   print"</tr>\n";
 
-  print "<input type=hidden name='mobile_phone_1' value='".substr($mobile_phone,0,3)."'>";
-  print "<input type=hidden name='mobile_phone_2' value='".substr($mobile_phone,3,3)."'>";
-  print "<input type=hidden name='mobile_phone_3' value='".substr($mobile_phone,6,4)."'>";
+  print "<input type=hidden name='mobile_phone' value='".$mobile_phone."'>";
   print"<tr>\n";
   print"<td><b>Mobile Phone: </b></td>\n";
   print"<td>".substr($mobile_phone,0,3)."-".substr($mobile_phone,3,3)."-".substr($mobile_phone,6,4)."</td>\n";
   print"</tr>\n";
 
-  print "<input type=hidden name='fax_1' value='".substr($fax,0,3)."'>";
-  print "<input type=hidden name='fax_2' value='".substr($fax,3,3)."'>";
-  print "<input type=hidden name='fax_3' value='".substr($fax,6,4)."'>";
+  print "<input type=hidden name='fax' value='".$fax."'>";
   print"<tr>\n";
   print"<td><b>Fax: </b></td>\n";
   print"<td>".substr($fax,0,3)."-".substr($fax,3,3)."-".substr($fax,6,4)."</td>\n";
@@ -206,6 +198,7 @@ print "<table>";
   print"</tr>\n";
 
   //Initials
+  print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
   print "<tr>";
   print "<td><b>Your Initials</b></td>";
   print "<td>".$updated_by."</td>";
@@ -221,7 +214,7 @@ print "<br><br>";
   print "<table>";
   print "<tr>";
   print "<td>Title in Organization: </td>";
-  print "<td><input type='text' name='title_in_organization' maxsize='30'> (e.g. 'Pastor')</td>";
+  print "<td><input type='text' name='title_in_organization' maxsize='30'> (e.g. 'Pastor, Owner, etc')</td>";
   print "</table>";
 
   print "<p>";

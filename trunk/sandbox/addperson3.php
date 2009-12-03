@@ -67,10 +67,10 @@ $street_address = $_POST["street_address"];
 $city = $_POST["city"];
 $state = $_POST["state"];
 $zip = $_POST["zip"];
-$home_phone = $_POST["home_phone_1"].$_POST["home_phone_2"].$_POST["home_phone_3"];
-$work_phone = $_POST["work_phone_1"].$_POST["work_phone_2"].$_POST["work_phone_3"];
-$mobile_phone = $_POST["mobile_phone_1"].$_POST["mobile_phone_2"].$_POST["mobile_phone_3"];
-$fax = $_POST["fax_1"].$_POST["fax_2"].$_POST["fax_3"];
+$home_phone = $_POST["home_phone"];
+$work_phone = $_POST["work_phone"];
+$mobile_phone = $_POST["mobile_phone"];
+$fax = $_POST["fax"];
 $email = $_POST["email"];
 $im = $_POST["im"];
 $updated_by = $_POST["updated_by"];
@@ -134,6 +134,7 @@ $query = "INSERT INTO  person (salutation ,
 			       zip ,
 			       home_phone ,
 			       work_phone ,
+                               mobile_phone ,
 			       fax ,
 			       email ,
 			       im, 
@@ -149,6 +150,7 @@ $query = "INSERT INTO  person (salutation ,
                          \"".$zip."\",
                          \"".$home_phone."\",
                          \"".$work_phone."\",
+                         \"".$mobile_phone."\",
                          \"".$fax."\",
                          \"".$email."\",
                          \"".$im."\",
@@ -217,6 +219,13 @@ if( ($row['first_name'] != $first_name) && ($row['last_name'] != $last_name) ) {
 	echo print_phone($work_phone);
 	print "</td>";
 	print "</tr>";
+
+	print "<tr>";
+	print "<td><b>Mobile Phone: </b></td>";
+	print "<td>";
+	echo print_phone($mobile_phone);
+	print "</td>";
+	print "</tr>";
 	
 	print "<tr>";
 	print "<td><b>Fax: </b></td>";
@@ -247,82 +256,84 @@ print "</table>";
 	exit (-1);
 }
 else {
-	//print "Person names match up. Successfully added the person<br>\n";
-
-print "<h2>Person Successfully Added: </h2>";
-	print "<table>";
-	print "<tr>";
-	print "<td><b>Salutation: </b></td>";
-	print "<td>".$salutation."</td>";
-	print "</tr>";
+	$redirect_url = "./personinfo.php?id=".$row['person_id'];
+	$message .= "Successful Add...redirecting<br>";
+	print "Successfull Add...redirecting to information page";
+	print "<meta http-equiv=\"Refresh\" content=\"1.5; url=".$redirect_url."\">";
+    //print "<h2>Person Successfully Added: </h2>";
+    //print "<table>";
+    //print "<tr>";
+    //print "<td><b>Salutation: </b></td>";
+    //print "<td>".$salutation."</td>";
+    //print "</tr>";
 	
-	print "<tr>";
-	print "<td><b>First Name: </b></td>";
-	print "<td>".$first_name."</td>";
-	print "</tr>";
+    //print "<tr>";
+    //print "<td><b>First Name: </b></td>";
+    //print "<td>".$first_name."</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>Last Name: </b></td>";
+    //print "<td>".$last_name."</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>Street Address: </b></td>";
+    //print "<td>".$street_address."</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>City: </b></td>";
+    //print "<td>".$city."</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>State: </b></td>";
+    //print "<td>".$state."</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>Zip: </b></td>";
+    //print "<td>".$zip."</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>Home Phone: </b></td>";
+    //print "<td>";
+    //echo print_phone($home_phone);
+    //print "</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>Work Phone: </b></td>";
+    //print "<td>";
+    //echo print_phone($work_phone);
+    //print "</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>Fax: </b></td>";
+    //print "<td>";
+    //echo print_phone($fax);
+    //print "</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>Email: </b></td>";
+    //print "<td>".$email."</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>IM: </b></td>";
+    //print "<td>".$im."</td>";
+    //print "</tr>";
+    //
+    //print "<tr>";
+    //print "<td><b>Additional Info: </b></td>";
+    //print "<td>".$info."</td>";
+    //print "</tr>";
 	
-	print "<tr>";
-	print "<td><b>Last Name: </b></td>";
-	print "<td>".$last_name."</td>";
-	print "</tr>";
-
-	print "<tr>";
-	print "<td><b>Street Address: </b></td>";
-	print "<td>".$street_address."</td>";
-	print "</tr>";
-
-	print "<tr>";
-	print "<td><b>City: </b></td>";
-	print "<td>".$city."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>State: </b></td>";
-	print "<td>".$state."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Zip: </b></td>";
-	print "<td>".$zip."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Home Phone: </b></td>";
-	print "<td>";
-	echo print_phone($home_phone);
-	print "</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Work Phone: </b></td>";
-	print "<td>";
-	echo print_phone($work_phone);
-	print "</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Fax: </b></td>";
-	print "<td>";
-	echo print_phone($fax);
-	print "</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Email: </b></td>";
-	print "<td>".$email."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>IM: </b></td>";
-	print "<td>".$im."</td>";
-	print "</tr>";
-
-	print "<tr>";
-	print "<td><b>Additional Info: </b></td>";
-	print "<td>".$info."</td>";
-	print "</tr>";
-	
-print "</table>";
+    //print "</table>";
 }
 
 
@@ -345,6 +356,9 @@ print "</form></div><br>\n";
 
 include ("config/closedb.php");
 ?>
+
+
+
 
 </div>
 </body>

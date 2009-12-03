@@ -224,7 +224,7 @@ else
   validator("City",$city,"alpha_space","","","0");
   validator("State",$state,"alpha","2","2","0");
   validator("Zip",$zip,"number","5","5","","","0");
-  validator("Home Phone",$home_phone,"number","10","10","1");
+  validator("Home Phone",$home_phone,"number","10","10","0");
   validator("Work Phone",$work_phone,"number","10","10","0");
   validator("Mobile Phone",$mobile_phone,"number","10","10","0");
   validator("Fax",$fax,"number","10","10","0");
@@ -240,12 +240,12 @@ else
   if($form_valid == 1)
     { 
       print "<form name='verifyperson' method='post' action='./addperson2.php' align='left'>";
-      print "<p align='center'><b>Please verify this information.</b></p>";
+      print "<p align='center'><b>Please verify this information and click Continue</b></p>";
     }
   else 
     {
       print "<form name='verifyperson' method='post' action='./addperson.php' align='left'>";
-      print "<p align='center'><b>Please make all requested corrections and click CONTINUE</b></p>";
+      print "<p align='center'><b>Please make all requested corrections and click Continue</b></p>";
     }
 
   print "<table>";
@@ -390,7 +390,7 @@ else
 }
 
 //Phone Numbers
-  validator("Home Phone",$home_phone,"number","10","10","1");
+  validator("Home Phone",$home_phone,"number","10","10","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -422,8 +422,8 @@ if($messages[$errCount])
   print "<tr>\n";
   print "<td><b>Work Phone: </b></td>\n";
   print "<td>(<input name='work_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($work_phone,0,3)."'>)&nbsp\n";
-  print "		<input name='work_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($work_phone,3,3)."'>&nbsp - &nbsp\n";
-  print "		<input name='work_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($work_phone,6,4)."'>\n";
+  print "     <input name='work_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($work_phone,3,3)."'>&nbsp - &nbsp\n";
+  print "     <input name='work_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($work_phone,6,4)."'>\n";
   print "</td>\n";
   print "</tr>\n";
 }
@@ -446,8 +446,8 @@ if($messages[$errCount])
   print "<tr>\n";
   print "<td><b>Mobile Phone: </b></td>\n";
   print "<td>(<input name='mobile_phone_1' type='number' size='3' maxlength='3' align='left' value='".substr($mobile_phone,0,3)."'>)&nbsp\n";
-  print "		<input name='mobile_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($mobile_phone,3,3)."'>&nbsp - &nbsp\n";
-  print "		<input name='mobile_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($mobile_phone,6,4)."'>\n";
+  print "     <input name='mobile_phone_2' type='number' size='3' maxlength='3' align='left' value='".substr($mobile_phone,3,3)."'>&nbsp - &nbsp\n";
+  print "     <input name='mobile_phone_3' type='number' size='4' maxlength='4' align='left' value='".substr($mobile_phone,6,4)."'>\n";
   print "</td>\n";
   print "</tr>\n";
 }
@@ -470,8 +470,8 @@ if($messages[$errCount])
   print "<tr>\n";
   print "<td><b>Fax: </b></td>\n";
   print "<td>(<input name='fax_1' type='number' size='3' maxlength='3' align='left' value='".substr($fax,0,3)."'>)&nbsp\n";
-  print "		<input name='fax_2' type='number' size='3' maxlength='3' align='left' value='".substr($fax,3,3)."'>&nbsp - &nbsp\n";
-  print "		<input name='fax_3' type='number' size='4' maxlength='4' align='left' value='".substr($fax,6,4)."'>\n";
+  print "     <input name='fax_2' type='number' size='3' maxlength='3' align='left' value='".substr($fax,3,3)."'>&nbsp - &nbsp\n";
+  print "     <input name='fax_3' type='number' size='4' maxlength='4' align='left' value='".substr($fax,6,4)."'>\n";
   print "</td>\n";
   print "</tr>\n";
 }
@@ -547,7 +547,7 @@ else
 }
 
 //Initials/Updator
-validator("Your Initials",$updated_by,"string","","","1");
+validator("Your Initials",$updated_by,"string","2","11","1");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
