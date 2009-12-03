@@ -75,15 +75,32 @@ DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #0000
 		
 		$row = mysql_fetch_assoc($result);
 		
-		/***** BUTTONS to Navigate ****/
-		print "<div align=\"center\" name=\"navigation_buttons\">";
+
+ //*******
+ // Display the Personal Information
+  print "<h3>".$row['salutation']." ".$row['first_name']." ".$row['last_name']."</h3>";
+  print $row['street_address']."<br>";
+  print $row['city'].", ".$row['state']." ".$row['zip']."<br>";
+  if($row['county'])
+    print "County: ".$row['county']."<br>";
+  print "<br>";
+  print "Home Phone:  ".print_phone($row['home_phone'])."<br>";
+  print "Work Phone:  ".print_phone($row['work_phone'])."<br>";
+  print "Mobile Phone:  ".print_phone($row['mobile_phone'])."<br>";
+  print "Fax:  ".print_phone($row['fax'])."<br>";
+  print "<br>";
+  print "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
+  print "IM: ".$row['im']."<br>";
+  print "<br>";
+  print "Info: ".$row['additional_info']."<br>";
+  print "<br>";
+  print "Updated by ".$row['updated_by']." on ".$row['updated_time']."<br>";
 		
-		print "<div align = 'center'>";
-		print "<form>";
-		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
-		print "</form>";
-		print "<br></div>";
+
+ //***** BUTTONS to Navigate ****/
+		print "<div align=\"left\" name=\"navigation_buttons\">";
 		
+			
 		print "<table>";
 		print	"<tr>";
 		
@@ -109,39 +126,19 @@ DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #0000
 		print		"</td>";
 		}
 		
-		// Home BUTTON
-		print		"<td><form action=\"./home.php\">";
-		print			"<input type=submit value='Home'>";
-		print			"</form>";
-		print		"</td>";
-		
 		print	"</tr>";
 		print "</table>";
 		
 		print "</div>";
 		
 		/******/
-		
-		//
-		// Display the Personal Information
-		print "<h3>".$row['salutation']." ".$row['first_name']." ".$row['last_name']."</h3>";
-		if($row['street_address'] != '') { print $row['street_address']."<br>"; }
-		 if(($row['city'] != '') && ($row['state'] != '') && ($row['zip'] != '') ) {
-			print		 $row['city'].", ".$row['state']." ".$row['zip']."<br>";
-		}
-		if($row['county'] != '') { print		 "County:  ".$row['county']."<br>"; }
-		print		 "Home Phone:  ".print_phone($row['home_phone'])."<br>";
-		print		 "Work Phone:  ".print_phone($row['work_phone'])."<br>";
-		print		 "Mobile Phone:  ".print_phone($row['mobile_phone'])."<br>";
-		print	     "Fax:  ".print_phone($row['fax'])."<br>";
-		print		 "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
-		print		 "IM: ".$row['im']."<br>";
-		
+
+
 		mysql_free_result($result);
 		
 		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
-			print	"<a href=\"./viewlog.php?id=".$person_id."&type=person\">View Log</a><br>";
+			print	"<a href=\"./viewlog.php?id=".$person_id."&type=person\">Admin Log</a><br>";
 		}
 
  // Display the organizations that are connected to this person
