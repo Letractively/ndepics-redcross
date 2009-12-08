@@ -74,7 +74,7 @@ $result = mysql_query($query) or die ("Deletion Query failed, please retry.");
 
 $query = "DELETE
 		  FROM		resource_listing
-		  WHERE		WHERE		resource_id = ".$resource_id;
+		  WHERE		resource_id = ".$resource_id;
 		  
 $result = mysql_query($query) or die ("Deletion Query 2 failed, please retry.");
 
