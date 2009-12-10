@@ -222,13 +222,6 @@ $result = mysql_query($resource_p_q) or die("Resource-Person query failed");
 		  }
 		print "</table>";
 
-//Add a resource to a person
-print "<form action='./resourcetoperson.php' method='POST' >";
-print "<input type=hidden name=person_id value='".$person_id."'>";
-		print "<input type=submit value='Add a Resource'>";
-		print "</form>";
-		
-		
 		print "<div align = 'center'>";
 		print "<br><form>";
 		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";

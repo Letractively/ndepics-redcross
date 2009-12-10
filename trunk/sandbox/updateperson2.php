@@ -42,26 +42,29 @@ $organization_id = $_POST["organization_id"];
 $title_in_organization = mysql_real_escape_string($_POST["title_in_organization"]);
 $role_in_organization = mysql_real_escape_string($_POST["role_in_organization"]);
 $organizationremove_id = $_POST["organizationremove_id"];
+$resource_id = $_POST['resource_id'];
+$updated_by = $_POST['updated_by'];
 
 
 //
 //Query to update organization
 $query = "UPDATE	person 
-		  SET		salutation = \"".$salutation."\" ,
-					first_name = \"".$first_name."\" ,
-					last_name = \"".$last_name."\" ,
-					street_address = \"".$street_address."\" ,
-					city = \"".$city."\" ,
-					state = \"".$state."\" ,
-					zip = \"".$zip."\" ,
-					home_phone = \"".$home_phone."\" ,
-					work_phone = \"".$work_phone."\" ,
-					mobile_phone = \"".$mobile_phone."\" ,
-					fax = \"".$fax."\" ,
-					email = \"".$email."\" ,
-					im = \"".$im."\" 
-		  WHERE		person_id = ".$person_id."
-		  LIMIT 1";
+	  SET		salutation = \"".$salutation."\" ,
+			first_name = \"".$first_name."\" ,
+			last_name = \"".$last_name."\" ,
+			street_address = \"".$street_address."\" ,
+			city = \"".$city."\" ,
+			state = \"".$state."\" ,
+			zip = \"".$zip."\" ,
+			home_phone = \"".$home_phone."\" ,
+			work_phone = \"".$work_phone."\" ,
+			mobile_phone = \"".$mobile_phone."\" ,
+			fax = \"".$fax."\" ,
+			email = \"".$email."\" ,
+			im = \"".$im."\" ,
+                        updated_by = \"".$updated_by."\" 
+	   WHERE	person_id = ".$person_id."
+	   LIMIT 1";
 
 $result = mysql_query($query) or die ("Error sending person update query");
 
@@ -74,7 +77,7 @@ if ($organization_id != "NULL") {
 	$result = mysql_query($query) or die ("Error adding works_for");
 }
 
-if(organizationremove_id != "NULL") {
+if($organizationremove_id != "NULL") {
 $query = "DELETE	
 		  FROM		works_for 
 		  WHERE		person_id = ".$person_id."
@@ -83,6 +86,11 @@ $query = "DELETE
 $result = mysql_query($query) or die ("Deletion Query failed, please retry.");
 }
 
+if($resource_id != "NULL"){
+ $query = "INSERT into resource_person (person_id,resource_id)
+                VALUES (".$person_id.",".$resource_id.")";
+    $result = mysql_query($query) or die ("Error adding resource to perosn");
+ }
 
 //Update Log
 $query = "SELECT log FROM person WHERE person_id = ".$person_id;
@@ -90,10 +98,9 @@ $result = mysql_query($query) or die ("Person Log Query failed");
 $row = mysql_fetch_assoc($result);
 
 //Get Date and Time
-$tempdate = date("m/d/Y H:i:s");
+$tempdate = date("m/d/Y H:i");
 
-$query = "UPDATE person SET log = '" .$_SESSION['username']. ": " .$tempdate. "\n"
-		 .$row['log']. "' WHERE person_id = ".$person_id;
+$query = "UPDATE person SET log = '".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']. "' WHERE person_id = ".$person_id;
 $result = mysql_query($query) or die ("Person Log Update failed");
 
 

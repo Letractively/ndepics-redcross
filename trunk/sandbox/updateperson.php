@@ -47,7 +47,7 @@ include("config/functions.php");
 <div style="border:2px solid white; background-color:#FFFFFF">
 
 <iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
-  <h2 align="center">St. Joseph's County American Red Cross</h2>
+  <h2 align="center">St. Joseph\'s County American Red Cross</h2>
   <p align="center">Your browser does not support iframes.</p>
   <div class="menu">
   <a href = "./home.php" target= "_parent"> HOME</a> | 
@@ -60,6 +60,9 @@ include("config/functions.php");
 </div>
 
 <?php
+
+error_reporting(E_ALL);
+ini_set ('display_errors', '1');
 
 // Retrieve the requested organization's information
 $person_id = $_POST["person_id"];
@@ -84,7 +87,8 @@ $mobile_phone	= $row['mobile_phone'];
 $fax			= $row['fax'];
 $email			= $row['email'];
 $im				= $row['im'];
-
+$additional_info       = $row['additional_info'];
+$updated_by            = $row['updated_by'];
 
 print "<p align=center><b>Change the desired fields and press 'Update Person'.</b></p>\n";
 
@@ -169,7 +173,17 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 		
 		print "<tr>\n";
 		print "<td><b>IM: </b></td>\n";
-		print "<td><input name='im' type='text' size='30' maxlength='30' align= 'left' value=\"".$im."\"></td>\n";
+		print "<td><input name='im' type='text' size='30' maxlength='30' align='left' value=\"".$im."\"></td>\n";
+		print "</tr>\n";
+
+  		print "<tr>\n";
+		print "<td><b>Additional Info: </b></td>\n";
+		//print "<td><textarea name='additional_info' rows=6 cols=40 align='left' value=\"".$additional_info."\"></td>\n";
+		print "</tr>\n";
+
+ 		print "<tr>\n";
+		print "<td><b>YOUR Initials: </b></td>\n";
+		print "<td><input name='updated_by' type='text' size='11' maxlength='11' align= 'left' value=\"".$updated_by."\"></td>\n";
 		print "</tr>\n";
 		
 	print "</table>\n";
@@ -244,6 +258,22 @@ $result = mysql_query($query) or die("Could not access resources");
 	{
 		print "<option value=\"".$row['organization_id']."\">".$row['organization_name']."</option>";
 	}
+print "</select><br><br>";
+
+print "<b>Associate this person with a resource:</b><br><br>";
+print "Select a Resource: ";
+ 
+$r_query = "Select * from detailed_resource ";
+$r_query .= "ORDER BY resource_type";
+
+$r_result = mysql_query($r_query) or die("Could not access resources");
+
+print "<select name='resource_id' onchange='showResource(this.value)'>";
+print "<option value='NULL'> </option>";
+while( $r_row = mysql_fetch_assoc($r_result) )
+  {
+    print "<option value='".$r_row['resource_id']."'>".$r_row['resource_type']."</option>";
+  }
 print "</select>";
 
 print "<br><br><input type='submit' value='Update Person'>\n";
