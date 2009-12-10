@@ -3,7 +3,7 @@
 
 = Introduction =
 
-The code below will help you avoid blank PHP pages if there is an error on your page.  These lines are necessary to display errors on the OneEach server.  If you are having problems with a query, see MySQLErrorReporting.
+The code below will help you avoid blank PHP pages if there is an error on your page.  These lines are necessary to display errors on the OneEach server.  If you are having problems with a query, see MySQLErrorReporting
 
 
 = Details =
