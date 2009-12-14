@@ -18,7 +18,7 @@
 <div align="center" class="header">
 <c>
 
-<a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent">
+<a href = "./home.php" target= "_parent">
 <img src="masthead.jpg" style="width:729px; height:100px" border="0"></a>
   			<p style="padding-bottom:1px; margin:0">
 				American Red Cross, St. Joseph County Chapter
@@ -39,7 +39,7 @@
 <a href = "./updateuser.php" target= "_parent"> UPDATE USER PROFILE</a> |
 <a href = "./search.php" target= "_parent"> SEARCH </a> |
 <a href = "./logout.php" target= "_parent"> LOGOUT </a> |
-<a href = "mailto:ndepics@gmail.com" target= "_parent"> REPORT PROBLEM </a>
+<a href = "mailto:epics2@nd.edu" target= "_parent"> REPORT PROBLEM </a>
 </div>
 </body>
 </html>
