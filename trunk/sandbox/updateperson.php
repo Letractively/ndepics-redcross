@@ -178,7 +178,7 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 
   		print "<tr>\n";
 		print "<td><b>Additional Info: </b></td>\n";
-		//print "<td><textarea name='additional_info' rows=6 cols=40 align='left' value=\"".$additional_info."\"></td>\n";
+		print "<td><textarea name='additional_info' rows=6 cols=40 align='left'>".$additional_info."</textarea></td>\n";
 		print "</tr>\n";
 
  		print "<tr>\n";

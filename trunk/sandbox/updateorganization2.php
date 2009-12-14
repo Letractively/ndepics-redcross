@@ -26,14 +26,18 @@ include_once ("config/functions.php");
 $organization_id	= mysql_real_escape_string($_POST["organization_id"]);
 $organization_name	= mysql_real_escape_string($_POST["organization_name"]);
 $street_address		= mysql_real_escape_string($_POST["street_address"]);
-$city				= mysql_real_escape_string($_POST["city"]);
-$state				= mysql_real_escape_string($_POST["state"]);
-$zip				= mysql_real_escape_string($_POST["zip"]);
-$county				= mysql_real_escape_string($_POST["county"]);
+$city			= mysql_real_escape_string($_POST["city"]);
+$state			= mysql_real_escape_string($_POST["state"]);
+$zip			= mysql_real_escape_string($_POST["zip"]);
+$county			= mysql_real_escape_string($_POST["county"]);
 $business_phone		= mysql_real_escape_string($_POST["bus_phone_1"]).mysql_real_escape_string($_POST["bus_phone_2"]).mysql_real_escape_string($_POST["bus_phone_3"]);
+$business_phone2	= mysql_real_escape_string($_POST["bus2_phone_1"]).mysql_real_escape_string($_POST["bus2_phone_2"]).mysql_real_escape_string($_POST["bus2_phone_3"]);
 $business_fax		= mysql_real_escape_string($_POST["bus_fax_1"]).mysql_real_escape_string($_POST["bus_fax_2"]).mysql_real_escape_string($_POST["bus_fax_3"]);
-$email				= mysql_real_escape_string($_POST["email"]);
-$website			= mysql_real_escape_string($_POST["website"]);
+$email			= mysql_real_escape_string($_POST["email"]);
+$website		= mysql_real_escape_string($_POST["website"]);
+$additional_info        = mysql_real_escape_string($_POST['additional_info']);
+$updated_by = $_POST['updated_by'];
+
 $resource_id 		= mysql_real_escape_string($_POST["resource_id"]);
 $resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);
 
@@ -51,18 +55,21 @@ $resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);
 //
 //Query to update organization
 $query = "UPDATE	organization 
-		  SET		organization_name = \"".$organization_name."\" ,
-					street_address = \"".$street_address."\" ,
-					city = \"".$city."\" ,
-					state = \"".$state."\" ,
-					zip = \"".$zip."\" ,
-					county = \"".$county."\" ,
-					business_phone = \"".$business_phone."\" ,
-					business_fax = \"".$business_fax."\" ,
-					email = \"".$email."\" ,
-					website = \"".$website."\" 
-		  WHERE		organization_id = ".$organization_id."
-		  LIMIT 1";
+	  SET		organization_name = \"".$organization_name."\" ,
+			street_address = \"".$street_address."\" ,
+			city = \"".$city."\" ,
+			state = \"".$state."\" ,
+			zip = \"".$zip."\" ,
+			county = \"".$county."\" ,
+			business_phone = \"".$business_phone."\" ,
+                        24_hour_phone = \"".$business_phone2."\" ,
+			business_fax = \"".$business_fax."\" ,
+			email = \"".$email."\" ,
+			website = \"".$website."\" ,
+                        additional_info = \"".$additional_info."\" ,
+                        updated_by = \"".$updated_by."\" 
+	  WHERE		organization_id = ".$organization_id."
+	  LIMIT 1";
 
 $result = mysql_query($query) or die ("Error sending organization update query");
 
@@ -89,10 +96,9 @@ $query = "SELECT log FROM organization WHERE organization_id = ".$organization_i
 $result = mysql_query($query) or die ("Organization Query failed");
 $row = mysql_fetch_assoc($result);
 
-$tempdate = date("m/d/Y H:i:s");
-$query = "UPDATE organization SET log = '" .$_SESSION['username']. ": " .$tempdate. "\n"
-		 .$row['log']. "' WHERE organization_id = ".$organization_id;
-$result = mysql_query($query) or die ("Organization Query failed");
+$tempdate = date("m/d/Y H:i");
+$query = "UPDATE organization SET log = '".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']. "' WHERE organization_id = ".$organization_id;
+$result = mysql_query($query) or die ("Organization Log Update failed");
 
 // Redirect back to the organization's information page
 $redirect_url = "./organizationinfo.php?id=".$organization_id;
