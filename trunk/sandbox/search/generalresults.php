@@ -573,7 +573,7 @@ print "</center>";
  *
  */ 
 	print "<h3><center>Organizations by Resource</center></h3>";
-
+/*  // Previous Resource search before 12/14/09
 	$query = '';
 	$and = 0;
 	
@@ -595,6 +595,59 @@ print "</center>";
 	if($and) { $query .= ")"; }
 
 	$query .= "ORDER BY O.organization_name";
+*/
+
+// Modified by Rob on 12/14/09 to "narrow" the search results.
+	$query = '';
+	
+	$query =	  "SELECT	*
+				  FROM		organization O 
+				  JOIN		(resource_listing RL, detailed_resource DR)
+				  ON		(DR.resource_id = RL.resource_id AND RL.organization_id = O.organization_id)";
+	
+	//print "Searching resources matching: \"".$search."\"<br>";
+	$matchtermsR = "resource_type, description, keyword";
+	
+	$query .= " AND	MATCH(".$matchtermsR.") AGAINST('".$search."' IN BOOLEAN MODE )";
+	
+
+
+	//print "Searching for organizations matching: \"".$search."\"<br>";
+	// This $matchterms doesn't do anything.
+	$matchtermsO = "organization_name, street_address, city, state, zip, county, website, email";
+	$table = "organization";
+	
+	$query .= " AND MATCH(".$matchtermsO.") AGAINST('".$search."' IN BOOLEAN MODE )";
+
+//KEYWORD SEARCH
+/*
+	$q = "";
+	if( ($search{0} == "\"") && ($search{strlen($search)-1} == "\"") ){
+		$keywords[0] = substr($search, 1, (strlen($search)-2));
+		$keywords[1] = " ";
+	}
+	else{
+		$keywords = split(" ",$search);//Breaking the string to array of words
+	}
+	// Now let us generate the sql
+	while(list($key,$val)= each($keywords)){
+		if($val != " " and strlen($val) > 0){
+			$q .= " (organization_name like '%".$val.
+				  "%' OR street_address like '%".$val.
+				  "%' OR city like '%".$val.
+				  "%' OR state like '%".$val.
+				  "%' OR zip like '%".$val.
+				  "%' OR county like '%".$val.
+				  "%' OR website like '%".$val.
+				  "%' OR email like '%".$val."%') AND";
+		}
+	}// end of while
+	//remove last OR
+	$q=substr($q,0,(strLen($q)-4));
+	*/
+	$query .= "ORDER BY organization_name";
+	
+// End Rob's Modification.
 
 /*
  *
@@ -626,7 +679,8 @@ print "</center>";
 		//
 		// Print the different numbered results pages
 		//print "Results: ";
-
+		print "<a href=\"".$PHP_SELF."?start_r=0&num_r=10000\">All</a><br/>\n";
+		
 		if ($curr_page != 0) {
 			print "<a href=\"".$PHP_SELF."?start_r=".(($curr_page-1)*$r_results_per_page)."&num_r=".$r_results_per_page."\"> &lt;&lt; Previous </a>";
 		}
@@ -667,7 +721,7 @@ print "</center>";
 	if($num_results != 0) {
 
 		if($num_results > $r_results_per_page) {
-			print "<h4>Displaying<h4>Displaying results ".$curr_start." through ".$curr_end." out of ".$num_results." results.</h4>";
+			print "<h4>Displaying results ".$curr_start." through ".$curr_end." out of ".$num_results." results.</h4>";
 		}
 		else {
 			print "<h4>Displaying results 1 through ".$num_results." out of ".$num_results." results.</h4>";
