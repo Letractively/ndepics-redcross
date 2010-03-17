@@ -10,11 +10,7 @@ session_start();
 
 include ("config/dbconfig.php");
 include ("config/opendb.php");
-
 include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Update Person</title>";
-include("html_include_2.php");
  
 // ****************************
 //  Developed by ND Epics for St. Joe County RedCross 
@@ -25,6 +21,39 @@ include("html_include_2.php");
 // updateperson.php - file to update an existing person in the disaster database;
 // ****************************
 ?>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Disaster Database - Update Person</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="resource-type" content="document">
+<meta name="description" content="disaster.stjoe-redcross.org">
+<meta name="keywords" content="">
+<meta name="copyright" content="stjoe-redcross.org 2009.  All rights reserved.">
+<link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
+
+<STYLE type="text/css">
+ SPAN { padding-left:3px; padding-right:3px }
+ DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
+ BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
+</STYLE>
+
+</head>
+
+<body class="main">
+<div style="border:2px solid white; background-color:#FFFFFF">
+
+<iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
+  <h2 align="center">St. Joseph\'s County American Red Cross</h2>
+  <p align="center">Your browser does not support iframes.</p>
+  <div class="menu">
+  <a href = "./home.php" target= "_parent"> HOME</a> | 
+  <a href = "./search.php" target= "_parent"> SEARCH </a>
+  </div>
+</iframe>
 
 <div align="center">
   <h1>Update Person</h1>
@@ -38,28 +67,29 @@ ini_set ('display_errors', '1');
 // Retrieve the requested organization's information
 $person_id = $_POST["person_id"];
 $query = "SELECT	*
-		  FROM		person
-		  WHERE		person_id = ".$person_id;
+	  FROM		person
+	  WHERE		person_id = ".$person_id;
 		  
 $result = mysql_query($query) or die ("Person Query failed");
 
 $row = mysql_fetch_assoc($result);
 
-$salutation		= $row['salutation'];
-$first_name		= $row['first_name'];
-$last_name		= $row['last_name'];
-$street_address = $row['street_address'];
-$city			= $row['city'];
-$state			= $row['state'];
-$zip			= $row['zip'];
-$home_phone		= $row['home_phone'];
-$work_phone		= $row['work_phone'];
-$mobile_phone	= $row['mobile_phone'];
-$fax			= $row['fax'];
-$email			= $row['email'];
-$im				= $row['im'];
-$additional_info       = $row['additional_info'];
-$updated_by            = $row['updated_by'];
+ $salutation		= $row['salutation'];
+ $first_name		= $row['first_name'];
+ $last_name		= $row['last_name'];
+ $street_address        = $row['street_address'];
+ $city			= $row['city'];
+ $state			= $row['state'];
+ $zip			= $row['zip'];
+ $home_phone		= $row['home_phone'];
+ $work_phone		= $row['work_phone'];
+ $mobile_phone	        = $row['mobile_phone'];
+ $fax			= $row['fax'];
+ $email			= $row['email'];
+ $im			= $row['im'];
+ $additional_info       = $row['additional_info'];
+ $updated_by            = $row['updated_by'];
+
 
 print "<p align=center><b>Change the desired fields and press 'Update Person'.</b></p>\n";
 
@@ -144,15 +174,15 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 		
 		print "<tr>\n";
 		print "<td><b>IM: </b></td>\n";
-		print "<td><input name='im' type='text' size='30' maxlength='30' align='left' value=\"".$im."\"></td>\n";
+		print "<td><input name='im' type='text' size='30' maxlength='30' align= 'left' value=\"".$im."\"></td>\n";
 		print "</tr>\n";
 
   		print "<tr>\n";
 		print "<td><b>Additional Info: </b></td>\n";
-		print "<td><textarea name='additional_info' rows=6 cols=40 align='left'>".$additional_info."</textarea></td>\n";
+		print "<td><textarea name='additional_info' rows=6 cols=40 align= 'left' value=\"".$additional_info."\"></td>\n";
 		print "</tr>\n";
 
- 		print "<tr>\n";
+ <		print "<tr>\n";
 		print "<td><b>YOUR Initials: </b></td>\n";
 		print "<td><input name='updated_by' type='text' size='11' maxlength='11' align= 'left' value=\"".$updated_by."\"></td>\n";
 		print "</tr>\n";
@@ -166,7 +196,7 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 print "<table>";
 print "<tr>";
 print "<td>Title in Organization: </td>";
-print "<td><input type='text' name='title_in_organization' maxsize='30'> (e.g. 'Pastor')</td>";
+print "<td><input type='text' name='title_in_organization' maxsize='30'></td>";
 print "</table>";
 
 print "<p>";
@@ -182,13 +212,13 @@ print "<p>";
 print "Select an Organization to link this person to: ";
 print "<select name=\"organization_id\" onchange=\"showOrganization(this.value)\">";
   
-$query = "SELECT	o.* 
-			FROM		organization o
-			WHERE		NOT EXISTS (
-							SELECT  wf.*
-							FROM    works_for wf 
-							WHERE	wf.organization_id = o.organization_id
-							AND		wf.person_id = ".$person_id.")";
+ $query = "SELECT       o.* 
+	   FROM		organization o
+	   WHERE	NOT EXISTS (
+	         SELECT         wf.*
+	         FROM           works_for wf 
+	         WHERE	        wf.organization_id = o.organization_id
+	         AND		wf.person_id = ".$person_id.") ";
 $query .= "ORDER BY o.organization_name";
 
 $result = mysql_query($query) or die("Could not access resources");
@@ -214,12 +244,12 @@ print "<b>Remove this person from an organization:</b><br><br>";
 print "<select name=\"organizationremove_id\" onchange=\"showOrganization(this.value)\">";
   
 $query = "SELECT	o.* 
-			FROM		organization o
-			WHERE		EXISTS (
-							SELECT  wf.*
-							FROM    works_for wf 
-							WHERE	wf.organization_id = o.organization_id
-							AND		wf.person_id = ".$person_id.")";
+	  FROM		organization o
+	  WHERE		EXISTS (
+	        SELECT          wf.*
+	        FROM            works_for wf 
+	        WHERE	        wf.organization_id = o.organization_id
+	        AND		wf.person_id = ".$person_id.") ";
 $query .= "ORDER BY o.organization_name";
 
 $result = mysql_query($query) or die("Could not access resources");
@@ -229,7 +259,7 @@ $result = mysql_query($query) or die("Could not access resources");
 	{
 		print "<option value=\"".$row['organization_id']."\">".$row['organization_name']."</option>";
 	}
-print "</select><br><br>";
+print "</select>";
 
 print "<b>Associate this person with a resource:</b><br><br>";
 print "Select a Resource: ";
@@ -264,5 +294,4 @@ print "</html>\n";
 
 
 include ("config/closedb.php");
-include("html_include_3.php");
 ?>

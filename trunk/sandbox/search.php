@@ -20,7 +20,11 @@ session_start();
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-include ("./config/functions.php");
+
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Search</title>";
+include("html_include_2.php");
 
 // Reset the search SESSION variables;
 $_SESSION['search_type'] = '';
@@ -32,62 +36,18 @@ $_SESSION['detailed_search_city']	= '';
 $_SESSION['detailed_search_state']	= '';
 $_SESSION['detailed_search_zip']	= '';
 $_SESSION['detailed_search_county'] = '';
-
-
 ?>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>Disaster Database - Search</title>
-
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta name="resource-type" content="document">
-<meta name="description" content="disaster.stjoe-redcross.org">
-<meta name="keywords" content="">
-<meta name="copyright" content="stjoe-redcross.org 2008.  All rights reserved.">
-<link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
-
-<STYLE type="text/css">
- SPAN { padding-left:3px; padding-right:3px }
- DIV.header{ margin:0; padding-bottom: 1px; color: white; background-color: #000000; border:none; font-weight:bold}
- BODY.main{ width: 744px; margin:0 auto; padding:0; background-color:#003366; color: #000000; border:outset}
-</STYLE>
-
-</head>
-
-<body class="main">
-<div style="border:2px solid white; background-color:#FFFFFF">
-
-<iframe src ="homeframe.php" width="745px" height="175px" scrolling= "no" FRAMEBORDER="0">
-  <h2 align="center">St. Joseph's County American Red Cross</h2>
-  <p align="center">Your browser does not support iframes.</p>
-  <div class="menu">
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/home.php" target= "_parent"> HOME</a> | 
-  <a href = "http://disaster.stjoe-redcross.org/sandbox/search.php" target= "_parent"> SEARCH </a>
-  </div>
-</iframe>
-
-
-<div align="center">
-<h1>Search the Database</h1>
-</div>
-
-<hr>
-
 
 <p name="general_search">
 <div align="center">
-<h1>General Search</h1>
-<form name="general_search" action="./search/searching.php" method="POST">
-
+<h1 style="display: inline">General Search: </h1>
+<form style="display: inline" name="general_search" action="./search/searching.php" method="POST">
 	<input type="hidden" name="search_type" value="general">
-	Search: <input type="text" name="search_text" size="30" maxsize="100">
+	<input type="text" name="search_text" size="30" maxsize="100">
 	<input type="submit" value="Search">
 </form>
 <br>
 <br>
-<hr>
 <hr>
 </p>
 </div>
@@ -283,8 +243,5 @@ $_SESSION['detailed_search_county'] = '';
 
 <?php
 include ("./config/closedb.php");
+include("html_include_3.php");
 ?>
-
-</div>
-</body>
-</html>

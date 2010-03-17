@@ -7,7 +7,12 @@ session_start();
 
 include ("config/dbconfig.php");
 include ("config/opendb.php");
+
+
 include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Statement of Understanding</title>";
+include("html_include_2.php");
 
 $organization_id = $_POST["organization_id"];
 $queryid = "SELECT filename,filetype,filesize,uploaded_contract FROM statement_of_understanding WHERE organization_id = ".$organization_id;
@@ -27,5 +32,5 @@ else
   print "<input type=\"BUTTON\" VALUE=\"Home\" ONCLICK=\"window.location.href='./home.php'\">";
 }
 include 'library/closedb.php';
-exit;
+include("html_include_3.php");
 ?>

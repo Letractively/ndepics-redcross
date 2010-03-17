@@ -1,0 +1,94 @@
+span {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.header {
+	margin: 0px;
+	padding: 0px;
+	color: white;
+	background-color: #000000;
+	border: 0px;
+	font-weight:bold;
+}
+
+.main {
+	width: 740px;
+	margin: 10px auto;
+	padding: 0px;
+	background-color: #002266;
+	color: #000000;
+	border: 2px solid black;
+}
+
+a:hover {
+	color: #f00;
+}
+
+a.whitelink  {
+	color: #fff;
+	text-decoration: none;
+}
+
+a.whitelink:hover {
+	color: #f00;
+}
+
+h1 {
+	display: inline;
+	font-size: 25px;
+	font-family: Helvetica;
+}
+
+.menu {
+	height: 30px;
+	padding: 0px;
+	margin: 0px;
+	font-size: 14px;
+	border: 0px;
+	background-color:#333;
+	color: white;
+	font-weight: bold;
+}
+
+.menu a:link {
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+}
+
+.menu a:visited {
+	text-decoration: none;
+	color: #fff;
+}
+
+.menu a:active {
+	text-decoration: none;
+	color: #666;
+}
+
+.menu a:hover {
+	text-decoration: none;
+	color: #f00;
+}
+
+.menu ul {
+	margin-top: 0px;
+	padding-top: 5px;
+}
+
+.menu li {
+	display: inline;
+	padding-right: 20px;
+	padding-top: 0px;
+}
+
+.std_table {
+	border: 1px solid black;
+	font-size: 12px;
+}
+
+.std_table td, th {
+	border: 1px solid black;
+	padding: 5px;
+}
