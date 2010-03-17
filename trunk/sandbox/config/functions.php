@@ -180,4 +180,60 @@ function display_generic_error($error_message) {
 
 }
 
+function html_loginbox() {
+	$html = "<form action=\"login.php\" method=\"post\">   
+    <table style=\"border: 1px solid black; margin: 10px; padding: 0px\" cellspacing='0' cellpadding='1'>
+		<tr> 
+			<td style=\"padding: 5px\"><align='left'><b>Username:</b></td> 
+			<td style=\"padding: 5px\" align='left'><input type ='text' name='username' size=\"20\"></td>
+		</tr>
+
+		<tr> 
+			<td style=\"padding: 5px\" align='left'><b>Password:</b></td> 
+			<td style=\"padding: 5px\" align='left'><input name='password' type ='password' size=\"21\">
+			</td>
+		</tr>
+
+		<tr colspan='2'> 
+			<td  style=\"padding: 5px\"align='center'>
+			<input type='submit' value='Log In'>
+			<input type='reset' value='Reset'>
+			</td> 
+		</tr>
+	</table>
+</form>";
+	return $html;
+}
+
+function html_forgotuserpass() {
+	$html = "<table border='0' cellspacing='0' cellpadding='1'>
+	<tr>
+		<td><form action=\"retrieveuserinfo.php\" method=\"post\">
+			<input type=\"hidden\" name=\"forgot\" value=\"username\">
+			<input type=\"submit\" value=\"Forget your username?\">
+			</form>
+		</td>
+		<td><form action=\"retrieveuserinfo.php\" method=\"post\">
+			<input type=\"hidden\" name=\"forgot\" value=\"password\">
+			<input type=\"submit\" value=\"Forget your password?\">
+			</form>
+		</td>
+	</tr>
+</table>";
+	return $html;
+}
+
+function html_navmenu() {
+	$html = "<div class=\"menu\">
+<center>
+<ul>
+<li><a href = \"/home.php\" target= \"_parent\">Home</a></li>
+<li><a href = \"/search.php\" target= \"_parent\">Search the Database</a></li>
+<li><a href = \"mailto:epics2@nd.edu\" target= \"_parent\">Report A Problem</a></li>
+<li><a href = \"/logout.php\" target= \"_parent\">Log Out</a></li>
+</ul>
+</center>
+</div>";
+	return $html;
+}
 ?>
