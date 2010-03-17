@@ -76,11 +76,7 @@ elseif ($_SESSION['search_type'] == "person") {
 <html>
 <head>
 <title>Searching ... </title>
-
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<? print "<meta http-equiv=\"Refresh\" content=\"0.09; url=".$redirect_url."\">"; ?>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><meta name="copyright" content="stjoe-redcross.org 2008.  All rights reserved."><link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico"><link rel="stylesheet" type="text/css" href="/style.css"/><? print "<meta http-equiv=\"Refresh\" content=\"0.09; url=".$redirect_url."\">"; ?></head><body class="main">	<div style="border:0px; background-color: #fff; padding: 0px">		<div align="center" class="header">			<img src="/masthead.jpg" style="width: 740px; height: 100px">		</div>				<div style="background-color: #000; padding: 5px; margin: 0px; color: #fff; height: 40px">			<div style="float: left;">				<b>American Red Cross, St. Joseph County Chapter</b><br/>				3220 East Jefferson Boulevard, South Bend IN 46615			</div>						<div style="float: right;">				<b>Phone: (574) 234-0191</b><br/>				<a class="whitelink" href="http://disaster.stjoe-redcross.org">http://disaster.stjoe-redcross.org</a>			</div>		</div>		<table style="padding: 0px; margin: 0px; border: 0px;" cellpadding=0 cellspacing=0>		<tr>		<td style="background-color: #222; width: 740px; border: 0px">		<? echo html_navmenu() ?>		</td>		</tr>		<tr>		<td style="padding: 10px; width: 100%; vertical-align: top; border: 0px">
 <meta name="resource-type" content="document">
 <meta name="description" content="disaster.stjoe-redcross.org">
 <meta name="keywords" content="">
@@ -119,6 +115,6 @@ print "<h3> If you are not redirected shortly, please try your search again.</h3
 
 ?>
 
-
+</td></tr></table>
 </body>
 </html>
