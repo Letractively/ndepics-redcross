@@ -1,4 +1,5 @@
 <?php
+//THIS IS A BANK PAGE TO USE FOR DEVELOPMENT
 session_start();
 // Validate the users's session
  if(($_SESSION['valid']) != "valid") {
