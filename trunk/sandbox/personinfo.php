@@ -59,7 +59,8 @@ include("config/functions.php");include("html_include_1.php");echo "<title>St. J
   print "<br>";
   print "Info: ".$row['additional_info']."<br>";
   print "<br>";
-  print "Updated by ".$row['updated_by']." on ".$row['updated_time']."<br>";
+  $display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
+  print "Updated by ".$row['updated_by']." on ".$display_date."<br>";
 		
 
  //***** BUTTONS to Navigate ****/

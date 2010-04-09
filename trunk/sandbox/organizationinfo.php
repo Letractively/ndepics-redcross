@@ -120,11 +120,18 @@ include("html_include_2.php");
 		print	     "Business Fax: ".print_phone($row['business_fax'])."<br>";
 		print		 "Email: ".$row['email']."<br>";
 		print		 "Website: ".$row['website']."<br>";
-                print "Statement of Understanding: " .$rows['date_of_contract'];
-              print $rows['statement_of_understanding'];
+        print "Statement of Understanding: " .$rows['date_of_contract'];
+        print $rows['statement_of_understanding'];
+		print "<br>";
+		$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
+		print "Updated by ".$row['updated_by']." on ".$display_date."<br>";
 		
 		mysql_free_result($result);
 		
+if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
+		{
+			print	"<a href=\"./viewlog.php?id=".$organization_id."&type=organization\">Admin Log</a><br>";
+		}
 		
 		print "<br/><br/><h2 style=\"display: inline\">Resources</h2><br/>";
 		

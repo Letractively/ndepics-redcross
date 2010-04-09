@@ -51,28 +51,28 @@ $organizationremove_id = $_POST["organizationremove_id"];
 $resource_id = $_POST['resource_id'];
 $updated_by = $_POST['updated_by'];
 
-
 //
 //Query to update organization
 $query = "UPDATE	person 
-	  SET		salutation = \"".$salutation."\" ,
-			first_name = \"".$first_name."\" ,
-			last_name = \"".$last_name."\" ,
-			street_address = \"".$street_address."\" ,
-			city = \"".$city."\" ,
-			state = \"".$state."\" ,
-			zip = \"".$zip."\" ,
-			home_phone = \"".$home_phone."\" ,
-			work_phone = \"".$work_phone."\" ,
-			mobile_phone = \"".$mobile_phone."\" ,
-			fax = \"".$fax."\" ,
-			email = \"".$email."\" ,
-			im = \"".$im."\" ,
-                        additional_info = \"".$additional_info."\" ,
-                        updated_by = \"".$updated_by."\" 
-	   WHERE	person_id = ".$person_id."
+	  SET			salutation = \"".$salutation."\" ,
+					first_name = \"".$first_name."\" ,
+					last_name = \"".$last_name."\" ,
+					street_address = \"".$street_address."\" ,
+					city = \"".$city."\" ,
+					state = \"".$state."\" ,
+					zip = \"".$zip."\" ,
+					home_phone = \"".$home_phone."\" ,
+					work_phone = \"".$work_phone."\" ,
+					mobile_phone = \"".$mobile_phone."\" ,
+					fax = \"".$fax."\" ,
+					email = \"".$email."\" ,
+					im = \"".$im."\" ,
+		            additional_info = \"".$additional_info."\" ,
+   		 	        updated_by = \"".$updated_by."\" ,
+					updated_time = NOW()
+	   WHERE		person_id = ".$person_id."
 	   LIMIT 1";
-
+	   
 $result = mysql_query($query) or die ("Error sending person update query");
 
 
@@ -103,10 +103,7 @@ if($resource_id != "NULL"){
 $query = "SELECT log FROM person WHERE person_id = ".$person_id;
 $result = mysql_query($query) or die ("Person Log Query failed");
 $row = mysql_fetch_assoc($result);
-
-//Get Date and Time
 $tempdate = date("m/d/Y H:i");
-
 $query = "UPDATE person SET log = '".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']. "' WHERE person_id = ".$person_id;
 $result = mysql_query($query) or die ("Person Log Update failed");
 

@@ -55,20 +55,21 @@ $resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);
 //
 //Query to update organization
 $query = "UPDATE	organization 
-	  SET		organization_name = \"".$organization_name."\" ,
-			street_address = \"".$street_address."\" ,
-			city = \"".$city."\" ,
-			state = \"".$state."\" ,
-			zip = \"".$zip."\" ,
-			county = \"".$county."\" ,
-			business_phone = \"".$business_phone."\" ,
-                        24_hour_phone = \"".$business_phone2."\" ,
-			business_fax = \"".$business_fax."\" ,
-			email = \"".$email."\" ,
-			website = \"".$website."\" ,
-                        additional_info = \"".$additional_info."\" ,
-                        updated_by = \"".$updated_by."\" 
-	  WHERE		organization_id = ".$organization_id."
+	  		SET		organization_name = \"".$organization_name."\" ,
+					street_address = \"".$street_address."\" ,
+					city = \"".$city."\" ,
+					state = \"".$state."\" ,
+					zip = \"".$zip."\" ,
+					county = \"".$county."\" ,
+					business_phone = \"".$business_phone."\" ,
+                    24_hour_phone = \"".$business_phone2."\" ,
+					business_fax = \"".$business_fax."\" ,
+					email = \"".$email."\" ,
+					website = \"".$website."\" ,
+                    additional_info = \"".$additional_info."\" ,
+                    updated_by = \"".$updated_by."\" ,
+					updated_time = NOW()
+	  	WHERE		organization_id = ".$organization_id."
 	  LIMIT 1";
 
 $result = mysql_query($query) or die ("Error sending organization update query");
@@ -93,9 +94,8 @@ $result = mysql_query($query) or die ("Deletion Query failed, please retry.");
 
 //Log Changes
 $query = "SELECT log FROM organization WHERE organization_id = ".$organization_id;
-$result = mysql_query($query) or die ("Organization Query failed");
+$result = mysql_query($query) or die ("Failed to access Organization Log");
 $row = mysql_fetch_assoc($result);
-
 $tempdate = date("m/d/Y H:i");
 $query = "UPDATE organization SET log = '".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']. "' WHERE organization_id = ".$organization_id;
 $result = mysql_query($query) or die ("Organization Log Update failed");
