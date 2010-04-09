@@ -20,8 +20,7 @@ include("html_include_2.php");
 //****************************
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
-// Authors: Mike Ellerhorst, Mark Pasquier, Bryan Winther, Matt Mooney
-//  Fall 2009
+// Author: Matt Mooney
 //
 // updateperson2.php - file to verify the modification to a person record in the disaster database
 //****************************

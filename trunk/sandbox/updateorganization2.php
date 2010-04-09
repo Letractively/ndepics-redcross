@@ -15,8 +15,7 @@ include("config/functions.php");include("html_include_1.php");echo "<title>St. J
 //****************************
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
+// Author: Matt Mooney
 //
 // updateorganization2.php - file to verify the modification to an organization in the disaster database
 //****************************

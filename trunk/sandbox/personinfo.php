@@ -12,15 +12,17 @@ session_start();
 // ****************************
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
+// Authors: Matt Mooney
 //
 // personinfo.php - Page to display information about a given person;
 // ****************************
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Person Info</title>";include("html_include_2.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Person Info</title>";
+include("html_include_2.php");
 ?>
 <?php
 

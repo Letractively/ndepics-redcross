@@ -12,8 +12,7 @@ session_start();
 //****************************
 //  Developed by ND Epics for St. Joe County RedCross 
 //  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
+// Author: Matt Mooney
 //
 // organizationinfo.php - Page to display information about a given organization;
 //****************************
@@ -40,49 +39,55 @@ include("html_include_2.php");
                 $results = mysql_query($querys) or die ("Query Failed...could not retrieve organization information");
                 $rows = mysql_fetch_assoc($results);
 				
-		print "<h2 style=\"display: inline\">Organization Info - ";
-		print $row['organization_name'];
+		print "<h1 style=\"display: inline\">Organization Information";
 		print "</h1><br/><hr>";
 
-		//
+		// Display the Organization Information
+		print "<h3>".$row['organization_name']."</h3>";
+		print		 $row['street_address']."<br>";
+		print		 $row['city'].", ".$row['state']." ".$row['zip']."<br>";
+		print		 $row['county']."<br><br>";
+		print		 "Business Phone:  ".print_phone($row['business_phone'])."<br>";
+		print	     "Business Fax: ".print_phone($row['business_fax'])."<br><br>";
+		print		 "Email: ".$row['email']."<br>";
+		print		 "Website: ".$row['website']."<br><br>";
+        print "Statement of Understanding: " .$rows['date_of_contract'];
+        print $rows['statement_of_understanding'];
+		print "<br><br>";
+		$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
+		print "Updated by ".$row['updated_by']." on ".$display_date."<br><br>";
+		
 		// Navigation Buttons
-		print "<div align=\"center\" name=\"navigation_buttons\">";
-		
-		print "<div align = 'center'>";
-		print "<form>";
-		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
-		print "</form>";
-		print "<br></div>";
-		
+		print "<div align=\"left\" name=\"navigation_buttons\">";
 		print "<table cellpadding=0 cellspacing=0>";
 		print	"<tr>";
 		// Update BUTTON
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
-		print		"<td width=\"50%\" align=\"right\"><form action=\"./updateorganization.php\"  method=\"POST\">";
+		print		"<td width=\"50%\" align=\"left\">";
+		print		"<form action=\"./updateorganization.php\"  method=\"POST\">";
 		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 		print			"<input type=\"submit\" value=\"Update Record\">";
 		print			"</form>";
 		print		"</td>";
 		}
-		
 		// Delete BUTTON
 		if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
-		print		"<td><form action=\"./deleteorganization.php\" method=\"POST\">";
+		print		"<td>";
+		print		"<form action=\"./deleteorganization.php\" method=\"POST\">";
 		print			"<input type=hidden name=organization_id value=".$organization_id.">";
 		print			"<input type=submit value=\"Delete Record\">";
 		print			"</form>";
 		print		"</td>";
 		print		"</tr>";
-                }
-
-
+               }
 		// sou BUTTON
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
 		print		"<tr>";
-		print		"<td><form action=\"./viewstatementofunderstanding.php\"  method=\"POST\">";
+		print		"<td>";
+		print		"<form action=\"./viewstatementofunderstanding.php\"  method=\"POST\">";
 		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 		print			"<input type=\"submit\" value=\"View Statement of Understanding\">";
 		print			"</form>";
@@ -92,7 +97,8 @@ include("html_include_2.php");
 		// facility survey BUTTON
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
-		print		"<td><form action=\"./viewfacilitysurvey.php\"  method=\"POST\">";
+		print		"<td>";
+		print		"<form action=\"./viewfacilitysurvey.php\"  method=\"POST\">";
 		print			"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 		print			"<input type=\"submit\" value=\"View Facility Survey\">";
 		print			"</form>";
@@ -100,31 +106,8 @@ include("html_include_2.php");
 		print		"</tr>";
 		}
 		
-		// Home BUTTON
-		//print		"<td><form action=\"./home.php\">";
-		//print			"<input type=submit value='Home'>";
-		//print			"</form>";
-		//print		"</td>";
-		//print	"</tr>";
 		print "</table>";
-		
 		print "</div>";
-		
-		//
-		// Display the Organization Information
-		print "<h3>".$row['organization_name']."</h3>";
-		print		 $row['street_address']."<br>";
-		print		 $row['city'].", ".$row['state']." ".$row['zip']."<br>";
-		print		 $row['county']."<br>";
-		print		 "Business Phone:  ".print_phone($row['business_phone'])."<br>";
-		print	     "Business Fax: ".print_phone($row['business_fax'])."<br>";
-		print		 "Email: ".$row['email']."<br>";
-		print		 "Website: ".$row['website']."<br>";
-        print "Statement of Understanding: " .$rows['date_of_contract'];
-        print $rows['statement_of_understanding'];
-		print "<br>";
-		$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
-		print "Updated by ".$row['updated_by']." on ".$display_date."<br>";
 		
 		mysql_free_result($result);
 		
