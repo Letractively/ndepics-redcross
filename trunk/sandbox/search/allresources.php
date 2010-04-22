@@ -43,6 +43,12 @@ if(isset($_GET['start'])) {
 }
 
 
+$query = "SELECT * FROM person;";
+$result = mysql_query($query) or die(mysql_error());
+while ($row = mysql_fetch_array($result)) {
+	echo "name=".$row['first_name']."<br/>";
+}
+
 //
 // Display the page
 
