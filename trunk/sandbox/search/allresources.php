@@ -42,14 +42,6 @@ if(isset($_GET['start'])) {
 	$search_result_start = 0;
 }
 
-
-echo "testing";
-$query = "SELECT * FROM person;";
-$result = mysql_query($query) or die(mysql_error());
-while ($row = mysql_fetch_array($result)) {
-	echo "name=".$row['first_name']."<br/>";
-}
-
 //
 // Display the page
 
