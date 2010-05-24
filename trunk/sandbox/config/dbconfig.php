@@ -13,7 +13,7 @@ $dbhost = 'localhost';
 //$dbuser = 'disaster_response';
 $dbuser = 'disaster_testdb';
 $dbpass = 'NDepics';
-$dbname = 'disaster_response';
+//$dbname = 'disaster_response';
 $dbname = 'disaster_testdb';
 
 ?>
