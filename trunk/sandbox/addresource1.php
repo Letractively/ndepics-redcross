@@ -1,4 +1,10 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// addresource1.php - file to insert a resource into the disaster database
+//****************************
 session_start();
 // Validate the users's session
 if(($_SESSION['valid']) != "valid") {
@@ -9,14 +15,6 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 	header( 'Location: ./index.php' );
 }  
 
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
-//
-// addresource1.php - file to insert a resource into the disaster database;
-//****************************
 
 include("config/functions.php");
 include("html_include_1.php");

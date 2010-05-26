@@ -1,4 +1,10 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// addperson2.php - file to insert a pserson into the disaster database
+//****************************
 session_start();
 // Validate the users's session
 if(($_SESSION['valid']) != "valid") {
@@ -11,14 +17,6 @@ include ("./config/dbconfig.php");
 include ("./config/opendb.php");
 include("./config/functions.php");
 
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
-//
-// addorganization2.php - file to insert an organization into the disaster database;
-//****************************
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

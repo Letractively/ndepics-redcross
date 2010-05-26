@@ -1,4 +1,10 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// addorganization.php - file to insert an organization into the disaster database
+//****************************
 session_start();
 // Validate the users's session
 if(($_SESSION['valid']) != "valid") {
@@ -10,15 +16,8 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
 include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Add Organization</title>";include("html_include_2.php");
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
-//
-// addorganization.php - file to insert an organization into the disaster database;
-//****************************
-?> <h1>Add Organization</h1>
+?> 
+<h1>Add Organization</h1>
 <form>
 <INPUT TYPE="BUTTON" VALUE="Back" ONCLICK="window.location.href='javascript:history.back()'">
 </form>
