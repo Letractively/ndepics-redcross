@@ -337,7 +337,7 @@ if($search_type != "person"){
 
 print "</table>";
 			
-print "<br><div align = 'center'>";
+print "<br>";
 
 // Print the links to different results pages
 if($num_results > $results_per_page) {
