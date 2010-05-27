@@ -8,7 +8,7 @@
 <body class="main">
 	<div style="border:0px; background-color: #fff; padding: 0px">
 		<div align="center" class="header">
-			<img src="/masthead.jpg" style="width: 740px; height: 100px">
+			<img src="/masthead.jpg" style="width: 740px; height: 100px" alt="American Red Cross">
 		</div>
 		
 		<div style="background-color: #000; padding: 5px; margin: 0px; color: #fff; height: 40px">
