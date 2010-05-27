@@ -1,4 +1,10 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// updateperson.php - file to update a peron's information within the database
+//****************************
 session_start();
 // Validate the users's session
  if(($_SESSION['valid']) != "valid") {
@@ -15,15 +21,6 @@ include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Update Person</title>";
 include("html_include_2.php");
- 
-// ****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst, Mark Pasquier, Bryan Winther, Matt Mooney
-//  Spring 2009
-//
-// updateperson.php - file to update an existing person in the disaster database;
-// ****************************
 ?>
 
 <div align="center">
@@ -102,7 +99,7 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 		
 		print "<tr>\n";
 		print "<td><b>Zip:</b></td>\n";
-		print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value=\"".$zip."\"></td>\n";
+		print "<td><input name='zip' type='text' size='5' maxlength='5' align= 'left' value=\"".$zip."\"></td>\n";
 		print "</tr>\n";
 		
 		print "<tr>\n";

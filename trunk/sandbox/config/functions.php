@@ -184,7 +184,7 @@ function html_loginbox() {
 	$html = "<form action=\"login.php\" method=\"post\">   
     <table style=\"border: 1px solid black; margin: 10px; padding: 0px\" cellspacing='0' cellpadding='1'>
 		<tr> 
-			<td style=\"padding: 5px\"><align='left'><b>Username:</b></td> 
+			<td style=\"padding: 5px\" align='left'><b>Username:</b></td> 
 			<td style=\"padding: 5px\" align='left'><input type ='text' name='username' size=\"20\"></td>
 		</tr>
 
@@ -194,7 +194,7 @@ function html_loginbox() {
 			</td>
 		</tr>
 
-		<tr colspan='2'> 
+		<tr> 
 			<td  style=\"padding: 5px\"align='center'>
 			<input type='submit' value='Log In'>
 			<input type='reset' value='Reset'>
@@ -227,10 +227,10 @@ function html_navmenu() {
 	$html = "<div class=\"menu\">
 <center>
 <ul>
-<li><a href = \"/home.php\" target= \"_parent\">Home</a></li>
-<li><a href = \"/search.php\" target= \"_parent\">Search the Database</a></li>
+<li><a href = \"./home.php\" target= \"_parent\">Home</a></li>
+<li><a href = \"./search.php\" target= \"_parent\">Search the Database</a></li>
 <li><a href = \"mailto:epics2@nd.edu\" target= \"_parent\">Report A Problem</a></li>
-<li><a href = \"/logout.php\" target= \"_parent\">Log Out</a></li>
+<li><a href = \"./logout.php\" target= \"_parent\">Log Out</a></li>
 </ul>
 </center>
 </div>";

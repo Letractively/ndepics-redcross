@@ -172,12 +172,12 @@ else
 {
   $errCount=0;
   validator("Salutation",$salutation,"string","2","10","0");
-  validator("First Name", $first_name, "alpha","","","0");
-  validator("Last Name",$last_name,"alpha","","","0");
+  validator("First Name", $first_name, "alpha_space","","","0");
+  validator("Last Name",$last_name,"string","","","0");
   validator("Street Address",$street_address,"string","","","0");
   validator("City",$city,"alpha_space","","","0");
   validator("State",$state,"alpha","2","2","0");
-  validator("Zip",$zip,"number","5","5","","","0");
+  validator("Zip",$zip,"number","5","5","0");
   validator("Home Phone",$home_phone,"number","10","10","0");
   validator("Work Phone",$work_phone,"number","10","10","0");
   validator("Mobile Phone",$mobile_phone,"number","10","10","0");

@@ -54,6 +54,8 @@ include("html_include_2.php");
         print "Statement of Understanding: " .$rows['date_of_contract'];
         print $rows['statement_of_understanding'];
 		print "<br><br>";
+		print "Additional Information: ".$row['additional_info']."<br><br>";
+		
 		$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
 		print "Updated by ".$row['updated_by']." on ".$display_date."<br><br>";
 		

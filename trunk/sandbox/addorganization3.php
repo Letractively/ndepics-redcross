@@ -15,7 +15,11 @@ if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
 } 
 include ("config/dbconfig.php");
 include ("config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Organization Added</title>";echo "<script src=\"./javascript/selectorganization.js\"></script>";include("html_include_2.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Organization Added</title>";
+echo "<script src=\"./javascript/selectorganization.js\"></script>";
+include("html_include_2.php");
 ?>
 
 <div align="center">
@@ -88,19 +92,20 @@ $organization_id = $row['Auto_increment'];
 $tempdate = date("m/d/Y H:i");
 $query = "INSERT INTO  organization (organization_name ,
 				     street_address ,
-                                     mailing_address ,
+                     mailing_address ,
 				     city ,
 				     state ,
 				     zip ,
 				     county ,
 				     business_phone ,
-                                     24_hour_phone ,
+                     24_hour_phone ,
 				     business_fax ,
 				     email ,
 				     website ,
-                                     additional_info , 
-                                     updated_by ,
-                                     log)
+                     additional_info , 
+                     updated_by ,
+					 updated_time ,
+                     log)
 		 VALUES (\"".$organization_name."\",
                          \"".$street_address."\",
                          \"".$mailing_address."\",
@@ -115,6 +120,7 @@ $query = "INSERT INTO  organization (organization_name ,
                          \"".$website."\",
                          \"".$addtl_info."\",
                          \"".$updated_by."\",
+						 NOW(),
                          \"".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']."\")";
  $result = mysql_query($query) or die("Error adding Orgnaization");
 

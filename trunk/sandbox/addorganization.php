@@ -13,9 +13,12 @@ if(($_SESSION['valid']) != "valid") {
 if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){
 	header( 'Location: ./index.php' );
 }  
-include ("./config/dbconfig.php");
-include ("./config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Add Organization</title>";include("html_include_2.php");
+include("./config/dbconfig.php");
+include("./config/opendb.php");
+include("./config/functions.php");
+include("./html_include_1.php");
+echo "<title>St. Joseph Red Cross - Add Organization</title>";
+include("./html_include_2.php");
 ?> 
 <h1>Add Organization</h1>
 <form>
@@ -101,7 +104,7 @@ if(!$form_filled)
 
 		<tr>
 			<td>Zip</td>
-			<td><input name='zip' type='text' size='10' maxlength='10' align= 'left'> </td>
+			<td><input name='zip' type='text' size='5' maxlength='5' align= 'left'> </td>
 		</tr>
 		
 		<tr>
@@ -181,7 +184,7 @@ $errCount=0;
  validator("City",$city,"alpha_space");
  validator("County",$county,"string","1","50","0");
  validator("State",$state,"alpha","2","2");
- validator("Zip",$zip,"number","5","5");
+ validator("Zip",$zip,"number","5","5","0");
  validator("Bus Phone",$bus_phone,"number","10","10","0");
  validator("24H or 2nd Phone",$bus_phone2,"number","10","10","0");
  validator("Business Fax",$fax,"number","10","10","0");
@@ -328,7 +331,7 @@ else
 }
 
 //Zip
-validator("Zip",$zip,"number","5","5");
+validator("Zip",$zip,"number","5","5","0");
 if($messages[$errCount])
 {
   print $messages[$errCount]."<br>";
@@ -523,5 +526,6 @@ else
 print "<br><div align = 'center'>";
 }
 
-include("./config/closedb.php");include("html_include_3.html");
+include("./config/closedb.php");
+include("./html_include_3.php");
 ?>

@@ -1,4 +1,10 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// updateorganization.php - file to update an organization's information within the database
+//****************************
 session_start();
 // Validate the users's session
  if(($_SESSION['valid']) != "valid") {
@@ -8,27 +14,12 @@ session_start();
         header( 'Location: ./index.php' );
  }
 
-
 include ("config/dbconfig.php");
 include ("config/opendb.php");
-
-
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Update Organization</title>";
 include("html_include_2.php");
-
-// ****************************
-//  Developed by ND Epics for St. Joe County RedCross
-//
-// Authors: Mike Ellerhorst, Mark Pasquier, Bryan Winther, Matt Mooney
-//  Spring 2009
-//
-// updateorganization.php - file to update an existing organization in the disaster database;
-//
-// Revision History		03/26/09	Mike Ellerhorst - Modified SQL script to only provide drop down with 
-//														resources that aren't already linked to org.
-// ****************************
 ?>
 
 <div align="center">
@@ -94,7 +85,7 @@ $row = mysql_fetch_assoc($result);
  
  print "<tr>\n";
  print "<td><b>Zip:</b></td>\n";
- print "<td><input name='zip' type='text' size='10' maxlength='10' align= 'left' value=\"".$zip."\"></td>\n";
+ print "<td><input name='zip' type='text' size='5' maxlength='5' align= 'left' value=\"".$zip."\"></td>\n";
  print "</tr>\n";
  
  print "<tr>\n";
