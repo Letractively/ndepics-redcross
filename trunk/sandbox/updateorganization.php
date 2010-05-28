@@ -1,7 +1,7 @@
 <?php
 //****************************
 // Developed by Notre Dame EPICS for St. Joe County RedCross 
-// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Fall 2009 - Matt Mooney
 // Summer 2010 - Matt Mooney
 // updateorganization.php - file to update an organization's information within the database
 //****************************

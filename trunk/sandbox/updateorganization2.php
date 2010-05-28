@@ -1,4 +1,10 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2009 - Matt Mooney
+// Summer 2010 - Matt Mooney
+// sou.php - HTML and PHP to accept a file for upload
+//****************************
 session_start();
 // Validate the users's session
  if(($_SESSION['valid']) != "valid") {
@@ -10,48 +16,29 @@ session_start();
 
 include ("config/dbconfig.php");
 include ("config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Update Organization</title>";include("html_include_2.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Update Organization</title>";
+include("html_include_2.php");
 
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Author: Matt Mooney
-//
-// updateorganization2.php - file to verify the modification to an organization in the disaster database
-//****************************
-
-//
-// Get the variables from the previous page to be updated in database
 $organization_id	= mysql_real_escape_string($_POST["organization_id"]);
 $organization_name	= mysql_real_escape_string($_POST["organization_name"]);
 $street_address		= mysql_real_escape_string($_POST["street_address"]);
-$city			= mysql_real_escape_string($_POST["city"]);
-$state			= mysql_real_escape_string($_POST["state"]);
-$zip			= mysql_real_escape_string($_POST["zip"]);
-$county			= mysql_real_escape_string($_POST["county"]);
+$city				= mysql_real_escape_string($_POST["city"]);
+$state				= mysql_real_escape_string($_POST["state"]);
+$zip				= mysql_real_escape_string($_POST["zip"]);
+$county				= mysql_real_escape_string($_POST["county"]);
 $business_phone		= mysql_real_escape_string($_POST["bus_phone_1"]).mysql_real_escape_string($_POST["bus_phone_2"]).mysql_real_escape_string($_POST["bus_phone_3"]);
 $business_phone2	= mysql_real_escape_string($_POST["bus2_phone_1"]).mysql_real_escape_string($_POST["bus2_phone_2"]).mysql_real_escape_string($_POST["bus2_phone_3"]);
 $business_fax		= mysql_real_escape_string($_POST["bus_fax_1"]).mysql_real_escape_string($_POST["bus_fax_2"]).mysql_real_escape_string($_POST["bus_fax_3"]);
-$email			= mysql_real_escape_string($_POST["email"]);
-$website		= mysql_real_escape_string($_POST["website"]);
-$additional_info        = mysql_real_escape_string($_POST['additional_info']);
-$updated_by = $_POST['updated_by'];
+$email				= mysql_real_escape_string($_POST["email"]);
+$website			= mysql_real_escape_string($_POST["website"]);
+$additional_info    = mysql_real_escape_string($_POST['additional_info']);
+$updated_by 		= $_POST['updated_by'];
 
 $resource_id 		= mysql_real_escape_string($_POST["resource_id"]);
 $resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);
 
-//print $organization_name."<br>";
-//print $street_address."<br>";
-//print $city."<br>";
-//print $state."<br>";
-//print $zip."<br>";
-//print $county."<br>";
-//print $business_phone."<br>";
-//print $business_fax."<br>";
-//print $email."<br>";
-//print $website."<br>";
-
-//
 //Query to update organization
 $query = "UPDATE	organization 
 	  		SET		organization_name = \"".$organization_name."\" ,
@@ -80,7 +67,6 @@ if($resource_id != "NULL") {
 	$result = mysql_query($query) or die ("Error adding resource_listing");
 }
 
-
 if($resourceremove_id != "NULL") {
 $query = "DELETE	
 		  FROM		resource_listing 
@@ -104,9 +90,10 @@ $redirect_url = "./organizationinfo.php?id=".$organization_id;
 
 ?>
 <div align="center">
-  <h3>Updating Organization... Please click <a href="<? echo $redirect_url; ?>">here</a>.</h3>
+  <h3>Updated Organization... Please click <a href="<? echo $redirect_url; ?>">here</a>.</h3>
 </div>
 
 <?
-include ("config/closedb.php");include("html_include_3.php");
+include ("config/closedb.php");
+include("html_include_3.php");
 ?>

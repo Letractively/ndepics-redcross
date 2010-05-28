@@ -1,73 +1,58 @@
 <?php
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Facility Survey</title>";
-echo "<script src=\"./javascript/selectorganization.js\"></script>";
-include("html_include_2.php");
-
-error_reporting(E_ALL);
-ini_set ('display_errors', '1');
-
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Spring 2009 - Alyssa Krauss and Chris Durr
+// Summer 2010 - Matt Mooney
+// facilitysurvey.php - HTML and PHP to accept a file for upload
+//****************************
 session_start();
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
- //if( ($_SESSION['access_level_id'] != 7)){
- 	//header( 'Location: ./index.php' );
- //} 
-
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: ND Epics Group
-//	    Mike Ellerhorst
-//
-//  Spring 2009
-//
-// updatesou.php - enter a title here for the page
-//
-// Revision History:  Created - 01/01/01
-//
-//****************************
+}
+include ("./config/dbconfig.php");
+include ("./config/opendb.php");
+include ("./config/functions.php");
+include ("./html_include_1.php");
+echo "<title>St. Joseph Red Cross - FS Upload</title>";
+include ("./html_include_2.php");
 ?>
 
 <div align="center">
-  <h1>Update Facility Survey</h1>
+  <h2>Upload Facility Survey</h2><hr>
 </div>
 
-<?php
+<?
 $organization_id = $_POST["organization_id"];
-$query = "SELECT        organization_name
-                  FROM          organization
-                   WHERE        organization_id = ".$organization_id;
-$result = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
-
-$array = mysql_fetch_assoc($result);
-$result = $array['organization_name'];
-print"Upload Facility Survey to " .$result;
+$query = "SELECT	organization_name
+          FROM		organization
+          WHERE		organization_id = ".$organization_id;
+$org = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
+$array = mysql_fetch_assoc($org);
+$org = $array['organization_name'];
+print "Upload Facility Survey for ".$org.". Any existing file for this organization will be overwritten.";
 
 print"<form enctype='multipart/form-data' action='./facilitysurvey2.php' method='POST'>";
-print"<input type='hidden' name='MAX_FILE_SIZE' value='100000' >";
+print"<input type='hidden' name='MAX_FILE_SIZE' value='2097152' >";
 print"<input type=\"hidden\" name=\"id\" value=".$organization_id.">";
+print"The maximum file size is 2MB<br>Most .pdf, .doc, and .docx files will be well under the limit.";
 ?>
-Choose a file to upload: <br>
-<input name="uploadedfile" type="file" id = "uploadedfile"/><br />
 
-<div>
-<select name="filetype">
+Choose a file to upload:<br>
+<input name="uploadedfile" type="file" id = "uploadedfile"/>
+<br>
+Choose a File Type: <br>
+<select name="extension">
        <option value="NULL"> </option>
-       <option value="txt">.txt</option>
-       <option value="doc">.doc</option>
        <option value="pdf">.pdf</option>
+       <option value="doc">.doc</option>
+       <option value="docx">.docx</option>
 </select>
-</div>
 <div>
-<input type="submit" value="Send">
+<input type="submit" value="Upload File">
 </div>
 </form>
 
-
-<? include("html_include_3.php"); ?>
+<?
+include("./config/closedb.php");
+include("./html_include_3.php"); 
+?>
