@@ -1,21 +1,19 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2009 - Matt Mooney
+// Fall 2010 - Joey Rich
+// Summer 2010 - Matt Mooney
+// personinfo.php - Page to display information about a person
+//****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
-
- if( ($_SESSION['access_level_id'] < 1) || ($_SESSION['access_level_id'] > 10)){
- 	header( 'Location: ./index.php' );
- }
-
-// ****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Matt Mooney
-//
-// personinfo.php - Page to display information about a given person;
-// ****************************
+}
+//Check for admin or searching priveledges
+if( ($_SESSION['access_level_id'] < 1) || ($_SESSION['access_level_id'] > 10)){
+	header( 'Location: ./index.php' );
+}
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
@@ -26,24 +24,15 @@ include("html_include_2.php");
 ?>
 <?php
 
-
 //IF YOU HAVE ACCESS CODE.....
  if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
- 
 		print "<h1 align=\"center\">Personal Information</h1><hr>";
-		
-		$person_id = $_GET['id'];
-		
+	$person_id = $_GET['id'];
 		//print "Person_id: ".$person_id."<br>";
-		
 		$query = "SELECT * FROM person WHERE person_id = ".$person_id;
-		
 		$result = mysql_query($query) or die ("Query Failed...could not retrieve person's information");
-		
 		$row = mysql_fetch_assoc($result);
-		
 
- //*******
  // Display the Personal Information
   print "<h3>".$row['salutation']." ".$row['first_name']." ".$row['last_name']."</h3>";
   print $row['street_address']."<br>";
@@ -212,5 +201,6 @@ else{
 	print			"</form>";
 	print		"</td>";
 	print	"</div";
-}include("html_include_3.php");
+}
+include("html_include_3.php");
 ?>

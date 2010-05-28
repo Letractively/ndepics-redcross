@@ -1,6 +1,11 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross
+// Spring 2009 - Mike Ellerhorst, Mark Pasquier & Bryan Winther
+// Summer 2010 - Matt Mooney
+// updateresource.php - Page to make changed to a resource
+//****************************
 session_start();
-// Validate the users's session
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
@@ -12,14 +17,6 @@ session_start();
 include ("config/dbconfig.php");
 include ("config/opendb.php");include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Update Resource</title>";include("html_include_2.php");
 
-// ****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst, Mark Pasquier, Bryan Winther, Matt Mooney
-//  Spring 2009
-//
-// updateresource.php - file to update an existing resource in the disaster database;
-// ****************************
 ?>
 <div align="center">
   <h1>Update Resource</h1>
@@ -81,5 +78,7 @@ print "</div>\n";
 print "</div>\n";
 print "</body>\n";
 print "</html>\n";
-include ("config/closedb.php");include("html_include_3.php");
+
+include ("config/closedb.php");
+include("html_include_3.php");
 ?>

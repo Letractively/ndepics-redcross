@@ -1,43 +1,34 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2009 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// organizationinfo.php - Page to display information about an organization
+//****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
+}
  
- if( ($_SESSION['access_level_id'] < 1) || ($_SESSION['access_level_id'] > 10)){
+if( ($_SESSION['access_level_id'] < 1) || ($_SESSION['access_level_id'] > 10)){
  	header( 'Location: ./index.php' );
- }
-
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
-//
-// resourceinfo.php - Page to display information about a given resource;
-//****************************
+}
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Resource Information</title>";include("html_include_2.php");
-?>
-<?php
- if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Resource Information</title>";
+include("html_include_2.php");
 
+ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
 		print "<h1 align=\"center\">Resource Information</h1><hr>";
-		
 		$resource_id = $_GET['id'];
-		
 		//print "Resource_id: ".$resource_id."<br>";
-		
 		$query = "SELECT * FROM detailed_resource WHERE resource_id = ".$resource_id;
-		
 		$result = mysql_query($query) or die ("Query Failed...could not retrieve resource information");
-		
 		$row = mysql_fetch_assoc($result);
-		
-		//
+
 		// Navigation Buttons
 		print "<div align=\"center\" name=\"navigation_buttons\">";
 		
@@ -128,5 +119,6 @@ else{
 	print			"</form>";
 	print		"</td>";
 	print	"</div";
-}include("html_include_3.php");
+}
+include("html_include_3.php");
 ?>

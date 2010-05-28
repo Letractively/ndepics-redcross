@@ -1,32 +1,25 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// updateperson2.php - Page to modify person in database
+//****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
- if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
+}
+if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
  	header( 'Location: ./index.php' );
- }
+}
 
 include ("config/dbconfig.php");
 include ("config/opendb.php");
-
-
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Update Person</title>";
 include("html_include_2.php");
 
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Author: Matt Mooney
-//
-// updateperson2.php - file to verify the modification to a person record in the disaster database
-//****************************
-
-//
-// Get the variables from the previous page to be updated in database
 $person_id		= $_POST['person_id'];
 $salutation		= mysql_real_escape_string($_POST['salutation']);
 $first_name		= mysql_real_escape_string($_POST['first_name']);
@@ -50,7 +43,6 @@ $organizationremove_id = $_POST["organizationremove_id"];
 $resource_id = $_POST['resource_id'];
 $updated_by = $_POST['updated_by'];
 
-//
 //Query to update organization
 $query = "UPDATE	person 
 	  SET			salutation = \"".$salutation."\" ,
@@ -73,7 +65,6 @@ $query = "UPDATE	person
 	   LIMIT 1";
 	   
 $result = mysql_query($query) or die ("Error sending person update query");
-
 
 if ($organization_id != "NULL") {
 	// Query to link resource to the added organization

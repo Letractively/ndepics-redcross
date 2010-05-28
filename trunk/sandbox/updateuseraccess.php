@@ -1,7 +1,12 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross
+// Spring 2009 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// updateuseraccess.php - Page to change user permissions
+//****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
 // Make sure the user is an admin
@@ -9,36 +14,15 @@ session_start();
         header( 'Location: ./index.php' );
  } 
 
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: ND Epics Group
-//	    Mike Ellerhorst
-//
-//  Spring 2009
-//
-// updateuseraccess.php - admin only page where a given user's access level can be changed.
-//
-// Revision History:  02/24/09 - Created
-//
-//****************************
-
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-
-
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Update User Privileges</title>";
 include("html_include_2.php");
-?>
 
-<?
-//
 //	Display the selected user's information and 
 //	current access level in pre-populated checkboxes
-//
-
 print "User id: ".$_POST['user_id']."<br>";
 if( $_POST['user_id'] == "NULL" ){
 	print "<center><h3>You must select a user to modify.<br />";

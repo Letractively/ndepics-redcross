@@ -1,26 +1,22 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Fall 2009 - Rob Wettach
+// Summer 2010 - Matt Mooney
+// search.php - Page to launch ALL searches on database
+//****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
- 
- if( ($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0)){
- 	header( 'Location: ./index.php' );
- } 
-
-// ****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Fall 2008
-//
-// search.php - the main search page for the Disaster Database;
-// ****************************
+}
+//Verify permission to search
+if( ($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0)){
+	header( 'Location: ./index.php' );
+} 
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Search</title>";
@@ -130,11 +126,9 @@ $_SESSION['detailed_search_county'] = '';
 		<td><input type="text" name="search_text" size="30" maxsize="50"></td>
 		</tr>
 
-<?php
-
+<?
 		print "<tr>";
 		print "<td>Select a Resource: </td>";
-  
 		$query = "Select * from detailed_resource";
 		$query .= " ORDER BY resource_type";
 		
@@ -183,7 +177,7 @@ $_SESSION['detailed_search_county'] = '';
 		<tr><td>Resource ZIP: </td>
 		<td><input type="text" name="search_zip" size="30" maxsize="50"></td>
 		</tr>
-<?php
+<?
 
 		print "<tr>";
 		print "<td>Select a Resource: </td>";
@@ -241,7 +235,7 @@ $_SESSION['detailed_search_county'] = '';
 </form>
 <br></div>
 
-<?php
+<?
 include ("./config/closedb.php");
 include("html_include_3.php");
 ?>

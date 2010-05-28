@@ -1,10 +1,14 @@
 <?php
-//THIS IS A BANK PAGE TO USE FOR DEVELOPMENT
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Summer 2010 - Matt Mooney
+// sitemap.php  - Page that links to all major "core" pages of the site
+//****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
+}
+
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Disaster Database</title>";

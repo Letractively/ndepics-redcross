@@ -1,6 +1,11 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross
+// Spring 2009 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// updateuseraccess.php - Page to submit changes to user permissions to database
+//****************************
 session_start();
-// Validate the users's session
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
@@ -9,28 +14,13 @@ session_start();
         header( 'Location: ./index.php' );
  } 
 
-//****************************
-//  Developed by ND Epics for St. Joe County Red Cross 
-//  
-// Authors: Mike Ellerhorst 
-//  Spring 2009
-//
-// deleteuser.php - admin only page that deletes a user and redirects home or displays error message
-//
-// Revision History:  02/24/09 - Created
-//
-//****************************
-
 include ("config/dbconfig.php");
 include ("config/opendb.php");
-
-
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Update User Privileges</title>";
 include("html_include_2.php");
 
-//
 // Delete the user passed from the previous page and if successful, redirect home.
 //	Else, display error message and give option to go home or back.
 
@@ -79,10 +69,7 @@ $result = mysql_query($query);
 
 
 <?php
-
-//'
 // Error Deleting user
-// 
 
 print "<center><h2>There was an error updating the user's access privileges. Please try again.</h2></center>";
 

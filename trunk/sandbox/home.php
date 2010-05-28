@@ -1,10 +1,18 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// home.php - Homepage
+//****************************
 session_start();
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }include("config/functions.php");
+ }
+ include("config/functions.php");
  include("html_include_1.php");
- echo "<title>St. Joseph Red Cross - Disaster Database</title>";include("html_include_2.php");
+ echo "<title>St. Joseph Red Cross - Disaster Database</title>";
+ include("html_include_2.php");
 ?>
 <h1 style="display: inline">St. Joseph Red Cross - Disaster Database</h1><br/>
 Welcome to the St. Joseph County Red Cross Disaster Database.  This online database contains 
@@ -23,7 +31,6 @@ print "<form action=\"search/allresources.php\"  style=\"display: inline\">";
 print "    <input type=\"submit\" value=\"Browse all Data\">";
 print "</form><br/><br/>";
 }
-
 
 //if the user can add information 
 if( ($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))
@@ -82,5 +89,6 @@ if( $_SESSION['access_level_id'] == 9) {
 	print "<br/><br/>";
 } 
 
-echo "</div>";include("html_include_3.php");
+echo "</div>";
+include("html_include_3.php");
 ?>

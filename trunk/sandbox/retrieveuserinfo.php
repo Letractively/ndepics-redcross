@@ -1,4 +1,14 @@
-<?include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Resource-Person</title>";include("html_include_2.php");
+<?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// retrieveuserinfo.php - Helps a user recover a forgotten account
+//****************************
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Resource-Person</title>";
+include("html_include_2.php");
 if (($_POST['forgot'] == "password") || ($_GET['bad'] == "username")) {
 	print "<center><h2>Forgotten password?</h2></center>\n";
 	print "Please enter your username below to have your password reset and an email sent to the email address on file with a temporary password.\n";
@@ -59,5 +69,6 @@ else {
 	print "<center><input type=\"submit\" value=\"Go Back\"></center>\n";
 	print "</form>\n";
 }
+
 include("html_include_3.php");	
 ?>

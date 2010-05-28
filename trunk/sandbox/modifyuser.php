@@ -1,31 +1,21 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// modifyuser.php - Page to select user to modify permissions
+//****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
+}
 // Make sure the user is an admin
- if($_SESSION['access_level_id'] != 9) {
+if($_SESSION['access_level_id'] != 9) {
         header( 'Location: ./index.php' );
- } 
-
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: ND Epics Group
-//	    Mike Ellerhorst
-//
-//  Spring 2009
-//
-// modifyuser.php - Page to allow administrators to search for a user to update access_levels or to delete the user.
-//
-// Revision History:  02/18/09 - Created
-//
-//****************************
+} 
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Modify User</title>";

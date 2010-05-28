@@ -1,21 +1,20 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2009 - Matt Mooney
+// Fall 2010 - Joey Rich
+// Summer 2010 - Matt Mooney
+// organizationinfo.php - Page to display information about an organization
+//****************************
 session_start();
 // Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
+}
 
- if( ($_SESSION['access_level_id'] < 1) || ($_SESSION['access_level_id'] > 10)){
- 	header( 'Location: ./index.php' );
- }
-
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Author: Matt Mooney
-//
-// organizationinfo.php - Page to display information about a given organization;
-//****************************
+if( ($_SESSION['access_level_id'] < 1) || ($_SESSION['access_level_id'] > 10)){
+	header( 'Location: ./index.php' );
+}
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
@@ -28,16 +27,14 @@ include("html_include_2.php");
 <?php
 //IF YOU HAVE SEARCH RIGHTS
  if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
- 
-		
-		$organization_id = $_GET['id'];
+ 		$organization_id = $_GET['id'];
 		//print "Org_id: ".$organization_id."<br>";
 		$query = "SELECT * FROM organization WHERE organization_id = ".$organization_id;
 		$result = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
 		$row = mysql_fetch_assoc($result);
 		$querys = "SELECT * FROM statement_of_understanding WHERE organization_id = ".$organization_id;
-                $results = mysql_query($querys) or die ("Query Failed...could not retrieve organization information");
-                $rows = mysql_fetch_assoc($results);
+        $results = mysql_query($querys) or die ("Query Failed...could not retrieve organization information");
+        $rows = mysql_fetch_assoc($results);
 				
 		print "<h1 style=\"display: inline\">Organization Information";
 		print "</h1><br/><hr>";

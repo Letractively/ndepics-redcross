@@ -6,22 +6,20 @@
 // addresource3.php - file to insert a resource into the disaster database
 //****************************
 session_start();
-// Validate the users's session
 if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
 }
-
 if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){
 	header( 'Location: ./index.php' );
 }  
- 
-// ***** TO BE ADDED LATER TO VALIDATE USERS ****
-// if(!isset($_SESSION['valid']))
-// 	header( 'Location: ./baduser.php' );
 
 include ("config/dbconfig.php");
 include ("config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Resource Added</title>";echo "<script src=\"./javascript/selectorganization.js\"></script>";include("html_include_2.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Resource Added</title>";
+echo "<script src=\"./javascript/selectorganization.js\"></script>";
+include("html_include_2.php");
 
 ?>
 <div align="center">
@@ -162,6 +160,6 @@ print "<div align='center'>";
    
         }
 
-
-include ("config/closedb.php");include("html_include_3.php");
+include ("config/closedb.php");
+include("html_include_3.php");
 ?>

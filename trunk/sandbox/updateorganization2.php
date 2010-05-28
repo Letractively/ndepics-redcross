@@ -3,11 +3,10 @@
 // Developed by Notre Dame EPICS for St. Joe County RedCross 
 // Fall 2009 - Matt Mooney
 // Summer 2010 - Matt Mooney
-// sou.php - HTML and PHP to accept a file for upload
+// updateorganization2.php - Page to make changes to organization in database
 //****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
  if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){

@@ -1,6 +1,11 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// newuser.php - Page to create a new user for the site
+//****************************
 session_start();
-// Validate the users's session
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
@@ -14,25 +19,8 @@ include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - New User</title>";
 echo "<script src=\"./javascript/selectorganization.js\"></script>";
 include("html_include_2.php");
-
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: ND Epics Group
-//	    Mike Ellerhorst
-//
-//  Spring 2009
-//
-// newuser.php - File to show the input boxes to create a new user.
-//
-// Revision History:  02/04/09 - Created 
-//					  02/24/09 - Updated menus and made password generation random.
-//
-//****************************
 ?>
-
 <form name="newuser" method="post" action="newuser2.php" align ="left">
-
 	<table>
 		<tr>
 		<td>Username</td>
@@ -84,4 +72,6 @@ include("html_include_2.php");
 
 </form>
 
-<? include("html_include_3.php"); ?>
+<?
+include("html_include_3.php");
+?>

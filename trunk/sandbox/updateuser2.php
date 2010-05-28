@@ -1,39 +1,24 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross
+// Spring 2009 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// updateuser2.php - Page to submit changes to user profile to database
+//****************************
 session_start();
-// Validate the users's session
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
 
-
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: ND Epics Group
-//	    Mike Ellerhorst
-//
-//  Spring 2009
-//
-// updateuser2.php - File to change the account information of the user in the database.
-//
-// Revision History:  Created - 02/11/09
-//
-//****************************
-
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Update User</title>";include("html_include_2.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Update User</title>";
+include("html_include_2.php");
 
-?>
-<!--<div class="menu">
-<a href = "./home.php"> HOME</a> | 
-<a href = "./search.php"> SEARCH </a>
-</div>-->
-
-<? // 
    //Get the values from the previous page and verify that they are unique
    // Then add a record to the users table with the input values
-   //
 
 $user_id			= $_SESSION['user_id'];
 $oldpassword		= $_POST['oldpassword'];
@@ -102,5 +87,6 @@ else {
 	print "<center>\n";
 	print "<h2> Your user profile has been updated.</h2>\n";
 }
-include ("./config/closedb.php"); include("html_include_3.php");
+include ("./config/closedb.php");
+include("html_include_3.php");
 ?>

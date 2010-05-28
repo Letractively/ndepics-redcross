@@ -6,15 +6,12 @@
 // addresource1.php - file to insert a resource into the disaster database
 //****************************
 session_start();
-// Validate the users's session
 if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
 }
-
 if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){
 	header( 'Location: ./index.php' );
 }  
-
 
 include("config/functions.php");
 include("html_include_1.php");
@@ -100,4 +97,7 @@ print "<input type=hidden name='website' value=\"".$website."\">";
 	</form>
 </div>
 
-<? include("html_include_3.php"); ?>
+<?
+include("./config/closedb.php");
+include("html_include_3.php");
+?>

@@ -1,6 +1,11 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross
+// Spring 2009 - Mike Ellerhorst, Mark Pasquier & Bryan Winther
+// Summer 2010 - Matt Mooney
+// updateresource2.php - Page to submit changes to resource to database
+//****************************
 session_start();
-// Validate the users's session
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
@@ -9,18 +14,12 @@ session_start();
  } 
 
 include ("config/dbconfig.php");
-include ("config/opendb.php");include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Update Resource</title>";include("html_include_2.php");
+include ("config/opendb.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Update Resource</title>";
+include("html_include_2.php");
 
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst, Mark Pasquier, Bryan Winther, Matt Mooney
-//  Fall 200
-//
-// updateresource2.php - file to verify the modification to a resource in the disaster database
-//****************************
-
-//
 // Get the variables from the previous page to be updated in database
 $resource_id	= $_POST["resource_id"];
 $resource_type	= $_POST["resource_type"];
@@ -47,8 +46,9 @@ $row = mysql_fetch_assoc($result);
 //Get Date and Time
 $tempdate = date("m/d/Y H:i:s");
 
-$query = "UPDATE detailed_resource SET log = '" .$_SESSION['username']. ": " .$tempdate. "\n"
-		 .$row['log']. "' WHERE resource_id = ".$resource_id;
+$query = "UPDATE 	detailed_resource 
+			SET 	log = '" .$_SESSION['username']. ": " .$tempdate. "\n".$row['log']. "' 
+			WHERE resource_id = ".$resource_id;
 $result = mysql_query($query) or die ("Resource Log Update failed");
 
 // Redirect back to the organization's information page
@@ -56,5 +56,6 @@ $redirect_url = "./resourceinfo.php?id=".$resource_id;
 
 print "The resource record was updated successfully.  Click <a href=\"$redirect_url\">here</a> to continue.";
 
-include ("config/closedb.php");include("html_include_3.php");
+include ("config/closedb.php");
+include("html_include_3.php");
 ?>

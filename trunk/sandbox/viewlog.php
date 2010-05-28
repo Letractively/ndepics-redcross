@@ -1,6 +1,11 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross
+// Spring 2009 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// viewlog.php - Page to view database change logs
+//****************************
 session_start();
-// Validate the users's session
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
@@ -8,18 +13,12 @@ session_start();
  	header( 'Location: ./index.php' );
  }
 
-// ****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: Mike Ellerhorst & Mark Pasquier
-//  Spring 2009
-//
-// personinfo.php - Page to display information about a given person;
-// ****************************
-
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Personal Information</title>";include("html_include_2.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Personal Information</title>";
+include("html_include_2.php");
 
 //IF YOU HAVE ACCESS CODE.....
  if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
@@ -51,7 +50,8 @@ include("config/functions.php");include("html_include_1.php");echo "<title>St. J
 		print "<table>";
 		print	"<tr>";
 		print		"<td><form>";
-		print 		"<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+		print 		"<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" 
+						ONCLICK=\"window.location.href='javascript:history.back()'\">";
 		print			"</form>";
 		print		"</td>";
 		
@@ -60,15 +60,11 @@ include("config/functions.php");include("html_include_1.php");echo "<title>St. J
 		print			"<input type=submit value='Home'>";
 		print			"</form>";
 		print		"</td>";
-		
 		print	"</tr>";
 		print "</table>";
 		
 		print "</div>";
 		
-		/******/
-		
-		//
 		// Display the Personal Information
 		print "<br>".nl2br($row['log'])."<br>";
 		
@@ -76,7 +72,8 @@ include("config/functions.php");include("html_include_1.php");echo "<title>St. J
 		
 		print "<div align = 'center'>";
 		print "<br><form>";
-		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
+		print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" 
+					ONCLICK=\"window.location.href='javascript:history.back()'\">";
 		print "</form>";
 		print "</div>";
 		
@@ -96,5 +93,7 @@ else{
 	print			"</form>";
 	print		"</td>";
 	print	"</div";
-}include("html_include_3.php");
+}
+include ("./config/closedb.php");
+include("html_include_3.php");
 ?>

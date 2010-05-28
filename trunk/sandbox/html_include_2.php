@@ -17,14 +17,18 @@
 			
 			<div style="float: right;">
 				<b>Phone: (574) 234-0191</b><br>
-				<a class="whitelink" href="http://disaster.stjoe-redcross.org">http://disaster.stjoe-redcross.org</a>
+				<a class="whitelink" 
+                href="http://disaster.stjoe-redcross.org">
+                http://disaster.stjoe-redcross.org
+                </a>
 			</div>
 		</div>
-
 		<table style="padding: 0px; margin: 0px; border: 0px;" cellpadding=0 cellspacing=0>
 		<tr>
 		<td style="background-color: #222; width: 740px; border: 0px">
-		<? echo html_navmenu() ?>
+<?
+echo html_navmenu() 
+?>
 		</td>
 		</tr>
 		<tr>

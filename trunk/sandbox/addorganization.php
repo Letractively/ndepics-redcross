@@ -6,7 +6,6 @@
 // addorganization.php - file to insert an organization into the disaster database
 //****************************
 session_start();
-// Validate the users's session
 if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
 }
@@ -26,10 +25,6 @@ include("./html_include_2.php");
 </form>
 </div>
 <?php
-
-//print"<center><b>WARNING: PHP ERROR REPORTING IS ACTIVE FOR DEVELOPMENT!</b></center>";
-//error_reporting(E_ALL);
-//ini_set ('display_errors', '1');
 
 $form_filled = $_POST["form_filled"];
 $form_valid = $_POST["form_valid"];

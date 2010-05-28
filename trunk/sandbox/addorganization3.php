@@ -6,7 +6,6 @@
 // addorganization3.php - file to insert an organization into the disaster database
 //****************************
 session_start();
-// Validate the users's session
 if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
 }
@@ -27,7 +26,6 @@ include("html_include_2.php");
 </div>
 
 <?
-//
 // Get the variables from the previous page
 $organization_name = $_POST["organization_name"];
 $street_address = $_POST["street_address"];
@@ -45,19 +43,6 @@ $addtl_info = $_POST["addtl_info"];
 $updated_by = $_POST["updated_by"];
 $resource_id = $_POST["resource_id"];
 
-//print $organization_name."<br>";
-//print $street_address."<br>";
-//print $city."<br>";
-//print $state."<br>";
-//print $zip."<br>";
-//print $county."<br>";
-//print $business_phone."<br>";
-//print $business_fax."<br>";
-//print $email."<br>";
-//print $website."<br>";
-//print "Resource ID: ".$resource_id."<br>";
-
-//
 //Query to check if organization already exists
 $org_query = "SELECT * FROM organization WHERE organization_name = '".$organization_name." ' ";
 
@@ -78,16 +63,12 @@ else{
      // print "Organization " .$organization_name." does not exist";
 }
 
-//
 // Get the next auto_increment value (organization id)
 $query = "SHOW TABLE STATUS LIKE 'organization'";
 $result = mysql_query($query) or die ("Error sending table status query");
 $row = mysql_fetch_assoc($result);
 $organization_id = $row['Auto_increment'];
 
-//print "***** AUTO INCREMENT (org_id) is: ".$organization_id." ***<br>\n";
-
-//
 //Query to add organization
 $tempdate = date("m/d/Y H:i");
 $query = "INSERT INTO  organization (organization_name ,
@@ -222,65 +203,6 @@ else {
     $message .= "Successful Add...redirecting<br>";
     print "Successfull Add...redirecting to information page";
     print "<meta http-equiv=\"Refresh\" content=\"1.5; url=".$redirect_url."\">";
-//	//Display what values are being added to the database
-//print "<h2>Successfully Added Values: </h2>";
-//print "<table>";
-//	print "<tr>";
-//	print "<td><b>Organization Name: </b></td>";
-//	print "<td>".$organization_name."</td>";
-//	print "</tr>";
-//
-//	print "<tr>";
-//	print "<td><b>Street Address: </b></td>";
-//	print "<td>".$street_address."</td>";
-//	print "</tr>";
-//
-//	print "<tr>";
-//	print "<td><b>City: </b></td>";
-//	print "<td>".$city."</td>";
-//	print "</tr>";
-//	
-//	print "<tr>";
-//	print "<td><b>State: </b></td>";
-//	print "<td>".$state."</td>";
-//	print "</tr>";
-//	
-//	print "<tr>";
-//	print "<td><b>Zip:</b></td>";
-//	print "<td>".$zip."</td>";
-//	print "</tr>";
-//	
-//	print "<tr>";
-//	print "<td><b>County: </b></td>";
-//	print "<td>".$county."</td>";
-//	print "</tr>";
-//	
-//	print "<tr>";
-//	print "<td><b>Business Phone: </b></td>";
-//	print "<td>";
-//	echo print_phone($business_phone);
-//	print "</td>";
-//	print "</tr>";
-//	
-//	print "<tr>";
-//	print "<td><b>Business Fax: </b></td>";
-//	print "<td>";
-//	echo print_phone($business_fax);
-//	print "</td>";
-//	print "</tr>";
-//	
-//	print "<tr>";
-//	print "<td><b>Email: </b></td>";
-//	print "<td>".$email."</td>";
-//	print "</tr>";
-//	
-//	print "<tr>";
-//	print "<td><b>Website</b></td>";
-//	print "<td>".$website."</td>";
-//	print "</tr>";
-//	
-//print "</table><br>";
-
 }
 
 // Query to link resource to the added organization
@@ -305,7 +227,7 @@ else{
 	print "</form>\n";
 	print "</div>";
 }
-	
 
-include ("config/closedb.php");include("html_include_3.php");
+include ("config/closedb.php");
+include("html_include_3.php");
 ?>

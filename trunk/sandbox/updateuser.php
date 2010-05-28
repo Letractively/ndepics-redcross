@@ -1,32 +1,31 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross
+// Spring 2009 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// updateuser.php - Page to make changes to user profile
+//****************************
 session_start();
-// Validate the users's session
  if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
  }
 
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: ND Epics Group
-//	    Mike Ellerhorst
-//
-//  Spring 2009
-//
-// updateuser.php - File to allow the user to change the password or 
-//					email address that is associated with the account.
-//
-// Revision History:  Created - 02/10/09
-//
-//****************************
-
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Update User</title>";include("html_include_2.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Update User</title>";
+include("html_include_2.php");
 
- //Form to collect new user info
-	 $query = "	SELECT	*				FROM	users				WHERE	user_id = ".$_SESSION['user_id']."				LIMIT	1";
-	$result = mysql_query($query) or die("Error: Query retrieving user info");	$row = mysql_fetch_assoc($result);	$username	= $row['username'];	$email		= $row['email'];?>
+//Form to collect new user info
+$query = "SELECT	*
+ 			FROM	users
+			WHERE	user_id = ".$_SESSION['user_id']."
+			LIMIT	1";
+$result = mysql_query($query) or die("Error: Query retrieving user info");
+$row = mysql_fetch_assoc($result);
+$username	= $row['username'];	
+$email		= $row['email'];?>
 
 <h3><? echo $username; ?>'s User Profile</h3>
 
@@ -55,4 +54,8 @@ include("config/functions.php");include("html_include_1.php");echo "<title>St. J
 	<br>
 	<input type=submit value="Update User">
 	<input type=reset value="Clear Form">
-</form><? include("html_include_3.php"); ?>
+</form>
+<? 
+include("config/closedb.php");
+include("html_include_3.php"); 
+?>

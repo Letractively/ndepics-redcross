@@ -9,12 +9,12 @@ session_start();
 if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
 }
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include ("config/functions.php");
-include ("html_include_1.php");
+include ("./config/dbconfig.php");
+include ("./config/opendb.php");
+include ("./config/functions.php");
+include ("./html_include_1.php");
 echo "<title>St. Joseph Red Cross - FS Upload</title>";
-include ("html_include_2.php");
+include ("./html_include_2.php");
 
 $datafile = $_FILES["uploadedfile"]["tmp_name"];
 $fileName = $_FILES["uploadedfile"]["name"];
@@ -108,5 +108,5 @@ print"File Name: ".$_FILES["uploadedfile"]["name"]."<br>";
 print"File Type: ".$_FILES["uploadedfile"]["type"]."<br>Size: ".$_FILES["uploadedfile"]["size"]."<br>";
 
 include("./config/closedb.php");
-include("html_include_3.php");
+include("./html_include_3.php");
 ?>

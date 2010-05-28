@@ -1,33 +1,21 @@
 <?php
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2008 - Mike Ellerhorst & Mark Pasquier
+// Summer 2010 - Matt Mooney
+// newuser2.php - Page to insert new user into database
+//****************************
 session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
- // Make sure the user is an admin
- if($_SESSION['access_level_id'] != 9) {
-        header( 'Location: ./index.php' );
- } 
-
-
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Authors: ND Epics Group
-//	    Mike Ellerhorst
-//
-//  Spring 2009
-//
-// newuser2.php - File to add the new user to the database and send email verifications to the new user.
-//
-// Revision History:  02/04/09 - Created 
-//					  02/24/09 - Updated menus and made password generation random.
-//
-//****************************
+}
+// Make sure the user is an admin
+if($_SESSION['access_level_id'] != 9) {
+	header( 'Location: ./index.php' );
+} 
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - New User</title>";
@@ -39,7 +27,6 @@ include("html_include_2.php");
 $username	= $_POST['username'];
 $password	= createRandomPassword();
 $email		= $_POST['email'];
-
 $search		= $_POST['search'];
 $insert		= $_POST['insert'];
 $update		= $_POST['update'];
@@ -61,12 +48,9 @@ else {
 	}
 	else {
 		// Only insert allowed
-		if ($insert == 1) { $access_level = 8; }
-		
+		if ($insert == 1) { $access_level = 8; }		
 	}
 }
-
-
 
 $query = "SELECT	user_id
 		  FROM		users
@@ -88,9 +72,15 @@ if($row['user_id'] != '') {
 // Insert the user into the database.
 // Verify the email address...send an email to it to complete the registration process.
 
-$query = "INSERT INTO	users	(username, passwd, email, access_level_id)
-		  VALUES		('".$username."', '".md5($password)."', '".$email."','".$access_level."')";
-		  
+$query = "INSERT INTO	users
+			(username, 
+			 passwd, 
+			 email, 
+			 access_level_id)
+		  VALUES('".$username."', 
+				 '".md5($password)."', 
+				 '".$email."',
+				 '".$access_level."')";
 $result = mysql_query($query) or die ("Error: Unable to create new user.");
 
 $mail_to = $email;
@@ -121,8 +111,6 @@ else {
 
 print "<center>\n";
 print "<h2> An email has been sent to ".$email." for verification.  The new user will now be able to access the site.</h2>\n";
-
-
 
 include ("./config/closedb.php"); 
 include("html_include_3.php");

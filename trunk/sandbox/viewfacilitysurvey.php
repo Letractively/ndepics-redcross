@@ -3,7 +3,7 @@
 // Developed by Notre Dame EPICS for St. Joe County RedCross
 // Spring 2009 - Alyssa Krauss and Chris Durr
 // Summer 2010 - Matt Mooney
-// viewstatementofunderstanding.php - Page to download stores SOUs.
+// viewfacilitysurvey.php - Page to download stores FSs
 //****************************
 session_start();
  if(($_SESSION['valid']) != "valid") {

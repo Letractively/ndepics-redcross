@@ -6,18 +6,20 @@
 // addperson.php - file to insert a pserson into the disaster database
 //****************************
 session_start();
-// Validate the users's session
 if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
 }
-
 if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){
 	header( 'Location: ./index.php' );
 } 
 
 include ("./config/dbconfig.php");
 include ("./config/opendb.php");
-include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Add Person</title>";echo "<script src=\"./javascript/selectorganization.js\"></script>";include("html_include_2.php");
+include("config/functions.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Add Person</title>";
+echo "<script src=\"./javascript/selectorganization.js\"></script>";
+include("html_include_2.php");
 
 echo "<h1>Add Person</h1>";
 $form_filled = $_POST["form_filled"];
@@ -545,5 +547,6 @@ print "<br></div>";
 print "</body>";
 print "</html>";
 
-include ("config/closedb.php");include("html_include_3.php");
+include ("config/closedb.php");
+include("html_include_3.php");
 ?>

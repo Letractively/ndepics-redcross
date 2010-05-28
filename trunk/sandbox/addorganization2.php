@@ -6,7 +6,6 @@
 // addorganization2.php - file to insert an organization into the disaster database
 //****************************
 session_start();
-// Validate the users's session
 if(($_SESSION['valid']) != "valid") {
         header( 'Location: ./index.php' );
 }
@@ -14,8 +13,6 @@ if(($_SESSION['valid']) != "valid") {
 if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){
         header( 'Location: ./index.php' );
 }
-
-
 
 include ("config/dbconfig.php");
 include ("config/opendb.php");
