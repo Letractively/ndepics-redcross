@@ -66,7 +66,12 @@ print "<tr>\n";
 print "<td><b>Street Address: </b></td>\n";
 print "<td><input name='street_address' type='text' maxlength='50' align= 'left' value=\"".$street_address."\"></td>\n";
 print "</tr>\n";
- 
+
+print "<tr>\n";
+print "<td><b>Mailing Address: </b></td>\n";
+print "<td><input name='mailing_address' type='text' maxlength='50' align= 'left' value=\"".$mailing_address."\"></td>\n";
+print "</tr>\n";
+
 print "<tr>\n";
 print "<td><b>City: </b></td>\n";
 print "<td><input name='city' type='text' maxlength='30' align= 'left' value=\"".$city."\"></td>\n";
@@ -96,7 +101,7 @@ print "</td>\n";
 print "</tr>\n";
  
 print "<tr>\n";
-print "<td><b>24-Hour/2nd Phone: </b></td>\n";
+print "<td><b>24-Hour Phone: </b></td>\n";
 print "<td>(<input name='bus_phone2_1' type='number' size='3' maxlength='3' align='left' value='".substr($business_phone2,0,3)."'>)&nbsp\n";
 print "         <input name='bus_phone2_2' type='number' size='3' maxlength='3' align='left' value='".substr($business_phone2,3,3)."'>&nbsp - &nbsp\n";
 print "         <input name='bus_phone2_3' type='number' size='4' maxlength='4' align='left' value='".substr($business_phone2,6,4)."'>\n";

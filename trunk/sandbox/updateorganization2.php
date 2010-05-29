@@ -23,6 +23,7 @@ include("html_include_2.php");
 $organization_id	= mysql_real_escape_string($_POST["organization_id"]);
 $organization_name	= mysql_real_escape_string($_POST["organization_name"]);
 $street_address		= mysql_real_escape_string($_POST["street_address"]);
+$mailing_address	= mysql_real_escape_string($_POST["mailing_address"]);
 $city				= mysql_real_escape_string($_POST["city"]);
 $state				= mysql_real_escape_string($_POST["state"]);
 $zip				= mysql_real_escape_string($_POST["zip"]);
@@ -42,6 +43,7 @@ $resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);
 $query = "UPDATE	organization 
 	  		SET		organization_name = \"".$organization_name."\" ,
 					street_address = \"".$street_address."\" ,
+					mailing_address = \"".$mailing_address."\" ,
 					city = \"".$city."\" ,
 					state = \"".$state."\" ,
 					zip = \"".$zip."\" ,
