@@ -24,24 +24,27 @@ $person_id		= $_POST['person_id'];
 $salutation		= mysql_real_escape_string($_POST['salutation']);
 $first_name		= mysql_real_escape_string($_POST['first_name']);
 $last_name		= mysql_real_escape_string($_POST['last_name']);
-$street_address         = mysql_real_escape_string($_POST['street_address']);
+$street_address	= mysql_real_escape_string($_POST['street_address']);
 $city			= mysql_real_escape_string($_POST['city']);
 $state			= mysql_real_escape_string($_POST['state']);
 $zip			= mysql_real_escape_string($_POST['zip']);
 $home_phone		= $_POST['home_phone_1'].$_POST['home_phone_2'].$_POST['home_phone_3'];
 $work_phone		= $_POST['work_phone_1'].$_POST['work_phone_2'].$_POST['work_phone_3'];
-$mobile_phone	        = $_POST['mobile_phone_1'].$_POST['mobile_phone_2'].$_POST['mobile_phone_3'];
+$mobile_phone	= $_POST['mobile_phone_1'].$_POST['mobile_phone_2'].$_POST['mobile_phone_3'];
 $fax			= $_POST['fax'];
 $email			= mysql_real_escape_string($_POST['email']);
-$im			= mysql_real_escape_string($_POST['im']);
-$additional_info        = mysql_real_escape_string($_POST['additional_info']);
+$im				= mysql_real_escape_string($_POST['im']);
+$additional_info= mysql_real_escape_string($_POST['additional_info']);
 
-$organization_id = $_POST["organization_id"];
-$title_in_organization = mysql_real_escape_string($_POST["title_in_organization"]);
-$role_in_organization = mysql_real_escape_string($_POST["role_in_organization"]);
-$organizationremove_id = $_POST["organizationremove_id"];
-$resource_id = $_POST['resource_id'];
-$updated_by = $_POST['updated_by'];
+$organization_id 		= $_POST["organization_id"];
+$title_in_organization 	= mysql_real_escape_string($_POST["title_in_organization"]);
+$role_in_organization 	= mysql_real_escape_string($_POST["role_in_organization"]);
+$mod_org_id 			= $_POST['mod_org_id'];
+$mod_title 				= $_POST['mod_title'];
+$mod_role 				= $_POST['mod_role'];
+$organizationremove_id 	= $_POST["organizationremove_id"];
+$resource_id 			= $_POST['resource_id'];
+$updated_by 			= $_POST['updated_by'];
 
 //Query to update organization
 $query = "UPDATE	person 
@@ -66,23 +69,32 @@ $query = "UPDATE	person
 	   
 $result = mysql_query($query) or die ("Error sending person update query");
 
+// Query to link person to organization
 if ($organization_id != "NULL") {
-	// Query to link resource to the added organization
 	$query = "INSERT INTO works_for (person_id, organization_id, title, role) 
 			  VALUES (".$person_id.",".$organization_id.",\"".$title_in_organization."\",\"".$role_in_organization."\")";
-			  
 	$result = mysql_query($query) or die ("Error adding works_for");
 }
 
+//Query to modify role in organization
+if ($mod_org_id != "NULL"){
+	$query = "UPDATE works_for
+				SET 	title = '".$mod_title."', role = '".$mod_role."' 
+				WHERE 	person_id = ".$person_id." AND organization_id = ".$mod_org_id."
+				LIMIT 	1";
+	$result = mysql_query($query) or die ("Error updating works_for (role)");
+}
+
+//Query to delete from organization
 if($organizationremove_id != "NULL") {
 $query = "DELETE	
 		  FROM		works_for 
 		  WHERE		person_id = ".$person_id."
 		  AND		organization_id = ".$organizationremove_id."";
-		  
 $result = mysql_query($query) or die ("Deletion Query failed, please retry.");
 }
 
+//Query to link to resource
 if($resource_id != "NULL"){
  $query = "INSERT into resource_person (person_id,resource_id)
                 VALUES (".$person_id.",".$resource_id.")";
@@ -96,7 +108,6 @@ $row = mysql_fetch_assoc($result);
 $tempdate = date("m/d/Y H:i");
 $query = "UPDATE person SET log = '".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']. "' WHERE person_id = ".$person_id;
 $result = mysql_query($query) or die ("Person Log Update failed");
-
 
 // Redirect back to the organization's information page
 $redirect_url = "./personinfo.php?id=".$person_id;
