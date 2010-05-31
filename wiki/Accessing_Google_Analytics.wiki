@@ -1,5 +1,0 @@
-= Introduction =
-To access Google Analytics, log in at http://www.google.com/analytics/ and enter your google account name and password.  
-
-= Details =
-To access analytics, permission must be granted to your google account.  To request permission to access the analytics account, send an email to joeyfrich@gmail.com
