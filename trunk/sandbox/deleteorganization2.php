@@ -32,35 +32,35 @@ $query = "DELETE
 			WHERE	organization_id = ".$organization_id."
 			LIMIT	1";
 			
-$result = mysql_query($query) or die ("Deletion Query failed");
+$result = mysql_query($query) or die ("Deletion Query failed (organization)");
 
 //Delete works_for relationships to persons
 $query = "DELETE	
 			FROM	works_for
 			WHERE	organization_id = ".$organization_id;
 	  
-$result = mysql_query($query) or die ("Deletion Query 2 failed");
+$result = mysql_query($query) or die ("Deletion Query 2 failed (works_for)");
 
 //Delete resource_listing relationships to resources
 $query = "DELETE
 			FROM		resource_listing
 			WHERE		organization_id = ".$organization_id;
 			
-$result = mysql_query($query) or die ("Deletion Query 3 failed");
+$result = mysql_query($query) or die ("Deletion Query 3 failed (resrouce_listing)");
 
 //Delete Statement of Understanding files
 $query = "DELETE
 			FROM		statement_of_understanding
 			WHERE		organization_id = ".$organization_id;
 			
-$result = mysql_query($query) or die ("Deletion Query 4 failed");
+$result = mysql_query($query) or die ("Deletion Query 4 failed (SoU)");
 
 //Delete Facility Survey files
 $query = "DELETE
 			FROM		facility_survery
 			WHERE		organization_id = ".$organization_id;
 			
-$result = mysql_query($query) or die ("Deletion Query 5 failed");
+$result = mysql_query($query) or die ("Deletion Query 5 failed (facility_survey) IGNORE THIS");
 
 print "<center><h2>Organization Deleted Successfully</h2></center>";
 print "<div align='center'>";

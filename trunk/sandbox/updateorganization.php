@@ -131,47 +131,44 @@ print "</tr>\n";
  print "<td><b>Additional Info: </b></td>\n";
  print "<td><textarea name='additional_info' rows=6 cols=40 align='left'>".$additional_info."</textarea></td>\n";
  print "</tr>\n";
- 
+
 print "<tr>\n";
-print "<td><b>YOUR Initials: </b></td>\n";
-print "<td><input name='updated_by' type='text' size='11' maxlength='11' align= 'left' value=\"".$updated_by."\"></td>\n";
+print "<td><b>Add a Resource</b></td>\n";
+print "<td>";
+	$query = "SELECT		dr.* 
+				FROM		detailed_resource dr
+				WHERE		NOT EXISTS (
+								SELECT  rl.*
+								FROM    resource_listing rl 
+								WHERE	rl.resource_id = dr.resource_id
+								AND	rl.organization_id = ".$organization_id.")
+				ORDER BY 	dr.resource_type";
+	 $result = mysql_query($query) or die("Could not access resources");
+	
+	if( mysql_num_rows($result) < 1 )
+	{
+		print "There are no resources to be added, please go back and add a resource first!<br>";
+	}
+	else
+	{
+		print "<select name=\"resource_id\" onchange=\"showResource(this.value)\">";
+		print "<option value=\"NULL\"> </option>";
+		
+		while( $row = mysql_fetch_assoc($result) )
+		{
+			print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
+		}
+		print "</select>";
+	}
+	
+	print "&nbsp&nbsp or &nbsp&nbsp";
+	print "<INPUT TYPE=\"BUTTON\" VALUE=\"Add New Resource\"ONCLICK=\"window.location.href='./addresource1.php'\">";
+print "</td>";
 print "</tr>\n";
 
-print "</table>\n";
-print "<br>\n";
- 
-print "Select a Resource to Add to Organization: ";
-$query = "SELECT		dr.* 
-			FROM		detailed_resource dr
-			WHERE		NOT EXISTS (
-							SELECT  rl.*
-							FROM    resource_listing rl 
-							WHERE	rl.resource_id = dr.resource_id
-							AND	rl.organization_id = ".$organization_id.")
-			ORDER BY 	dr.resource_type";
- $result = mysql_query($query) or die("Could not access resources");
-
-if( mysql_num_rows($result) < 1 )
-{
-	print "There are no resources to be added, please go back and add a resource first!<br>";
-}
-else
-{
-	print "<select name=\"resource_id\" onchange=\"showResource(this.value)\">";
-	print "<option value=\"NULL\"> </option>";
-    
-	while( $row = mysql_fetch_assoc($result) )
-	{
-		print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
-	}
-	print "</select>";
-}
-
-print "&nbsp&nbsp or &nbsp&nbsp";
-print "<INPUT TYPE=\"BUTTON\" VALUE=\"Add New Resource\"ONCLICK=\"window.location.href='./addresource1.php'\">";
- 
-print "<br>Select a Resource to Remove From Organization: ";
- 
+print "<tr>\n";
+print "<td><b>Remove Resource: </b></td>\n";
+print "<td>";
 $query = "SELECT	dr.* 
 			FROM		detailed_resource dr
 			WHERE		 EXISTS (
@@ -188,23 +185,34 @@ while( $row = mysql_fetch_assoc($result) )
   {
     print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
   }
- 
 print "</select>";
- 
-print "<br><br><input type='submit' value='Update Organization'>";
+print "</td>";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td><b><font color='FF0000'>YOUR Initials: </font></b></td>\n";
+print "<td><input name='updated_by' type='text' size='11' maxlength='11' align= 'left' value=\"".$updated_by."\"></td>\n";
+print "</tr>\n";
+
+print "</table>\n";
+
+print "<div align = 'center'>\n";
+print "<br><input type='submit' value='Update Organization'>";
 print"</form>";
- 
-print" <form action=\"./sou.php\"  method=\"POST\">";
+
+print "<br><br>";
+
+print"<form action=\"./sou.php\"  method=\"POST\">";
 print"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 print"<input type=\"submit\" value=\"Upload Statement of Understanding\">";
 print"</form>";
- 
-print" <form action=\"./facilitysurvey.php\"  method=\"POST\">";
+
+print"<form action=\"./facilitysurvey.php\"  method=\"POST\">";
 print"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 print"<input type=\"submit\" value=\"Upload Facility Survey\">";
 print"</form>";
  
-print "<br><div align = 'center'>\n";
+print "<br>\n";
 print "<form>\n";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">\n";
 print "</form>\n";
