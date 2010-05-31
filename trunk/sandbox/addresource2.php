@@ -94,7 +94,7 @@ print "<input type=hidden name='website' value=\"".$website."\">";
 print "<input type=hidden name='addtl_info' value=\"".$addtl_info."\">";
 print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 }
-print "<input type=submit value='Submit'>";
+print "<input type=submit value='Continue'>";
 print "</div>";
 print "</form>";
 

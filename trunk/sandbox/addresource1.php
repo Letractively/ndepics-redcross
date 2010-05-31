@@ -87,8 +87,8 @@ print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 }
 ?>
 	<br>
-	<input type=submit>
-	<input type=reset>
+	<input type=submit value="Continue">
+	<input type=reset value="Clear Form">
 
 </form>
 

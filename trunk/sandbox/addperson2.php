@@ -206,7 +206,7 @@ print "<br><br>";
 
 print "</select>";
 
-print "&nbsp&nbsp<input type=submit value='Add Person'>";
+print "&nbsp&nbsp<input type=submit value='Continue'>";
 print "</form>";
 
 print "<p>";
