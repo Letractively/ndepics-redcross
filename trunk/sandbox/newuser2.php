@@ -23,7 +23,8 @@ echo "<script src=\"./javascript/selectorganization.js\"></script>";
 include("html_include_2.php");
 
 //Get the values from the previous page and verify that they are unique
-// Then add a record to the users table with the input values
+//Then add a record to the users table with the input values
+
 $username	= $_POST['username'];
 $password	= createRandomPassword();
 $email		= $_POST['email'];
@@ -72,7 +73,7 @@ if($row['user_id'] != '') {
 // Insert the user into the database.
 // Verify the email address...send an email to it to complete the registration process.
 
-$query = "INSERT INTO	users
+$query = "INSERT INTO users
 			(username, 
 			 passwd, 
 			 email, 
@@ -84,28 +85,28 @@ $query = "INSERT INTO	users
 $result = mysql_query($query) or die ("Error: Unable to create new user.");
 
 $mail_to = $email;
-$mail_headers = "From: Red Cross User Verification <verify@disaster.stjoe-redcross.org>";
-$mail_subject = "New User Verification";
-$mail_message = "Thank you for registering with the Disaster Response Website for the St. Joseph County Red Cross.\n\n";
-$mail_message .= "Below you will find your user login.  A subsequent email will contain your temporary password.  ";
-$mail_message .= "You will be able to change your password once you login to the disaster response site.";
-$mail_message .= "\n\nUsername: ".$username."\n\n";
-$mail_message .= "Thank you from the Disaster Response Team.";
+	$mail_headers = "From: Red Cross User Verification <verify@disaster.stjoe-redcross.org>";
+	$mail_subject = "New User Verification";
+	$mail_message = "Thank you for registering with the Disaster Response Website for the St. Joseph County Red Cross.\n\n";
+	$mail_message .= "Below you will find your user login.  A subsequent email will contain your temporary password.  ";
+	$mail_message .= "You will be able to change your password once you login to the disaster response site.";
+	$mail_message .= "\n\nUsername: ".$username."\n\n";
+	$mail_message .= "Thank you from the Disaster Response Team.";
 
 if(mail($mail_to, $mail_subject, $mail_message, $mail_headers)) {
-		$mail_message = "Thank you for registering with the Disaster Response Website for the St. Joseph County Red Cross.\n\n";
-		$mail_message .= "Below you will find your password.  A previous email was sent that contains your username.  ";
-		$mail_message .= "You will be able to change your password once you login to the disaster response site.";
-		$mail_message .= "\n\nPassword: ".$password."\n\n";
-		$mail_message .= "Thank you from the Disaster Response Team.";
-		if(!mail($mail_to, $mail_subject, $mail_message, $mail_headers)) {
-				print "<h3> There was an error sending the password to the user: ".$username." at email ".$email.".  
-							Please contact them directly with their password or contact the site administrator for more help.</h3>\n";
-		}
+	$mail_message = "Thank you for registering with the Disaster Response Website for the St. Joseph County Red Cross.\n\n";
+	$mail_message .= "Below you will find your password.  A previous email was sent that contains your username.  ";
+	$mail_message .= "You will be able to change your password once you login to the disaster response site.";
+	$mail_message .= "\n\nPassword: ".$password."\n\n";
+	$mail_message .= "Thank you from the Disaster Response Team.";
+	if(!mail($mail_to, $mail_subject, $mail_message, $mail_headers)) {
+	print "<h3> There was an error sending the password to the user: ".$username." at email ".$email.".  
+			Please contact them directly with their password '".$password."' or contact the site administrator for more help.</h3>\n";
+}
 }
 else {
 	print "<center>\n";
-	print "<h2> There was an error sending a verification email to  ".$email.".  Please inform the user of their information or contact the site administrator for more help.</h2>\n";
+	print "<h2> There was an error sending a verification email to  ".$email.".  Please inform the user of their information (username: '".$username."' password: '".$password."' or contact the site administrator for more help.</h2>\n";
 }
 
 

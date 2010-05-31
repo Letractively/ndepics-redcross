@@ -6,18 +6,36 @@
 // home.php - Homepage
 //****************************
 session_start();
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
- include("config/functions.php");
- include("html_include_1.php");
- echo "<title>St. Joseph Red Cross - Disaster Database</title>";
- include("html_include_2.php");
+}
+include("config/functions.php");
+include ("./config/dbconfig.php");
+include ("./config/opendb.php");
+include("html_include_1.php");
+echo "<title>St. Joseph Red Cross - Disaster Database</title>";
+include("html_include_2.php");
+ 
+//Cool Counting Addition
+$org_r = mysql_query("SELECT * FROM organization");
+$org_n = mysql_num_rows($org_r);
+
+$per_r = mysql_query("SELECT * FROM person");
+$per_n = mysql_num_rows($per_r);
+
+$res_r = mysql_query("SELECT * FROM detailed_resource");
+$res_n = mysql_num_rows($res_r);
+
+print "<center>";
+print "<h1 style='display: inline'>St. Joseph Red Cross - Disaster Response Database</h1><br/>";
+print "<h3>Managing ".$org_n." organizations, ".$per_n." people, and ".$res_n." resources.</h3>";
+print "</center>";
 ?>
-<h1 style="display: inline">St. Joseph Red Cross - Disaster Database</h1><br/>
+<hr>
 Welcome to the St. Joseph County Red Cross Disaster Database.  This online database contains 
 contact information for people and organizations who offer aid resources in disaster situations.  
 To begin using this database, please select one of the options below.<br/><br/>
+
 <?
 
 //if the user can search information
@@ -90,5 +108,6 @@ if( $_SESSION['access_level_id'] == 9) {
 } 
 
 echo "</div>";
+include("./config/closedb.php");
 include("html_include_3.php");
 ?>

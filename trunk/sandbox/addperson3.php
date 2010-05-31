@@ -102,13 +102,14 @@ $query = "INSERT INTO  person (salutation ,
 			       zip ,
 			       home_phone ,
 			       work_phone ,
-                               mobile_phone ,
+                   mobile_phone ,
 			       fax ,
 			       email ,
 			       im, 
-                               additional_info,
-                               updated_by ,
-                               log )
+                   additional_info,
+                   updated_by ,
+				   updated_time ,
+                   log )
 		 VALUES (\"".$salutation."\",
                          \"".$first_name."\",
                          \"".$last_name."\",
@@ -124,6 +125,7 @@ $query = "INSERT INTO  person (salutation ,
                          \"".$im."\",
                          \"".$info."\",
                          \"".$updated_by."\",
+						 NOW(),
                          \"".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']."\")";
 
 

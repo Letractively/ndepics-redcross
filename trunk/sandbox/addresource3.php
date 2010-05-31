@@ -112,7 +112,7 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC))
 	     "City: {$row['city']} <br>";
 }
 
-print "<h2>Adding values: </h2>";
+print "<h2>Added Resource: </h2>";
 print "<table>";
 	print "<tr>";
 	print "<td width=120><b> Resource Type: </b></td>";

@@ -6,18 +6,17 @@
 // newuser.php - Page to create a new user for the site
 //****************************
 session_start();
- if(($_SESSION['valid']) != "valid") {
+if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
- }
+}
  // Make sure the user is an admin
- if($_SESSION['access_level_id'] != 9) {
-        header( 'Location: ./index.php' );
- } 
+if($_SESSION['access_level_id'] != 9) {
+	header( 'Location: ./index.php' );
+}
 
 include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - New User</title>";
-echo "<script src=\"./javascript/selectorganization.js\"></script>";
 include("html_include_2.php");
 ?>
 <form name="newuser" method="post" action="newuser2.php" align ="left">
