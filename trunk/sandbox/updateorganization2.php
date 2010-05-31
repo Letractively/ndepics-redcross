@@ -34,7 +34,7 @@ $business_fax		= mysql_real_escape_string($_POST["bus_fax_1"]).mysql_real_escape
 $email				= mysql_real_escape_string($_POST["email"]);
 $website			= mysql_real_escape_string($_POST["website"]);
 $additional_info    = mysql_real_escape_string($_POST['additional_info']);
-$updated_by 		= $_POST['updated_by'];
+$updated_by 		= mysql_real_escape_string($_POST['updated_by']);
 
 $resource_id 		= mysql_real_escape_string($_POST["resource_id"]);
 $resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);

@@ -82,6 +82,8 @@ print "<input type=hidden name='business_phone2' value='".$business_phone2."'>";
 print "<input type=hidden name='business_fax' value='".$business_fax."'>";
 print "<input type=hidden name='email' value=\"".$email."\">";
 print "<input type=hidden name='website' value=\"".$website."\">";
+print "<input type=hidden name='addtl_info' value=\"".$addtl_info."\">";
+print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 }
 ?>
 	<br>

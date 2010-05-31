@@ -28,7 +28,7 @@ print "<form action=\"search.php\" style=\"display: inline\">";
 print "    <input type=\"submit\" value=\"Search by Keyword\">";
 print "</form>";
 print "<form action=\"search/allresources.php\"  style=\"display: inline\">";
-print "    <input type=\"submit\" value=\"Browse all Data\">";
+print "    <input type=\"submit\" value=\"Browse Resources\">";
 print "</form><br/><br/>";
 }
 

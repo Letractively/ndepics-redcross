@@ -29,9 +29,10 @@ include("html_include_2.php");
 <?
 // Retrieve the requested organizations information
 $organization_id = $_POST["organization_id"];
+
 $query = "SELECT        *
-                  FROM          organization
-                  WHERE         organization_id = ".$organization_id;
+			FROM          organization
+			WHERE         organization_id = ".$organization_id;
 $result = mysql_query($query) or die ("Organization Query failed");
 $row = mysql_fetch_assoc($result);
 
