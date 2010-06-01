@@ -57,7 +57,7 @@ $result = mysql_query($query) or die ("Deletion Query 4 failed (SoU)");
 
 //Delete Facility Survey files
 $query = "DELETE
-			FROM		facility_survery
+			FROM		facility_survey
 			WHERE		organization_id = ".$organization_id;
 			
 $result = mysql_query($query) or die ("Deletion Query 5 failed (facility_survey) IGNORE THIS");
