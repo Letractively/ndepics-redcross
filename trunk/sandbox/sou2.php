@@ -38,8 +38,6 @@ if((($fileType == "application/pdf")
 	{
 		//Set up Upload parameters
 		//Upload BLOB to database
-		$b = time ();
-		$d = date("Y-m-d", $b);
 		$fp  = fopen($datafile, 'r');
 		$content = fread($fp, filesize($datafile));
 		$content = addslashes($content);
@@ -55,7 +53,7 @@ if((($fileType == "application/pdf")
 		{
 			//Overwrite
 			$query = "UPDATE statement_of_understanding
-						SET		date_of_contract = \"".$d."\" ,
+						SET		date_of_contract = NOW() ,
 								uploaded_contract = \"".$content."\" ,
 								filename = \"".$fileName."\" ,
 								filetype = \"".$extension."\" ,
@@ -77,7 +75,7 @@ if((($fileType == "application/pdf")
 						 filesize)
 						VALUES 
 						(\"".$org_id."\", 
-						 \"".$d."\", 
+						 NOW(), 
 						 \"".$content."\", 
 						 \"".$fileName."\",
 						 \"".$extension."\",

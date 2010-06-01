@@ -17,8 +17,7 @@ $organization_id = $_POST["organization_id"];
 $queryid = "SELECT	filename,filetype,filesize,uploaded_report 
 			FROM 	facility_survey 
 			WHERE 	organization_id = ".$organization_id;
-$result = mysql_query($queryid);// or die("Query Error: Could not retreive file from database.");
-mysql_error();
+$result = mysql_query($queryid) or die("Query Error: Could not retreive file from database.");
 
 list($name, $type, $size, $content) = mysql_fetch_array($result);
 if($name != NULL)
@@ -28,14 +27,11 @@ if($name != NULL)
   header("Content-Disposition: attachment; filename=$name");
   echo $content;
 }
-else
-{
-  print "No facility survey uploaded.\n";
-}
 
 include ("html_include_1.php");
 echo "<title>St. Joseph Red Cross - FS</title>";
 include ("html_include_2.php");
+print "If you were not prompted for a download, then no facility survey has been uploaded.\n";
 include ("config/closedb.php");
 include("html_include_3.php");
 ?>

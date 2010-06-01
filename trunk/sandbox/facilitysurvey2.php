@@ -9,12 +9,12 @@ session_start();
 if(($_SESSION['valid']) != "valid") {
 	header( 'Location: ./index.php' );
 }
-include ("./config/dbconfig.php");
-include ("./config/opendb.php");
-include ("./config/functions.php");
-include ("./html_include_1.php");
+include ("config/dbconfig.php");
+include ("config/opendb.php");
+include ("config/functions.php");
+include ("html_include_1.php");
 echo "<title>St. Joseph Red Cross - FS Upload</title>";
-include ("./html_include_2.php");
+include ("html_include_2.php");
 
 $datafile = $_FILES["uploadedfile"]["tmp_name"];
 $fileName = $_FILES["uploadedfile"]["name"];
@@ -38,8 +38,6 @@ if((($fileType == "application/pdf")
 	{
 		//Set up Upload parameters
 		//Upload BLOB to database
-		$b = time ();
-		$d = date("Y-m-d", $b);
 		$fp  = fopen($datafile, 'r');
 		$content = fread($fp, filesize($datafile));
 		$content = addslashes($content);
@@ -55,7 +53,7 @@ if((($fileType == "application/pdf")
 		{
 			//Overwrite
 			$query = "UPDATE facility_survey
-						SET		date_completed = \"".$d."\" ,
+						SET		date_completed = NOW() ,
 								uploaded_report = \"".$content."\" ,
 								filename = \"".$fileName."\" ,
 								filetype = \"".$extension."\" ,
@@ -77,15 +75,14 @@ if((($fileType == "application/pdf")
 						 filesize)
 						VALUES 
 						(\"".$org_id."\", 
-						 \"".$d."\", 
+						 NOW(), 
 						 \"".$content."\", 
 						 \"".$fileName."\",
 						 \"".$extension."\",
 						 \"".$fileSize."\")";
-			$result2 = mysql_query($query); //("Query Failed: Could not save new file to database.");
-			mysql_error();
+			$result2 = mysql_query($query) or die ("Query Failed: Could not save new file to database.");
 		}
-		// View SOU button
+		// View FS button
 		if( !( ($_SESSION['access_level_id'] != 1) 
 			&& ($_SESSION['access_level_id'] != 3) 
 			&& ($_SESSION['access_level_id'] != 5) 
@@ -108,5 +105,5 @@ print"File Name: ".$_FILES["uploadedfile"]["name"]."<br>";
 print"File Type: ".$_FILES["uploadedfile"]["type"]."<br>Size: ".$_FILES["uploadedfile"]["size"]."<br>";
 
 include("./config/closedb.php");
-include("./html_include_3.php");
+include("html_include_3.php");
 ?>

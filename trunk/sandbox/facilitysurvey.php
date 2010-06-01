@@ -29,7 +29,7 @@ $query = "SELECT	organization_name
 $org = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
 $array = mysql_fetch_assoc($org);
 $org = $array['organization_name'];
-print "Upload Facility Survey for ".$org.". Any existing file for this organization will be overwritten.";
+print "Upload Facility Survey for " .$org.". Any existing file for this organization will be overwritten.";
 
 print"<form enctype='multipart/form-data' action='./facilitysurvey2.php' method='POST'>";
 print"<input type='hidden' name='MAX_FILE_SIZE' value='2097152' >";

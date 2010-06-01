@@ -27,14 +27,11 @@ if($name != NULL)
   header("Content-Disposition: attachment; filename=$name");
   echo $content;
 }
-else
-{
-  print "No statement of understanding uploaded.\n";
-}
 
 include ("html_include_1.php");
 echo "<title>St. Joseph Red Cross - SoU</title>";
 include ("html_include_2.php");
+print "If you were not prompted for a download, then no statement of understanding has been uploaded.\n";
 include ("config/closedb.php");
 include("html_include_3.php");
 ?>

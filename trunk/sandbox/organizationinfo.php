@@ -35,9 +35,11 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	$querysou = "SELECT * FROM statement_of_understanding WHERE organization_id = ".$organization_id;
 	$resultsou = mysql_query($querysou) or die ("Query Failed...could not retrieve SOU information");
 	$rowsou = mysql_fetch_assoc($resultsou);
+	$sou_date = substr($rowsou['date_of_contract'],5,2) . "/" . substr($rowsou['date_of_contract'],8,2) . "/" . substr($rowsou['date_of_contract'],0,4);
 	$queryfs = "SELECT * FROM facility_survey WHERE organization_id = ".$organization_id;
 	$resultfs = mysql_query($queryfs) or die ("Query Failed...could not retrieve FS information");
 	$rowfs = mysql_fetch_assoc($resultfs);
+	$fs_date = substr($rowfs['date_completed'],5,2) . "/" . substr($rowfs['date_completed'],8,2) . "/" . substr($rowfs['date_completed'],0,4);
 			
 	print "<h1 style=\"display: inline\">Organization Information";
 	print "</h1><br/><hr>";
@@ -60,7 +62,7 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
 	print "Updated by ".$row['updated_by']." on ".$display_date."<br><br>";
 	if($rowsou['filename'] != ""){
-		print "Statement of Understanding uploaded on: " .$rowsou['date_of_contract']."&nbsp;&nbsp;";
+		print "Statement of Understanding uploaded on: " .$sou_date."&nbsp;&nbsp;";
 		// View SoU Button
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
@@ -74,7 +76,7 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	else
 		print "No Statement of Understanding<br>";
 	if($rowfs['filename'] != ""){
-		print "Facility Survey uploaded on: " .$rowfs['date_completed']."&nbsp;&nbsp;";
+		print "Facility Survey uploaded on: " .$fs_date."&nbsp;&nbsp;";
 		// View FS Button
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
