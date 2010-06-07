@@ -22,9 +22,7 @@ include("config/functions.php");
 include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Organization Info</title>";
 include("html_include_2.php");
-?>
 
-<?php
 //IF YOU HAVE SEARCH RIGHTS
 if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
 	$organization_id = $_GET['id'];
@@ -44,8 +42,15 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	print "<h1 style=\"display: inline\">Organization Information";
 	print "</h1><br/><hr>";
 
-	// Display the Organization Information
+	// Display the Organization Title
 	print "<h3>".$row['organization_name']."</h3>";
+	
+	//Display the Google Map
+	$google_addr = str_replace(' ','+',$row['street_address'].",".$row['city'].",".$row['state']);
+	print "<img src='http://maps.google.com/maps/api/staticmap?&markers=size:mid|color:red|"
+	.$google_addr."&zoom=15&size=300x300&sensor=false' alt='Map' align='right'>";
+	
+	//Display the Organization Information
 	if($row['street_address'] != "NULL")
 		print $row['street_address']." (Street Address)<br>";
 	if($row['mailing_address'] != "NULL")
