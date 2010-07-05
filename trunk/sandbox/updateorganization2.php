@@ -34,10 +34,22 @@ $business_fax		= mysql_real_escape_string($_POST["bus_fax_1"]).mysql_real_escape
 $email				= mysql_real_escape_string($_POST["email"]);
 $website			= mysql_real_escape_string($_POST["website"]);
 $additional_info    = mysql_real_escape_string($_POST['additional_info']);
+$unit 				= $_POST['unit'];
 $updated_by 		= mysql_real_escape_string($_POST['updated_by']);
 
 $resource_id 		= mysql_real_escape_string($_POST["resource_id"]);
 $resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);
+
+//Set up $unit string
+if(!is_string($unit)) {
+	//explode unit array
+	for ($i=0; $i<count($unit); $i++) { 
+		if(empty($unit[$i])) 
+			{unset($unit[$i]);}
+	}
+	//convert array to string
+	$unit = implode (",", $unit); 
+}//end if is_string
 
 //Query to update organization
 $query = "UPDATE	organization 
@@ -54,6 +66,7 @@ $query = "UPDATE	organization
 					email = \"".$email."\" ,
 					website = \"".$website."\" ,
                     additional_info = \"".$additional_info."\" ,
+					association = \"".$unit."\" ,
                     updated_by = \"".$updated_by."\" ,
 					updated_time = NOW()
 	  	WHERE		organization_id = ".$organization_id."
@@ -74,7 +87,7 @@ $query = "DELETE
 		  WHERE		resource_id = ".$resourceremove_id."
 		  AND		organization_id = ".$organization_id."";
 		  
-$result = mysql_query($query) or die ("Deletion Query failed, please retry.");
+$result = mysql_query($query) or die ("Deletion Query failed");
 }
 
 
@@ -91,10 +104,13 @@ $redirect_url = "./organizationinfo.php?id=".$organization_id;
 
 ?>
 <div align="center">
-  <h3>Updated Organization... Please click <a href="<? echo $redirect_url; ?>">here</a>.</h3>
+  <h3>Updated Organization... Redirecting</h3>
 </div>
-
 <?
+$message .= "Successful Update...redirecting<br>";
+print "Successfull Update...redirecting to information page";
+print "<meta http-equiv=\"Refresh\" content=\"1.0; url=".$redirect_url."\">";
+
 include ("config/closedb.php");
 include("html_include_3.php");
 ?>

@@ -21,11 +21,9 @@ include("html_include_1.php");
 echo "<title>St. Joseph Red Cross - Update Organization</title>";
 include("html_include_2.php");
 ?>
-
 <div align="center">
   <h1>Update Organization</h1>
 </div>
-
 <?
 // Retrieve the requested organizations information
 $organization_id = $_POST["organization_id"];
@@ -134,40 +132,49 @@ print "</tr>\n";
  print "</tr>\n";
  
  print "<tr>\n";
- print "<td valign='top'><b>Rd Cross Associations:</b></td>\n";
+ print "<td valign='top'><b>Red Cross Associations:</b><br><i>Check all that apply</i></td>\n";
+ 
  //Logic to pre-check boxes
- 
- 
+ $check = array();
+ $unitarray = array("StJoseph","Cass","LaPorte","Marshall","Elkhart","Kosciusko","Porter","District1","District2","District3","District4","Region","State","National","Other");
+ $unitarray = array_values($unitarray);
+ $unit = "STR:".$unit;
+  for($i=0;$i<count($unitarray);$i++)
+ {
+ 	if(strpos($unit,$unitarray[$i]) > 0) {
+ 		$check[$i] = "checked=\"checked\"";
+	}
+ 	else {
+ 		$check[$i] = "";
+	}
+ }
  ?>
- 
-        <td>TEST:<? echo $unit ?>  <br />
+        <td>
         Chapters:
-        <input type="checkbox" name="unit[]" value="StJoseph" />St Joseph  
-        <input type="checkbox" name="unit[]" value="Cass" />Cass 
-        <input type="checkbox" name="unit[]" value="LaPorte" />LaPorte 
-        <input type="checkbox" name="unit[]" value="Marshall" />Marshall
+        <input type="checkbox" name="unit[]" <? echo $check[0]; ?> value="StJoseph" />St Joseph  
+        <input type="checkbox" name="unit[]" <? echo $check[1]; ?> value="Cass" />Cass 
+        <input type="checkbox" name="unit[]" <? echo $check[2]; ?> value="LaPorte" />LaPorte 
+        <input type="checkbox" name="unit[]" <? echo $check[3]; ?> value="Marshall" />Marshall
         <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" name="unit[]" value="Elkhart" />Elkhart 
-        <input type="checkbox" name="unit[]" value="Kosciusko" />Kosciusko 
-        <input type="checkbox" name="unit[]" value="Porter" />Porter 
-        <br />Divisions:
-        <input type="checkbox" name="unit[]" value="District1" />District 1
-        <input type="checkbox" name="unit[]" value="District2" />District 2
-        <input type="checkbox" name="unit[]" value="District3" />District 3
-        <input type="checkbox" name="unit[]" value="District4" />District 4
+        <input type="checkbox" name="unit[]" <? echo $check[4]; ?> value="Elkhart" />Elkhart 
+        <input type="checkbox" name="unit[]" <? echo $check[5]; ?> value="Kosciusko" />Kosciusko 
+        <input type="checkbox" name="unit[]" <? echo $check[6]; ?> value="Porter" />Porter 
+        <br />Districts:
+        <input type="checkbox" name="unit[]" <? echo $check[7]; ?> value="District1" />District 1
+        <input type="checkbox" name="unit[]" <? echo $check[8]; ?> value="District2" />District 2
+        <input type="checkbox" name="unit[]" <? echo $check[9]; ?> value="District3" />District 3
+        <input type="checkbox" name="unit[]" <? echo $check[10]; ?> value="District4" />District 4
         <br />
-        <input type="checkbox" name="unit[]" value="Region" />Region
+        <input type="checkbox" name="unit[]" <? echo $check[11]; ?> value="Region" />Region
         <br />
-        <input type="checkbox" name="unit[]" value="State" />State
+        <input type="checkbox" name="unit[]" <? echo $check[12]; ?> value="State" />State
         <br />
-        <input type="checkbox" name="unit[]" value="National" />National
+        <input type="checkbox" name="unit[]" <? echo $check[13]; ?> value="National" />National
         <br />
-        <input type="checkbox" name="unit[]" value="Other" />Other
+        <input type="checkbox" name="unit[]" <? echo $check[14]; ?> value="Other" />Other
         </td>
  <?
- 
- //print "<td><input name='unit' maxlength='100' align='left' value=\"".$unit."></td>\n";
- print "</tr>\n";
+print "</tr>\n";
 
 print "<tr>\n";
 print "<td><b>Add a Resource</b></td>\n";
@@ -238,6 +245,11 @@ print "<br><input type='submit' value='Update Organization'>";
 print"</form>";
 
 print "<br><br>";
+
+print"<form action=\"./shelter.php\"  method=\"POST\">";
+print"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
+print"<input type=\"submit\" value=\"Update Shelter Information\">";
+print"</form>";
 
 print"<form action=\"./sou.php\"  method=\"POST\">";
 print"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";

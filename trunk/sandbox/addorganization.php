@@ -45,10 +45,8 @@ if(isset($_POST["unit"])) {$unit = $_POST["unit"];} else {$unit=array();}
 $updated_by = $_POST["updated_by"];
 
 
-if(!is_string($unit))
-{
+if(!is_string($unit)) {
 	//explode unit array
-	print "UNIT: $unit .";
 	for ($i=0; $i<count($unit); $i++) { 
 		if(empty($unit[$i])) 
 			{unset($unit[$i]);}
@@ -173,7 +171,7 @@ if(!$form_filled)
                     <input type="checkbox" name="unit[]" value="Elkhart" />Elkhart
                     <input type="checkbox" name="unit[]" value="Kosciusko" />Kosciusko
                     <input type="checkbox" name="unit[]" value="Porter" />Porter
-                    <br />Divisions:
+                    <br />Districts:
                     <input type="checkbox" name="unit[]" value="District1" />District 1
                     <input type="checkbox" name="unit[]" value="District2" />District 2
                     <input type="checkbox" name="unit[]" value="District3" />District 3
@@ -538,7 +536,7 @@ if($unit == "")
                     <input type="checkbox" name="unit[]" value="Elkhart" />Elkhart 
                     <input type="checkbox" name="unit[]" value="Kosciusko" />Kosciusko 
                     <input type="checkbox" name="unit[]" value="Porter" />Porter 
-                    <br />Divisions:
+                    <br />Districts:
                     <input type="checkbox" name="unit[]" value="District1" />District 1
                     <input type="checkbox" name="unit[]" value="District2" />District 2
                     <input type="checkbox" name="unit[]" value="District3" />District 3

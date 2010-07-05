@@ -68,21 +68,22 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	print "Additional Information: ".$row['additional_info']."<br><br>";
 	print "Associated with: ".$row['association']."<br><br>";
 	
-	//Shelter Information if needed
+	$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
+	print "Updated by ".$row['updated_by']." on ".$display_date."<br><br>";
+	
+		//Shelter Information if needed
 	if($rowsi['organization_id'] != ""){
 		print "Shelter Information:<br>";
-		print "Size: ".$rowsi['size'];
-		print "Capacity: ".$rowsi['capacity'];
-		print "Entered in to National DB on".$rowsi['nat_entry_date'];
+		print "Size: ".$rowsi['size']."<br>";
+		print "Capacity: ".$rowsi['capacity']."<br>";
+		print "Entered in to National DB on".$rowsi['nat_entry_date']."<br><br>";
 	}
 	else
 		print "No Shelter Information.<br>";
-	
-	$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
-	print "Updated by ".$row['updated_by']." on ".$display_date."<br><br>";
+		
+		//SoU
 	if($rowsou['filename'] != ""){
 		print "Statement of Understanding uploaded on: " .$sou_date."&nbsp;&nbsp;";
-		// View SoU Button
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
 			print "<form action=\"./viewstatementofunderstanding.php\"  method=\"POST\">";
@@ -94,9 +95,10 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	}
 	else
 		print "No Statement of Understanding<br>";
+		
+		//FS
 	if($rowfs['filename'] != ""){
 		print "Facility Survey uploaded on: " .$fs_date."&nbsp;&nbsp;";
-		// View FS Button
 		if( !( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 		{
 			print "<form action=\"./viewfacilitysurvey.php\"  method=\"POST\">";
