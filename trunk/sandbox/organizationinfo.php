@@ -74,7 +74,6 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 		print "Size: ".$rowsi['size'];
 		print "Capacity: ".$rowsi['capacity'];
 		print "Entered in to National DB on".$rowsi['nat_entry_date'];
-		}
 	}
 	else
 		print "No Shelter Information.<br>";

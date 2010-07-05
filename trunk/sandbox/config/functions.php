@@ -1,6 +1,7 @@
 <?php
 
 error_reporting(E_ERROR); //set site-wide level of error reporting.
+//error_reporting(E_ALL);
 
 function scrub_input($input_text) {
 	$output_text = stripslashes($input_text);

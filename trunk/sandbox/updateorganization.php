@@ -50,6 +50,7 @@ $business_fax = $row['business_fax'];
 $email = $row['email'];
 $website = $row['website'];
 $additional_info = $row['additional_info'];
+$unit = $row['association'];
 $updated_by = $row['updated_by'];
 
 print "<center><form name='updateorganization' method='post' action='updateorganization2.php'>\n";
@@ -130,6 +131,42 @@ print "</tr>\n";
  print "<tr>\n";
  print "<td><b>Additional Info: </b></td>\n";
  print "<td><textarea name='additional_info' rows=6 cols=40 align='left'>".$additional_info."</textarea></td>\n";
+ print "</tr>\n";
+ 
+ print "<tr>\n";
+ print "<td valign='top'><b>Rd Cross Associations:</b></td>\n";
+ //Logic to pre-check boxes
+ 
+ 
+ ?>
+ 
+        <td>TEST:<? echo $unit ?>  <br />
+        Chapters:
+        <input type="checkbox" name="unit[]" value="StJoseph" />St Joseph  
+        <input type="checkbox" name="unit[]" value="Cass" />Cass 
+        <input type="checkbox" name="unit[]" value="LaPorte" />LaPorte 
+        <input type="checkbox" name="unit[]" value="Marshall" />Marshall
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="checkbox" name="unit[]" value="Elkhart" />Elkhart 
+        <input type="checkbox" name="unit[]" value="Kosciusko" />Kosciusko 
+        <input type="checkbox" name="unit[]" value="Porter" />Porter 
+        <br />Divisions:
+        <input type="checkbox" name="unit[]" value="District1" />District 1
+        <input type="checkbox" name="unit[]" value="District2" />District 2
+        <input type="checkbox" name="unit[]" value="District3" />District 3
+        <input type="checkbox" name="unit[]" value="District4" />District 4
+        <br />
+        <input type="checkbox" name="unit[]" value="Region" />Region
+        <br />
+        <input type="checkbox" name="unit[]" value="State" />State
+        <br />
+        <input type="checkbox" name="unit[]" value="National" />National
+        <br />
+        <input type="checkbox" name="unit[]" value="Other" />Other
+        </td>
+ <?
+ 
+ //print "<td><input name='unit' maxlength='100' align='left' value=\"".$unit."></td>\n";
  print "</tr>\n";
 
 print "<tr>\n";
