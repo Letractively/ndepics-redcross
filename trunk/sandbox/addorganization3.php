@@ -40,6 +40,7 @@ $business_fax = $_POST["business_fax"];
 $email = $_POST["email"];
 $website = $_POST["website"];
 $addtl_info = $_POST["addtl_info"];
+$unit = $_POST["unit"];
 $updated_by = $_POST["updated_by"];
 $resource_id = $_POST["resource_id"];
 
@@ -84,6 +85,7 @@ $query = "INSERT INTO  organization (organization_name ,
 				     email ,
 				     website ,
                      additional_info , 
+					 association ,
                      updated_by ,
 					 updated_time ,
                      log)
@@ -100,6 +102,7 @@ $query = "INSERT INTO  organization (organization_name ,
                          \"".$email."\",
                          \"".$website."\",
                          \"".$addtl_info."\",
+						 \"".$unit."\",
                          \"".$updated_by."\",
 						 NOW(),
                          \"".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']."\")";
@@ -185,6 +188,11 @@ print "<table>";
 	print "<tr>";
 	print "<td><b>Info</b></td>";
 	print "<td>".$addtl_info."</td>";
+	print "</tr>";
+	
+	print "<tr>";
+	print "<td><b>Red Cross Unit</b></td>";
+	print "<td>".$unit."</td>";
 	print "</tr>";
 
 	print "<tr>";

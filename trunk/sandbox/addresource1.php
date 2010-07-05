@@ -40,6 +40,7 @@ if($addresfromorg){
   $email = $_POST["email"];
   $website = $_POST["website"];
   $addtl_info = $_POST["addtl_info"];
+  $unit = $_POST["unit"];
   $updated_by = $_POST["updated_by"];
  }
 
@@ -83,6 +84,7 @@ print "<input type=hidden name='business_fax' value='".$business_fax."'>";
 print "<input type=hidden name='email' value=\"".$email."\">";
 print "<input type=hidden name='website' value=\"".$website."\">";
 print "<input type=hidden name='addtl_info' value=\"".$addtl_info."\">";
+print "<input type=hidden name='unit' value=\"".$unit."\">";
 print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 }
 ?>

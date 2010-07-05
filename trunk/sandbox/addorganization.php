@@ -41,6 +41,7 @@ $fax = $_POST["bus_fax_1"].$_POST["bus_fax_2"].$_POST["bus_fax_3"];
 $email = $_POST["email"];
 $website = $_POST["website"];
 $addtl_info = $_POST["addtl_info"];
+$unit = $_POST["unit"];
 $updated_by = $_POST["updated_by"];
 
 
@@ -58,6 +59,7 @@ $fax = scrub_input($fax);
 $email = scrub_input($email);
 $website = scrub_input($website);
 $addtl_info = scrub_input($addtl_info);
+$unit = scrub_input($unit);
 $updated_by = scrub_input($updated_by);
 
 // Display them for the user to verify
@@ -146,6 +148,32 @@ if(!$form_filled)
 		        <td><textarea name='addtl_info' rows=6 cols=40 align= 'left' valign='top'></textarea></td> 
 
                 </tr>
+                
+                <tr>
+                	<td>Associate to a Red Cross Unit:<br /><i>Check all that apply</i></td>
+                    <td>Chapters:
+                    <input type="checkbox" name="unit[]" value="StJoseph" />St Joseph
+                    <input type="checkbox" name="unit[]" value="Cass" />Cass
+                    <input type="checkbox" name="unit[]" value="LaPorte" />LaPorte
+                    <input type="checkbox" name="unit[]" value="Marshall" />Marshall
+                    <input type="checkbox" name="unit[]" value="Elkhart" />Elkhart
+                    <input type="checkbox" name="unit[]" value="Kosciusko" />Kosciusko
+                    <input type="checkbox" name="unit[]" value="Porter" />Porter
+                    <br />Divisions:
+                    <input type="checkbox" name="unit[]" value="D1" />Division 1
+                    <input type="checkbox" name="unit[]" value="D2" />Division 2
+                    <input type="checkbox" name="unit[]" value="D3" />Division 3
+                    <input type="checkbox" name="unit[]" value="D4" />Division 4
+                    <br />
+                    <input type="checkbox" name="unit[]" value="Region" />Region
+                    <br />
+                    <input type="checkbox" name="unit[]" value="State" />State
+                    <br />
+                    <input type="checkbox" name="unit[]" value="National" />National
+                    <br />
+                    <input type="checkbox" name="unit[]" value="Other" />Other
+                    </td>
+                </tr>
 
                <tr>
                        <td>YOUR initials</td>
@@ -186,6 +214,7 @@ $errCount=0;
  validator("Email",$email,"email","1","100","0");
  validator("Website",$website,"alphanumeric","4","30","0");
  validator("Info",$addtl_info,"string","","","0");
+ validator("Unit",$unit,"string","","","0");
  validator("Your Initials",$updated_by,"alpha","2","11","1");
  if(!$messages[0])
    {
@@ -475,6 +504,49 @@ else
   print"<tr>\n";
   print"<td><b>Additional Info: </b></td>\n";
   print"<td>".$addtl_info."</td>\n";
+  print"</tr>\n";
+}
+
+//Unit
+validator("Unit",$unit,"string","","","0");
+if($messages[$errCount])
+{
+  print $messages[$errCount]."<br>";
+  $errCount++;
+?>
+                <tr>
+                	<td>Associate to a Red Cross Unit:<br /><i>Check all that apply</i></td>
+                    <td>Chapters:
+                    <input type="checkbox" name="unit[]" value="StJoseph" />St Joseph
+                    <input type="checkbox" name="unit[]" value="Cass" />Cass
+                    <input type="checkbox" name="unit[]" value="LaPorte" />LaPorte
+                    <input type="checkbox" name="unit[]" value="Marshall" />Marshall
+                    <input type="checkbox" name="unit[]" value="Elkhart" />Elkhart
+                    <input type="checkbox" name="unit[]" value="Kosciusko" />Kosciusko
+                    <input type="checkbox" name="unit[]" value="Porter" />Porter
+                    <br />Divisions:
+                    <input type="checkbox" name="unit[]" value="D1" />Division 1
+                    <input type="checkbox" name="unit[]" value="D2" />Division 2
+                    <input type="checkbox" name="unit[]" value="D3" />Division 3
+                    <input type="checkbox" name="unit[]" value="D4" />Division 4
+                    <br />
+                    <input type="checkbox" name="unit[]" value="Region" />Region
+                    <br />
+                    <input type="checkbox" name="unit[]" value="State" />State
+                    <br />
+                    <input type="checkbox" name="unit[]" value="National" />National
+                    <br />
+                    <input type="checkbox" name="unit[]" value="Other" />Other
+                    </td>
+                </tr>
+<?
+}
+else
+{
+  print "<input type=hidden name='unit' value=\"".$unit."\">";
+  print"<tr>\n";
+  print"<td><b>Unit: </b></td>\n";
+  print"<td>".$unit."</td>\n";
   print"</tr>\n";
 }
 

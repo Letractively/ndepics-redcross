@@ -38,6 +38,9 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	$resultfs = mysql_query($queryfs) or die ("Query Failed...could not retrieve FS information");
 	$rowfs = mysql_fetch_assoc($resultfs);
 	$fs_date = substr($rowfs['date_completed'],5,2) . "/" . substr($rowfs['date_completed'],8,2) . "/" . substr($rowfs['date_completed'],0,4);
+	$querysi = "SELECT * FROM shelter_info WHERE organization_id = ".$organization_id;
+	$resultsi = mysql_query($querysi) or die ("Wuery Failed...could not retreive shelter_info information");
+	$rowsi = mysql_fetch_assoc($resultsi);
 			
 	print "<h1 style=\"display: inline\">Organization Information";
 	print "</h1><br/><hr>";
@@ -63,6 +66,18 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	print "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
 	print "Website: <a href='http://".$row['website']."'>".$row['website']."</a><br><br>";
 	print "Additional Information: ".$row['additional_info']."<br><br>";
+	print "Associated with: ".$row['association']."<br><br>";
+	
+	//Shelter Information if needed
+	if($rowsi['organization_id'] != ""){
+		print "Shelter Information:<br>";
+		print "Size: ".$rowsi['size'];
+		print "Capacity: ".$rowsi['capacity'];
+		print "Entered in to National DB on".$rowsi['nat_entry_date'];
+		}
+	}
+	else
+		print "No Shelter Information.<br>";
 	
 	$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
 	print "Updated by ".$row['updated_by']." on ".$display_date."<br><br>";
