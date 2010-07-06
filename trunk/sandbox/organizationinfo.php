@@ -76,7 +76,8 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 		print "Shelter Information:<br>";
 		print "Size: ".$rowsi['size']."<br>";
 		print "Capacity: ".$rowsi['capacity']."<br>";
-		print "Entered in to National DB on".$rowsi['nat_entry_date']."<br><br>";
+		$db_date = substr($rowsi['nat_entry_date'],5,2)."/".substr($rowsi['nat_entry_date'],8,2)."/".substr($rowsi['nat_entry_date'],0,4);
+		print "Entered in to National DB on ".$db_date."<br><br>";
 	}
 	else
 		print "No Shelter Information.<br>";
