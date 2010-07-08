@@ -49,9 +49,12 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	print "<h3>".$row['organization_name']."</h3>";
 	
 	//Display the Google Map
-	$google_addr = str_replace(' ','+',$row['street_address'].",".$row['city'].",".$row['state']);
-	print "<img src='http://maps.google.com/maps/api/staticmap?&markers=size:mid|color:red|"
-	.$google_addr."&zoom=15&size=300x300&sensor=false' alt='Map' align='right'>";
+	$google_addr = $row['street_address'].",".$row['city'].",".$row['state'].",".$row['zip'];
+	//print "<img src='http://maps.google.com/maps/api/staticmap?&markers=size:mid|color:red|"
+	//.$google_addr."&zoom=15&size=300x300&sensor=false' alt='Map' align='right'>";
+    
+	print '<iframe align="right" width="400px" height="450px" scrolling="no" src="./mapping.php?a='.$google_addr.'"></iframe>';
+	
 	
 	//Display the Organization Information
 	if($row['street_address'] != "NULL")
