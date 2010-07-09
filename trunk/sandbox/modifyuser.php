@@ -5,22 +5,20 @@
 // Summer 2010 - Matt Mooney
 // modifyuser.php - Page to select user to modify permissions
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+session_start(); //resume active session
+if(($_SESSION['valid']) == "valid") { //if already logged in
+	header( 'Location: ./home.php' ); //redirect to the homepage
 }
-// Make sure the user is an admin
-if($_SESSION['access_level_id'] != 9) {
-        header( 'Location: ./index.php' );
+if($_SESSION['access_level_id'] != 9) { //make sure user is admin
+	header( 'Location: ./index.php' ); //redirect if not authorized
 } 
-
-include ("./config/dbconfig.php");
-include ("./config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Modify User</title>";
-echo "<script src=\"./javascript/selectorganization.js\"></script>";
-include("html_include_2.php");
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection to database
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Modify User</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
+echo "<h1>Modify User</h1>";
 
 print "<center><h2>Select User to Change: </h2>";
 print "<form name=\"select_user\" action=\"updateuseraccess.php\" method=\"post\">\n";

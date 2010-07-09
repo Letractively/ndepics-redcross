@@ -5,19 +5,20 @@
 // Summer 2010 - Matt Mooney
 // newuser.php - Page to create a new user for the site
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
+}
+if($_SESSION['access_level_id'] != 9) { //make sure that the user is an admin
 	header( 'Location: ./index.php' );
 }
- // Make sure the user is an admin
-if($_SESSION['access_level_id'] != 9) {
-	header( 'Location: ./index.php' );
-}
-
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - New User</title>";
-include("html_include_2.php");
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection to database
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - New User</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
+echo "<h1>New User</h1>";
 ?>
 <form name="newuser" method="post" action="newuser2.php" align ="left">
 	<table>

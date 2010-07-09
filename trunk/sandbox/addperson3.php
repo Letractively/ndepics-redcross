@@ -5,29 +5,22 @@
 // Summer 2010 - Matt Mooney
 // addperson3.php - file to insert a pserson into the disaster database
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
 }
-if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){
-	header( 'Location: ./index.php' );
-} 
-include ("./config/dbconfig.php");
-include ("./config/opendb.php");
-include ("./config/functions.php");
-include("./html_include_1.php");
-print "<title>Disaster Database - Add Person</title>";
-print "<script src=\"./javascript/selectorganization.js\"></script>";
-include("./html_include_2.php");
-?>
+if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){ //ensure user has "add" rights
+	header( 'Location: ./index.php' ); //redirect if not authorized
+}  
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Person Added</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
+echo "<h1>Add Person</h1>";
 
-<div align="center">
-  <h1>Add Person</h1>
-</div>
-
-<?php
-//
-// Get the variables from the previous page
+//Pick up POSTed variables from addperson2.php
 $salutation = $_POST["salutation"];
 $first_name = $_POST["first_name"];
 $last_name = $_POST["last_name"];
@@ -43,13 +36,12 @@ $email = $_POST["email"];
 $im = $_POST["im"];
 $updated_by = $_POST["updated_by"];
 $info = $_POST["info"];
-
+//organization related variables for link
 $organization_id = $_POST["organization_id"];
 $title_in_organization = $_POST["title_in_organization"];
 $role_in_organization = $_POST["role_in_organization"];
 
-
-// Scrub the inputs
+// Scrub the inputs, see functions.php for more information
 $salutation = scrub_input($salutation);
 $first_name = scrub_input($first_name);
 $last_name = scrub_input($last_name);
@@ -62,36 +54,29 @@ $info = scrub_input($info);
 $title_in_organization = scrub_input($title_in_organization);
 $role_in_organization = scrub_input($role_in_organization);
 
-//
-//Query to check if person already exists
+//Query to check if person already exists (based on first name, last name combination)
 $pers_query = "SELECT * FROM person WHERE first_name = '".$first_name." ' AND last_name= '".$last_name."'";
-
 $result3 = mysql_query($pers_query) or die ("Error checking if person exists query");
-
 $num_rows = mysql_num_rows($result3);
-
-if ($num_rows != 0){
-       print "<div align='center'><br>";
-       print "Cannot Add Person: \"<b>".$first_name." ".$last_name."</b>\" already exists <br><br>";
+if ($num_rows != 0) { //if person already exists in the database 
+       print "<div align='center'><br />";
+       print "Cannot Add Person: \"<b>".$first_name." ".$last_name."</b>\" already exists <br /><br />";
        print "<form action=\"./home.php\" >\n";
        print "<button type=\"submit\">Return Home</button>";
        print "</form>\n";
        print "</div>";
        exit(-1);
 }
-else{
-     // print "Organization " .$organization_name." does not exist";
-}
 
-//
 // Get the next auto_increment value (person id)
+// This is just a peek, not an insertion that will increment the value
+// We do this so we can redirect to the person information page by setting the GET variable in the URL
 $query = "SHOW TABLE STATUS LIKE 'person'";
 $result = mysql_query($query) or die ("Error sending table status query");
 $row = mysql_fetch_assoc($result);
 $person_id = $row['Auto_increment'];
 
-//
-//Query to be executed
+//Query to insert person into database
 $tempdate = date("m/d/Y H:i");
 $query = "INSERT INTO  person (salutation ,
 			       first_name ,
@@ -127,130 +112,23 @@ $query = "INSERT INTO  person (salutation ,
                          \"".$updated_by."\",
 						 NOW(),
                          \"".$tempdate.": ".$updated_by." authenticated as ".$_SESSION['username']."\n".$row['log']."\")";
-
-
 $result = mysql_query($query) or die ("Error adding Person");
 
+$redirect_url = "./personinfo.php?id=".$person_id; //set redirect_url by inserting person_id into GET field
+$message .= "Successful Add...redirecting<br />";
+print "<br />Successfull Add...redirecting to information page"; //Print friendly message to user
 
-//
-// Make sure the person id is correct
-$org_query = "SELECT * FROM person WHERE person_id = ".$person_id;
-$result2 = mysql_query($org_query) or die ("Error checking the Organization ID");
-$row = mysql_fetch_assoc($result2);
-if( ($row['first_name'] != $first_name) && ($row['last_name'] != $last_name) ) {
-	//print "Person names do not match up! Exiting...<br>\n";
-	print "<h2>Person Failed to be Added: </h2>";
-	print "<table>";
-	print "<tr>";
-	print "<td><b>Salutation: </b></td>";
-	print "<td>".$salutation."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>First Name: </b></td>";
-	print "<td>".$first_name."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Last Name: </b></td>";
-	print "<td>".$last_name."</td>";
-	print "</tr>";
-
-	print "<tr>";
-	print "<td><b>Street Address: </b></td>";
-	print "<td>".$street_address."</td>";
-	print "</tr>";
-
-	print "<tr>";
-	print "<td><b>City: </b></td>";
-	print "<td>".$city."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>State: </b></td>";
-	print "<td>".$state."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Zip: </b></td>";
-	print "<td>".$zip."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Home Phone: </b></td>";
-	print "<td>";
-	echo print_phone($home_phone);
-	print "</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Work Phone: </b></td>";
-	print "<td>";
-	echo print_phone($work_phone);
-	print "</td>";
-	print "</tr>";
-
-	print "<tr>";
-	print "<td><b>Mobile Phone: </b></td>";
-	print "<td>";
-	echo print_phone($mobile_phone);
-	print "</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Fax: </b></td>";
-	print "<td>";
-	echo print_phone($fax);
-	print "</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>Email: </b></td>";
-	print "<td>".$email."</td>";
-	print "</tr>";
-	
-	print "<tr>";
-	print "<td><b>IM: </b></td>";
-	print "<td>".$im."</td>";
-	print "</tr>";
-
-	print "<tr>";
-	print "<td><b>Additional Info: </b></td>";
-	print "<td>".$info."</td>";
-	print "</tr>";
-
-	
-print "</table>";
-	$org_query = "DELETE FROM person WHERE person_id = ".$person_id;
-	mysql_query($org_query);
-	exit (-1);
-}
-else {
-	$redirect_url = "./personinfo.php?id=".$row['person_id'];
-	$message .= "Successful Add...redirecting<br>";
-	print "Successfull Add...redirecting to information page";
-	print "<meta http-equiv=\"Refresh\" content=\"1.5; url=".$redirect_url."\">";
-   }
-
-
-//
-// Query to link added person to the organization
-if($organization_id != "NULL"){
+// Query to associate newly added person to selected organization
+if($organization_id != "NULL") {
 	$query = "INSERT INTO works_for (person_id, organization_id, title, role) 
-			  VALUES (".$person_id.",".$organization_id.",\"".$title_in_organization."\",\"".$role_in_organization."\")";
-			  
+			  VALUES (".$person_id.",".$organization_id.",\"".$title_in_organization."\",\"".$role_in_organization."\")";	  
 	$result = mysql_query($query) or die ("Error adding works_for");
 }
 
-//print "<br> Got to the end of the script <br>";
+//Redirect to the person information page
+print "<meta http-equiv=\"Refresh\" content=\"1.5; url=".$redirect_url."\">";
 
-print "<div align='center'>";
-print "<form action=\"./home.php\">\n";
-print "<input type=\"submit\" value=\"Return Home\" >";
-print "</form></div><br>\n";
-
-
-include ("config/closedb.php");
-include("./html_include_3.php");
+include ("config/closedb.php"); //close connection to the databse
+include("./html_include_3.php"); //close existing HTML tags
 ?>
 

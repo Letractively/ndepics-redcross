@@ -5,55 +5,45 @@
 // Summer 2010 - Matt Mooney
 // deleteuser2.php - Page to delete user from database
 //****************************
-session_start();
- if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+session_start(); //resume current session
+if(($_SESSION['valid']) != "valid") { //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index.php if not authorized
 }
-// Make sure the user is an admin
- if($_SESSION['access_level_id'] != 9) {
-        header( 'Location: ./index.php' );
+if($_SESSION['access_level_id'] != 9) { //ensure that user is an admin
+        header( 'Location: ./index.php' ); //redirect if not authorized to manage users
 } 
 
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Delete User</title>";
-echo "<script src=\"./javascript/selectorganization.js\"></script>";
-include("html_include_2.php");
+include ("./config/dbconfig.php");//database name and password
+include ("./config/opendb.php");//connect to the database
+include("config/functions.php");//import external functions
+include("html_include_1.php");//Open HTML tags
+echo "<title>St. Joseph Red Cross - Delete User</title>"; //print page title
+include("html_include_2.php");//print rest of HTML header
 
-// Delete the user passed from the previous page and if successful, redirect home.
-//	Else, display error message and give option to go home or back.
-
-$redirect_url = "./home.php";
+//Pick up the POSTed input from deleteuser.php
 $user_id = $_POST['user_id'];
 
+//set redirection URL
+$redirect_url = "./home.php";
+
+//Delete user from database
 $query = "DELETE	
 		  FROM		users
 		  WHERE		user_id = ".$user_id."
 		  LIMIT		1";
-$result = mysql_query($query);
+$result = mysql_query($query) or die("There was an error deleting the user");
 ?>
-
 <div align="center">
   <h1>Delete Person</h1>
 </div>
-
-
 <?
-
-print "<center><h2>There was an error deleting the user.</h2></center>";
+print "<br /><h2>User deleted</h2>";
 
 print "<div align='center'>";
 print "<form action=\"./home.php\">\n";
 print "<input type=\"submit\" value=\"Return Home\">";
 print "</form>\n";
 
-print "<form>\n";
-print "<input type=\"button\" value=\"Back\" onClick=\"window.location.href='javascript:history.back()'\">";
-print "</form>\n";
-print "</div><br>";
-
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>

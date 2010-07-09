@@ -5,31 +5,32 @@
 // Summer 2010 - Matt Mooney
 // index.php - Default page: Login or redirect if authenticated
 //****************************
-session_start();
- if(($_SESSION['valid']) == "valid") {
-	header( 'Location: ./home.php' );
- }
+session_start(); //start or resume active session
+if(($_SESSION['valid']) == "valid") { //if already logged in
+	header( 'Location: ./home.php' ); //redirect to the homepage
+}
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection to database
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross Disaster Database</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
+echo "<h1>St. Joseph Red Cross Disaster Database</h1><hr /><br />";
 
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Disaster Database</title>";
-include("html_include_2.php");
-echo "<h1>St. Joseph Red Cross - Disaster Database</h1><br>";
-	
-$validlogin = $_SESSION['valid'];
-if ($validlogin == "invalid") {
+$validlogin = $_SESSION['valid']; //grab new session
+if ($validlogin == "invalid") { //if session is not marked as valid. Login again.
 	print "Invalid login, please try again.";
 }
 
-echo "<br>";
-echo html_loginbox();
-echo html_forgotuserpass();
+echo "<br />";
+echo html_loginbox(); //print the login box
+echo html_forgotuserpass(); //print the forgot password link
 ?>
-<br><br><br><br>
+<br /><br /><br /><br />
 <p align="center">
        <a href="http://validator.w3.org/check?uri=referer">
          <img src="http://www.w3.org/Icons/valid-html401"
-        alt="Valid HTML 4.01 Transitional" height="31" width="88" align="middle" >
+        alt="Valid HTML 4.01 Transitional!" height="31" width="88" align="middle" >
     </a>
     <a href="http://jigsaw.w3.org/css-validator/check/referer">
         <img style="border:0;width:88px;height:31px"
@@ -38,5 +39,6 @@ echo html_forgotuserpass();
     </a>
     </p>
 <?
-include("html_include_3.php");
+include("./config/closedb.php"); //close database connection
+include("./html_include_3.php"); //close HTML tags
 ?>

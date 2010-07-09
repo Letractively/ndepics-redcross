@@ -5,49 +5,52 @@
 // Summer 2010 - Matt Mooney
 // login.php - Authenticate users and set session variables
 //****************************
-session_start();
-include ("./config/dbconfig.php");
-include ("./config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Log In</title>";
-echo "<script src=\"./javascript/selectorganization.js\"></script>";
-include("html_include_2.php");
+session_start(); //resume active session
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection to database
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Loginr</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
+echo "<h1>Logging In</h1><br />";
 
 //SITE SECURITY RESTS ON THESE LINES
-$username = stripslashes($_POST['username']);
-$password = stripslashes($_POST['password']);
+//Get the username and password from index.php
+$username = $_POST['username'];
+$password = $_POST['password'];
 $username = scrub_input($username);
 $password = scrub_input($password);
 
+//submit info to database
 $message = "Username: ".$username."  Password: ".$password."<br>";
 $query = "SELECT	user_id, access_level_id
 		  FROM		users
 		  WHERE		username = \"".$username."\"
-		  AND		passwd = \"".md5($password)."\"";		  
+		  AND		passwd = \"".md5($password)."\""; //MD5 the password to check against encrypted value in table
 $result = mysql_query($query) or die ("Unable to access username/password query");
 $row = mysql_fetch_assoc($result);
 
-if($row > 1) {
+if($row > 1) { //Username and Password match
 	$message .= "Successful login...setting Session Variables<br>";
 	print "<h3>Successful login, setting your session variables...<br>";
-	$_SESSION['valid'] = "valid";
-	$_SESSION['user_id'] = $row['user_id'];
-	$_SESSION['access_level_id'] = $row['access_level_id'];
-	$_SESSION['username'] = $username;
-	$redirect_url = "./home.php";
+	$_SESSION['valid'] = "valid"; //validate session
+	$_SESSION['user_id'] = $row['user_id']; //save user id
+	$_SESSION['access_level_id'] = $row['access_level_id']; //set access level
+	$_SESSION['username'] = $username; //save username
+	$redirect_url = "./home.php"; //direct to the homepage
 	$message .= "Success";
     print "Redirecting...</h3>";
-    print "<meta http-equiv=\"Refresh\" content=\"2.5; url=".$redirect_url."\">";
+    print "<meta http-equiv=\"Refresh\" content=\"2.5; url=".$redirect_url."\">"; //redirect
 }
-else {
-	$_SESSION['valid'] = "invalid";
-	$redirect_url = "./index.php";
+else { //Username and Password do NOT match
+	$_SESSION['valid'] = "invalid"; //invalidate session
+	$redirect_url = "./index.php"; //direct to index for re-try
 	$message .= "Invalid Login<br>";
     print "<h3>Invalid credentials.<br>Redirecting...</h3>";
-    print "<meta http-equiv=\"Refresh\" content=\"1.0; url=".$redirect_url."\">";
+    print "<meta http-equiv=\"Refresh\" content=\"1.0; url=".$redirect_url."\">"; //redirect
 }
 mysql_free_result($result);
 
-include ("./config/closedb.php");
-include("html_include_3.php"); ?>
+include("./config/closedb.php"); //close database connection
+include("./html_include_3.php"); //close HTML tags
+?>

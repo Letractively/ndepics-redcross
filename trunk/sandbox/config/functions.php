@@ -5,10 +5,6 @@ error_reporting(E_ERROR); //set site-wide level of error reporting.
 
 function scrub_input($input_text) {
 	$output_text = stripslashes($input_text);
-       // $replace_chars = array("'", """);
-
-	//$output_text = str_replace($replace_chars, "", $output_text);
-
 	return $output_text;
 }
 

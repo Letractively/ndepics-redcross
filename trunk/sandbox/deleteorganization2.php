@@ -5,28 +5,25 @@
 // Summer 2010 - Matt Mooney
 // deleteorganization2.php - Page to delete organization from database
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid"){
-	header( 'Location: ./index.php' );
+session_start(); //resumes active session
+ if(($_SESSION['valid']) != "valid") { //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not logged in
 }
-if( ($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){ 	
-	header( 'Location: ./index.php' );
+if( ($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) { //ensure user has delete rights
+ 	header( 'Location: ./index.php' ); //redirect if not authorized
 }
+include ("config/dbconfig.php"); //database name and password
+include ("config/opendb.php"); //open connection to database
+include("config/functions.php"); //imports external functions
+include("html_include_1.php"); //open HTML tags
+echo "<title>St. Joseph Red Cross - Delete Organization</title>"; //print page title
+include("html_include_2.php"); //rest of HTML header information
+echo "<h1>Delete Organization</h1>";
 
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Delete Organization</title>";
-echo "<script src=\"./javascript/selectorganization.js\"></script>";
-include("html_include_2.php");
-
-echo "<div align=\"center\">
-  <h1>Delete Organization</h1>
-</div>";
-
-//Delete from Organization Table
+//Pick up the POSTed organization_id
 $organization_id = $_POST['organization_id'];
+
+//MAIN DELETE QUERY: Delete organization from organization table
 $query = "DELETE
 			FROM	organization
 			WHERE	organization_id = ".$organization_id."
@@ -68,8 +65,8 @@ print "<div align='center'>";
 print "<form action=\"./home.php\">\n";
 print "<button type=\"submit\">Return Home</button>";
 print "</form>\n";
-print "</div><br>";
+print "</div><br />";
 
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close connection to database
+include("html_include_3.php"); //close HTML tags
 ?>

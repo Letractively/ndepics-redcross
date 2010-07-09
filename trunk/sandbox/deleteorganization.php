@@ -5,36 +5,34 @@
 // Summer 2010 - Matt Mooney
 // deleteorganization.php - Page to select an organization to delete from the database
 //****************************
-session_start();
- if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+session_start(); //resumes active session
+ if(($_SESSION['valid']) != "valid") { //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not logged in
 }
-if( ($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
- 	header( 'Location: ./index.php' );
+if( ($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) { //ensure user has delete rights
+ 	header( 'Location: ./index.php' ); //redirect if not authorized
 }
+include ("config/dbconfig.php"); //database name and password
+include ("config/opendb.php"); //open connection to database
+include("config/functions.php"); //imports external functions
+include("html_include_1.php"); //open HTML tags
+echo "<title>St. Joseph Red Cross - Delete Organization</title>"; //print page title
+include("html_include_2.php"); //rest of HTML header information
+echo "<h1>Confirm Deletion of Organization</h1>";
 
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Delete Organization</title>";
-echo "<script src=\"./javascript/selectorganization.js\"></script>";
-include("html_include_2.php");
+//Pick up organization_id
+$organization_id = $_REQUEST['organization_id']; //get the organization id
 
-echo "<div align=\"center\">
-  <h1>Confirm Deletion of Organization</h1>
-</div>";
-
-$organization_id = $_REQUEST['organization_id'];
-
+//Query the database for organization information
 $query = "SELECT	*
 			FROM	organization
 			WHERE	organization_id = ".$organization_id;
 $result = mysql_query($query) or die ("query failed.  Query was: $query<br/>".mysql_error());
 $row = mysql_fetch_assoc($result);
 
-print "Are you sure you want to delete the organization?<br>";
-print "Name: ".$row['organization_name']."<br>";
+//Print out the name of the organization and confirmation message
+print "Are you sure you want to delete the organization?<br />";
+print "Name: ".$row['organization_name']."<br />";
 print "<table align=center>";
 print "<tr>";
 print "<td>";
@@ -50,8 +48,8 @@ print "</form>";
 print "</td>";
 print "</tr>";
 print "</table>";
-print "<br>";
+print "<br />";
 
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>

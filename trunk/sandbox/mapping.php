@@ -1,7 +1,13 @@
 <?php
-$addr = $_GET['a'];
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Summer 2010 - Matt Mooney
+// mapping.php - generate interactive map for organization info
+// This page uses Google Maps JavaScript API V3. See http://code.google.com/apis/maps/documentation/javascript/
+//****************************
+$addr = $_GET['a']; //GET address from URL
 ?>
-<!DOCTYPE html> 
+<!DOCTYPE html> <!-- This is an HTML5 document -->
 <html> 
 <head> 
 <style type="text/css">
@@ -49,7 +55,7 @@ function codeAddress() {
 </script> 
 </head> 
 <body onLoad="codeAddress()"> 
-<input id="address" type="hidden" value="<? echo $addr; ?>"> 
-<div id="map_canvas" style="height:100%;width:100%;"></div>
+<input id="address" type="hidden" value="<? echo $addr; ?>"> <!-- Store address in hidden input -->
+<div id="map_canvas" style="height:100%;width:100%;"></div> <!-- Fill entire page with map because it is accessed as a frame -->
 </body> 
 </html>

@@ -5,24 +5,22 @@
 // Summer 2010 - Matt Mooney
 // addorganization2.php - file to insert an organization into the disaster database
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
-        header( 'Location: ./index.php' );
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
 }
+if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){ //ensure user has "add" rights
+	header( 'Location: ./index.php' ); //redirect if not authorized
+}  
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Add Organization</title>"; //print page title
+echo "<script src=\"./javascript/selectresource.js\"></script>"; //import script for displaying resource information
+include("html_include_2.php"); //rest of HTML header info
 
-if( !(($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10))){
-        header( 'Location: ./index.php' );
-}
-
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Add Organization</title>";
-echo "<script src=\"./javascript/selectorganization.js\"></script>";
-include("html_include_2.php");
-
-
+//collect variable POSTed from addorganization.php
 $organization_name = $_POST["organization_name"];
 $street_address = $_POST["street_address"];
 $mailing_address = $_POST["mailing_address"];
@@ -41,14 +39,15 @@ $updated_by = $_POST["updated_by"];
 $from_res_seq = $_POST["from_res_seq"];
 $addresfromorg = 2;
 
- if($from_res_seq){
-  $business_phone = $_POST["business_phone"];
-  $business_phone2 = $_POST["business_phone2"];
-  $business_fax = $_POST["business_fax"];
- }
+//if collecting varables from addresrouce3.php, then take phone numbers in full form
+if($from_res_seq){
+	$business_phone = $_POST["business_phone"];
+	$business_phone2 = $_POST["business_phone2"];
+	$business_fax = $_POST["business_fax"];
+}
 
 
-// Scrub the inputs
+// Scrub the inputs, see functions.php for more information
 $organization_name = scrub_input($organization_name);
 $street_address = scrub_input($street_address);
 $mailing_address = scrub_input($mailing_address);
@@ -62,7 +61,7 @@ $unit = scrub_input($unit);
 $updated_by = scrub_input($updated_by);
 
 print "<p align=center><b>Please add a resource for this organization.</b></p>";
-
+//print the existing information about the organization in an organized table:
 print "<table>";
         print "<tr>";
         print "<td><b>Organization Name: </b></td>";
@@ -144,13 +143,11 @@ print "<table>";
         print "<td><b>Your Initials</b></td>";
         print "<td>".$updated_by."</td>";
         print "</tr>";
-
-        
 print "</table>";
+print "<br />";
 
-print "<br><br>";
-
-print "<form name='verifyorganization' method='post' action='addorganization3.php' align='left'>";
+//Forward all of the inputs as hidden form inputs
+print "<form name='addorganization2' method='post' action='addorganization3.php' align='left'>";
 print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 print "<input type=hidden name='street_address' value=\"".$street_address."\">";
 print "<input type=hidden name='mailing_address' value=\"".$mailing_address."\">";
@@ -167,36 +164,33 @@ print "<input type=hidden name='addtl_info' value=\"".$addtl_info."\">";
 print "<input type=hidden name='unit' value=\"".$unit."\">";
 print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 
+//div where Javascript with display resource information
+print "<div id=\"txtHint\"><b>Resource info will be listed here.</b></div>";
+print "<br />";
+
+//Now we select a resource to associate with  the organization
 print "<div align = 'center'>";
 print "Select a Resource: ";
-  
+
+//Query the database to get a list of existing resources
 $query = "Select * from detailed_resource ";
 $query .= "ORDER BY resource_type";
-
 $result = mysql_query($query) or die("Could not access resources");
-
-if( mysql_num_rows($result) < 1 )
-{
-        print "There are no resources to be added, please go back and add a resource first!<br>";
+if( mysql_num_rows($result) < 1 ) {
+	print "There are no resources to be added, please go back and add a resource first!<br />";
+} else {
+	print "<select name=\"resource_id\" onchange=\"showResource(this.value)\">"; //use a select/dropdown input for the resource
+	print "<option value=\"NULL\"> </option>";
+	while( $row = mysql_fetch_assoc($result) ) {
+		print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>"; //print each resource as an option
+	}
+	print "</select>"; //end the select/dropdown input
 }
-else 
-{
-        print "<select name=\"resource_id\" onchange=\"showResource(this.value)\">";
-        print "<option value=\"NULL\"> </option>";
-        
-        while( $row = mysql_fetch_assoc($result) )
-        {
-                print "<option value=\"".$row['resource_id']."\">".$row['resource_type']."</option>";
-        }
-        
-        print "</select>";
-}
-
-print "<br> or add a new resource by clicking button below";
-
-print "<br><br><input type=submit value='Continue'>";
+print "<br /> or add a new resource by clicking button below";
+print "<br /><br /><input type=submit value='Continue'>"; //submit the hidden inputs and resource to addorganization3.pgp
 print "</form>";
 
+//Forward the inputs as hidden values forward to the addresource1.php page to add a new resource
 print "<form name='addresourcefromorganization' method='post' action='addresource1.php' align='center'>";
 print "<input type=hidden name='organization_name' value=\"".$organization_name."\">";
 print "<input type=hidden name='street_address' value=\"".$street_address."\">";
@@ -214,24 +208,12 @@ print "<input type=hidden name='addtl_info' value=\"".$addtl_info."\">";
 print "<input type=hidden name='unit' value=\"".$unit."\">";
 print "<input type=hidden name='updated_by' value=\"".$updated_by."\">";
 print "<input type=hidden name='addresfromorg' value='2'>";
-print "<br><input type=submit value='Add New Resource'>";
+print "<br /><input type=submit value='Add New Resource'>";
 print "</form>";
 
-
+print "</div>";
 print "</div>";
 
-print "<p>";
-print "<div id=\"txtHint\"><b>Resource info will be listed here.</b></div>";
-print "</p>";
-
-print "<br></div>";
-print "</div>";
-
-print "</div>";
-print "</body>";
-print "</html>";
-
-
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>

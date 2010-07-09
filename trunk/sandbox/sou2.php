@@ -5,22 +5,24 @@
 // Summer 2010 - Matt Mooney
 // sou2.php - HTML and PHP to accept a file for upload
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
 }
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include ("config/functions.php");
-include ("html_include_1.php");
-echo "<title>St. Joseph Red Cross - SoU Upload</title>";
-include ("html_include_2.php");
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection to database
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - SoU Upload</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 
+//Pick up file infromation from uploaded file
 $datafile = $_FILES["uploadedfile"]["tmp_name"];
 $fileName = $_FILES["uploadedfile"]["name"];
 $fileSize = $_FILES["uploadedfile"]["size"];
 $fileType = $_FILES["uploadedfile"]["type"];
 
+//Pick up POSTed variable from sou.php
 $extension = $_POST["extension"];
 $org_id    = $_POST["id"];
 
@@ -30,12 +32,9 @@ if((($fileType == "application/pdf")
 	 || ($fileType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
    && (fileSize < 2097152))
 {
-	if($_FILES["uploadedfile"]["error"] > 0)
-	{
-		print "File Error: ".$_FILES["uploadedfile"]["error"]."<br>";
-	}
-	else
-	{
+	if($_FILES["uploadedfile"]["error"] > 0) { //if uploaded file has an error
+		print "File Error: ".$_FILES["uploadedfile"]["error"]."<br>"; //print the message
+	} else { //file is error-free, carry on with upload
 		//Set up Upload parameters
 		//Upload BLOB to database
 		$fp  = fopen($datafile, 'r');
@@ -62,9 +61,7 @@ if((($fileType == "application/pdf")
 						LIMIT 	1";
 
 			$result = mysql_query($query) or die ("Query Failed: Could not update file in database.");
-		}
-		else
-		{
+		} else {
 			//New Upload
 			$query = "INSERT INTO statement_of_understanding
 						(organization_id, 
@@ -95,15 +92,14 @@ if((($fileType == "application/pdf")
 			print "</form>";
 		}
 	}
-}
-else
-{
+} else {
 	print "Invalid File.<br>Please ensure that you are choosing a correct file type and that the file is less than 2MB";	
-}
+} //end else
 
+//Print file information
 print"File Name: ".$_FILES["uploadedfile"]["name"]."<br>";
 print"File Type: ".$_FILES["uploadedfile"]["type"]."<br>Size: ".$_FILES["uploadedfile"]["size"]."<br>";
 
-include("./config/closedb.php");
-include("html_include_3.php");
+include("./config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>
