@@ -26,7 +26,7 @@ include("html_include_2.php");
 //IF YOU HAVE SEARCH RIGHTS
 if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
 	$organization_id = $_GET['id'];
-	//print "Org_id: ".$organization_id."<br>";
+	//print "Org_id: ".$organization_id."<br />";
 	$query = "SELECT * FROM organization WHERE organization_id = ".$organization_id;
 	$result = mysql_query($query) or die ("Query Failed...could not retrieve organization information");
 	$row = mysql_fetch_assoc($result);
@@ -58,32 +58,37 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	
 	//Display the Organization Information
 	if($row['street_address'] != "NULL")
-		print $row['street_address']." (Street Address)<br>";
+		print $row['street_address']." (Street Address)<br />";
 	if($row['mailing_address'] != "NULL")
-		print $row['mailing_address']." (Mailing Address)<br>";
-	print $row['city'].", ".$row['state']." ".$row['zip']."<br>";
-	print $row['county']."<br><br>";
-	print "Business Phone: ".print_phone($row['business_phone'])."<br>";
-	print "24-Hour Phone:  ".print_phone($row['24_hour_phone'])."<br>";
-	print "Business Fax: ".print_phone($row['business_fax'])."<br>";
-	print "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br>";
-	print "Website: <a href='http://".$row['website']."'>".$row['website']."</a><br><br>";
-	print "Additional Information: ".$row['additional_info']."<br><br>";
-	print "Associated with: ".$row['association']."<br><br>";
+		print $row['mailing_address']." (Mailing Address)<br />";
+	print $row['city'].", ".$row['state']." ".$row['zip']."<br />";
+	print $row['county']."<br /><br />";
+	print "Business Phone: ".print_phone($row['business_phone'])."<br />";
+	print "24-Hour Phone:  ".print_phone($row['24_hour_phone'])."<br />";
+	print "Business Fax: ".print_phone($row['business_fax'])."<br />";
+	print "Email: <a href=\"mailto:".$row['email']."\">".$row['email']."</a><br />";
+	print "Website: <a href='http://".$row['website']."'>".$row['website']."</a><br /><br />";
+	print "Additional Information: ".$row['additional_info']."<br /><br />";
+	print "Associated with: ".$row['association']."<br /><br />";
 	
 	$display_date = substr($row['updated_time'],5,2) . "/" . substr($row['updated_time'],8,2) . "/" . substr($row['updated_time'],0,4);
-	print "Updated by ".$row['updated_by']." on ".$display_date."<br><br>";
+	print "Updated by ".$row['updated_by']." on ".$display_date."<br /><br />";
 	
 		//Shelter Information if needed
 	if($rowsi['organization_id'] != ""){
-		print "Shelter Information:<br>";
-		print "Size: ".$rowsi['size']."<br>";
-		print "Capacity: ".$rowsi['capacity']."<br>";
-		$db_date = substr($rowsi['nat_entry_date'],5,2)."/".substr($rowsi['nat_entry_date'],8,2)."/".substr($rowsi['nat_entry_date'],0,4);
-		print "Entered in to National DB on ".$db_date."<br><br>";
+		print "Shelter Information:<br />";
+		print "Size: ".$rowsi['size']."<br />";
+		print "Capacity: ".$rowsi['capacity']."<br />";
+		if($rowsi['nat_entry_date'] != "0000-00-00") 
+		{
+			$db_date = substr($rowsi['nat_entry_date'],5,2)."/".substr($rowsi['nat_entry_date'],8,2)."/".substr($rowsi['nat_entry_date'],0,4);
+			print "Entered in to National DB on ".$db_date."<br /><br />";
+		} else {
+			print "This shelter not entered into National database.<br />";
+		}
 	}
 	else
-		print "No Shelter Information.<br>";
+		print "No Shelter Information.<br />";
 		
 		//SoU
 	if($rowsou['filename'] != ""){
@@ -94,11 +99,11 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 			print 	"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 			print 	"<input type=\"submit\" value=\"View Statement of Understanding\">";
 			print "</form>";
-			print "<br>";
+			print "<br />";
 		}
 	}
 	else
-		print "No Statement of Understanding<br>";
+		print "No Statement of Understanding<br />";
 		
 		//FS
 	if($rowfs['filename'] != ""){
@@ -109,11 +114,11 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 			print	"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 			print	"<input type=\"submit\" value=\"View Facility Survey\">";
 			print "</form>";
-			print "<br>";
+			print "<br />";
 		}
 	}
 	else
-		print "No Facility Survey<br>";
+		print "No Facility Survey<br />";
 	
 	// Navigation Buttons
 	print "<div align=\"left\" name=\"navigation_buttons\">";
@@ -148,7 +153,7 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	
 	if( !(($_SESSION['access_level_id'] != 2) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 6) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)) )
 	{
-		print	"<a href=\"./viewlog.php?id=".$organization_id."&type=organization\">Admin Log</a><br>";
+		print	"<a href=\"./viewlog.php?id=".$organization_id."&type=organization\">Admin Log</a><br />";
 	}
 	
 	print "<br/><br/><h2 style=\"display: inline\">Resources</h2><br/>";
@@ -217,7 +222,7 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 		print "<tr>";
 		print	"<td><a href=\"./personinfo.php?id=".$row['person_id']."\">".$row['salutation']."&nbsp;".$row['first_name']."&nbsp;".$row['last_name']."</td>";
 		print	"<td>".$row['street_address'];
-		print		"<br>".$row['city'].", ".$row['state']."  ".$row['zip']."</td>";
+		print		"<br />".$row['city'].", ".$row['state']."  ".$row['zip']."</td>";
 		print	"<td>".print_phone($row['home_phone'])."</td>";
 		print	"<td>".print_phone($row['work_phone'])."</td>";
 		print	"<td>".print_phone($row['mobile_phone'])."</td>";
@@ -241,7 +246,7 @@ if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0)
 	mysql_free_result($result);
 	
 	print "<div align = 'center'>";
-	print "<br><form>";
+	print "<br /><form>";
 	print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">";
 	print "</form>";
 	print "</div>";
