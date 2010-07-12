@@ -36,61 +36,76 @@ Welcome to the St. Joseph County Red Cross Disaster Database.  This online datab
 contact information for people and organizations who offer aid resources in disaster situations.  
 To begin using this database, please select one of the options below.<br/><br/>
 <?
-//if the user can search information
+
+//if the user can search information, allow them to access search pages
 if( !($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0)) {
-	print "<h2 style=\"display: inline\">Search the Database</h2><br/>";
-	print "<form action=\"search.php\" style=\"display: inline\">";
-	print "    <input type=\"submit\" value=\"Search by Keyword\">";
-	print "</form>";
-	print "<form action=\"search/allresources.php\"  style=\"display: inline\">";
-	print "    <input type=\"submit\" value=\"Browse Resources\">";
-	print "</form><br/><br/>";
+	?>
+    <!-- Pint out the search buttons -->
+	<h2 style="display: inline">Search the Database</h2><br />
+	<form style="display:inline" action="search.php">
+		<input type="submit" value="Search by Keyword" />
+	</form>
+	<form style="display: inline" action="search/allresources.php">
+		<input type="submit" value="Browse Resources" />
+	</form><br /><br />
+    <?
 }
 
-//if the user can add information 
+//if the user can add information, allow them to access add functions
 if( ($_SESSION['access_level_id'] > 3) && ($_SESSION['access_level_id'] < 10)) {
-	print "<h2 style=\"display: inline\">Add Information</h2><br/>";
-	print "	    <form style=\"display: inline\" action=\"addorganization.php\" >";
-	print "	    <input type=\"submit\" value=\"Add an Organization\">";
-	print "	    </form>";
-	print "	    <form style=\"display: inline\" action=\"addresource1.php\">";
-	print "	    <input type=\"submit\" value=\"Add a Resource\">";
-	print "	    </form>";
-	print "	    <form style=\"display: inline\" action=\"addperson.php\" >";
-	print "	    <input type=\"submit\" value=\"Add a Person\">";
-	print "	    </form>";
-	print "<br/><br/>";
+	?>
+    <!-- Print out the add buttons -->
+	<h2 style="display: inline">Add Information</h2><br />
+	<form style="display: inline" action="addorganization.php">
+		<input type="submit" value="Add an Organization" />
+	</form>
+	<form style="display: inline" action="addresource1.php">
+	    <input type="submit" value="Add a Resource" />
+	</form>
+	<form style="display: inline" action="addperson.php">
+	    <input type="submit" value="Add a Person" />
+	</form><br /><br />
+    <?
 }
 
+//If the user is an admin, allow them to access user functions
 if (($_SESSION['access_level_id']) == "9") { 
-	print "<h2 style=\"display: inline\">User Accounts</h2><br/>\n";
-	print	"  <form style=\"display: inline\" action=\"./newuser.php\">\n";
-	print	"  <input type=\"submit\" value=\"Create A User\">\n";
-	print	"  </form>\n";
-	print	"  <form style=\"display: inline\" action=\"./deleteuser.php\">\n";
-	print	"  <input type=\"submit\" value=\"Delete A User\">\n";
-	print	"  </form><br/>\n";
-	print	"  <form style=\"display: inline\" action=\"./modifyuser.php\">\n";
-	print	"  <input type=\"submit\" value=\"Change User Permissions\">\n";
-	print	"  </form>\n";
-	echo "<form style=\"display: inline\" action=\"./updateuser.php\">
-	<input type=\"submit\" value=\"Change My Information\">
-	</form><br/><br/>\n";
+?>
+	<!-- Print out the user admin buttons -->
+	<h2 style="display: inline">User Accounts</h2><br />
+	<form style="display: inline" action="./newuser.php">
+		<input type="submit" value="Create A User" />
+	</form>
+	<form style="display: inline" action="./deleteuser.php">
+		<input type="submit" value="Delete A User" />
+	</form><br />
+	<form style="display: inline" action="./modifyuser.php">
+		<input type="submit" value="Change User Permissions" />
+	</form>
+	<form style="display: inline" action="./updateuser.php">
+		<input type="submit" value="Change My Information" />
+	</form><br /><br />
+    <?
 }
 
 //if the user is an admin, allow them to access CSV files
 if( $_SESSION['access_level_id'] == 9) {
-	print "<h2 style=\"display: inline\">Download Tables to CSV</h2><br/>";
-	print "	    <form style=\"display: inline\" action=\"csv/per_csv.php\" >";
-	print "	    <input type=\"submit\" value=\"People\">";
-	print "	    </form>";
-	print "	    <form style=\"display: inline\" action=\"csv/org_csv.php\">";
-	print "	    <input type=\"submit\" value=\"Organizations\">";
-	print "	    </form>";
-	print "	    <form style=\"display: inline\" action=\"csv/res_csv.php\" >";
-	print "	    <input type=\"submit\" value=\"Resources\">";
-	print "	    </form>";
-	print "<br/><br/>";
+	?>
+    <!-- Print out the CSV access buttons -->
+    <h2 style="display: inline">Download Tables to CSV</h2><br />
+	<form style="display: inline" action="csv/per_csv.php">
+    	<input type="submit" value="People" />
+    </form>
+    <form style="display: inline" action="csv/org_csv.php">
+   	  <input type="submit" value="Organizations" />
+    </form>
+	<form style="display: inline" action="csv/res_csv.php">
+    	<input type="submit" value="Resources" />
+    </form>
+	<form style="display: inline" action="csv/shelter_csv.php">
+    	<input type="submit" value="Shelters Only" />
+	</form><br /><br />
+    <?
 } 
 
 echo "</div>";

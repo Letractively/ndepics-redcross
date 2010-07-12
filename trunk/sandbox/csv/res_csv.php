@@ -1,105 +1,78 @@
 <?php
-
-session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./../index.php' );
+//****************************
+// Developed by Notre Dame EPICS for St. Joe County RedCross 
+// Fall 2009 - Rob Wettach
+// Summer 2010 - Matt Mooney
+// res_csv.php - script that prints full resource dump and writes to CSV
+//****************************
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./../index.php' ); //redirect to index if not loggin in
+}
+if( $_SESSION['access_level_id'] != 9) { //check for admin rights
+	header( 'Location: ./../home.php' ); //redirect if not authorized
 }
 
-include ("./../config/dbconfig.php");
-include ("./../config/opendb.php");
-include ("./../config/functions.php");
+include("./../config/dbconfig.php"); //database name and password
+include("./../config/opendb.php"); //opens connection to database
+include("./../config/functions.php"); //imports external functions
 
-//****************************
-//  Developed by ND Epics for St. Joe County RedCross 
-//  
-// Author: Rob Wettach
-//  Fall 2009
-//
-// org_csv.php - outputs the organization table in CSV format.  
-//
-//****************************
-
-
-// Get all the data from the given table.
+// Query database for all resources
 $query = "SELECT * FROM detailed_resource";
-$result = mysql_query( $query );
-
-if( !$result ){
-	die( "ERROR: MySQL statement failed.<br />\n" );
-}
+$result = mysql_query($query) or die( "ERROR: MySQL statement failed.<br />\n" );
 
 // Open the file to write.
-$outfile = fopen( "org_csv.csv", "w" );
+$outfile = fopen( "resource.csv", "w" );
 $file = true;
-if( ! $outfile ){
+if(!$outfile) {
 	$file = false;
 }
 
-if( $file ){
-	print "Writing to org_csv.csv.<br />\n";
+//Check to see if file opened properly
+if($file){
+	print "Writing to resource.csv.<br />\n";
+} else {
+	print "ERROR: Could not write to resource.csv.<br />Please use the printout below:<br /><br />\n";
 }
 
-// Number of fields.
-$num_fields = mysql_num_fields( $result);
+// Number of fields returned by the query
+$num_fields = mysql_num_fields($result);
 
-// Print out the column names.
-for( $i = 0; $i < $num_fields - 1; $i++ ){
-	if( $file && !fwrite( $outfile, '"'.mysql_field_name( $result, $i ).'",' ) ){
-		die( "ERROR: Could not write to org_csv.csv.<br />\n" );
+//Print out column names, looping through each field, skipping the last
+for($i=0;$i<$num_fields-1;$i++) {
+	fwrite($outfile,'"'.mysql_field_name($result,$i ).'",' );
+	print '"'.mysql_field_name($result,$i).'",';
+}
+//Now print the last field without a comma
+fwrite($outfile,'"'.mysql_field_name($result, $num_fields-1 ).'",' );
+print '"'.mysql_field_name($result,$num_fields-1 ).'"';
+//end the line with a newline/breaking element
+fwrite($outfile,"\n" );
+print "<br />\n";
+
+//Print the data by looping through each row of the result
+while($row = mysql_fetch_array($result)) {
+	//Loop through each field in the row, skipping the last one
+	for( $i = 0; $i < $num_fields - 1; $i++ ){
+		fwrite( $outfile,'"'.$row[ $i ].'",');
+		print '"'.$row[ $i ].'",';
 	}
-	else{
-		print '"'.mysql_field_name( $result, $i ).'",';
-	}
-}
-
-if( $file && !fwrite( $outfile, '"'.mysql_field_name( $result, $num_fields-1 ).'",' ) ){
-	die( "ERROR: Could not write to org_csv.csv.<br />\n" );
-}
-else{
-	print '"'.mysql_field_name( $result, $num_fields-1 ).'"';
-}
-	
-if( $file && !fwrite( $outfile, "\n" ) ){
-	die( "ERROR: Could not write to org_csv.csv.<br />\n" );
-}
-else{
+	//Now print the last field without a comma
+	fwrite( $outfile,'"'.$row[$numfields-1].'"');
+	print '"'.$row[ $num_fields-1 ].'"';
+	//Print a newline/breaking element at the end of the row
+	fwrite( $outfile,"\n");
 	print "<br />\n";
 }
 
-
-// Loop through each row of the result.
-while( $row = mysql_fetch_array( $result ) ){
-	// Loop through each element of the result row, printing the value.
-	for( $i = 0; $i < $num_fields - 1; $i++ ){
-		if( $file && !fwrite( $outfile, '"'.$row[ $i ].'",' ) ){
-			die( "ERROR: Could not write to org_csv.csv.<br />\n" );
-		}
-		else{
-			print '"'.$row[ $i ].'",';
-		}
-	}
-	
-	if( $file && !fwrite( $outfile, '"'.$row[ $numfields-1 ].'"' ) ){
-		die( "ERROR: Could not write to org_csv.csv.<br />\n" );
-	}
-	else{
-		print '"'.$row[ $num_fields-1 ].'"';
-	}
-	
-	if( $file && !fwrite( $outfile, "\n" ) ){
-		die( "ERROR: Could not write to org_csv.csv.<br />\n" );
-	}
-	else{
-		print "<br />\n";
-	}
+//Close the file for reading and downloading
+if(!fclose($outfile)) {
+	print "ERROR: Could not close resource.csv.<br />\n";	
+} else {
+	print "Finished writing to resource.csv.<br />\n";
 }
 
-if( $file && !fclose( $outfile ) ){
-	die( "ERROR: Could not close org_csv.csv.<br />\n" );	
-}
-
-if( $file ){
-	print "Finished writing to org_csv.csv.<br />\n";
-}
+include("./../config/closedb.php"); //close database connection
+//redirect to download
+print "<meta http-equiv=\"Refresh\" content=\"0;url=./resource.csv\" />";
 ?>
