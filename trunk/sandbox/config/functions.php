@@ -227,7 +227,7 @@ function html_navmenu() {
 <ul>
 <li><a href = \"./home.php\" target= \"_parent\">Home</a></li>
 <li><a href = \"./search.php\" target= \"_parent\">Search the Database</a></li>
-<li><a href = \"./sitemap.php\" target =\"parent\">Site Map</a></li>
+<li><a href = \"./sitemap.php\" target =\"_parent\">Site Map</a></li>
 <li><a href = \"mailto:epics2@nd.edu\" target= \"_parent\">Report A Problem</a></li>
 <li><a href = \"./logout.php\" target= \"_parent\">Log Out</a></li>
 </ul>
