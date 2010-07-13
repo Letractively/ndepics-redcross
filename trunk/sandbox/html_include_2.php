@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="copyright" content="stjoe-redcross.org 2008.  All rights reserved.">
-<link rel="shortcut icon" href="http://www.stjoe-redcross.org/favicon.ico">
+<link rel="shortcut icon" href="http://disaster.stjoe-redcross.org/favicon.ico">
 <link rel="stylesheet" type="text/css" href="/style.css">
 
 <body class="main">

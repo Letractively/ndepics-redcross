@@ -204,20 +204,15 @@ function html_loginbox() {
 }
 
 function html_forgotuserpass() {
-	$html = "<table border='0' cellspacing='0' cellpadding='1'>
-	<tr>
-		<td><form action=\"retrieveuserinfo.php\" method=\"post\">
+	$html = "
+		<form action=\"retrieveuserinfo.php\" method=\"post\" style=\"display:inline\">
 			<input type=\"hidden\" name=\"forgot\" value=\"username\">
 			<input type=\"submit\" value=\"Forget your username?\">
 			</form>
-		</td>
-		<td><form action=\"retrieveuserinfo.php\" method=\"post\">
+		<form action=\"retrieveuserinfo.php\" method=\"post\" style=\"display:inline\">
 			<input type=\"hidden\" name=\"forgot\" value=\"password\">
 			<input type=\"submit\" value=\"Forget your password?\">
-			</form>
-		</td>
-	</tr>
-</table>";
+			</form>";
 	return $html;
 }
 
