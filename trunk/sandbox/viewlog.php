@@ -5,20 +5,16 @@
 // Summer 2010 - Matt Mooney
 // viewlog.php - Page to view database change logs
 //****************************
-session_start();
- if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
- }
- if( ($_SESSION['access_level_id'] < 1) || ($_SESSION['access_level_id'] > 10)){
- 	header( 'Location: ./index.php' );
- }
-
-include ("./config/dbconfig.php");
-include ("./config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Personal Information</title>";
-include("html_include_2.php");
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
+}
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Log</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 
 //IF YOU HAVE ACCESS CODE.....
  if( !(($_SESSION['access_level_id'] == 8) || ($_SESSION['access_level_id'] == 0) || ($_SESSION['access_level_id'] > 10) || ($_SESSION['access_level_id'] < 0))){
@@ -82,7 +78,7 @@ include("html_include_2.php");
 		include ("./config/closedb.php");
 }
 
-//IF YOU ONLY HAVE INSERT PRIVELEDGES
+//IF YOU ONLY HAVE OTHER
 else{
 
 	print 	"<div align=\"center\">";
@@ -94,6 +90,6 @@ else{
 	print		"</td>";
 	print	"</div";
 }
-include ("./config/closedb.php");
-include("html_include_3.php");
+include("./config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>

@@ -5,21 +5,22 @@
 // Summer 2010 - Matt Mooney
 // updateorganization2.php - Page to make changes to organization in database
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
- }
- if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
- 	header( 'Location: ./index.php' );
- }
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
+}
+//Determine if user has update rights
+if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
+	header( 'Location: ./index.php' ); //redirect if not authorized
+} 
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Update Organization</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Update Organization</title>";
-include("html_include_2.php");
-
+//Pick up POSTed variables from updateorganization.php
 $organization_id	= mysql_real_escape_string($_POST["organization_id"]);
 $organization_name	= mysql_real_escape_string($_POST["organization_name"]);
 $street_address		= mysql_real_escape_string($_POST["street_address"]);
@@ -36,7 +37,6 @@ $website			= mysql_real_escape_string($_POST["website"]);
 $additional_info    = mysql_real_escape_string($_POST['additional_info']);
 $unit 				= $_POST['unit'];
 $updated_by 		= mysql_real_escape_string($_POST['updated_by']);
-
 $resource_id 		= mysql_real_escape_string($_POST["resource_id"]);
 $resourceremove_id 	= mysql_real_escape_string($_POST["resourceremove_id"]);
 
@@ -71,16 +71,16 @@ $query = "UPDATE	organization
 					updated_time = NOW()
 	  	WHERE		organization_id = ".$organization_id."
 	  LIMIT 1";
-
 $result = mysql_query($query) or die ("Error sending organization update query");
 
+//Add the resource if one is specified
 if($resource_id != "NULL") {
 	$query = "INSERT INTO resource_listing (resource_id, organization_id) 
 			  VALUES (".$resource_id.",".$organization_id.")";
-			  
 	$result = mysql_query($query) or die ("Error adding resource_listing");
 }
 
+//Remove resource if one is specified
 if($resourceremove_id != "NULL") {
 $query = "DELETE	
 		  FROM		resource_listing 
@@ -89,7 +89,6 @@ $query = "DELETE
 		  
 $result = mysql_query($query) or die ("Deletion Query failed");
 }
-
 
 //Log Changes
 $query = "SELECT log FROM organization WHERE organization_id = ".$organization_id;
@@ -107,10 +106,10 @@ $redirect_url = "./organizationinfo.php?id=".$organization_id;
   <h3>Updated Organization... Redirecting</h3>
 </div>
 <?
-$message .= "Successful Update...redirecting<br>";
+$message .= "Successful Update...redirecting<br />";
 print "Successfull Update...redirecting to information page";
 print "<meta http-equiv=\"Refresh\" content=\"1.0; url=".$redirect_url."\">";
 
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>

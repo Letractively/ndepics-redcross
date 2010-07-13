@@ -5,21 +5,20 @@
 // Summer 2010 - Matt Mooney
 // updateorganization.php - file to update an organization's information within the database
 //****************************
-session_start();
-// Validate the users's session
-if(($_SESSION['valid']) != "valid") {
-        header( 'Location: ./index.php' );
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
 }
+//Determine if user has update rights
 if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
-        header( 'Location: ./index.php' );
-}
-
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Update Organization</title>";
-include("html_include_2.php");
+	header( 'Location: ./index.php' ); //redirect if not authorized
+} 
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Update Organization</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 ?>
 <div align="center">
   <h1>Update Organization</h1>
@@ -132,9 +131,9 @@ print "</tr>\n";
  print "</tr>\n";
  
  print "<tr>\n";
- print "<td valign='top'><b>Red Cross Associations:</b><br><i>Check all that apply</i></td>\n";
+ print "<td valign='top'><b>Red Cross Associations:</b><br /><i>Check all that apply</i></td>\n";
  
- //Logic to pre-check boxes
+ //Logic to pre-check boxes for associations
  $check = array();
  $unitarray = array("StJoseph","Cass","LaPorte","Marshall","Elkhart","Kosciusko","Porter","District1","District2","District3","District4","Region","State","National","Other");
  $unitarray = array_values($unitarray);
@@ -176,6 +175,7 @@ print "</tr>\n";
  <?
 print "</tr>\n";
 
+//Add a resource
 print "<tr>\n";
 print "<td><b>Add a Resource</b></td>\n";
 print "<td>";
@@ -191,7 +191,7 @@ print "<td>";
 	
 	if( mysql_num_rows($result) < 1 )
 	{
-		print "There are no resources to be added, please go back and add a resource first!<br>";
+		print "There are no resources to be added, please go back and add a resource first!<br />";
 	}
 	else
 	{
@@ -210,6 +210,7 @@ print "<td>";
 print "</td>";
 print "</tr>\n";
 
+//Remove a resource
 print "<tr>\n";
 print "<td><b>Remove Resource: </b></td>\n";
 print "<td>";
@@ -233,6 +234,7 @@ print "</select>";
 print "</td>";
 print "</tr>\n";
 
+//Updated by line
 print "<tr>\n";
 print "<td><b><font color='FF0000'>YOUR Initials: </font></b></td>\n";
 print "<td><input name='updated_by' type='text' size='11' maxlength='11' align= 'left' value=\"".$updated_by."\"></td>\n";
@@ -241,11 +243,12 @@ print "</tr>\n";
 print "</table>\n";
 
 print "<div align = 'center'>\n";
-print "<br><input type='submit' value='Update Organization'>";
+print "<br /><input type='submit' value='Update Organization'>";
 print"</form>";
 
-print "<br><br>";
+print "<br /><br />";
 
+//Additional buttons for external table updating
 print"<form action=\"./shelter.php\"  method=\"POST\">";
 print"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id.">";
 print"<input type=\"submit\" value=\"Update Shelter Information\">";
@@ -261,17 +264,13 @@ print"<input type=\"hidden\" name=\"organization_id\" value=".$organization_id."
 print"<input type=\"submit\" value=\"Upload Facility Survey\">";
 print"</form>";
  
-print "<br>\n";
+print "<br />\n";
 print "<form>\n";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">\n";
 print "</form>\n";
-print "<br></div>\n";
+print "<br /></div>\n";
 print "</div>\n";
- 
-print "</div>\n";
-print "</body>\n";
-print "</html>\n";
 
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>

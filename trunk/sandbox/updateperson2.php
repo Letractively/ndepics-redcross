@@ -5,21 +5,22 @@
 // Summer 2010 - Matt Mooney
 // updateperson2.php - Page to modify person in database
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
 }
+//Determine if user has update rights
 if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
- 	header( 'Location: ./index.php' );
-}
+	header( 'Location: ./index.php' ); //redirect if not authorized
+} 
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Update Person</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Update Person</title>";
-include("html_include_2.php");
-
+//Pick up POSTed variables from updateperson.php
 $person_id		= $_POST['person_id'];
 $salutation		= mysql_real_escape_string($_POST['salutation']);
 $first_name		= mysql_real_escape_string($_POST['first_name']);
@@ -36,6 +37,7 @@ $email			= mysql_real_escape_string($_POST['email']);
 $im				= mysql_real_escape_string($_POST['im']);
 $additional_info= mysql_real_escape_string($_POST['additional_info']);
 
+//Fields that are not part of the person record
 $organization_id 		= $_POST["organization_id"];
 $title_in_organization 	= mysql_real_escape_string($_POST["title_in_organization"]);
 $role_in_organization 	= mysql_real_escape_string($_POST["role_in_organization"]);
@@ -46,7 +48,7 @@ $organizationremove_id 	= $_POST["organizationremove_id"];
 $resource_id 			= $_POST['resource_id'];
 $updated_by 			= $_POST['updated_by'];
 
-//Query to update organization
+//Query to update person table
 $query = "UPDATE	person 
 	  SET			salutation = \"".$salutation."\" ,
 					first_name = \"".$first_name."\" ,
@@ -66,7 +68,6 @@ $query = "UPDATE	person
 					updated_time = NOW()
 	   WHERE		person_id = ".$person_id."
 	   LIMIT 1";
-	   
 $result = mysql_query($query) or die ("Error sending person update query");
 
 // Query to link person to organization
@@ -119,6 +120,6 @@ print "<button type=\"submit\">Return Home</button>";
 print "</form>\n";
 print "</div>";
 
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>

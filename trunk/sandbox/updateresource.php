@@ -5,43 +5,45 @@
 // Summer 2010 - Matt Mooney
 // updateresource.php - Page to make changed to a resource
 //****************************
-session_start();
- if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
- }
- 
- if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
- 	header( 'Location: ./index.php' );
- } 
-
-include ("config/dbconfig.php");
-include ("config/opendb.php");include("config/functions.php");include("html_include_1.php");echo "<title>St. Joseph Red Cross - Update Resource</title>";include("html_include_2.php");
-
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
+}
+//Determine if user has update rights
+if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
+	header( 'Location: ./index.php' ); //redirect if not authorized
+} 
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Update Resource</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 ?>
 <div align="center">
   <h1>Update Resource</h1>
 </div>
 
 <?php
-
-// Retrieve the requested organization's information
+//Pick up the POSTed variable from resourceinfo.php
 $resource_id = $_POST["resource_id"];
+
+//Query database for resource info to pre-populate fields
 $query = "SELECT	*
 		  FROM		detailed_resource
 		  WHERE		resource_id = ".$resource_id;
 $result = mysql_query($query) or die ("Resource Query failed");
 $row = mysql_fetch_assoc($result);
 
+//Save values in variables
 $resource_type	= $row['resource_type'];
 $description	= $row['description'];
 $keyword		= $row['keyword'];
 
 print "<p align=center><b>Change the desired fields and press 'Update Resource'.</b></p>\n";
-
+//Print update form with pre-populated fields
 print "<center><form name='updateresource' method='post' action='updateresource2.php'>\n";
-
 	print "<input name='resource_id' type='hidden' value='".$resource_id."'>\n";
-
 	/*******/
 	//  Provide input fields pre-populated with the existing values in the database
 	print "<table>\n";
@@ -62,23 +64,19 @@ print "<center><form name='updateresource' method='post' action='updateresource2
 		
 	print "</table>\n";
 
-	print "<br>\n";
+	print "<br />\n";
 	
 	print "<input type='submit' value='Update Resource'>\n";
 print "</form></center>\n";
 
 
-print "<br><div align = 'center'>\n";
+print "<br /><div align = 'center'>\n";
 print "<form>\n";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">\n";
 print "</form>\n";
-print "<br></div>\n";
+print "<br /></div>\n";
 print "</div>\n";
 
-print "</div>\n";
-print "</body>\n";
-print "</html>\n";
-
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>

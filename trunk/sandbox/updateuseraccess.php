@@ -5,25 +5,24 @@
 // Summer 2010 - Matt Mooney
 // updateuseraccess.php - Page to change user permissions
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
- }
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
+}
 // Make sure the user is an admin
- if($_SESSION['access_level_id'] != 9) {
-        header( 'Location: ./index.php' );
- } 
-
-include ("./config/dbconfig.php");
-include ("./config/opendb.php");
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Update User Privileges</title>";
-include("html_include_2.php");
+if($_SESSION['access_level_id'] != 9) {
+	header( 'Location: ./index.php' ); //redirect if not authorized
+} 
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Update User Access</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 
 //	Display the selected user's information and 
 //	current access level in pre-populated checkboxes
-print "User id: ".$_POST['user_id']."<br>";
+print "User id: ".$_POST['user_id']."<br />";
 if( $_POST['user_id'] == "NULL" ){
 	print "<center><h3>You must select a user to modify.<br />";
 	print "<form action=\"modifyuser.php\" method=\"post\">";
@@ -76,7 +75,7 @@ else{
 	
 	print "</table>";
 	
-	print "<br>";
+	print "<br />";
 	
 	print "<input type=\"submit\" value=\"Update User\">";
 	
@@ -84,6 +83,6 @@ else{
 
 }
 
-include ("config/closedb.php");
-include("html_include_3");
+include ("config/closedb.php"); //close database connection
+include("html_include_3"); //close HTML tags
 ?>

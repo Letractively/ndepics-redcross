@@ -4,20 +4,22 @@
 // Summer 2010 - Matt Mooney
 // shelter.php - This page is used to view/update additional shelter information
 //****************************
-session_start();
-if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
 }
 
-include ("./config/dbconfig.php");
-include ("./config/opendb.php");
-include("./config/functions.php");
-include("./html_include_1.php");
-echo "<title>St. Joseph Red Cross - Shelter Information</title>";
-include("./html_include_2.php");
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Shelter Information</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 
+//Pick up POSTed variable from updateorganization.php
 $organization_id = $_POST["organization_id"];
 
+//Run query to get organization name
 $query = "SELECT	organization_name
           FROM		organization
           WHERE		organization_id = ".$organization_id;
@@ -25,6 +27,7 @@ $org = mysql_query($query) or die ("Query Failed...could not retrieve organizati
 $row = mysql_fetch_assoc($org);
 $org = $row['organization_name'];
 
+//Run query to determine if shelter info already exists for this organization
 $querysi = "SELECT * FROM shelter_info WHERE organization_id = ".$organization_id;
 $resultsi = mysql_query($querysi) or die ("Wuery Failed...could not retreive shelter_info information");
 $rowsi = mysql_fetch_assoc($resultsi);
@@ -32,11 +35,14 @@ $rowsi = mysql_fetch_assoc($resultsi);
 ?>
 <div align="center">
 	<h2>Update Shelter Information</h2>
-    <i>Note that this page should only be used for shelters.</i><hr>
+    <i>Note that this page should only be used for shelters.</i><hr />
 </div>
 <?
+//If there exists info, then this is an update, pre-fill form old values
+//also mark hidden "type" field as a update form
 if($rowsi['organization_id'] != ""){
 	print "Shelter Information for $org";
+	//get the proper date values to fill out fields
 	$month = substr($rowsi['nat_entry_date'],5,2);
 	$day = substr($rowsi['nat_entry_date'],8,2);
 	$year = substr($rowsi['nat_entry_date'],0,4);
@@ -69,7 +75,9 @@ if($rowsi['organization_id'] != ""){
 	<?	
 } //end if row exists
 else {
-	print "No Shelter Information.<br>Fill out form to create new record.<br>";
+	//there is no shelter info, so we need a blank form to fill out
+	//also mark hidden "type" field as a new information form
+	print "No Shelter Information.<br />Fill out form to create new record.<br />";
 	?>
     <form action="./shelter2.php" method="post">
    	<table>
@@ -100,7 +108,7 @@ else {
 } //end else NULL row exists
 		
 
-include("./config/closedb.php");
-include("./html_include_3.php");
+include("./config/closedb.php"); //close database connection
+include("./html_include_3.php"); //close HTML tags
 ?>
 

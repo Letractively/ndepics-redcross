@@ -5,22 +5,20 @@
 // Summer 2010 - Matt Mooney
 // updateperson.php - file to update a peron's information within the database
 //****************************
-session_start();
-// Validate the users's session
- if(($_SESSION['valid']) != "valid") {
-	header( 'Location: ./index.php' );
- }
- if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
- 	header( 'Location: ./index.php' );
- }
-
-include ("config/dbconfig.php");
-include ("config/opendb.php");
-
-include("config/functions.php");
-include("html_include_1.php");
-echo "<title>St. Joseph Red Cross - Update Person</title>";
-include("html_include_2.php");
+session_start(); //resumes active session
+if(($_SESSION['valid']) != "valid") {  //check for credentials
+	header( 'Location: ./index.php' ); //redirect to index if not loggin in
+}
+//Determine if user has update rights
+if( ($_SESSION['access_level_id'] != 1) && ($_SESSION['access_level_id'] != 3) && ($_SESSION['access_level_id'] != 5) && ($_SESSION['access_level_id'] != 7) && ($_SESSION['access_level_id'] != 9)){
+	header( 'Location: ./index.php' ); //redirect if not authorized
+} 
+include("./config/dbconfig.php"); //database name and password
+include("./config/opendb.php"); //opens connection
+include("./config/functions.php"); //imports external functions
+include("./html_include_1.php"); //open html tags
+echo "<title>St. Joseph Red Cross - Update Person</title>"; //print page title
+include("./html_include_2.php"); //rest of html header information
 ?>
 
 <div align="center">
@@ -32,16 +30,17 @@ include("html_include_2.php");
 error_reporting(E_ALL);
 ini_set ('display_errors', '1');
 
-// Retrieve the requested organization's information
+//Pick up the POSTed info from personinfo.php
 $person_id = $_POST["person_id"];
+
+//Query the database for the person's information
 $query = "SELECT	*
 		  FROM		person
 		  WHERE		person_id = ".$person_id;
-		  
 $result = mysql_query($query) or die ("Person Query failed");
-
 $row = mysql_fetch_assoc($result);
 
+//store values in variables
 $salutation		= $row['salutation'];
 $first_name		= $row['first_name'];
 $last_name		= $row['last_name'];
@@ -60,6 +59,7 @@ $updated_by            = $row['updated_by'];
 
 print "<p align=center><b>Change the desired fields and press 'Update Person'.</b></p>\n";
 
+//print the form for updating information
 print "<center><form name='updateperson' method='post' action='updateperson2.php'>\n";
 	print "<input name='person_id' type='hidden' value='".$person_id."'>\n";
 
@@ -148,6 +148,7 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 	print "<td><textarea name='additional_info' rows=6 cols=40 align='left'>".$additional_info."</textarea></td>\n";
 	print "</tr>\n";
 	
+	//Add the person to an organization
 	print "<tr>\n";
 	print "<td valign='top'><b>Add to organization:</b></td>";
 	print "<td>";
@@ -167,7 +168,7 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 		$result = mysql_query($query) or die("Could not access resources");
 		if( mysql_num_rows($result) < 1 )
 		{
-			print "There are no resources to be added, please go back and add an organization first!<br>";
+			print "There are no resources to be added, please go back and add an organization first!<br />";
 		}
 		else 
 		{
@@ -197,6 +198,7 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 	print "</td>";
 	print "</tr>";
 	
+	//Change the persons role within an already associated organization
 	print "<tr>\n";
 	print "<td valign='top'><b>Modify Role:</b></td>";
 	print "<td>";
@@ -246,6 +248,7 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 	print "</td>";
 	print "</tr>";
 	
+	//Remove a person from an organization
 	print "<tr>\n";
 	print "<td><b>Remove from organization:</b></td>";
 	print "<td>";
@@ -268,6 +271,7 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 	print "</td>";
 	print "</tr>";
 	
+	//Associate the person directly with a resource
 	print "<tr>\n";
 	print "<td><b>Associate with resource:</b></td>";
 	print "<td>";
@@ -284,23 +288,23 @@ print "<center><form name='updateperson' method='post' action='updateperson2.php
 	print "</td>";
 	print "</tr>";
 
+	//Store the updating user's initials
 	print "<tr>\n";
 	print "<td><b><font color='FF0000'>YOUR Initials: </font></b></td>\n";
 	print "<td><input name='updated_by' type='text' size='11' maxlength='11' align= 'left' value=\"".$updated_by."\"></td>\n";
 	print "</tr>\n";
-
 	print "</table>";
 
 
-print "<br><input type='submit' value='Update Person'>\n";
+print "<br /><input type='submit' value='Update Person'>\n";
 print "</form></center>\n";
 
 
-print "<br><div align = 'center'>\n";
+print "<br /><div align = 'center'>\n";
 print "<form>\n";
 print "<INPUT TYPE=\"BUTTON\" VALUE=\"Back\" ONCLICK=\"window.location.href='javascript:history.back()'\">\n";
 print "</form>\n";
-print "<br></div>\n";
+print "<br /></div>\n";
 print "</div>\n";
 
 print "</div>\n";
@@ -308,6 +312,6 @@ print "</body>\n";
 print "</html>\n";
 
 
-include ("config/closedb.php");
-include("html_include_3.php");
+include ("config/closedb.php"); //close database connection
+include("html_include_3.php"); //close HTML tags
 ?>
