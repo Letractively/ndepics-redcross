@@ -9,6 +9,8 @@ session_start(); //resumes active session
 if(($_SESSION['valid']) != "valid") {  //check for credentials
 	header( 'Location: ./index.php' ); //redirect to index if not loggin in
 }
+
+//THis is a comment
  
 include("./config/dbconfig.php"); //database name and password
 include("./config/opendb.php"); //opens connection to database
