@@ -1,4 +1,5 @@
 =EPICS Meeting Minutes Feb 13, 2012=
+==What was done and what will be done==
 
 1) How the two projects connect
   * IOS and Android
