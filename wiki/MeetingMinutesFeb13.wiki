@@ -64,6 +64,23 @@
   * Problems can be posted on google code by anybody and is encouraged
     * code.google.com/p/ndepics-redcross/
 
+6) Long-Term Goals
+  # App by end of semester
+  # Database up and running
+    * Plan trips to give training
+      * Interns from Red Cross will be in charge of updating
+  # Red Cross mobile device
+    * testing
+    * Red Cross club on campus would be good test audience
+
+7) Example Case
+  * Fire in area
+  * 20 people
+    * > 5 hotel rooms, need a shelter
+  * Need to know where shelters are in the counties
+    * Easily search
+    * Type in address of incident, find nearby places
+
 ----
 *Repository is not website. Website is hosted by Red Cross*
   * There is two copies of each code on each place. Test website and running website.
