@@ -54,6 +54,7 @@
       * Ensure you can log on and work around on it
       * Clean up disaster
         * Keep pinter, gena, matt, and selves
+  * Mobile App Updates
 
 *5) Problems*
   * Accounts given to Red Cross do *not* update code
