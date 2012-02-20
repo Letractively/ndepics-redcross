@@ -1,0 +1,14 @@
+1) (10 min) Subversion recap and troubleshooting
+
+2) (15 min) Database Requirements for the Red Cross
+-Are any changes necessary?
+-Do we need to set anything up differently?
+
+3) (15 min) PHP and database high-level talk
+-How is everything laid out and connected?
+-What to do moving forward?
+-Systematic way of checking for bugs?
+
+4) (10 min) Mobile App Developments and catch-up
+
+5) Closing remarks, assignments for next week
