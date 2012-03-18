@@ -5,7 +5,9 @@
  * Database Search (Keyword / Resource / Location)
  * User Accounts (Create / Delete / Change)
  * Demonstrate CSV
- * Report a Problem - Issues Tracker (Needs a Google or Google-hosted (ex. @nd.edu) account) Alternative needed?
+ * Report a Problem - Issues Tracker 
+   * Requires: Google or Google-hosted (ex. @nd.edu) account 
+   * Alternative Method?
 
 === 2) Next Week ===
  * Android App Demo
