@@ -10,5 +10,4 @@
 === 2) Next Week ===
  * Android App Demo
  * iOS App Demo
- * Monitor and Fix Bugs
- * Plan for Functionality Changes
+ * Monitor and Handle Issues
