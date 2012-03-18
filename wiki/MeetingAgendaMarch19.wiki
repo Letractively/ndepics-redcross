@@ -1,13 +1,13 @@
 =EPICS Meeting Agenda March 19, 2012=
 
-== 1) Website/Database Demonstration ==
+=== 1) Website/Database Demonstration ===
  * Add Information (Organization / Resource / Person)
  * Database Search (Keyword / Resource / Location)
  * User Accounts (Create / Delete / Change)
  * Demonstrate CSV
  * Report a Problem - Issues Tracker (Needs a Google or Google-hosted (ex. @nd.edu) account) Alternative needed?
 
-== 2) Next Week ==
+=== 2) Next Week ===
  * Android App Demo
  * iOS App Demo
  * Monitor and Fix Issues
