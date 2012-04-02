@@ -2,7 +2,7 @@
    Red Cross is adding information (low tens)
 	
 ==Android App==
-    Google Chrome, compatability issues? So, used Internet Explorer engine.
+    Google Chrome, compatibility issues? So, used Internet Explorer engine.
     Inherited back-end database but query was failing because longitude was stored as long which was a reserved word in SQL.
 
 ===Semester Goal===		
