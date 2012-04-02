@@ -28,7 +28,7 @@ Improve the paper, find a conference, submit as credited author.
 1. Presentation on April 30.
 
 2. Collectively write research paper (2-4 pages).
- 
+
 3. Personal reflection, experience with Rebekah & Gena, semester wrap-up.
 
 4. Documentation, update manual with summary on debugs and new features.
