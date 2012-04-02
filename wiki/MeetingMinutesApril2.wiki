@@ -21,7 +21,11 @@ Service Learning: Learn and discover on own motivated by service.
 Review the two papers, especially Matt Moonie's contribution
 Improve the paper, find a conference, submit as credited author.
 
-==Next Week==
-1. Personal reflection, experience with Rebekah & Gena, semester wrap-up.
+==Assignments==
+1. Presentation on April 30.
 
-2. Documentation, update manual with summary on debugs and new features.
+2. Collectively write research paper (2-4 pages).
+ 
+3. Personal reflection, experience with Rebekah & Gena, semester wrap-up.
+
+4. Documentation, update manual with summary on debugs and new features.
