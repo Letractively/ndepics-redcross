@@ -1,0 +1,26 @@
+
+==Disaster Database==
+   Red Cross is adding information (low tens)
+    	
+
+    		
+==Android App==
+    Google Chrome, compatability issues? So, used Internet Explorer engine.
+    Inherited back-end database but query was failing because longitude was stored as long which was a reserved word in SQL.
+		
+    Minor changes in the GUI.
+    Deploy-able prototype.
+    Create local database on phone?
+
+==iPhone App==
+    	No show, status pending.
+
+==Frontiers in Education==
+Backstory: Conference on engineering professor's innovation in teaching.
+Service Learning: Learn and discover on own motivated by service.
+Look over two papers, especially Matt Moonie's deliverable
+Improve the paper, find a conference, submit as credited author.
+
+==Next Week==
+1. Personal reflection, experience with Rebekah and Gena, semester wrap-up.
+2. Documentation, update manual with summary on debugs and new features.
