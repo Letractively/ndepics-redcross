@@ -6,7 +6,7 @@
 
     Inherited back-end database but query was failing because longitude was stored as long which was a reserved word in SQL.
 
-===Semester Goal===		
+===Android Semester Goal===		
     Minor changes in the GUI.
 
     Deploy-able prototype.
