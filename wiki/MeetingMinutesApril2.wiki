@@ -3,11 +3,14 @@
 	
 ==Android App==
     Google Chrome, compatibility issues? So, used Internet Explorer engine.
+
     Inherited back-end database but query was failing because longitude was stored as long which was a reserved word in SQL.
 
 ===Semester Goal===		
     Minor changes in the GUI.
+
     Deploy-able prototype.
+
     Create local database on phone?
 
 ==iPhone App==
