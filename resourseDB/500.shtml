@@ -1,0 +1,9 @@
+INTERNAL SERVER ERROR: <!--#echo var="HTTP_HOST" --><br>
+PLEASE CONTACT ONEEACH FOR SUPPORT<br>
+Mention the following infromation:<br>
+Redirect Status code: <!--#echo var="REDIRECT_STATUS" --><br>
+Server Name: <!--#echo var="HTTP_HOST" -->
+
+<!-- 
+                                                                                                                                                                                                                                                                                                                                                                        
+--> 
