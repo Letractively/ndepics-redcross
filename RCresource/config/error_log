@@ -1,0 +1,2 @@
+[04-Jun-2012 14:56:30] PHP Warning:  mysql_close(): supplied argument is not a valid MySQL-Link resource in /home/disaster/public_html/config/closedb.php on line 12
+[04-Jun-2012 14:56:47] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'disaster'@'localhost' (using password: NO) in /home/disaster/public_html/config/opendb.php on line 12
