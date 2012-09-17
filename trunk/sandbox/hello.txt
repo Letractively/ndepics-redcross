@@ -1,2 +1,3 @@
 Fall 2012 - EPICS
-1. Henry Kim 
+1. Henry Kim
+2. Jonathan Koch 
