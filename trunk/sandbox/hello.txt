@@ -2,3 +2,4 @@ Fall 2012 - EPICS
 1. Henry Kim
 2. Jonathan Koch 
 3. Chas Jhin
+4. Michael Powers
