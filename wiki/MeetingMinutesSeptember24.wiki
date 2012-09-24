@@ -19,4 +19,6 @@ W3schools.com -> sophomores should look at it to look at web development
 For next meeting: brainstorm projects for our next meeting
 
 We want to finish up the paper from the Red Cross project despite being off the database project.
-   -It may have already been sent for submission. If they send it back, we need to edit/change it before we resubmit it
+   *iIt may have already been sent for submission. If they send it back, we need to edit/change it before we resubmit it
+
+We decided to schedule the meeting for two Mondays from today. We don't have much to work on until we have a list of possible projects to go over. We will spend these next 2 weeks looking for projects.
