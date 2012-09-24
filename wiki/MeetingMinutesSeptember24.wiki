@@ -11,12 +11,12 @@ We will take the code that we have and try to apply it to the Haiti project -> n
 We need to look at what project we want to focus on now. Best if it is something that is interesting to us.
 
 Places to look for projects:
-   Center for Social Concerns
-   Clubs/groups around campus that we know of that could use computer scientists to help with a project
+   *iCenter for Social Concerns
+   *iClubs/groups around campus that we know of that could use computer scientists to help with a project
 
 W3schools.com -> sophomores should look at it to look at web development
 
 For next meeting: brainstorm projects for our next meeting
 
 We want to finish up the paper from the Red Cross project despite being off the database project.
-   *It may have already been sent for submission. If they send it back, we need to edit/change it before we resubmit it
+   -It may have already been sent for submission. If they send it back, we need to edit/change it before we resubmit it
