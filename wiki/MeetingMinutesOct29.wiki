@@ -4,4 +4,8 @@
   * Attendance: All
 
 ===Resource DB Paper===
+  * History/Purpose (Henry)
+  * Current/Technical (Jon)
+  * Future/Service-Learning (Chas)
+
 ===Haiti App===
