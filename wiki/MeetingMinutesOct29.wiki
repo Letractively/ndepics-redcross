@@ -13,5 +13,5 @@
 
 ===Haiti App===
   * List of variable names/types.
-  * Teach sophomores about PHP/MySQL during next meeting.
-  * www.epicsproject.org/haitiApp/submitSurvey.php
+  * Teach/Code with sophomores about PHP/MySQL during next meeting.
+  * www.epicsproject.org/haitiApp/submitSurvey.php and tableSurvey.php
