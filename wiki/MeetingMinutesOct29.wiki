@@ -1,7 +1,7 @@
 =Meeting Minutes October 22=
   * Meeting Manager: Conor McCarter
   * Meeting Note-taker: Henry Kim
-  * Attendance: All (Henry, Jonathan, Chas, Matt, Dan, Mike, Conor, Dolff, Ryan, Aaron)
+  * Attendance: All (Henry, Jonathan, Chas, Matt, Mike, Conor, Dolff, Ryan, Aaron)
 
 ===Resource DB Paper===
   * History/Purpose (Henry)
@@ -12,3 +12,6 @@
   * Rough draft within two weeks.
 
 ===Haiti App===
+  * List of variable names/types.
+  * Teach sophomores about PHP/MySQL during next meeting.
+  * www.epicsproject.org/haitiApp/submitSurvey.php
