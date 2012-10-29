@@ -34,5 +34,5 @@ resource DB paper (Henry, Jon, Chas)
 		how this is different from classroom learning
 		tips to replicate and imitate, 
 		lessons learned, share new.
-		what did the newcomers have to learn. MySQL, PHP, HTML, Web hosting, SVN, Google Code, Run meeting, Interact with R.C. 
+		what did the newcomers have to learn. MySQL, PHP, HTML, Web hosting, SVN, Google Code, Run meeting, Interact with R.C., pick up other people's code.
 		acknowledge that it came to an end.
