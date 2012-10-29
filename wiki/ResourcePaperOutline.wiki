@@ -30,7 +30,7 @@ resource DB paper (Henry, Jon, Chas)
 		Describe technical info of OneEach
 			update svn of resoursces DB
 	
-	Service-learning and Future
+	Service-Learning-Research and Future
 		how this is different from classroom learning
 		tips to replicate and imitate, 
 		lessons learned, share new.
