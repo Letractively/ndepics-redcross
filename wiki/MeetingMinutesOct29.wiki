@@ -12,7 +12,9 @@
   * Rough draft within two weeks.
 
 ===Haiti App===
-  * List of variable names/types. Project requirement documented and sent to Chas.
+  * List of variable names/types. 
+  * Include GPS coordinates.
+  * Project requirement documented and sent to Chas.
   * Teach/Code with sophomores about PHP/MySQL during next meeting.
   * www.epicsproject.org/haitiApp/submitSurvey.php and tableSurvey.php within the next three weeks.
   * Maintain history (people, code environment, development) and documentation on this topic for future research paper.
