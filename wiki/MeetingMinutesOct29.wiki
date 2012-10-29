@@ -1,5 +1,6 @@
-==Meeting Manager: Conor McCarter==
-==Meeting Note-taker: Henry Kim==
+=Meeting Minutes October 22=
+* Meeting Manager: Conor McCarter
+* Meeting Note-taker: Henry Kim
 
 ===Resource DB Paper===
 ===Haiti App===
