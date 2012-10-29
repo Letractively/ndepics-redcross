@@ -13,7 +13,7 @@
 
 ===Haiti App===
   * List of variable names/types. 
-  * Include GPS coordinates.
+  * Obtain GPS coordinates from camera.
   * Project requirement documented and sent to Chas.
   * Teach/Code with sophomores about PHP/MySQL during next meeting.
   * www.epicsproject.org/haitiApp/submitSurvey.php and tableSurvey.php within the next three weeks.
