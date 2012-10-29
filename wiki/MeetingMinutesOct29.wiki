@@ -7,5 +7,6 @@
   * History/Purpose (Henry)
   * Current/Technical (Jon)
   * Future/Service-Learning (Chas)
+  * Post and edit outline on this wiki.
 
 ===Haiti App===
