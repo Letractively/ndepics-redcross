@@ -15,3 +15,4 @@
   * List of variable names/types.
   * Teach/Code with sophomores about PHP/MySQL during next meeting.
   * www.epicsproject.org/haitiApp/submitSurvey.php and tableSurvey.php
+  * Phone app expected to finish progress within three weeks.
