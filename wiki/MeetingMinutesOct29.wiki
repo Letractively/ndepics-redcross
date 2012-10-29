@@ -1,6 +1,6 @@
 =Meeting Minutes October 22=
-  * Meeting Manager: Conor McCarter
-  * Meeting Note-taker: Henry Kim
+  * Meeting Manager: Conor
+  * Meeting Note-taker: Henry
   * Attendance: All (Henry, Jonathan, Chas, Matt, Mike, Conor, Dolff, Ryan, Aaron)
 
 ===Resource DB Paper===
