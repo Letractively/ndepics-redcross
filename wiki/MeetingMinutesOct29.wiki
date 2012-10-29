@@ -1,5 +1,5 @@
-=Meeting Manager: Conor McCarter=
-=Meeting Note-taker: Henry Kim=
+==Meeting Manager: Conor McCarter==
+==Meeting Note-taker: Henry Kim==
 
-==Resource DB Paper==
-==Haiti App==
+===Resource DB Paper===
+===Haiti App===
