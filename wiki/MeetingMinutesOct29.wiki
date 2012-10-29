@@ -1,12 +1,12 @@
 =Meeting Minutes October 22=
   * Meeting Manager: Conor McCarter
   * Meeting Note-taker: Henry Kim
-  * Attendance: All
+  * Attendance: All (Henry, Jonathan, Chas, Matt, Dan, Mike, Conor, Dolff, Ryan, Aaron)
 
 ===Resource DB Paper===
   * History/Purpose (Henry)
   * Current/Technical (Jon)
   * Future/Service-Learning (Chas)
   * Post and edit outline on this wiki.
-
+  * Research similar papers to FIE 2013 (Abstract Deadline: Feb 1, 2013)
 ===Haiti App===
