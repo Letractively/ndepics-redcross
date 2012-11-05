@@ -1,0 +1,19 @@
+
+= Meeting Minutes November 5 =
+* Meeting Manager: Henry
+* Meeting Note-taker: Matt
+* Attendance: Henry, Matt, Jonathan, Chas, Mike, Connor, Dolff, Ryan
+
+= Haiti App Server Side =
+* HTML intro for sophomores
+* PHP -how it differs from C
+* SQL -basic queries SELECT FROM WHERE
+* w3schools.com
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
