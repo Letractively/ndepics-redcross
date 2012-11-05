@@ -1,17 +1,20 @@
 = Meeting Minutes November 5 =
  * Meeting Manager: Henry
  * Meeting Note-taker: Matt
- * Attendance: Henry, Matt, Jonathan, Chas, Mike, Connor, Dolff, Ryan
+ * Attendance: Henry, Matt, Jonathan, Chas, Mike, Conor, Dolff, Ryan, Aaron, Dr. Madey
 
 === Haiti App Server Side ===
- * HTML intro for sophomores
+ * HTML intro for sophomores (w3schools.com)
  * PHP -how it differs from C
  * SQL -basic queries SELECT FROM WHERE
- * w3schools.com
+ * SQL example via godaddy/phpmyadmin
+ * Connecting to mysql with php
+ * Inserting into database with php
+ * Reading from the database with php
+ * Sandbox for Sophomores
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+=== App Report ===
+ * Programming Progress
+ * Testing by next week
+ 
+ * Latex
