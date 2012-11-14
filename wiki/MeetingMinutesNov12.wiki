@@ -2,7 +2,7 @@
 
   * Meeting Manager: Matt
   * Meeting Note-taker: Jonathan
-  * Attendance: (Henry, Jonathan, Chas, Matt, Mike, Conor, Dolff, Aaron
+  * Attendance: Henry, Jonathan, Chas, Matt, Mike, Conor, Dolff, Aaron
 
 ===Individual Project Check-In===
   * Paper abstract in the works (Henry, Jon, Chas)
