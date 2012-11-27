@@ -1,5 +1,5 @@
 resource DB paper (Henry, Jon, Chas)
-	take out assessment DB and app - total: 8 pages.
+	take out assessment DB and app - total: 6 pages.
 	
 	Create timeline: product rather than history: focus on EPICS team - over the year
 		Frontiers in Education (EG) conference - nice story (complete/interesting)
