@@ -7,9 +7,9 @@ Update from Matt on Paper
 - Advice/what was learned while doing the project
 
 Deliverable for this class
-- Draft form submitted by next Friday (December 7)
-- Will get feedback and work on it up until last day of finals (December 14)
-- Papers that we are all working on
+Draft form submitted by next Friday (December 7)
+Will get feedback and work on it up until last day of finals (December 14)
+Papers that we are all working on
 - Sophomores write up a "What did I learn from this class?" (December 14)
 - Sophomores also document the backend database and the php code that takes data from the app, puts it in the database, and displays the data (Draft December 7, final December 14) ->get this to Aaron after we finish it
 - Matt - Paper on the android App
